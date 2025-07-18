@@ -1,236 +1,423 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من نحن - سمان ترانس | النقل العالمي والخدمات اللوجستية</title>
+    <title>About Us - Samman Trans | World Transport & Logistics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Mada:wght@200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1E40AF',
+                        primary: '#003869',
                         secondary: '#F59E0B',
                         accent: '#3B82F6',
+                        'primary-light': 'rgba(0, 56, 105, 0.1)',
+                        'secondary-light': 'rgba(245, 158, 11, 0.1)'
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
-                        'fade-in': 'fadeIn 1.5s ease-in-out',
-                        'slide-up': 'slideUp 1s ease-out',
-                        'flip': 'flip 1s ease-out forwards',
-                        'slide-left': 'slideLeft 0.6s ease-out forwards',
-                        'slide-in-up': 'slideInUp 1s ease-out forwards',
-                        'fade-in-delay': 'fadeInDelay 1.5s ease-in-out forwards',
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-in-up': 'slideInUp 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+                        'zoom-in': 'zoomIn 0.8s ease-out forwards',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(50px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        flip: {
-                            '0%': { transform: 'rotateY(0)' },
-                            '100%': { transform: 'rotateY(180deg)' },
-                        },
-                        slideLeft: {
-                            '0%': { transform: 'translateX(50px)', opacity: '0' },
-                            '100%': { transform: 'translateX(0)', opacity: '1' },
-                        },
-                        slideInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(50px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        fadeInDelay: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' }, },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' }, },
+                        slideInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' }, },
+                        slideInLeft: { '0%': { opacity: '0', transform: 'translateX(-20px)' }, '100%': { opacity: '1', transform: 'translateX(0)' }, },
+                        slideInRight: { '0%': { opacity: '0', transform: 'translateX(20px)' }, '100%': { opacity: '1', transform: 'translateX(0)' }, },
+                        zoomIn: { '0%': { opacity: '0', transform: 'scale(0.95)' }, '100%': { opacity: '1', transform: 'scale(1)' }, }
                     }
                 }
             }
         }
     </script>
     <style>
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.is-in-view {
+            opacity: 1;
+        }
+
+        .mission-card {
+            background: linear-gradient(135deg, #003869 0%, #0056a3 100%);
+            box-shadow: 0 10px 30px rgba(0, 56, 105, 0.2);
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 56, 105, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 56, 105, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .service-icon {
+            color: #003869;
+            background-color: rgba(0, 56, 105, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #F59E0B;
+        }
+
         .history-timeline {
             position: relative;
-            padding-right: 3rem;
+            padding-left: 3rem;
         }
 
         .history-timeline::before {
             content: '';
             position: absolute;
-            right: 1.5rem;
+            left: 1.5rem;
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #3B82F6, #F59E0B);
+            background: linear-gradient(to bottom, #003869, #F59E0B);
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            right: -3.5rem;
+            left: -3.5rem;
             top: 0.5rem;
             width: 1.5rem;
             height: 1.5rem;
             border-radius: 50%;
-            background: #1E40AF;
+            background: #003869;
             border: 3px solid #F59E0B;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .mission-card {
-            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9), rgba(59, 130, 246, 0.9));
-            position: relative;
-            overflow: hidden;
+        .timeline-item.is-in-view::before {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
         }
 
-        .mission-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0) 70%);
-            animation: pulse 8s infinite linear;
+        .leader-card .details {
+            background: rgba(255, 255, 255, 0.95);
+            border-top: 3px solid #F59E0B;
         }
 
-        .company-overview-card {
-            background: linear-gradient(135deg, rgba(30, 64, 175, 0.03), rgba(59, 130, 246, 0.03));
-            border-right: 4px solid #F59E0B;
+        .count-up {
+            color: #F59E0B;
         }
 
-        .certification-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .certification-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .goal-item {
-            position: relative;
-            padding-right: 2rem;
-        }
-
-        .goal-item::before {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0.7rem;
-            width: 1rem;
-            height: 1rem;
-            border-radius: 50%;
-            background: #F59E0B;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .value-card {
-            transition: all 0.3s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            50% {
-                transform: translate(-50%, 50%);
-            }
-
-            100% {
-                transform: translate(0, 0);
-            }
-        }
-
-        body {
-            font-family: 'Mada', sans-serif;
-        }
-
-        .logo-text {
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            letter-spacing: 1px;
+        .parallax-bg {
+            background-image: url('./images/cta-bg.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Mada:wght@200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-white" x-data="{ atTop: true, mobileMenuOpen: false }">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <div class="text-primary text-2xl font-bold logo-text">
-                            <span class="text-secondary">SAMMAN</span> TRANS
-                            <div class="text-xs text-gray-600">النقل العالمي والخدمات اللوجستية</div>
+            <div class="relative flex  h-24 items-center">
+
+                <!-- Logo: Special positioning for desktop, normal for mobile -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="flex items-center">
+                        <img src="./12.png" alt="Samman Trans Logo" class="h-24 w-auto">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex flex-1 justify-center ml-6">
+                    <div class="flex items-center space-x-8">
+                        <a href="./index.html"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            Home
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            News
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- Services Dropdown -->
+                        <div class="relative group">
+                            <button
+                                class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
+                                Services
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                                <span
+                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            </button>
+
+                            <!-- Dropdown Menu -->
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
+                                <!-- Ocean Freight -->
+                                <a href="#"
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-ship text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">Ocean Freight</h4>
+                                            <p class="text-xs text-gray-500">Global maritime logistics</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Air Freight -->
+                                <a href="#"
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-plane text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">Air Freight</h4>
+                                            <p class="text-xs text-gray-500">Priority air cargo services</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Road Transport -->
+                                <a href="#"
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-truck text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">Road Transport</h4>
+                                            <p class="text-xs text-gray-500">Nationwide trucking solutions</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Warehousing -->
+                                <a href="#"
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-warehouse text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">Warehousing</h4>
+                                            <p class="text-xs text-gray-500">Secure storage solutions</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Customs Clearance -->
+                                <a href="#"
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-passport text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">Customs Clearance</h4>
+                                            <p class="text-xs text-gray-500">Smooth cross-border transactions</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- الأعمال والمعارض Tab -->
+                        <a href="#business-exhibitions"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            Business & Exhibitions
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- Tracking -->
+                        <a href="#tracking"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            Tools
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- About -->
+                        <a href="./aboutus.html"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            About
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- Contact -->
+                        <a href="#contact"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            Contact
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Get Quote Button -->
+                <div class="hidden md:block">
+                    <button class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
+                             text-white px-6 py-2 rounded-md font-bold transition-all duration-300
+                             transform hover:scale-105 shadow-md hover:shadow-lg">
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button"
+                        class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full mobile-menu-transition"
+            id="mobile-menu">
+            <div class="flex flex-col h-full p-6 overflow-y-auto">
+                <!-- Close button -->
+                <div class="flex justify-end mb-6">
+                    <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile navigation links -->
+                <div class="space-y-4">
+                    <a href="#" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Home</a>
+
+                    <!-- Services Accordion -->
+                    <div x-data="{ open: false }" class="border-b border-gray-200 pb-4">
+                        <button @click="open = !open"
+                            class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-900 hover:text-primary">
+                            <span>Services</span>
+                            <svg class="w-5 h-5 transition-transform duration-200"
+                                :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div x-show="open" x-collapse class="mt-2 space-y-3 pl-4">
+                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-ship text-primary mr-3 w-5 text-center"></i>
+                                Ocean Freight
+                            </a>
+                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-plane text-primary mr-3 w-5 text-center"></i>
+                                Air Freight
+                            </a>
+                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-truck text-primary mr-3 w-5 text-center"></i>
+                                Road Transport
+                            </a>
+                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-warehouse text-primary mr-3 w-5 text-center"></i>
+                                Warehousing
+                            </a>
+                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-passport text-primary mr-3 w-5 text-center"></i>
+                                Customs Clearance
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <a href="#" class="text-gray-600 hover:text-secondary transition duration-300">الرئيسية</a>
-                        <a href="#" class="text-primary font-medium hover:text-secondary transition duration-300">من
-                            نحن</a>
-                        <a href="#" class="text-gray-600 hover:text-secondary transition duration-300">خدماتنا</a>
-                        <a href="#" class="text-gray-600 hover:text-secondary transition duration-300">تتبع الشحنات</a>
-                        <a href="#" class="text-gray-600 hover:text-secondary transition duration-300">اتصل بنا</a>
-                        <button
-                            class="bg-secondary hover:bg-yellow-600 text-white px-6 py-2 rounded-full font-medium transition duration-300 transform hover:scale-105">
-                            اطلب عرض سعر
-                        </button>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button class="text-gray-600 hover:text-secondary focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
+
+                    <!-- الأعمال والمعارض Tab -->
+                    <a href="#business-exhibitions"
+                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Business &
+                        Exhibitions</a>
+
+                    <!-- Other links -->
+                    <a href="#tracking"
+                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Tracking</a>
+                    <a href="#about" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">About</a>
+                    <a href="#contact"
+                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Contact</a>
+
+                    <!-- Get Quote Button for Mobile -->
+                    <button
+                        class="mt-6 w-full bg-gradient-to-r from-[#003869] to-[#0056a3] text-white py-3 rounded-md font-bold transition-all duration-300">
+                        Get Quote
                     </button>
                 </div>
             </div>
         </div>
     </nav>
+    <!-- Mobile menu container (hidden by default) -->
+    <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out"
+        id="mobile-menu">
+        <div class="flex flex-col h-full p-6 overflow-y-auto">
+            <!-- Close Button -->
+            <div class="flex justify-end mb-6">
+                <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menu Items -->
+            <div class="space-y-4">
+                <!-- Add your menu items here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="relative h-96 overflow-hidden bg-primary">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <img src="./sammantrans/banner-bg-5-scaled.jpg" alt="من نحن" class="w-full h-full object-cover">
-        <div class="absolute inset-0 flex items-center justify-center text-center">
-            <div class="max-w-4xl px-4">
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 animate-slide-in-up">تعرف على <span
-                        class="text-secondary">سمان ترانس</span></h1>
-                <p class="text-xl text-white opacity-90 animate-fade-in" style="animation-delay: 0.3s">قيادة مستقبل
-                    الخدمات اللوجستية منذ عام 1999</p>
+        <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <img src="./images/warehouse-exterior.jpg" alt="Samman Trans Headquarters" class="w-full h-full object-cover">
+        <div class="absolute inset-0 flex items-center justify-center text-center z-20">
+            <div class="max-w-4xl px-4 animate-on-scroll" data-animation="zoom-in">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">25 Years of <span
+                        class="text-secondary">Logistics Excellence</span></h1>
+                <p class="text-xl text-white opacity-90">Pioneering supply chain solutions since 1999</p>
             </div>
         </div>
     </section>
@@ -238,50 +425,125 @@
     <!-- Company Overview -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="company-overview-card rounded-xl p-8 md:p-10 mb-16">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h2 class="text-3xl font-bold text-primary mb-6">سمان للشحن الدولي</h2>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            تأسست شركة السمان للشحن الدولي عام 1999 كشركة مستقلة مقرها الرئيسي في دمشق - سوريا.<br>
-                            مؤهلة رسمياً على أنها شركة شحن ونقل وتخليص جمركي.<br>
-                            مسجلة في وزارة المالية، وعضو في غرفة تجارة دمشق.
-                        </p>
-                        <div class="flex flex-wrap gap-4">
-                            <span
-                                class="bg-primary-light bg-opacity-20 text-primary px-4 py-2 rounded-full text-sm font-medium">
-                                عضو في FIATA
-                            </span>
-                            <span
-                                class="bg-primary-light bg-opacity-20 text-primary px-4 py-2 rounded-full text-sm font-medium">
-                                وكيل حصري لـ UFO
-                            </span>
-                            <span
-                                class="bg-primary-light bg-opacity-20 text-primary px-4 py-2 rounded-full text-sm font-medium">
-                                مرخصة من وزارة المالية
-                            </span>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll" data-animation="slide-in-left">
+                    <h2 class="text-3xl font-bold text-primary mb-4">Connecting Your World Since 1999</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Having maintained its leading position in the
+                        logistics sector with its 25 years of experience, SAMMAN TRANS offers wide range of services in
+                        the freight sector over the local and international market.</p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">Since its foundation in 1999, and through direct
+                        control of the entire supply chain, SAMMAN TRANS adds value to its clients' logistics. We
+                        develop innovative and alternative solutions in the logistics sector with its end-to-end service
+                        principle and multimodal transportation competence.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                                <i class="fas fa-network-wired text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-primary">Global Network</h4>
+                                <p class="text-gray-600">Thousands of collaborators and agents across the globe</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                                <i class="fas fa-cogs text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-primary">Multimodal Solutions</h4>
+                                <p class="text-gray-600">Air, sea, land and railway transportation combinations</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                                <i class="fas fa-bolt text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-primary">Cutting-edge Technology</h4>
+                                <p class="text-gray-600">Advanced IT solutions for supply chain optimization</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">نقاط القوة</h3>
+                </div>
+                <div class="animate-on-scroll" data-animation="slide-in-right">
+                    <img src="./ooo.jpg" alt="Samman Trans team and operations"
+                        class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="mission-card rounded-xl p-8 md:p-12 text-white animate-on-scroll"
+                    data-animation="slide-in-left">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-bullseye text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4">Our Mission</h2>
                         <ul class="space-y-4">
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-secondary mt-1 mr-2"></i>
-                                <span>وكلاء موزعون في كافة أنحاء العالم</span>
+                                <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                                <span>To serve the trade by creating value for customers and taking logistics service to
+                                    the next level</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-secondary mt-1 mr-2"></i>
-                                <span>شبكة نقل واسعة (براً - بحراً - جواً)</span>
+                                <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                                <span>Increasing customer competitiveness with our integrated services</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-secondary mt-1 mr-2"></i>
-                                <span>حلول لوجستية متكاملة</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-secondary mt-1 mr-2"></i>
-                                <span>خبرة أكثر من 20 عاماً</span>
+                                <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                                <span>Being a transparent and reliable strategic solution partner</span>
                             </li>
                         </ul>
+                    </div>
+                </div>
+
+                <div class="vision-card bg-white rounded-xl p-8 md:p-12 shadow-lg animate-on-scroll"
+                    data-animation="slide-in-right">
+                    <div
+                        class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-eye text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-primary mb-4">Our Vision</h2>
+                    <p class="text-gray-600 leading-relaxed">To be one of the most preferred logistics actors on a
+                        global scale, providing integrated, digital and sustainable logistics solutions that lead the
+                        future of the sector with our experience.</p>
+
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold text-primary mb-4">Our Values</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span class="text-gray-600">Honesty & Transparency</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span class="text-gray-600">Responsibility</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span class="text-gray-600">Creativity & Excellence</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span class="text-gray-600">Customer Satisfaction</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span class="text-gray-600">Environmental Awareness</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span class="text-gray-600">Social Responsibility</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -289,106 +551,326 @@
     </section>
 
     <!-- Company History -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">تاريخ <span
-                        class="text-secondary">الشركة</span></h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">رحلة نمو وتطور من بدايات متواضعة إلى ريادة عالمية</p>
+            <div class="text-center mb-16 animate-on-scroll" data-animation="slide-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our <span
+                        class="text-secondary">Journey</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Key milestones in our 25-year history</p>
             </div>
-
             <div class="history-timeline max-w-3xl mx-auto">
-                <!-- Timeline Item 1 -->
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold text-primary mb-2">1999 - التأسيس</h3>
-                    <p class="text-gray-600">تأسست شركة السمان للشحن الدولي في دمشق بسوريا كشركة مستقلة متخصصة في الشحن
-                        والتخليص الجمركي.</p>
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">1999 - Foundation</h3>
+                            <p class="text-gray-600">SAMMAN TRANS is established in Damascus, Syria with a vision to
+                                revolutionize logistics in the region.</p>
+                        </div>
+                        <img src="./off.jpg" alt="Original office"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
+                    </div>
                 </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold text-primary mb-2">2003 - الاعتماد الرسمي</h3>
-                    <p class="text-gray-600">حصلت الشركة على اعتماد رسمي كشركة شحن ونقل وتخليص جمركي من وزارة المالية
-                        السورية.</p>
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2005 - Regional Expansion</h3>
+                            <p class="text-gray-600">Established our first international partnerships in neighboring
+                                countries.</p>
+                        </div>
+                        <img src="./wq.jpg" alt="Regional expansion"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
+                    </div>
                 </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold text-primary mb-2">2008 - العضوية الدولية</h3>
-                    <p class="text-gray-600">أصبحت الشركة عضواً في منظمة وكالات الشحن العالمية FIATA والوكيل الحصري لـ
-                        UFO في سوريا.</p>
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2012 - Multimodal Services</h3>
+                            <p class="text-gray-600">Launched integrated air, sea, and land transportation solutions.
+                            </p>
+                        </div>
+                        <img src="./tru.jpg" alt="Multimodal transport"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
+                    </div>
                 </div>
-
-                <!-- Timeline Item 4 -->
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold text-primary mb-2">2012 - التوسع الإقليمي</h3>
-                    <p class="text-gray-600">إنشاء شبكة وكلاء في الدول المجاورة وبدء تقديم خدمات الشحن الدولي بشكل رسمي.
-                    </p>
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2018 - Global Reach</h3>
+                            <p class="text-gray-600">Expanded our network to serve clients in over 150 countries
+                                worldwide.</p>
+                        </div>
+                        <img src="./2o.jpg" alt="Global network"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
+                    </div>
                 </div>
-
-                <!-- Timeline Item 5 -->
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold text-primary mb-2">2018 - التوسع العالمي</h3>
-                    <p class="text-gray-600">توسعت خدمات الشركة لتغطي أكثر من 150 دولة حول العالم عبر شبكة من الوكلاء
-                        المعتمدين.</p>
-                </div>
-
-                <!-- Timeline Item 6 -->
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold text-primary mb-2">2023 - اليوم</h3>
-                    <p class="text-gray-600">واحدة من الشركات الرائدة في مجال الشحن الدولي واللوجستيات في المنطقة.</p>
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2023 - Digital Transformation</h3>
+                            <p class="text-gray-600">Implemented advanced tracking and logistics management systems.</p>
+                        </div>
+                        <img src="./ooo.jpg" alt="Digital transformation"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Vision and Mission -->
-    <section class="py-20 bg-white">
+    <!-- Services Section -->
+    <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="mission-card rounded-xl p-8 md:p-12 text-white">
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-bullseye text-2xl text-white"></i>
-                        </div>
-                        <h2 class="text-3xl font-bold mb-4">رسالتنا</h2>
-                        <p class="text-lg mb-6 opacity-90">ربط الأعمال عبر الحدود من خلال حلول لوجستية موثوقة وفعالة
-                            ومبتكرة تعزز التجارة العالمية.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-secondary mr-2 mt-1"></i>
-                                <span>تقديم جودة خدمة استثنائية</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-secondary mr-2 mt-1"></i>
-                                <span>الاستفادة من التكنولوجيا لتحقيق الكفاءة</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-secondary mr-2 mt-1"></i>
-                                <span>بناء علاقات عملاء دائمة</span>
-                            </li>
-                        </ul>
+            <div class="text-center mb-16 animate-on-scroll" data-animation="slide-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our <span
+                        class="text-secondary">Services</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive logistics solutions tailored to your needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-container">
+                <!-- Ocean Freight -->
+                <div class="service-card bg-white rounded-xl p-8 stagger-item">
+                    <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mb-6 text-3xl">
+                        <i class="fas fa-ship"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Ocean Freight</h3>
+                    <p class="text-gray-600 mb-4">Cost-effective LCL and FCL shipments with reliable transit times
+                        through our global network.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Door-to-door solutions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Equipment for all cargo types</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Fast pricing and booking</span>
+                        </li>
+                    </ul>
                 </div>
 
-                <div>
-                    <h2 class="text-3xl font-bold text-primary mb-4">رؤيتنا</h2>
-                    <p class="text-gray-600 mb-6">نتطلع إلى عالم لا يشكل فيه المسافة عائقاً أمام التجارة، حيث تتمكن كل
-                        شركة - بغض النظر عن حجمها أو موقعها - من الوصول إلى حلول لوجستية عالمية المستوى تمكّنها من النمو
-                        والازدهار.</p>
-                    <div class="bg-gray-50 rounded-lg p-6">
-                        <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">هدفنا</h3>
-                        <p class="text-gray-600 mb-6">
-                            أخذنا على عاتقنا مهمة تقديم كافة أنواع الخدمات والتسهيلات في مجال الشحن الدولي ونقل البضائع
-                            بكافة أنواعه وأدواته بهدف تطوير خدمات النقل الجوي والبري والبحري من وإلى كافة أنحاء العالم.
-                        </p>
-                        <ul class="space-y-4">
-                            <li class="goal-item">الالتزام بالعمل وبسريته والولاء لزبائننا</li>
-                            <li class="goal-item">المنافسة بالسوق المحلية والدولية</li>
-                            <li class="goal-item">التنسيق والتنظيم بين كافة الأقسام</li>
-                            <li class="goal-item">ضمان خط سير الشحنة بكفاءة</li>
-                        </ul>
+                <!-- Air Freight -->
+                <div class="service-card bg-white rounded-xl p-8 stagger-item">
+                    <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mb-6 text-3xl">
+                        <i class="fas fa-plane"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Air Freight</h3>
+                    <p class="text-gray-600 mb-4">Extensive international freight forwarding with major airlines and
+                        cargo carriers.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Cost-reduction solutions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Priority space agreements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Charter services available</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Road Transport -->
+                <div class="service-card bg-white rounded-xl p-8 stagger-item">
+                    <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mb-6 text-3xl">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Road Transport</h3>
+                    <p class="text-gray-600 mb-4">Flexible solutions for complete, intermodal transportation across
+                        Europe, Middle East and CIS.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>FTL and LTL options</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Extensive agency network</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Groupage transportation</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Project Logistics -->
+                <div class="service-card bg-white rounded-xl p-8 stagger-item">
+                    <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mb-6 text-3xl">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Project Logistics</h3>
+                    <p class="text-gray-600 mb-4">Door-to-door industrial logistics solutions including customs and
+                        insurance procedures.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Energy & construction sectors</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Heavy industry specialists</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Multimodal transportation</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Warehousing -->
+                <div class="service-card bg-white rounded-xl p-8 stagger-item">
+                    <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mb-6 text-3xl">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Warehousing</h3>
+                    <p class="text-gray-600 mb-4">Bonded and non-bonded storage with value-added services across
+                        multiple sectors.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Stock management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>24/7 security systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Quality control processes</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Custom Clearance -->
+                <div class="service-card bg-white rounded-xl p-8 stagger-item">
+                    <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mb-6 text-3xl">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Custom Clearance</h3>
+                    <p class="text-gray-600 mb-4">Professional handling of all customs formalities for smooth border
+                        crossings.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Import/export documentation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Regulatory compliance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Transit documentation</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Network -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll" data-animation="slide-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Global <span
+                        class="text-secondary">Network</span></h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Our extensive network spans across continents with strategic
+                    partners in key logistics hubs</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 stagger-container">
+                <div class="stagger-item bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Asia Hub</h3>
+                    <p class="text-gray-600">Shanghai, Singapore</p>
+                </div>
+                <div class="stagger-item bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-globe-europe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Europe Hub</h3>
+                    <p class="text-gray-600">Hamburg, Rotterdam</p>
+                </div>
+                <div class="stagger-item bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">MENA Hub</h3>
+                    <p class="text-gray-600">Dubai, Jeddah</p>
+                </div>
+                <div class="stagger-item bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Americas Hub</h3>
+                    <p class="text-gray-600">New York, Miami</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll" data-animation="slide-in-left">
+                    <h2 class="text-3xl font-bold text-primary mb-4">Technology <span
+                            class="text-secondary">Driven</span></h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">We leverage cutting-edge technology to provide
+                        real-time visibility and control over your supply chain:</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-primary">Real-Time Tracking</h4>
+                                <p class="text-gray-600">GPS-enabled tracking for all shipments</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-primary">Digital Documentation</h4>
+                                <p class="text-gray-600">Paperless processing for faster clearance</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-primary">AI Optimization</h4>
+                                <p class="text-gray-600">Route and load optimization algorithms</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll" data-animation="slide-in-right">
+                    <img src="./Technology-02.png" alt="Technology dashboard"
+                        class="rounded-xl shadow-lg w-full border border-gray-200">
                 </div>
             </div>
         </div>
@@ -397,150 +879,116 @@
     <!-- Achievements -->
     <section class="py-20 bg-primary text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">إنجازاتنا <span class="text-secondary">ومكاسبنا</span>
-                </h2>
-                <p class="text-xl opacity-90 max-w-2xl mx-auto">علامات فارقة في رحلة نجاحنا</p>
+            <div class="text-center mb-16 animate-on-scroll" data-animation="slide-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">By The <span class="text-secondary">Numbers</span></h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto">Our journey in numbers</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Achievement 1 -->
-                <div class="bg-primary-light bg-opacity-20 rounded-xl p-8 text-center">
-                    <div class="text-5xl font-bold text-secondary mb-4">24+</div>
-                    <h3 class="text-xl font-bold mb-2">سنة خبرة</h3>
-                    <p class="opacity-90">أكثر من 24 عاماً في مجال الشحن واللوجستيات</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 stagger-container">
+                <div class="text-center stagger-item">
+                    <div class="text-5xl font-bold count-up mb-2" data-target="25">0</div>
+                    <div class="text-xl font-medium">Years Experience</div>
                 </div>
-
-                <!-- Achievement 2 -->
-                <div class="bg-primary-light bg-opacity-20 rounded-xl p-8 text-center">
-                    <div class="text-5xl font-bold text-secondary mb-4">150+</div>
-                    <h3 class="text-xl font-bold mb-2">دولة</h3>
-                    <p class="opacity-90">نغطي شبكة عملنا أكثر من 150 دولة حول العالم</p>
+                <div class="text-center stagger-item">
+                    <div class="text-5xl font-bold count-up mb-2" data-target="150">0</div>
+                    <div class="text-xl font-medium">Countries Served</div>
                 </div>
-
-                <!-- Achievement 3 -->
-                <div class="bg-primary-light bg-opacity-20 rounded-xl p-8 text-center">
-                    <div class="text-5xl font-bold text-secondary mb-4">98%</div>
-                    <h3 class="text-xl font-bold mb-2">تسليم في الموعد</h3>
-                    <p class="opacity-90">نسبة تسليم الشحنات في الوقت المحدد</p>
+                <div class="text-center stagger-item">
+                    <div class="text-5xl font-bold count-up mb-2" data-target="98">0</div>
+                    <div class="text-xl font-medium">On-Time Delivery</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Core Values -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">قيمنا <span
-                        class="text-secondary">الأساسية</span></h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">المبادئ التي توجه كل قرار نتخذه</p>
-            </div>
-
-            <div class="values-grid">
-                <!-- Value 1 -->
-                <div class="value-card bg-gray-50 rounded-xl p-8 text-center">
-                    <div
-                        class="w-20 h-20 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-shield-alt text-primary text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">النزاهة</h3>
-                    <p class="text-gray-600">نمارس أعمالنا بشفافية وأمانة، نبني الثقة من خلال الممارسات الأخلاقية.</p>
-                </div>
-
-                <!-- Value 2 -->
-                <div class="value-card bg-gray-50 rounded-xl p-8 text-center">
-                    <div
-                        class="w-20 h-20 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-users text-primary text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">التركيز على العميل</h3>
-                    <p class="text-gray-600">نجاح عملائنا هو نجاحنا. نستمع، نتكيف، ونقدم ما يتجاوز التوقعات.</p>
-                </div>
-
-                <!-- Value 3 -->
-                <div class="value-card bg-gray-50 rounded-xl p-8 text-center">
-                    <div
-                        class="w-20 h-20 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-rocket text-primary text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">التميز</h3>
-                    <p class="text-gray-600">نسعى لأعلى المعايير في جودة الخدمة، السلامة، والأداء التشغيلي.</p>
-                </div>
-
-                <!-- Value 4 -->
-                <div class="value-card bg-gray-50 rounded-xl p-8 text-center">
-                    <div
-                        class="w-20 h-20 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-lightbulb text-primary text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">الابتكار</h3>
-                    <p class="text-gray-600">نتبنى التكنولوجيا والتفكير الإبداعي لحل التحديات اللوجستية.</p>
-                </div>
-
-                <!-- Value 5 -->
-                <div class="value-card bg-gray-50 rounded-xl p-8 text-center">
-                    <div
-                        class="w-20 h-20 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-hands-helping text-primary text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">العمل الجماعي</h3>
-                    <p class="text-gray-600">نتعاون عبر الحدود والإدارات لتقديم خدمة سلسة.</p>
-                </div>
-
-                <!-- Value 6 -->
-                <div class="value-card bg-gray-50 rounded-xl p-8 text-center">
-                    <div
-                        class="w-20 h-20 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-globe-americas text-primary text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">الاستدامة</h3>
-                    <p class="text-gray-600">ملتزمون بتقليل تأثيرنا البيئي من خلال الخدمات اللوجستية الخضراء.</p>
+                <div class="text-center stagger-item">
+                    <div class="text-5xl font-bold count-up mb-2" data-target="5000">0</div>
+                    <div class="text-xl font-medium">Satisfied Clients</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Certifications -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll" data-animation="slide-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our <span
+                        class="text-secondary">Certifications</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Recognized by leading industry organizations</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 stagger-container">
+                <div class="stagger-item bg-gray-50 p-6 rounded-lg border border-gray-200 flex flex-col items-center">
+                    <img src="./Fiata-cert-copy.jpg" alt="FIATA" class="h-20 mb-4 object-contain">
+                    <h3 class="text-lg font-bold text-primary">FIATA Member</h3>
+                    <p class="text-gray-600 text-sm mt-2 text-center">International Federation of Freight Forwarders
+                        Associations</p>
+                </div>
+                <div class="stagger-item bg-gray-50 p-6 rounded-lg border border-gray-200 flex flex-col items-center">
+                    <img src="./Conqu.png" alt="ISO" class="h-20 mb-4 object-contain">
+                    <h3 class="text-lg font-bold text-primary">Conqeror Freight Network</h3>
+                    <p class="text-gray-600 text-sm mt-2 text-center">Quality Management System Certified</p>
+                </div>
+                <div class="stagger-item bg-gray-50 p-6 rounded-lg border border-gray-200 flex flex-col items-center">
+                    <img src="./ufo_Cer.jpg" alt="Chamber" class="h-20 mb-4 object-contain">
+                    <h3 class="text-lg font-bold text-primary">Damascus Chamber</h3>
+                    <p class="text-gray-600 text-sm mt-2 text-center">Registered Member Since 1999</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">عضويـات <span
-                        class="text-secondary">وشهادات</span></h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">تفخر شركتنا بكونها عضواً في المنظمات التالية</p>
+            <div class="text-center mb-16 animate-on-scroll" data-animation="slide-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Leadership <span
+                        class="text-secondary">Team</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The experienced professionals driving our success</p>
             </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Certification 1 -->
-                <div class="certification-card bg-white rounded-xl overflow-hidden">
-                    <div class="h-48 bg-gray-100 flex items-center justify-center p-6">
-                        <img src="./fiata-logo.png" alt="FIATA" class="max-h-20 mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-container">
+                <!-- CEO Card - Landscape Image -->
+                <div class="stagger-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-80 overflow-hidden">
+                        <img src="./1740455143727.jpg" alt="CEO" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-primary mb-2">FIATA</h3>
-                        <p class="text-gray-600">عضو في منظمة وكالات الشحن العالمية FIATA</p>
-                    </div>
-                </div>
-
-                <!-- Certification 2 -->
-                <div class="certification-card bg-white rounded-xl overflow-hidden">
-                    <div class="h-48 bg-gray-100 flex items-center justify-center p-6">
-                        <img src="./ufo-logo.png" alt="UFO" class="max-h-20 mx-auto">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-primary mb-2">UFO</h3>
-                        <p class="text-gray-600">الوكيل الحصري لمنظمة الشحن الدولية UFO في سوريا</p>
+                    <div class="p-6 border-t-4 border-secondary">
+                        <h3 class="text-xl font-bold text-primary">Qasem AlMalih</h3>
+                        <p class="text-secondary font-medium mb-3">Chief Executive Officer</p>
+                        <p class="text-gray-600 text-sm">Founder with 25+ years in logistics and supply chain management
+                        </p>
                     </div>
                 </div>
 
-                <!-- Certification 3 -->
-                <div class="certification-card bg-white rounded-xl overflow-hidden">
-                    <div class="h-48 bg-gray-100 flex items-center justify-center p-6">
-                        <img src="./damascus-chamber-logo.png" alt="Damascus Chamber" class="max-h-20 mx-auto">
+                <!-- Operations Director Card - Portrait Image -->
+                <div class="stagger-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-80 overflow-hidden flex justify-center bg-gray-100">
+                        <img src="./(2).JPG" alt="Operations Director" class="h-full w-auto object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-primary mb-2">غرفة تجارة دمشق</h3>
-                        <p class="text-gray-600">عضو مسجل في غرفة تجارة دمشق منذ التأسيس</p>
+                    <div class="p-6 border-t-4 border-secondary">
+                        <h3 class="text-xl font-bold text-primary">Samer Al Samman</h3>
+                        <p class="text-secondary font-medium mb-3">Operations Director</p>
+                        <p class="text-gray-600 text-sm">15+ years experience in global freight operations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-primary to-[#002850] rounded-2xl p-8 md:p-12 shadow-xl">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Optimize Your Supply Chain?</h2>
+                        <p class="text-lg opacity-90 mb-6">Our team of experts is ready to provide customized solutions
+                            for your transportation needs.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
+                        <button
+                            class="bg-secondary hover:bg-yellow-600 text-primary px-8 py-3 rounded-md font-bold transition duration-300 transform hover:scale-105">
+                            Get a Free Quote
+                        </button>
+                        <button
+                            class="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-3 rounded-md font-bold transition duration-300 transform hover:scale-105">
+                            Contact Sales
+                        </button>
                     </div>
                 </div>
             </div>
@@ -548,83 +996,62 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary-dark text-white pt-16 pb-8">
+    <footer class="bg-primary text-white pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
-                    <div class="flex items-center mb-6">
-                        <div class="text-white text-2xl font-bold logo-text">
-                            <span class="text-secondary">SAMMAN</span> TRANS
-                            <div class="text-xs text-gray-300">النقل العالمي والخدمات اللوجستية</div>
-                        </div>
-                    </div>
-                    <p class="mb-6 opacity-80">تقديم التميز عبر الحدود من خلال خدمات النقل واللوجستيات الشاملة.</p>
+                    <img src="./ST.png" alt="Samman Trans" class="h-48 mb-6">
+                    <p class="mb-6 opacity-80">Delivering excellence across borders with comprehensive transport and
+                        logistics services since 1999.</p>
                     <div class="flex space-x-4">
                         <a href="#"
-                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            class="w-10 h-10 rounded-full bg-primary-light hover:bg-secondary flex items-center justify-center transition duration-300">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            class="w-10 h-10 rounded-full bg-primary-light hover:bg-secondary flex items-center justify-center transition duration-300">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            class="w-10 h-10 rounded-full bg-primary-light hover:bg-secondary flex items-center justify-center transition duration-300">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
-
                 <div>
-                    <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">Home</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">Services</a>
                         </li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">من نحن</a>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">About Us</a>
                         </li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">خدماتنا</a>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">Ocean
+                                Freight</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">Air Freight</a>
                         </li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">تتبع الشحنات</a>
-                        </li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">وظائف</a></li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">اتصل بنا</a>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">Road
+                                Transport</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">Warehousing</a>
                         </li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="text-lg font-bold mb-6">خدماتنا</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الشحن
-                                البحري</a></li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a>
-                        </li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">النقل
-                                البري</a></li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">التخزين</a>
-                        </li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">التخليص
-                                الجمركي</a>
-                        </li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الحلول
-                                اللوجستية</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6">اتصل بنا</h4>
+                    <h4 class="text-lg font-bold mb-6">Contact</h4>
                     <ul class="space-y-4">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-secondary mt-1 mr-3"></i>
-                            <span class="opacity-80">دمشق، سوريا</span>
+                            <span class="opacity-80">123 Logistics Park, Industrial Zone, Damascus, Syria</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone-alt text-secondary mr-3"></i>
-                            <span class="opacity-80">+963 11 123 4567</span>
+                            <span class="opacity-80">+963 4 123 4567</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope text-secondary mr-3"></i>
@@ -633,48 +1060,83 @@
                     </ul>
                 </div>
             </div>
-
             <div
                 class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 سمان ترانس. جميع الحقوق محفوظة.</p>
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 Samman Trans. All rights reserved.</p>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة
-                        الخصوصية</a>
-                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط الخدمة</a>
-                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">خريطة الموقع</a>
+                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">Privacy
+                        Policy</a>
+                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">Terms of
+                        Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/96341234567" target="_blank" class="flex flex-col items-center group">
+            <div
+                class="w-14 h-14 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-pulse">
+                <i class="fab fa-whatsapp text-2xl"></i>
+            </div>
+        </a>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button x-show="!atTop" @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-secondary text-primary rounded-full flex items-center justify-center shadow-lg hover:bg-yellow-600 transform hover:scale-110 transition-all duration-300"
+        aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Simple animation for elements when they come into view
-            const animateOnScroll = () => {
-                const elements = document.querySelectorAll('.company-overview-card, .timeline-item, .mission-card, .goal-item, .value-card, .certification-card');
-
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.3;
-
-                    if (elementPosition < screenPosition) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('animate-on-scroll')) {
+                            entry.target.classList.add('is-in-view');
+                        }
+                        if (entry.target.classList.contains('stagger-container')) {
+                            const items = entry.target.querySelectorAll('.stagger-item');
+                            items.forEach((item, index) => {
+                                item.style.transitionDelay = `${index * 150}ms`;
+                                item.classList.add('is-in-view');
+                            });
+                        }
+                        if (entry.target.classList.contains('count-up')) {
+                            animateCountUp(entry.target);
+                        }
+                        if (entry.target.classList.contains('timeline-item')) {
+                            entry.target.classList.add('is-in-view');
+                        }
                     }
                 });
-            };
+            }, { threshold: 0.1 });
 
-            // Set initial state for animated elements
-            const animatedElements = document.querySelectorAll('.company-overview-card, .timeline-item, .mission-card, .goal-item, .value-card, .certification-card');
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'all 0.6s ease-out';
-            });
+            document.querySelectorAll('.animate-on-scroll, .stagger-container, .count-up, .timeline-item').forEach(el => observer.observe(el));
 
-            // Run on load and scroll
-            window.addEventListener('load', animateOnScroll);
-            window.addEventListener('scroll', animateOnScroll);
+            function animateCountUp(el) {
+                const target = parseInt(el.dataset.target, 10);
+                const duration = 2000;
+                const startTime = performance.now();
+
+                const updateCount = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const value = Math.floor(progress * target);
+                    el.textContent = value.toLocaleString();
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        el.textContent = target.toLocaleString();
+                    }
+                };
+
+                requestAnimationFrame(updateCount);
+            }
         });
     </script>
 </body>
