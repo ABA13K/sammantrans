@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container Specifications | Samman Trans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003869',
+                        secondary: '#F59E0B',
+                        accent: '#3B82F6',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 1s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 56, 105, 0.85), rgba(0, 56, 105, 0.8)), url('./containers-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background-color: #003869;
+            color: white;
+            border-color: #003869;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative flex h-24 items-center">
+                <div class="flex-shrink-0"><a href="index.html" class="flex items-center"><img src="./12.png"
+                            alt="Samman Trans Logo" class="h-24 w-auto"></a></div>
+                <div class="hidden md:flex flex-1 justify-center ml-6">
+                    <div class="flex items-center space-x-8">
+                        <a href="index.html"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">Home<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                        <a href="#"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">News<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                        <div class="relative group" x-data="{ open: false }">
+                            <button @click="open = !open" @click.away="open = false"
+                                class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
+                                Services
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-300"
+                                    :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                                <span
+                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            </button>
+                            <div x-show="open" x-transition
+                                class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 z-50">
+                                <a href="ocean-freight.html"
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-ship text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">Ocean Freight</h4>
+                                            <p class="text-xs text-gray-500">Global maritime logistics</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="air-freight.html"
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-plane text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">Air Freight</h4>
+                                            <p class="text-xs text-gray-500">Priority air cargo services</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="business-exhibitions.html"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">Business
+                            & Exhibitions<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                        <a href="./tools.html"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">Tools<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                        <a href="./aboutus.html"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">About<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                        <a href="#contact"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">Contact<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                    </div>
+                </div>
+                <div class="hidden md:block"><button
+                        class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0] text-white px-6 py-2 rounded-md font-bold transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">Get
+                        Quote</button></div>
+                <div class="md:hidden"><button id="mobile-menu-button"
+                        class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300"><svg
+                            class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg></button></div>
+            </div>
+        </div>
+        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out"
+            id="mobile-menu"></div>
+    </nav>
+
+    <header class="hero-bg py-32 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="md:w-2/3 lg:w-1/2 animate-fade-in">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"><span
+                        class="text-secondary">Container</span> Specifications</h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">Detailed technical specifications for all our air and
+                    ocean freight containers to help you plan your shipments.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#ocean-standard"
+                        class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">Ocean
+                        Containers</a>
+                    <a href="#air-containers"
+                        class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">Air
+                        Containers</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="tabs-nav" class="py-12 bg-gray-50 sticky top-[104px] md:top-[112px] z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4">
+                <button data-tab="ocean-standard"
+                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base active">Ocean
+                    Standard</button>
+                <button data-tab="ocean-refrigerated"
+                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Ocean
+                    Refrigerated</button>
+                <button data-tab="ocean-open-top"
+                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Ocean
+                    Open Top</button>
+                <button data-tab="ocean-flat-rack"
+                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Ocean
+                    Flat Rack</button>
+                <button data-tab="ocean-platform"
+                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Ocean
+                    Platform</button>
+                <button data-tab="air-containers"
+                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Air
+                    Containers</button>
+            </div>
+        </div>
+    </section>
+
+    <main id="specifications-section" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div id="ocean-standard" class="tab-content active">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span
+                            class="text-secondary">Standard</span> Ocean Containers</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">General purpose containers suitable for most dry cargo
+                        shipments.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./20ft-standard.jpg"
+                                alt="20ft Standard Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                20ft Standard</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Inside Length</span><span
+                                    class="text-gray-800 text-right">5.89m</span><span
+                                    class="font-semibold text-gray-500">Inside Width</span><span
+                                    class="text-gray-800 text-right">2.35m</span><span
+                                    class="font-semibold text-gray-500">Inside Height</span><span
+                                    class="text-gray-800 text-right">2.39m</span><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 font-bold text-right">33.2 m³</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">28,200 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./40ft-standard.jpg"
+                                alt="40ft Standard Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                40ft Standard</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Inside Length</span><span
+                                    class="text-gray-800 text-right">12.03m</span><span
+                                    class="font-semibold text-gray-500">Inside Width</span><span
+                                    class="text-gray-800 text-right">2.35m</span><span
+                                    class="font-semibold text-gray-500">Inside Height</span><span
+                                    class="text-gray-800 text-right">2.39m</span><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 font-bold text-right">67.7 m³</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">28,800 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./40ft-highcube.jpg"
+                                alt="40ft High Cube Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                40ft High Cube</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Inside Length</span><span
+                                    class="text-gray-800 text-right">12.03m</span><span
+                                    class="font-semibold text-gray-500">Inside Width</span><span
+                                    class="text-gray-800 text-right">2.35m</span><span
+                                    class="font-semibold text-gray-500">Inside Height</span><span
+                                    class="text-gray-800 text-right">2.69m</span><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 font-bold text-right">76.3 m³</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">28,560 kg</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ocean-refrigerated" class="tab-content">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span
+                            class="text-secondary">Refrigerated</span> Ocean Containers</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Temperature-controlled containers for perishable goods
+                        and other temperature-sensitive cargo.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./20ft-reefer.jpg"
+                                alt="20ft Refrigerated Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-snowflake"></i>20ft Reefer
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 font-bold text-right">28.3 m³</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">27,450 kg</span><span
+                                    class="font-semibold text-gray-500 col-span-2 pt-2 border-t mt-1">Temp
+                                    Range</span><span class="text-gray-800 col-span-2 text-right">-35°C to +30°C</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./40ft-reefer.jpg"
+                                alt="40ft Refrigerated Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-snowflake"></i>40ft Reefer
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 font-bold text-right">59.3 m³</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">28,700 kg</span><span
+                                    class="font-semibold text-gray-500 col-span-2 pt-2 border-t mt-1">Temp
+                                    Range</span><span class="text-gray-800 col-span-2 text-right">-35°C to +30°C</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./40ft-hc-reefer.jpg"
+                                alt="40ft High Cube Reefer"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-snowflake"></i>40ft HC Reefer
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 font-bold text-right">67.7 m³</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">28,600 kg</span><span
+                                    class="font-semibold text-gray-500 col-span-2 pt-2 border-t mt-1">Temp
+                                    Range</span><span class="text-gray-800 col-span-2 text-right">-35°C to +30°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ocean-open-top" class="tab-content">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">Open
+                            Top</span> Ocean Containers</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Containers with removable tops for easy loading of
+                        oversized or tall cargo.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./20ft-opentop.jpg"
+                                alt="20ft Open Top Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-box-open"></i>20ft Open Top
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Opening Length</span><span
+                                    class="text-gray-800 text-right">5.89m</span><span
+                                    class="font-semibold text-gray-500">Opening Width</span><span
+                                    class="text-gray-800 text-right">2.28m</span><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 font-bold text-right">32.6 m³</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">28,020 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./40ft-opentop.jpg"
+                                alt="40ft Open Top Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-box-open"></i>40ft Open Top
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Opening Length</span><span
+                                    class="text-gray-800 text-right">12.03m</span><span
+                                    class="font-semibold text-gray-500">Opening Width</span><span
+                                    class="text-gray-800 text-right">2.28m</span><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 font-bold text-right">66.7 m³</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">28,600 kg</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ocean-flat-rack" class="tab-content">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">Flat
+                            Rack</span> Ocean Containers</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Collapsible side containers ideal for heavy or oversized
+                        cargo that requires side loading.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./20ft-flatrack.jpg"
+                                alt="20ft Flat Rack Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-pallet"></i>20ft Flat Rack
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Platform Length</span><span
+                                    class="text-gray-800 text-right">5.65m</span><span
+                                    class="font-semibold text-gray-500">Platform Width</span><span
+                                    class="text-gray-800 text-right">2.24m</span><span
+                                    class="font-semibold text-gray-500">Max Cargo Height</span><span
+                                    class="text-gray-800 font-bold text-right">2.01m</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">29,750 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./40ft-flatrack.jpg"
+                                alt="40ft Flat Rack Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-pallet"></i>40ft Flat Rack
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Platform Length</span><span
+                                    class="text-gray-800 text-right">12.04m</span><span
+                                    class="font-semibold text-gray-500">Platform Width</span><span
+                                    class="text-gray-800 text-right">2.24m</span><span
+                                    class="font-semibold text-gray-500">Max Cargo Height</span><span
+                                    class="text-gray-800 font-bold text-right">2.01m</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">39,950 kg</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ocean-platform" class="tab-content">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span
+                            class="text-secondary">Platform</span> Containers</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Flat platforms for extremely heavy or oversized cargo
+                        that doesn't require container walls.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./20ft-platform.jpg"
+                                alt="20ft Platform Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-border-none"></i>20ft Platform
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Platform Length</span><span
+                                    class="text-gray-800 text-right">6.05m</span><span
+                                    class="font-semibold text-gray-500">Platform Width</span><span
+                                    class="text-gray-800 text-right">2.44m</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">29,750 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./40ft-platform.jpg"
+                                alt="40ft Platform Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-border-none"></i>40ft Platform
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Platform Length</span><span
+                                    class="text-gray-800 text-right">12.19m</span><span
+                                    class="font-semibold text-gray-500">Platform Width</span><span
+                                    class="text-gray-800 text-right">2.44m</span><span
+                                    class="font-semibold text-gray-500">Max Cargo</span><span
+                                    class="text-primary font-bold text-right">39,950 kg</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="air-containers" class="tab-content">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">Air
+                            Freight</span> Containers & Pallets</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">A wide range of Unit Load Devices (ULDs) for various air
+                        cargo needs, from standard pallets to specialized containers.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-pallet-88x125.jpg" alt="Pallet"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-pallet"></i>Pallet 88x125"
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">PAG / PMC</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">6,804 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-pallet-96x125.jpg" alt="Pallet"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-pallet"></i>Pallet 96x125"
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">P6P / PMC</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">6,804 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-pallet-96x238.jpg" alt="Pallet"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-pallet"></i>Pallet 96x238.5"
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">PRA / PGF</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">13,608 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-pallet-95x196.jpg" alt="Pallet"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-pallet"></i>Pallet 95x196"
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">Special Main Deck</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">11,340 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-pallet-60x125.jpg" alt="Pallet"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-pallet"></i>Pallet 60x125"
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">Narrow Body</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">4,536 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-pallet-a320.jpg" alt="Pallet"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-pallet"></i>A320 Family Pallet
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">PAJ / PKC</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">2,450 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-container-main-deck.jpg"
+                                alt="Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-box"></i>Container 96x125x96"
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">AMA / AMF</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">6,804 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-container-lower-deck-large.jpg"
+                                alt="Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-box"></i>Container 88x125x63"
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">AAP / AAF</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">6,033 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-container-xkh.jpg" alt="Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-box"></i>Container XKH
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">Special LD</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">1,588 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-container-ake.jpg" alt="Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-box"></i>LD Containers
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Codes</span><span
+                                    class="text-gray-800 text-right">AKE, AKH, AKN</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">1,588 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-container-cool-guard.jpg"
+                                alt="Cool Guard"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-snowflake"></i>AKE Cool Guard
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">Passive Cooling</span><span
+                                    class="font-semibold text-gray-500">Range</span><span
+                                    class="text-gray-800 font-bold text-right">+2° to +8°C</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-container-isothermic.jpg"
+                                alt="Isothermic"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-thermometer-half"></i>Isothermic Container
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">Insulated</span><span
+                                    class="font-semibold text-gray-500">Use</span><span
+                                    class="text-primary font-bold text-right">Temp. Stability</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-container-rap.jpg"
+                                alt="Refrigerated RAP"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-temperature-full"></i>Refrigerated RAP
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">Active Cooling</span><span
+                                    class="font-semibold text-gray-500">Range</span><span
+                                    class="text-gray-800 font-bold text-right">-20° to +20°C</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-container-rmp.jpg"
+                                alt="Refrigerated RMP"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-temperature-full"></i>Refrigerated RMP
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">Active Cooling</span><span
+                                    class="font-semibold text-gray-500">Deck</span><span
+                                    class="text-primary font-bold text-right">Lower</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-stabilizer.jpg" alt="Stabilizer"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-boxes-stacked"></i>Stabilizers UMC/UAP
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Function</span><span
+                                    class="text-gray-800 text-right">Secure Cargo</span><span
+                                    class="font-semibold text-gray-500">Use</span><span
+                                    class="text-primary font-bold text-right">Irregular Shapes</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-meat-bin.jpg" alt="Meat Bin"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-drumstick-bite"></i>Meat Bin
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Use</span><span
+                                    class="text-gray-800 text-right">Hanging Meat</span><span
+                                    class="font-semibold text-gray-500">Feature</span><span
+                                    class="text-primary font-bold text-right">Hygienic</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-horse-stall.jpg" alt="Horse Stall"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-horse"></i>Horse Stall
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 text-right">2-3 Horses</span><span
+                                    class="font-semibold text-gray-500">Features</span><span
+                                    class="text-primary font-bold text-right">IATA Certified</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-cattle-pen.jpg" alt="Cattle Pen"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-cow"></i>Cattle Pen
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 text-right">4-6 Cattle</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">4,500 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-pig-stall.jpg" alt="Pig Stall"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-piggy-bank"></i>Pig Stall
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Levels</span><span
+                                    class="text-gray-800 text-right">2, 3 or 4</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">6,000 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-motorcycle-stand.jpg"
+                                alt="Motorcycle Stand"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-motorcycle"></i>Motorcycle Stand
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 text-right">3-6 Bikes</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">1,500 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-car-transport.jpg"
+                                alt="Car Transport"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-car"></i>Car Transport Unit
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Capacity</span><span
+                                    class="text-gray-800 text-right">1-2 Vehicles</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">~6,800 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-container-secure.jpg"
+                                alt="Secure Container"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-lock"></i>Securised AAP
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Type</span><span
+                                    class="text-gray-800 text-right">High Security</span><span
+                                    class="font-semibold text-gray-500">Max Weight</span><span
+                                    class="text-primary font-bold text-right">6,804 kg</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48"><img src="./air-cardboard-box.jpg"
+                                alt="Cardboard Box"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg flex items-center gap-2">
+                                <i class="fas fa-box-open"></i>Cardboard Boxes
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+                                    class="font-semibold text-gray-500">Codes</span><span
+                                    class="text-gray-800 text-right">PMC, GMC, CXC</span><span
+                                    class="font-semibold text-gray-500">Advantage</span><span
+                                    class="text-primary font-bold text-right">Lightweight</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact" class="bg-primary text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center mb-6"><img src="./ST.png" alt="Samman Trans Logo" class="h-36 w-auto">
+                    </div>
+                    <p class="mb-6 opacity-80">Delivering excellence across borders.</p>
+                    <div class="flex space-x-4"><a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-facebook-f"></i></a><a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-twitter"></i></a><a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-linkedin-in"></i></a></div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Home</a></li>
+                        <li><a href="aboutus.html" class="opacity-80 hover:text-secondary transition duration-300">About
+                                Us</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">Services</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="opacity-80 hover:text-secondary transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="ocean-freight.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Ocean Freight</a></li>
+                        <li><a href="air-freight.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Air Freight</a></li>
+                        <li><a href="road-transport.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Road Transport</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt text-secondary mt-1 mr-3"></i><span
+                                class="opacity-80">123 Logistics Park, Damascus, Syria</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt text-secondary mr-3"></i><span
+                                class="opacity-80">+963 4 123 4567</span></li>
+                        <li class="flex items-center"><i class="fas fa-envelope text-secondary mr-3"></i><span
+                                class="opacity-80">info@sammantrans.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 Samman Trans. All rights reserved.</p>
+                <div class="flex space-x-6"><a href="#"
+                        class="text-sm opacity-80 hover:text-secondary transition duration-300">Privacy Policy</a><a
+                        href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">Terms of
+                        Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/96341234567" target="_blank" class="flex flex-col items-center group">
+            <div
+                class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
+                <i class="fab fa-whatsapp text-2xl"></i>
+            </div><span
+                class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">تواصل
+                معنا الان</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('translate-x-full'); document.body.classList.toggle('overflow-hidden'); }); }
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const specificationsSection = document.getElementById('specifications-section');
+
+            function switchTab(tabButton) {
+                const tabId = tabButton.getAttribute('data-tab');
+                const targetContent = document.getElementById(tabId);
+                if (!targetContent || tabButton.classList.contains('active')) return;
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                tabButton.classList.add('active');
+                targetContent.classList.add('active');
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    switchTab(button);
+                    specificationsSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            document.querySelectorAll('.hero-bg a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    let targetId = this.getAttribute('href').substring(1);
+                    if (targetId === 'ocean-containers') { targetId = 'ocean-standard'; }
+                    const targetButton = document.querySelector(`.tab-button[data-tab="${targetId}"]`);
+                    if (targetButton) {
+                        targetButton.click();
+                    } else {
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
