@@ -183,6 +183,8 @@
                     <a href="#air-containers"
                         class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">Air
                         Containers</a>
+                    <a href="#incoterms"
+                        class="bg-primary hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">Incoterms</a>
                 </div>
             </div>
         </div>
@@ -209,6 +211,11 @@
                 <button data-tab="air-containers"
                     class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Air
                     Containers</button>
+                <button data-tab="dangerous-goods"
+                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Dangerous
+                    Goods</button>
+                <button data-tab="incoterms"
+                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Incoterms</button>
             </div>
         </div>
     </section>
@@ -938,6 +945,464 @@
                                     class="text-gray-800 text-right">PMC, GMC, CXC</span><span
                                     class="font-semibold text-gray-500">Advantage</span><span
                                     class="text-primary font-bold text-right">Lightweight</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dangerous-goods" class="tab-content">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">Dangerous
+                            Goods</span>
+                        Classification</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Dangerous goods are categorized into the following
+                        classes according
+                        to international regulations of the IMDG Code (International Maritime Dangerous Goods code):</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Class 1 -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="h-40 bg-red-50 flex items-center justify-center p-4"><img src="./explos.png"
+                                alt="Explosives Symbol" class="h-32 w-32 object-contain"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-3">Class 1: Explosives</h3>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Substances
+                                        at risk of mass explosion.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Projection
+                                        hazard but no mass explosion risk.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Minor
+                                        fire/blast hazard, no mass explosion risk.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Substances
+                                        with no significant hazard.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Very
+                                        insensitive substances with mass explosion risk.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Extremely
+                                        insensitive articles.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Class 2 -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="h-40 bg-gray-100 flex items-center justify-center p-4"><img src="./gases.png"
+                                alt="Gases Symbol" class="h-32 w-32 object-contain"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-3">Class 2: Gases</h3>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Flammable
+                                        gases.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Non-flammable,
+                                        non-toxic gases.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Toxic
+                                        gases.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Class 3 -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="h-40 bg-red-50 flex items-center justify-center p-4"><img src="./luquid.png"
+                                alt="Flammable Liquids Symbol" class="h-32 w-32 object-contain"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-3">Class 3: Flammable Liquids</h3>
+                            <p class="text-sm text-gray-600">This class covers liquids which give off flammable vapor at
+                                or below a
+                                certain temperature (flash point).</p>
+                        </div>
+                    </div>
+                    <!-- Class 4 -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="h-40 bg-red-50 flex items-center justify-center p-4"><img src="./solid.png"
+                                alt="Flammable Solids Symbol" class="h-32 w-32 object-contain"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-3">Class 4: Flammable Solids</h3>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Flammable
+                                        solids, self-reactive substances.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Spontaneously
+                                        combustible substances.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Substances
+                                        which, in contact with water, emit flammable gases.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Class 5 -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="h-40 bg-yellow-50 flex items-center justify-center p-4"><img src="./oxiding.png"
+                                alt="Oxidizing Substances Symbol" class="h-32 w-32 object-contain"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-3">Class 5: Oxidizing Substances</h3>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Oxidizing
+                                        substances.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Organic
+                                        peroxides.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Class 6 -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="h-40 bg-gray-100 flex items-center justify-center p-4"><img src="./toxic.png"
+                                alt="Toxic Substances Symbol" class="h-32 w-32 object-contain"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-3">Class 6: Toxic & Infectious</h3>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Toxic
+                                        substances.</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-arrow-right text-secondary text-xs mt-1 mr-3 flex-shrink-0"></i><span>Infectious
+                                        substances.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Class 7 -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="h-40 bg-yellow-50 flex items-center justify-center p-4"><img src="./radioactive.png"
+                                alt="Radioactive Symbol" class="h-32 w-32 object-contain"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-3">Class 7: Radioactive Material</h3>
+                            <p class="text-sm text-gray-600">This class includes any material containing radionuclides
+                                where both
+                                the activity concentration and the total activity exceed certain pre-defined values.</p>
+                        </div>
+                    </div>
+                    <!-- Class 8 -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="h-40 bg-gray-100 flex items-center justify-center p-4"><img src="./corrosive.gif"
+                                alt="Corrosive Symbol" class="h-32 w-32 object-contain"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-3">Class 8: Corrosive Substances</h3>
+                            <p class="text-sm text-gray-600">These are substances which, by chemical action, will cause
+                                severe
+                                damage when in contact with living tissue, or, in the case of leakage, will materially
+                                damage other
+                                goods or the means of transport.</p>
+                        </div>
+                    </div>
+                    <!-- Class 9 -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="h-40 bg-gray-100 flex items-center justify-center p-4"><img src="./millos.png"
+                                alt="Miscellaneous Symbol" class="h-32 w-32 object-contain"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-3">Class 9: Miscellaneous</h3>
+                            <p class="text-sm text-gray-600">Hazardous substances that do not fall into the other 8
+                                categories. This
+                                includes items like lithium batteries, dry ice, and environmentally hazardous
+                                substances.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Incoterms Section -->
+            <div id="incoterms" class="tab-content">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span
+                            class="text-secondary">International
+                            Commercial Terms</span> (Incoterms)</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Standardized trade terms defining responsibilities
+                        between buyers and
+                        sellers in international trade.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- EXW -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./exw.jpg" alt="Ex Works (EXW)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                EXW - Ex Works
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller makes goods available at their premises. Buyer bears
+                                all costs and
+                                risks.</p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Seller's
+                                    minimum obligation</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Buyer
+                                    arranges all transport</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FCA -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./fca.jpg" alt="Free Carrier (FCA)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                FCA - Free Carrier
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller delivers goods to carrier or another party nominated by
+                                buyer.</p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Seller
+                                    clears goods for export</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Risk
+                                    transfers when goods are handed to carrier</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CPT -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./cpt.jpg" alt="Carriage Paid To (CPT)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                CPT - Carriage Paid To
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller pays freight to named destination, risk transfers when
+                                goods are
+                                handed to first carrier.</p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Seller
+                                    arranges main carriage</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Buyer bears
+                                    risk during transit</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CIP -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./cip.jpg" alt="Carriage and Insurance Paid To (CIP)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                CIP - Carriage and Insurance Paid To
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller pays freight and insurance to named destination.</p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Minimum
+                                    110% insurance coverage</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Risk
+                                    transfers to buyer during transit</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DPU -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./dpu.jpg" alt="Delivered at Place Unloaded (DPU)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                DPU - Delivered at Place Unloaded
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller delivers when goods are unloaded at named place of
+                                destination.</p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Seller
+                                    bears all risks/costs until unloading</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Buyer
+                                    responsible for import clearance</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DAP -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./da[.jpg" alt="Delivered at Place (DAP)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                DAP - Delivered at Place
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller delivers when goods are placed at buyer's disposal at
+                                named place.
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Seller
+                                    bears all risks/costs until arrival</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Buyer
+                                    responsible for unloading</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DDP -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./ddp.jpg" alt="Delivered Duty Paid (DDP)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                DDP - Delivered Duty Paid
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller bears all costs and risks including import duties and
+                                taxes.</p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Seller's
+                                    maximum obligation</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Includes all
+                                    customs formalities</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAS -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./fas.jpg" alt="Free Alongside Ship (FAS)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                FAS - Free Alongside Ship
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller places goods alongside vessel at named port of
+                                shipment.</p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Buyer
+                                    bears all costs from that point</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Only for sea
+                                    or inland waterway transport</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FOB -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./fob.jpg" alt="Free On Board (FOB)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                FOB - Free On Board
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller delivers goods on board the vessel nominated by buyer.
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Risk
+                                    transfers when goods are on board</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Only for sea
+                                    or inland waterway transport</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CFR -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./cfr.jpg" alt="Cost and Freight (CFR)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                CFR - Cost and Freight
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller pays costs and freight to bring goods to port of
+                                destination.</p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Risk
+                                    transfers when goods are on board</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Buyer
+                                    arranges insurance</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CIF -->
+                    <div
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./cif.jpg" alt="Cost, Insurance and Freight (CIF)"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div
+                                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                                CIF - Cost, Insurance and Freight
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Seller pays costs, freight and insurance to bring goods to
+                                port of
+                                destination.</p>
+                            <div class="text-sm text-gray-500">
+                                <div class="flex items-center mb-2"><i
+                                        class="fas fa-check-circle text-secondary mr-2"></i> Minimum
+                                    110% insurance coverage</div>
+                                <div class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i>
+                                    Risk
+                                    transfers when goods are on board</div>
+                            </div>
                         </div>
                     </div>
                 </div>
