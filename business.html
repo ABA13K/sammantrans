@@ -127,6 +127,45 @@
         .gallery-item:hover img {
             transform: scale(1.05);
         }
+
+        .bg-primary-dark {
+            background-color: #002851;
+        }
+
+        @keyframes zoomPan {
+            0% {
+                transform: scale(1) translateY(0);
+            }
+
+            50% {
+                transform: scale(1.1) translateY(-10px);
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .animate-zoom-pan {
+            animation: zoomPan 20s ease-in-out infinite;
+        }
+
+        /* Content animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
     </style>
 </head>
 
@@ -381,26 +420,35 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg py-32 text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-20"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="md:w-2/3 lg:w-1/2 animate-fade-in">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                    <span class="text-secondary">Business</span> & Exhibitions
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 opacity-90">
-                    Showcasing our logistics expertise at industry events and building valuable business connections
-                    across the region.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#upcoming-events"
-                        class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">
-                        Upcoming Events
-                    </a>
-                    <a href="#gallery"
-                        class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">
-                        Event Gallery
-                    </a>
+    <section class="relative h-[80vh] min-h-[600px] overflow-hidden">
+        <!-- Background Image with Primary Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="./busss.jpg" alt="Business Exhibition Background"
+                class="w-full h-full object-cover animate-zoom-pan" style="animation: zoomPan 20s linear infinite;">
+            <div class="absolute inset-0 bg-primary/90"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 h-full flex items-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="md:w-2/3 lg:w-1/2 animate-fade-in-up">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+                        <span class="text-secondary">Business</span> & Exhibitions
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-white/90">
+                        Showcasing our logistics expertise at industry events and building valuable business connections
+                        across the region.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#upcoming-events"
+                            class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center shadow-lg">
+                            Upcoming Events
+                        </a>
+                        <a href="#gallery"
+                            class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center shadow-lg">
+                            Event Gallery
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -984,6 +1032,7 @@
                 });
             });
         });
+
     </script>
 </body>
 

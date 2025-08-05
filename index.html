@@ -360,9 +360,10 @@
     <!-- Navigation -->
     <!-- Navigation -->
     <!-- Update your existing navbar (around line 50) -->
+    <!-- Navigation -->
     <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative flex  h-24 items-center">
+            <div class="relative flex h-24 items-center text-lg">
 
                 <!-- Logo: Special positioning for desktop, normal for mobile -->
                 <div class="flex-shrink-0">
@@ -380,7 +381,7 @@
                             <span
                                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
-                        <a href="#"
+                        <a href="./news.html"
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             News
                             <span
@@ -420,7 +421,7 @@
                                 </a>
 
                                 <!-- Air Freight -->
-                                <a href="#"
+                                <a href="./airfreight.html"
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
                                         <div
@@ -435,7 +436,7 @@
                                 </a>
 
                                 <!-- Road Transport -->
-                                <a href="#"
+                                <a href="./transport.html"
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
                                         <div
@@ -450,7 +451,7 @@
                                 </a>
 
                                 <!-- Warehousing -->
-                                <a href="#"
+                                <a href="./ware.html"
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
                                         <div
@@ -465,7 +466,7 @@
                                 </a>
 
                                 <!-- Customs Clearance -->
-                                <a href="#"
+                                <a href="./custom.html"
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
                                         <div
@@ -506,9 +507,17 @@
                         </a>
 
                         <!-- Contact -->
-                        <a href="#contact"
+                        <a href="./contactus.html"
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             Contact
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- Join Us (Career) -->
+                        <a href="./careers.html"
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            Join Us
                             <span
                                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
@@ -553,7 +562,8 @@
 
                 <!-- Mobile navigation links -->
                 <div class="space-y-4">
-                    <a href="#" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Home</a>
+                    <a href="./index.html"
+                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Home</a>
 
                     <!-- Services Accordion -->
                     <div x-data="{ open: false }" class="border-b border-gray-200 pb-4">
@@ -569,23 +579,27 @@
                         </button>
 
                         <div x-show="open" x-collapse class="mt-2 space-y-3 pl-4">
-                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                            <a href="./ocean.html"
+                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
                                 <i class="fas fa-ship text-primary mr-3 w-5 text-center"></i>
                                 Ocean Freight
                             </a>
-                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                            <a href="./airfreight.html"
+                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
                                 <i class="fas fa-plane text-primary mr-3 w-5 text-center"></i>
                                 Air Freight
                             </a>
-                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                            <a href="./transport.html"
+                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
                                 <i class="fas fa-truck text-primary mr-3 w-5 text-center"></i>
                                 Road Transport
                             </a>
-                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                            <a href="./ware.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
                                 <i class="fas fa-warehouse text-primary mr-3 w-5 text-center"></i>
                                 Warehousing
                             </a>
-                            <a href="#" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                            <a href="./custom.html"
+                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
                                 <i class="fas fa-passport text-primary mr-3 w-5 text-center"></i>
                                 Customs Clearance
                             </a>
@@ -593,16 +607,22 @@
                     </div>
 
                     <!-- الأعمال والمعارض Tab -->
-                    <a href="#business-exhibitions"
+                    <a href="./business.html"
                         class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Business &
                         Exhibitions</a>
 
                     <!-- Other links -->
                     <a href="#tracking"
                         class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Tracking</a>
-                    <a href="#about" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">About</a>
-                    <a href="#contact"
+                    <a href="./aboutus.html"
+                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">About</a>
+                    <a href="./contactus.html"
                         class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Contact</a>
+
+                    <!-- Join Us for mobile -->
+                    <a href="./careers.html"
+                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">Join
+                        Us</a>
 
                     <!-- Get Quote Button for Mobile -->
                     <button
@@ -1297,14 +1317,14 @@
                 <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md transition duration-500 hover:shadow-xl scroll-slide-left"
                     style="animation-delay: 0.3s">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="./(2).JPG" alt="CEO" class="w-full h-full object-fill">
+                        <img src="./Untitled.png" alt="CEO" class="w-full h-full object-fill">
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent h-20">
                         </div>
                     </div>
                     <div class="p-6 relative">
                         <div
                             class="absolute -top-8 left-6 w-16 h-16 rounded-full border-4 border-white overflow-hidden">
-                            <img src="./(2).JPG" alt="CEO" class="w-full h-full object-cover">
+                            <img src="./Untitled.png" alt="CEO" class="w-full h-full object-cover">
                         </div>
                         <h3 class="text-xl font-bold text-primary mt-4">Samer Al Samman</h3>
                         <p class="text-secondary font-medium mb-3">Chief Executive Officer</p>

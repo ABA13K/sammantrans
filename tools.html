@@ -78,6 +78,65 @@
             color: white;
             border-color: #003869;
         }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            z-index: 50;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #4b5563;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .hero-bg {
+            position: relative;
+            overflow: hidden;
+            background-image: linear-gradient(rgba(0, 56, 105, 0.85), rgba(0, 56, 105, 0.8));
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('./shipping-containers-11.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: zoom-in-out 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes zoom-in-out {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
     </style>
 </head>
 
@@ -173,49 +232,53 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="md:w-2/3 lg:w-1/2 animate-fade-in">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"><span
-                        class="text-secondary">Container</span> Specifications</h1>
-                <p class="text-xl md:text-2xl mb-8 opacity-90">Detailed technical specifications for all our air and
-                    ocean freight containers to help you plan your shipments.</p>
-                <div class="flex flex-col sm:flex-row gap-4">
+                        class="text-secondary">Container</span>
+                    Specifications</h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">Detailed technical specifications and shipping term
+                    guides to
+                    help you plan your shipments.</p>
+                <div class="flex flex-wrap items-center gap-3 sm:gap-4">
                     <a href="#ocean-standard"
-                        class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">Ocean
+                        class="bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-medium text-sm sm:text-base transition duration-300 transform hover:scale-105 text-center">Ocean
                         Containers</a>
                     <a href="#air-containers"
-                        class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">Air
+                        class="bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-full font-medium text-sm sm:text-base transition duration-300 transform hover:scale-105 text-center">Air
                         Containers</a>
+                    <a href="#dangerous-goods"
+                        class="border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-3 rounded-full font-medium text-sm sm:text-base transition duration-300 transform hover:scale-105 text-center">Dangerous
+                        Goods</a>
                     <a href="#incoterms"
-                        class="bg-primary hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">Incoterms</a>
+                        class="border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-3 rounded-full font-medium text-sm sm:text-base transition duration-300 transform hover:scale-105 text-center">Incoterms
+                        Guide</a>
                 </div>
             </div>
         </div>
     </header>
-
     <section id="tabs-nav" class="py-12 bg-gray-50 sticky top-[104px] md:top-[112px] z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-wrap justify-center gap-2 md:gap-4">
-                <button data-tab="ocean-standard"
-                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base active">Ocean
-                    Standard</button>
-                <button data-tab="ocean-refrigerated"
-                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Ocean
-                    Refrigerated</button>
-                <button data-tab="ocean-open-top"
-                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Ocean
-                    Open Top</button>
-                <button data-tab="ocean-flat-rack"
-                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Ocean
-                    Flat Rack</button>
-                <button data-tab="ocean-platform"
-                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Ocean
-                    Platform</button>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="relative">
+                    <button id="ocean-dropdown-toggle"
+                        class="dropdown-toggle bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base flex items-center gap-2 active">
+                        Ocean Containers <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="ocean-dropdown-menu" class="dropdown-menu">
+                        <a href="#" data-tab="ocean-standard" class="dropdown-item tab-control">Ocean Standard</a>
+                        <a href="#" data-tab="ocean-refrigerated" class="dropdown-item tab-control">Ocean
+                            Refrigerated</a>
+                        <a href="#" data-tab="ocean-open-top" class="dropdown-item tab-control">Ocean Open Top</a>
+                        <a href="#" data-tab="ocean-flat-rack" class="dropdown-item tab-control">Ocean Flat Rack</a>
+                        <a href="#" data-tab="ocean-platform" class="dropdown-item tab-control">Ocean Platform</a>
+                    </div>
+                </div>
                 <button data-tab="air-containers"
-                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Air
+                    class="tab-button tab-control bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Air
                     Containers</button>
                 <button data-tab="dangerous-goods"
-                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Dangerous
+                    class="tab-button tab-control bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Dangerous
                     Goods</button>
                 <button data-tab="incoterms"
-                    class="tab-button bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Incoterms</button>
+                    class="tab-button tab-control bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">Incoterms</button>
             </div>
         </div>
     </section>
@@ -1485,46 +1548,157 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('translate-x-full'); document.body.classList.toggle('overflow-hidden'); }); }
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('translate-x-full');
+                    document.body.classList.toggle('overflow-hidden');
+                });
+            }
 
+            // Ocean containers dropdown functionality
+            const oceanDropdownToggle = document.getElementById('ocean-dropdown-toggle');
+            const oceanDropdownMenu = document.getElementById('ocean-dropdown-menu');
+
+            if (oceanDropdownToggle && oceanDropdownMenu) {
+                oceanDropdownToggle.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    oceanDropdownMenu.classList.toggle('show');
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('rotate-180');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!oceanDropdownMenu.contains(e.target)) {
+                        oceanDropdownMenu.classList.remove('show');
+                        const icon = oceanDropdownToggle.querySelector('i');
+                        icon.classList.remove('rotate-180');
+                    }
+                });
+            }
+
+            // Tab switching functionality
             const tabButtons = document.querySelectorAll('.tab-button');
             const tabContents = document.querySelectorAll('.tab-content');
             const specificationsSection = document.getElementById('specifications-section');
+            const stickyHeader = document.querySelector('nav');
+            const stickyTabs = document.getElementById('tabs-nav');
+
+            function calculateScrollOffset() {
+                const headerHeight = stickyHeader ? stickyHeader.offsetHeight : 0;
+                const tabsHeight = stickyTabs ? stickyTabs.offsetHeight : 0;
+                return headerHeight + tabsHeight + 20; // Add small buffer
+            }
 
             function switchTab(tabButton) {
                 const tabId = tabButton.getAttribute('data-tab');
                 const targetContent = document.getElementById(tabId);
                 if (!targetContent || tabButton.classList.contains('active')) return;
+
+                // Update active states
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
                 tabButton.classList.add('active');
                 targetContent.classList.add('active');
+
+                // Close ocean dropdown if open
+                if (oceanDropdownMenu) {
+                    oceanDropdownMenu.classList.remove('show');
+                    const icon = oceanDropdownToggle.querySelector('i');
+                    if (icon) icon.classList.remove('rotate-180');
+                }
+
+                // Smooth scroll to the correct position
+                const offset = calculateScrollOffset();
+                window.scrollTo({
+                    top: specificationsSection.offsetTop - offset,
+                    behavior: 'smooth'
+                });
             }
 
+            // Tab button click handlers
             tabButtons.forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
                     switchTab(button);
-                    specificationsSection.scrollIntoView({ behavior: 'smooth' });
                 });
             });
 
+            // Dropdown item click handlers
+            document.querySelectorAll('.dropdown-item.tab-control').forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    const targetContent = document.getElementById(tabId);
+                    if (targetContent) {
+                        // Close dropdown
+                        oceanDropdownMenu.classList.remove('show');
+                        const icon = oceanDropdownToggle.querySelector('i');
+                        if (icon) icon.classList.remove('rotate-180');
+
+                        // Switch to the selected tab
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        tabContents.forEach(content => content.classList.remove('active'));
+                        targetContent.classList.add('active');
+
+                        // Update the dropdown button text
+                        oceanDropdownToggle.innerHTML = this.textContent + ' <i class="fas fa-chevron-down text-xs"></i>';
+                        oceanDropdownToggle.classList.add('active');
+
+                        // Smooth scroll to the correct position
+                        const offset = calculateScrollOffset();
+                        window.scrollTo({
+                            top: specificationsSection.offsetTop - offset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Hero banner link click handlers
             document.querySelectorAll('.hero-bg a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     let targetId = this.getAttribute('href').substring(1);
                     if (targetId === 'ocean-containers') { targetId = 'ocean-standard'; }
+
                     const targetButton = document.querySelector(`.tab-button[data-tab="${targetId}"]`);
                     if (targetButton) {
                         targetButton.click();
                     } else {
                         const targetElement = document.getElementById(targetId);
-                        if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+                        if (targetElement) {
+                            const offset = calculateScrollOffset();
+                            window.scrollTo({
+                                top: targetElement.offsetTop - offset,
+                                behavior: 'smooth'
+                            });
+                        }
                     }
                 });
             });
+
+            // Handle direct URL hashes
+            function handleInitialHash() {
+                if (window.location.hash) {
+                    const hash = window.location.hash.substring(1);
+                    const targetButton = document.querySelector(`.tab-button[data-tab="${hash}"]`);
+                    if (targetButton) {
+                        // Small timeout to ensure DOM is fully loaded
+                        setTimeout(() => {
+                            const offset = calculateScrollOffset();
+                            window.scrollTo({
+                                top: specificationsSection.offsetTop - offset,
+                                behavior: 'auto'
+                            });
+                        }, 100);
+                    }
+                }
+            }
+            handleInitialHash();
         });
     </script>
 </body>
