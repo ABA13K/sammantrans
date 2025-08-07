@@ -1075,67 +1075,18 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">Stay updated with the latest trends and news in logistics
                     industry</p>
             </div>
+            <div id="news-spinner" class="flex justify-center items-center py-12">
+                <!-- Tailwind “animate-spin” + Heroicon spinner SVG -->
+                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z">
+                    </path>
+                </svg>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="latest-news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- News 1 -->
-                <div class="news-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
-                    <div class="h-48 overflow-hidden">
-                        <img src="./1729926836055.jpg" alt="News image" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-2">
-                            <span>June 15, 2023</span>
-                            <span class="mx-2">•</span>
-                            <span>Industry News</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-3 ">Training for Marketing Team</h3>
-                        <p class="text-gray-600 mb-4">We've expanded our network with new direct routes to major ports
-                            in Southeast Asia, reducing transit times by 30%.</p>
-                        <a href="#" class="text-secondary font-medium flex items-center">
-                            Read more <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- News 2 -->
-                <div class="news-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
-                    <div class="h-48 overflow-hidden">
-                        <img src="./15052007617.jpg" alt="News image" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-2">
-                            <span>May 28, 2023</span>
-                            <span class="mx-2">•</span>
-                            <span>Company Update</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-3">Sustainable Logistics Initiative</h3>
-                        <p class="text-gray-600 mb-4">Samman Trans commits to carbon-neutral operations by 2030 with our
-                            new green logistics program.</p>
-                        <a href="#" class="text-secondary font-medium flex items-center">
-                            Read more <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- News 3 -->
-                <div class="news-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
-                    <div class="h-48 overflow-hidden">
-                        <img src="./1743837986313.jpg" alt="News image" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-2">
-                            <span>April 10, 2023</span>
-                            <span class="mx-2">•</span>
-                            <span>Technology</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-3">Happy EID</h3>
-                        <p class="text-gray-600 mb-4">Our new tracking system provides minute-by-minute updates on your
-                            shipments with predictive analytics.</p>
-                        <a href="#" class="text-secondary font-medium flex items-center">
-                            Read more <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
 
             <div class="text-center mt-12">
@@ -1676,6 +1627,69 @@
                 slideInterval = setInterval(nextSlide, 5000);
             }
         });
+        document.addEventListener('DOMContentLoaded', () => {
+            const spinner = document.getElementById('news-spinner');
+            const grid = document.getElementById('latest-news-grid');
+
+            // 1️⃣ ensure spinner is visible, grid is hidden
+            spinner.classList.remove('hidden');
+            grid.classList.add('hidden');
+
+            fetch('https://aa-dev.site/sammantrans/api/show-news', {
+                headers: { 'Accept': 'application/json' }
+            })
+                .then(async res => {
+                    if (!res.ok) {
+                        const txt = await res.text();
+                        console.error('HTTP', res.status, txt);
+                        throw new Error(`Status ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then(json => {
+                    // 2️⃣ hide spinner, show grid
+                    spinner.classList.add('hidden');
+                    grid.classList.remove('hidden');
+
+                    const posts = json.data.latest;
+                    grid.innerHTML = posts.map(post => `
+      <a href="post.html?id=${post.id}"
+         class="news-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+        <div class="h-48 overflow-hidden">
+          <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center text-sm text-gray-500 mb-2">
+            <span>${new Date(post.created_at).toLocaleDateString()}</span>
+            <span class="mx-2">•</span>
+            <span>${post.type}</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">${post.title}</h3>
+          <p class="text-gray-600 mb-4">
+            ${post.content.length > 100
+                            ? post.content.slice(0, 100) + '…'
+                            : post.content}
+          </p>
+          <span class="text-secondary font-medium flex items-center">
+            Read more <i class="fas fa-arrow-right ml-2"></i>
+          </span>
+        </div>
+      </a>
+    `).join('');
+                })
+                .catch(err => {
+                    console.error(err);
+                    // 3️⃣ hide spinner, show grid (with error message)
+                    spinner.classList.add('hidden');
+                    grid.classList.remove('hidden');
+                    grid.innerHTML = `
+      <p class="col-span-full text-center text-red-600">
+        Failed to load latest news.
+      </p>
+    `;
+                });
+        })
+
     </script>
 </body>
 

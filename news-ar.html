@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأخبار والتحديثات - سمان ترانز | نقل ولوجستيات عالمية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003869',
+                        secondary: '#F59E0B',
+                        accent: '#3B82F6',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1.5s ease-in-out',
+                        'slide-in-up': 'slideInUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' }, },
+                        slideInUp: { '0%': { opacity: '0', transform: 'translateY(50px)' }, '100%': { opacity: '1', transform: 'translateY(0)' }, },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .news-hero {
+            background-image: linear-gradient(rgba(0, 56, 105, 0.8), rgba(0, 56, 105, 0.7)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: auto;
+            background-color: #F59E0B;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .news-date {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            left: auto;
+            background-color: rgba(0, 56, 105, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .news-tag {
+            display: inline-block;
+            background-color: #E5E7EB;
+            color: #4B5563;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-left: 5px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .news-tag:hover {
+            background-color: #F59E0B;
+            color: white;
+        }
+
+        .pagination-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-item:hover:not(.active) {
+            background-color: #E5E7EB;
+        }
+
+        .pagination-item.active {
+            background-color: #003869;
+            color: white;
+        }
+
+        .news-sidebar-card {
+            transition: all 0.3s ease;
+        }
+
+        .news-sidebar-card:hover {
+            transform: translateX(-5px);
+        }
+
+        .news-archive-year {
+            transition: all 0.3s ease;
+        }
+
+        .news-archive-year:hover {
+            color: #F59E0B;
+        }
+
+        body.rtl .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+
+        body.rtl .ml-2 {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased rtl">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative flex h-24 items-center">
+                <div class="flex-shrink-0"><a href="index.html" class="flex items-center"><img src="./12.png"
+                            alt="شعار سمان ترانز" class="h-24 w-auto"></a></div>
+                <div class="hidden md:flex flex-1 justify-center mr-6">
+                    <div class="flex items-center space-x-8">
+                        <a href="index.html"
+                            class="text-gray-600 font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">الرئيسية<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                        <a href="news.html"
+                            class="text-primary font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">الأخبار<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-[#0056a3] transition-all duration-300"></span></a>
+                        <div class="relative group">
+                            <button
+                                class="text-gray-600 font-bold hover:text-[#0056a3] transition duration-300 flex items-center">الخدمات<svg
+                                    class="w-4 h-4 mr-1 transition-transform duration-300 group-hover:rotate-180"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg><span
+                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></button>
+                            <div
+                                class="absolute right-1/2 transform translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
+                                <!-- Dropdown Items -->
+                            </div>
+                        </div>
+                        <a href="business.html"
+                            class="text-gray-600 font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">الأعمال
+                            والمعارض<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                        <a href="tools.html"
+                            class="text-gray-600 font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">الأدوات<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                        <a href="aboutus.html"
+                            class="text-gray-600 font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">من
+                            نحن<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                        <a href="contact.html"
+                            class="text-gray-600 font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">اتصل
+                            بنا<span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span></a>
+                    </div>
+                </div>
+                <div class="hidden md:block"><button
+                        class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0] text-white px-6 py-2 rounded-md font-bold transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">احصل
+                        على عرض سعر</button></div>
+                <div class="md:hidden"><button id="mobile-menu-button"
+                        class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300"><svg
+                            class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg></button></div>
+            </div>
+        </div>
+        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out"
+            id="mobile-menu"><!-- Mobile Menu Content --></div>
+    </nav>
+
+    <!-- News Hero Section -->
+    <section class="news-hero py-24 md:py-32 relative">
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-in-up">الأخبار والتحديثات</h1>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 animate-fade-in">ابق على اطلاع بآخر التطورات
+                    في سمان ترانز وقطاع الخدمات اللوجستية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Content Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Main News Content -->
+                <div class="lg:col-span-3">
+                    <div class="mb-16">
+                        <h2 class="text-2xl font-bold text-primary mb-8 border-b pb-2">خبر مميز</h2>
+                        <div class="news-card bg-white rounded-lg overflow-hidden">
+                            <div class="relative h-96 overflow-hidden"><img src="./request-quote-bg.jpg" alt="خبر مميز"
+                                    class="w-full h-full object-cover">
+                                <div class="news-category">أخبار الشركة</div>
+                                <div class="news-date">15 يونيو 2023</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-primary mb-4">سمان ترانز توسع عملياتها إلى جنوب شرق
+                                    آسيا</h3>
+                                <p class="text-gray-600 mb-6">تفخر سمان ترانز بالإعلان عن توسيع عملياتنا لتشمل أسواقاً
+                                    رئيسية في جنوب شرق آسيا، بما في ذلك فيتنام وتايلاند وماليزيا. تتيح لنا هذه الخطوة
+                                    الاستراتيجية خدمة عملائنا بشكل أفضل من خلال مسارات مباشرة وأوقات عبور أسرع في هذه
+                                    المنطقة سريعة النمو.</p>
+                                <div class="flex flex-wrap mb-6">
+                                    <span class="news-tag">#توسع</span>
+                                    <span class="news-tag">#جنوب_شرق_آسيا</span>
+                                    <span class="news-tag">#لوجستيات</span>
+                                </div>
+                                <a href="newsdeatils.html"
+                                    class="inline-block bg-primary hover:bg-[#00457a] text-white px-6 py-2 rounded-md font-medium transition duration-300">اقرأ
+                                    القصة كاملة</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-16">
+                        <h2 class="text-2xl font-bold text-primary mb-8 border-b pb-2">آخر الأخبار</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="news-card bg-white rounded-lg overflow-hidden">
+                                <div class="relative h-48 overflow-hidden"><img src="./1729926836055.jpg" alt="صورة خبر"
+                                        class="w-full h-full object-cover">
+                                    <div class="news-category">تدريب</div>
+                                    <div class="news-date">28 مايو 2023</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-primary mb-3">تدريب لفريق التسويق</h3>
+                                    <p class="text-gray-600 mb-4">أكمل فريق التسويق لدينا برنامجًا تدريبيًا مكثفًا حول
+                                        استراتيجيات التسويق الرقمي في قطاع الخدمات اللوجستية.</p><a
+                                        href="news-detail.html"
+                                        class="text-secondary font-medium inline-flex items-center">اقرأ المزيد <i
+                                            class="fas fa-arrow-left mr-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="news-card bg-white rounded-lg overflow-hidden">
+                                <div class="relative h-48 overflow-hidden"><img src="./15052007617.jpg" alt="صورة خبر"
+                                        class="w-full h-full object-cover">
+                                    <div class="news-category">استدامة</div>
+                                    <div class="news-date">10 أبريل 2023</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-primary mb-3">مبادرة اللوجستيات المستدامة</h3>
+                                    <p class="text-gray-600 mb-4">تلتزم سمان ترانز بعمليات خالية من الكربون بحلول عام
+                                        2030 من خلال برنامجنا اللوجستي الأخضر الجديد.</p><a href="news-detail.html"
+                                        class="text-secondary font-medium inline-flex items-center">اقرأ المزيد <i
+                                            class="fas fa-arrow-left mr-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="news-card bg-white rounded-lg overflow-hidden">
+                                <div class="relative h-48 overflow-hidden"><img src="./1743837986313.jpg" alt="صورة خبر"
+                                        class="w-full h-full object-cover">
+                                    <div class="news-category">مناسبة</div>
+                                    <div class="news-date">22 مارس 2023</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-primary mb-3">عيد سعيد</h3>
+                                    <p class="text-gray-600 mb-4">تحتفل سمان ترانز بالعيد مع الموظفين والشركاء، مما يعزز
+                                        التزامنا بالقيم المجتمعية.</p><a href="news-detail.html"
+                                        class="text-secondary font-medium inline-flex items-center">اقرأ المزيد <i
+                                            class="fas fa-arrow-left mr-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="news-card bg-white rounded-lg overflow-hidden">
+                                <div class="relative h-48 overflow-hidden"><img src="./new tracking.jpg" alt="صورة خبر"
+                                        class="w-full h-full object-cover">
+                                    <div class="news-category">تكنولوجيا</div>
+                                    <div class="news-date">15 فبراير 2023</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-primary mb-3">إطلاق نظام تتبع جديد</h3>
+                                    <p class="text-gray-600 mb-4">يوفر نظام التتبع الجديد لدينا تحديثات دقيقة لشحناتك مع
+                                        تحليلات تنبؤية.</p><a href="news-detail.html"
+                                        class="text-secondary font-medium inline-flex items-center">اقرأ المزيد <i
+                                            class="fas fa-arrow-left mr-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="flex items-center">
+                            <button class="pagination-item hover:bg-gray-100 ml-2"><i
+                                    class="fas fa-chevron-right"></i></button>
+                            <button class="pagination-item">8</button><span class="mx-2">...</span><button
+                                class="pagination-item">3</button><button class="pagination-item">2</button><button
+                                class="pagination-item active">1</button>
+                            <button
+                                class="pagination-item hover:bg-gray-100 mr-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                disabled><i class="fas fa-chevron-left"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h3 class="text-lg font-bold text-primary mb-4">بحث في الأخبار</h3>
+                        <div class="relative"><input type="text" placeholder="ابحث عن مقالات..."
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"><button
+                                class="absolute left-3 top-2 text-gray-400 hover:text-primary"><i
+                                    class="fas fa-search"></i></button></div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h3 class="text-lg font-bold text-primary mb-4">الفئات</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300"><span>أخبار
+                                        الشركة</span><span
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">12</span></a>
+                            </li>
+                            <li><a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300"><span>تحديثات
+                                        الصناعة</span><span
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">8</span></a>
+                            </li>
+                            <li><a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300"><span>مناسبات</span><span
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">5</span></a>
+                            </li>
+                            <li><a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300"><span>تكنولوجيا</span><span
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">3</span></a>
+                            </li>
+                            <li><a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300"><span>استدامة</span><span
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">7</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h3 class="text-lg font-bold text-primary mb-4">آخر الأخبار</h3>
+                        <div class="space-y-4">
+                            <a href="news-detail.html" class="news-sidebar-card flex group">
+                                <div class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg ml-4"><img
+                                        src="./1729926836055.jpg" alt="خبر حديث" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4
+                                        class="font-medium text-gray-900 group-hover:text-primary transition duration-300">
+                                        تدريب لفريق التسويق</h4>
+                                    <p class="text-sm text-gray-500">15 يونيو 2023</p>
+                                </div>
+                            </a>
+                            <a href="news-detail.html" class="news-sidebar-card flex group">
+                                <div class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg ml-4"><img
+                                        src="./15052007617.jpg" alt="خبر حديث" class="w-full h-full object-cover"></div>
+                                <div>
+                                    <h4
+                                        class="font-medium text-gray-900 group-hover:text-primary transition duration-300">
+                                        مبادرة اللوجستيات المستدامة</h4>
+                                    <p class="text-sm text-gray-500">28 مايو 2023</p>
+                                </div>
+                            </a>
+                            <a href="news-detail.html" class="news-sidebar-card flex group">
+                                <div class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg ml-4"><img
+                                        src="./1743837986313.jpg" alt="خبر حديث" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4
+                                        class="font-medium text-gray-900 group-hover:text-primary transition duration-300">
+                                        عيد سعيد</h4>
+                                    <p class="text-sm text-gray-500">10 أبريل 2023</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-bold text-primary mb-4">أرشيف الأخبار</h3>
+                        <div class="space-y-2"><a href="#"
+                                class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2023</a><a
+                                href="#"
+                                class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2022</a><a
+                                href="#"
+                                class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2021</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">اشترك في نشرتنا الإخبارية</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">ابق على اطلاع بآخر الأخبار ورؤى الصناعة والعروض الخاصة من سمان
+                    ترانز.</p>
+                <form class="max-w-md mx-auto flex">
+                    <button type="submit"
+                        class="bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-l-lg font-medium transition duration-300">اشترك</button>
+                    <input type="email" placeholder="عنوان بريدك الإلكتروني"
+                        class="flex-grow px-4 py-3 rounded-r-lg focus:outline-none text-gray-900 text-right">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center mb-6"><img src="./ST.png" alt="شعار سمان ترانز" class="h-36 w-auto">
+                    </div>
+                    <p class="mb-6 opacity-80">تقديم التميز عبر الحدود من خلال خدمات النقل والخدمات اللوجستية الشاملة.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a></li>
+                        <li><a href="aboutus.html" class="opacity-80 hover:text-secondary transition duration-300">من
+                                نحن</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الخدمات</a></li>
+                        <li><a href="contact.html" class="opacity-80 hover:text-secondary transition duration-300">اتصل
+                                بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">خدماتنا</h4>
+                    <ul class="space-y-3">
+                        <li><a href="ocean.html" class="opacity-80 hover:text-secondary transition duration-300">الشحن
+                                البحري</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a>
+                        </li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">النقل البري</a>
+                        </li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">التخزين</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">اتصل بنا</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt text-secondary mt-1 ml-3"></i><span
+                                class="opacity-80">123 Logistics Park, Industrial Zone, Damascus, Syria</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt text-secondary ml-3"></i><span
+                                class="opacity-80">+963 11 123 4567</span></li>
+                        <li class="flex items-center"><i class="fas fa-envelope text-secondary ml-3"></i><span
+                                class="opacity-80">info@sammantrans.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 سمان ترانز. جميع الحقوق محفوظة.</p>
+                <div class="flex space-x-6"><a href="#"
+                        class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة الخصوصية</a><a
+                        href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط الخدمة</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-6 left-6 z-50">
+        <a href="https://wa.me/96341234567" target="_blank" class="flex flex-col items-center group">
+            <div
+                class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
+                <i class="fab fa-whatsapp text-2xl"></i>
+            </div>
+            <span
+                class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">تواصل
+                معنا الآن</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeButton = document.getElementById('close-mobile-menu');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            if (closeButton) {
+                closeButton.addEventListener('click', () => {
+                    mobileMenu.classList.add('translate-x-full');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
