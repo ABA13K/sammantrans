@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-sans antialiased bg-gray-50">
+    <div class="max-w-3xl mx-auto p-6">
+        <!-- Back button -->
+        <a href="javascript:history.back()" class="inline-block mb-6 text-blue-600 hover:underline">
+            ← Back
+        </a>
+
+        <!-- Spinner (shown while loading) -->
+        <div id="post-spinner" class="flex justify-center items-center py-12">
+            <svg class="h-12 w-12 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+            </svg>
+        </div>
+
+        <!-- Article container (hidden until loaded) -->
+        <article id="post-detail" class="prose lg:prose-xl opacity-0 transition-opacity duration-300">
+            <!-- Content will be injected here -->
+        </article>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const spinner = document.getElementById('post-spinner');
+            const container = document.getElementById('post-detail');
+
+            // Show spinner, hide content
+            spinner.classList.remove('hidden');
+            container.classList.add('opacity-0');
+
+            // Get ID from URL
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            if (!id) {
+                spinner.classList.add('hidden');
+                container.innerHTML = '<p class="text-red-600">No post ID specified.</p>';
+                container.classList.remove('opacity-0');
+                return;
+            }
+
+            // Fetch the detail
+            fetch(`https://aa-dev.site/sammantrans/api/show-news/${encodeURIComponent(id)}`, {
+                headers: { 'Accept': 'application/json' }
+            })
+                .then(async res => {
+                    const text = await res.text();
+                    if (!res.ok) {
+                        console.error('HTTP', res.status, text);
+                        throw new Error(`Status ${res.status}`);
+                    }
+                    try {
+                        return JSON.parse(text);
+                    } catch (e) {
+                        console.error('Invalid JSON:', text);
+                        throw e;
+                    }
+                })
+                .then(json => {
+                    const post = json.data;  // adjust if your API wraps differently
+
+                    // Build the content
+                    container.innerHTML = `
+        <h1>${post.title}</h1>
+        <p class="text-sm text-gray-500 mb-4">
+          ${new Date(post.created_at).toLocaleDateString()} &bull; ${post.type}
+        </p>
+        <figure>
+          <img src="${post.image}"
+               alt="${post.title}"
+               class="w-full rounded-lg mb-6 shadow-md">
+        </figure>
+        <div>${post.content}</div>
+      `;
+
+                    // Hide spinner, show content
+                    spinner.classList.add('hidden');
+                    container.classList.remove('opacity-0');
+                })
+                .catch(err => {
+                    console.error(err);
+                    spinner.classList.add('hidden');
+                    container.innerHTML = `
+        <p class="text-red-600">Failed to load post details.</p>
+      `;
+                    container.classList.remove('opacity-0');
+                });
+        });
+    </script>
+</body>
+
+</html>
