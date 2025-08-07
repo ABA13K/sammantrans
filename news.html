@@ -432,177 +432,63 @@
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 <!-- Main News Content -->
                 <div class="lg:col-span-3">
-                    <!-- Featured News -->
                     <div class="mb-16">
-                        <h2 class="text-2xl font-bold text-primary mb-8 border-b pb-2">Featured News</h2>
-                        <div class="news-card bg-white rounded-lg overflow-hidden">
-                            <div class="relative h-96 overflow-hidden">
-                                <img src="./request-quote-bg.jpg" alt="Featured News"
-                                    class="w-full h-full object-cover">
-                                <div class="news-category">Company News</div>
-                                <div class="news-date">June 15, 2023</div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-2xl font-bold text-primary mb-4">Samman Trans Expands Operations to
-                                    Southeast Asia</h3>
-                                <p class="text-gray-600 mb-6">Samman Trans is proud to announce the expansion of our
-                                    operations to key markets in Southeast Asia, including Vietnam, Thailand, and
-                                    Malaysia. This strategic move allows us to better serve our clients with direct
-                                    routes and faster transit times in this rapidly growing region.</p>
-                                <div class="flex flex-wrap mb-6">
-                                    <span class="news-tag">#expansion</span>
-                                    <span class="news-tag">#southeastasia</span>
-                                    <span class="news-tag">#logistics</span>
-                                </div>
-                                <a href="newsdeatils.html"
-                                    class="inline-block bg-primary hover:bg-[#00457a] text-white px-6 py-2 rounded-md font-medium transition duration-300">
-                                    Read Full Story
-                                </a>
+                        <h2 id="featured-heading" class="text-2xl font-bold text-primary mb-8 border-b pb-2">Featured
+                            News</h2>
+                        <div id="featured-news"
+                            class="news-card bg-white rounded-lg overflow-hidden opacity-0 transition-opacity duration-300">
+                            <!-- spinner while loading -->
+                            <div class="flex justify-center items-center h-64">
+                                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4" />
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                                </svg>
                             </div>
                         </div>
                     </div>
 
+
                     <!-- Latest News -->
                     <div class="mb-16">
-                        <h2 class="text-2xl font-bold text-primary mb-8 border-b pb-2">Latest News</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <!-- News 1 -->
-                            <div class="news-card bg-white rounded-lg overflow-hidden">
-                                <div class="relative h-48 overflow-hidden">
-                                    <img src="./1729926836055.jpg" alt="News Image" class="w-full h-full object-cover">
-                                    <div class="news-category">Training</div>
-                                    <div class="news-date">May 28, 2023</div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-bold text-primary mb-3">Training for Marketing Team</h3>
-                                    <p class="text-gray-600 mb-4">Our marketing team completed an intensive training
-                                        program on digital marketing strategies for the logistics industry.</p>
-                                    <a href="news-detail.html"
-                                        class="text-secondary font-medium inline-flex items-center">
-                                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- News 2 -->
-                            <div class="news-card bg-white rounded-lg overflow-hidden">
-                                <div class="relative h-48 overflow-hidden">
-                                    <img src="./15052007617.jpg" alt="News Image" class="w-full h-full object-cover">
-                                    <div class="news-category">Sustainability</div>
-                                    <div class="news-date">April 10, 2023</div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-bold text-primary mb-3">Sustainable Logistics Initiative
-                                    </h3>
-                                    <p class="text-gray-600 mb-4">Samman Trans commits to carbon-neutral operations by
-                                        2030 with our new green logistics program.</p>
-                                    <a href="news-detail.html"
-                                        class="text-secondary font-medium inline-flex items-center">
-                                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- News 3 -->
-                            <div class="news-card bg-white rounded-lg overflow-hidden">
-                                <div class="relative h-48 overflow-hidden">
-                                    <img src="./1743837986313.jpg" alt="News Image" class="w-full h-full object-cover">
-                                    <div class="news-category">Event</div>
-                                    <div class="news-date">March 22, 2023</div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-bold text-primary mb-3">Happy EID</h3>
-                                    <p class="text-gray-600 mb-4">Samman Trans celebrates EID with employees and
-                                        partners, reinforcing our commitment to community values.</p>
-                                    <a href="news-detail.html"
-                                        class="text-secondary font-medium inline-flex items-center">
-                                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- News 4 -->
-                            <div class="news-card bg-white rounded-lg overflow-hidden">
-                                <div class="relative h-48 overflow-hidden">
-                                    <img src="./new tracking.jpg" alt="News Image" class="w-full h-full object-cover">
-                                    <div class="news-category">Technology</div>
-                                    <div class="news-date">February 15, 2023</div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-bold text-primary mb-3">New Tracking System Launch</h3>
-                                    <p class="text-gray-600 mb-4">Our new tracking system provides minute-by-minute
-                                        updates on your shipments with predictive analytics.</p>
-                                    <a href="news-detail.html"
-                                        class="text-secondary font-medium inline-flex items-center">
-                                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
+                        <h2 id="latest-heading" class="text-2xl font-bold text-primary mb-8 border-b pb-2">Latest News
+                        </h2>
+                        <div id="news-spinner" class="flex justify-center items-center py-12">
+                            <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4" />
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                            </svg>
+                        </div>
+                        <div id="latest-news-grid"
+                            class="grid grid-cols-1 md:grid-cols-2 gap-8 opacity-0 transition-opacity duration-300">
+                        </div>
+                        <div class="text-center mt-12">
+                            <button id="view-all-news-btn" type="button"
+                                class="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-full font-medium transition duration-300">
+                                View All News
+                            </button>
                         </div>
                     </div>
 
                     <!-- Industry News -->
                     <div class="mb-16">
-                        <h2 class="text-2xl font-bold text-primary mb-8 border-b pb-2">Industry News</h2>
-                        <div class="grid grid-cols-1 gap-8">
-                            <!-- Industry News 1 -->
-                            <div class="news-card bg-white rounded-lg overflow-hidden flex flex-col md:flex-row">
-                                <div class="md:w-1/3 relative h-48 md:h-auto">
-                                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
-                                        alt="Industry News" class="w-full h-full object-cover">
-                                    <div class="news-category">Global Trade</div>
-                                </div>
-                                <div class="md:w-2/3 p-6">
-                                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                                        <span>January 28, 2023</span>
-                                        <span class="mx-2">•</span>
-                                        <span>5 min read</span>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-primary mb-3">Global Shipping Trends in 2023</h3>
-                                    <p class="text-gray-600 mb-4">An analysis of the key trends shaping global shipping
-                                        and logistics in 2023, including capacity changes, rate fluctuations, and
-                                        emerging trade routes.</p>
-                                    <div class="flex justify-between items-center">
-                                        <a href="news-detail.html"
-                                            class="text-secondary font-medium inline-flex items-center">
-                                            Read More <i class="fas fa-arrow-right ml-2"></i>
-                                        </a>
-                                        <div class="flex items-center">
-                                            <i class="fas fa-share-alt text-gray-400 mr-2"></i>
-                                            <span class="text-sm text-gray-500">Share</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Industry News 2 -->
-                            <div class="news-card bg-white rounded-lg overflow-hidden flex flex-col md:flex-row">
-                                <div class="md:w-1/3 relative h-48 md:h-auto">
-                                    <img src="./trr.jpg" alt="Industry News" class="w-full h-full object-cover">
-                                    <div class="news-category">Regulations</div>
-                                </div>
-                                <div class="md:w-2/3 p-6">
-                                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                                        <span>December 15, 2022</span>
-                                        <span class="mx-2">•</span>
-                                        <span>4 min read</span>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-primary mb-3">New Customs Regulations for 2023
-                                    </h3>
-                                    <p class="text-gray-600 mb-4">Important updates to customs regulations that will
-                                        affect importers and exporters in the Middle East region starting January 2023.
-                                    </p>
-                                    <div class="flex justify-between items-center">
-                                        <a href="news-detail.html"
-                                            class="text-secondary font-medium inline-flex items-center">
-                                            Read More <i class="fas fa-arrow-right ml-2"></i>
-                                        </a>
-                                        <div class="flex items-center">
-                                            <i class="fas fa-share-alt text-gray-400 mr-2"></i>
-                                            <span class="text-sm text-gray-500">Share</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <h2 id="industry-heading" class="text-2xl font-bold text-primary mb-8 border-b pb-2">Industry
+                            News</h2>
+                        <div id="industry-news"
+                            class="grid grid-cols-1 gap-8 opacity-0 transition-opacity duration-300">
+                            <!-- spinner while loading -->
+                            <div class="col-span-full flex justify-center items-center h-32">
+                                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4" />
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -630,16 +516,27 @@
                 <!-- Sidebar -->
                 <div class="lg:col-span-1">
                     <!-- Search -->
+                    <!-- Search -->
                     <div class="bg-white p-6 rounded-lg shadow-md mb-8">
                         <h3 class="text-lg font-bold text-primary mb-4">Search News</h3>
                         <div class="relative">
-                            <input type="text" placeholder="Search articles..."
+                            <input id="search-input" type="text" placeholder="Search articles..."
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <button class="absolute right-3 top-2 text-gray-400 hover:text-primary">
+                            <button id="search-btn" class="absolute right-3 top-2 text-gray-400 hover:text-primary"
+                                aria-label="Search">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
                     </div>
+
+                    <!-- Recent News -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h3 class="text-lg font-bold text-primary mb-4">Search Results</h3>
+                        <div id="recent-news" class="space-y-4">
+                            <!-- items will be injected here -->
+                        </div>
+                    </div>
+
 
                     <!-- Categories -->
                     <div class="bg-white p-6 rounded-lg shadow-md mb-8">
@@ -649,79 +546,46 @@
                                 <a href="#"
                                     class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>Company News</span>
-                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">12</span>
+                                    <span id="cat-featured"
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#"
                                     class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>Industry Updates</span>
-                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">8</span>
+                                    <span id="cat-industry"
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#"
                                     class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>Events</span>
-                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">5</span>
+                                    <span id="cat-internal"
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
                             </li>
+                            <!-- If you want to keep Technology & Sustainability but have no data yet, leave them static -->
                             <li>
                                 <a href="#"
                                     class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>Technology</span>
-                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">3</span>
+                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#"
                                     class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>Sustainability</span>
-                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">7</span>
+                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Recent News -->
-                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-                        <h3 class="text-lg font-bold text-primary mb-4">Recent News</h3>
-                        <div class="space-y-4">
-                            <a href="news-detail.html" class="news-sidebar-card flex group">
-                                <div class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg mr-4">
-                                    <img src="./1729926836055.jpg" alt="Recent News" class="w-full h-full object-cover">
-                                </div>
-                                <div>
-                                    <h4
-                                        class="font-medium text-gray-900 group-hover:text-primary transition duration-300">
-                                        Training for Marketing Team</h4>
-                                    <p class="text-sm text-gray-500">June 15, 2023</p>
-                                </div>
-                            </a>
-                            <a href="news-detail.html" class="news-sidebar-card flex group">
-                                <div class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg mr-4">
-                                    <img src="./15052007617.jpg" alt="Recent News" class="w-full h-full object-cover">
-                                </div>
-                                <div>
-                                    <h4
-                                        class="font-medium text-gray-900 group-hover:text-primary transition duration-300">
-                                        Sustainable Logistics Initiative</h4>
-                                    <p class="text-sm text-gray-500">May 28, 2023</p>
-                                </div>
-                            </a>
-                            <a href="news-detail.html" class="news-sidebar-card flex group">
-                                <div class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg mr-4">
-                                    <img src="./1743837986313.jpg" alt="Recent News" class="w-full h-full object-cover">
-                                </div>
-                                <div>
-                                    <h4
-                                        class="font-medium text-gray-900 group-hover:text-primary transition duration-300">
-                                        Happy EID</h4>
-                                    <p class="text-sm text-gray-500">April 10, 2023</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+
 
                     <!-- Tags -->
                     <div class="bg-white p-6 rounded-lg shadow-md mb-8">
@@ -948,6 +812,175 @@
                     }
                 });
             });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const API = 'https://aa-dev.site/sammantrans/api/show-news';
+            const featuredEl = document.getElementById('featured-news');
+            const featuredHead = document.getElementById('featured-heading');
+            const latestHead = document.getElementById('latest-heading');
+            const industryHead = document.getElementById('industry-heading');
+            const newsSpinner = document.getElementById('news-spinner');
+            const latestGrid = document.getElementById('latest-news-grid');
+            const loadMoreBtn = document.getElementById('view-all-news-btn');
+            const industryEl = document.getElementById('industry-news');
+            const catFeatured = document.getElementById('cat-featured');
+            const catIndustry = document.getElementById('cat-industry');
+            const catInternal = document.getElementById('cat-internal');
+
+            let latestPosts = [];
+            let page = 1;
+            const perPage = 3;
+
+            fetch(API, { headers: { 'Accept': 'application/json' } })
+                .then(r => r.ok ? r.json() : Promise.reject(r))
+                .then(({ data: { featured, latest, industry, counts_all } }) => {
+                    // Sidebar counts
+                    catFeatured.textContent = counts_all.featured;
+                    catIndustry.textContent = counts_all.industry;
+                    catInternal.textContent = counts_all.latest;
+
+                    // Section headings
+                    featuredHead.textContent = `Featured News (${counts_all.featured})`;
+                    latestHead.textContent = `Latest News (${counts_all.latest})`;
+                    industryHead.textContent = `Industry News (${counts_all.industry})`;
+
+                    // Featured
+                    if (featured.length) {
+                        const f = featured[0];
+                        featuredEl.innerHTML = `
+          <div class="relative h-96 overflow-hidden">
+            <img src="${f.image}" alt="${f.title}" class="w-full h-full object-cover">
+            <div class="news-category">${f.type}</div>
+            <div class="news-date">${new Date(f.created_at).toLocaleDateString()}</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-primary mb-4">${f.title}</h3>
+            <p class="text-gray-600 mb-6">${f.content}</p>
+            <a href="post.html?id=${f.id}"
+               class="inline-block bg-primary text-white px-6 py-2 rounded-md">
+              Read Full Story
+            </a>
+          </div>`;
+                    } else {
+                        featuredEl.innerHTML = '<p class="p-6 text-gray-500">No featured news.</p>';
+                    }
+                    featuredEl.classList.remove('opacity-0');
+
+                    // Latest
+                    latestPosts = latest;
+                    newsSpinner.classList.add('hidden');
+                    latestGrid.classList.remove('opacity-0');
+                    loadMoreBtn.classList.remove('hidden');
+                    renderLatestPage();
+
+                    // Industry
+                    industryEl.innerHTML = industry.map(i => `
+        <div class="news-card bg-white rounded-lg overflow-hidden flex flex-col md:flex-row">
+          <div class="md:w-1/3 relative h-48 md:h-auto">
+            <img src="${i.image}" alt="${i.title}" class="w-full h-full object-cover">
+            <div class="news-category">${i.type}</div>
+          </div>
+          <div class="md:w-2/3 p-6">
+            <div class="text-sm text-gray-500 mb-2">${new Date(i.created_at).toLocaleDateString()}</div>
+            <h3 class="text-xl font-bold text-primary mb-3">${i.title}</h3>
+            <p class="text-gray-600 mb-4">${i.content}</p>
+            <a href="post.html?id=${i.id}" class="text-secondary inline-flex items-center">
+              Read More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      `).join('');
+                    industryEl.classList.remove('opacity-0');
+                })
+                .catch(err => {
+                    console.error(err);
+                    featuredEl.innerHTML = '<p class="p-6 text-red-600">Failed to load featured news.</p>';
+                    latestGrid.innerHTML = '<p class="text-center text-red-600">Failed to load latest news.</p>';
+                    industryEl.innerHTML = '<p class="text-center text-red-600">Failed to load industry news.</p>';
+                    loadMoreBtn.classList.add('hidden');
+                });
+
+            function renderLatestPage() {
+                const end = page * perPage;
+                latestGrid.innerHTML = latestPosts.slice(0, end).map(p => `
+      <a href="post.html?id=${p.id}" class="news-card bg-white rounded-lg overflow-hidden block">
+        <div class="relative h-48 overflow-hidden">
+          <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+          <div class="news-category">${p.type}</div>
+          <div class="news-date">${new Date(p.created_at).toLocaleDateString()}</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-primary mb-3">${p.title}</h3>
+          <p class="text-gray-600 mb-4">
+            ${p.content.length > 100 ? p.content.slice(0, 100) + '…' : p.content}
+          </p>
+          <span class="text-secondary inline-flex items-center">
+            Read More <i class="fas fa-arrow-right ml-2"></i>
+          </span>
+        </div>
+      </a>
+    `).join('');
+
+                if (end >= latestPosts.length) loadMoreBtn.classList.add('hidden');
+            }
+
+            loadMoreBtn.addEventListener('click', () => {
+                page++;
+                renderLatestPage();
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputEl = document.getElementById('search-input');
+            const btnEl = document.getElementById('search-btn');
+            const recentEl = document.getElementById('recent-news');
+
+            if (!inputEl || !btnEl || !recentEl) {
+                console.warn('Missing #search-input, #search-btn or #recent-news');
+                return;
+            }
+
+            function doSearch() {
+                const term = inputEl.value.trim();
+                if (!term) return;
+
+                recentEl.innerHTML = '<p class="text-gray-500">Searching…</p>';
+
+                fetch(
+                    `https://aa-dev.site/sammantrans/api/show-news/search-by-title/${encodeURIComponent(term)}`,
+                    { headers: { 'Accept': 'application/json' } }
+                )
+                    .then(res => {
+                        if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+                        return res.json();
+                    })
+                    .then(json => {
+                        const hits = Array.isArray(json.data.news) ? json.data.news : [];
+
+                        if (!hits.length) {
+                            recentEl.innerHTML = `<p class="text-gray-500">No articles found for “${term}.”</p>`;
+                            return;
+                        }
+
+                        recentEl.innerHTML = hits.map(post => `
+        <a href="post.html?id=${post.id}" class="news-sidebar-card flex group mb-4">
+          <div class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg mr-4">
+            <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-900 group-hover:text-primary transition">${post.title}</h4>
+            <p class="text-sm text-gray-500">${new Date(post.created_at).toLocaleDateString()}</p>
+          </div>
+        </a>
+      `).join('');
+                    })
+                    .catch(err => {
+                        console.error('Search error', err);
+                        recentEl.innerHTML = `<p class="text-primary">Search Not Found</p>`;
+                    });
+            }
+
+            btnEl.addEventListener('click', doSearch);
+            inputEl.addEventListener('keyup', e => { if (e.key === 'Enter') doSearch(); });
         });
     </script>
 </body>

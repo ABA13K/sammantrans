@@ -1090,7 +1090,7 @@
             </div>
 
             <div class="text-center mt-12">
-                <button
+                <button id="view-all-news-btn" type="button"
                     class="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-full font-medium transition duration-300">
                     View All News
                 </button>
@@ -1199,28 +1199,16 @@
                 <h3 class="text-2xl font-bold text-primary mb-2">Trusted by Industry Leaders</h3>
                 <p class="text-gray-600">We partner with the best to deliver the best</p>
             </div>
+            <div id="partners-spinner" class="flex justify-center items-center py-12">
+                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                </svg>
+            </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
-                <div class="flex justify-center w-3xl">
-                    <img src="./download.png" alt="Partner"
-                        class="h-12 opacity-70 hover:opacity-100 transition duration-300">
-                </div>
-                <div class="flex justify-center">
-                    <img src="./photo_2025-06-24_15-13-05.jpg" alt="Partner"
-                        class="h-12 opacity-70 hover:opacity-100 transition duration-300">
-                </div>
-                <div class="flex justify-center">
-                    <img src="./photo_2025-06-24_15-13-10.jpg" alt="Partner"
-                        class="h-12 opacity-70 hover:opacity-100 transition duration-300">
-                </div>
-                <div class="flex justify-center">
-                    <img src="./photo_2025-06-24_15-13-19.jpg" alt="Partner"
-                        class="h-12 opacity-70 hover:opacity-100 transition duration-300">
-                </div>
-                <div class="flex justify-center">
-                    <img src="./iata-logo-header.svg" alt="Partner"
-                        class="h-12 opacity-70 hover:opacity-100 transition duration-300">
-                </div>
+            <div id="partners-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+
 
             </div>
         </div>
@@ -1235,7 +1223,7 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">The experienced team driving Samman Trans forward</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
                 <!-- CEO -->
                 <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md transition duration-500 hover:shadow-xl scroll-slide-left"
                     style="animation-delay: 0.3s">
@@ -1282,8 +1270,8 @@
                             <img src="./Untitled.png" alt="CEO" class="w-full h-full object-cover">
                         </div>
                         <h3 class="text-xl font-bold text-primary mt-4">Samer Al Samman</h3>
-                        <p class="text-secondary font-medium mb-3">Chief Executive Officer</p>
-                        <p class="text-gray-600 mb-4">With over 20 years in the logistics industry, Qasem founded Samman
+                        <p class="text-secondary font-medium mb-3">Founder</p>
+                        <p class="text-gray-600 mb-4">With over 25 years in the logistics industry, Qasem founded Samman
                             Trans with a vision to revolutionize global supply chains through technology and innovation.
                         </p>
                         <div class="flex space-x-3">
@@ -1301,35 +1289,7 @@
                 </div>
 
                 <!-- Technology Manager -->
-                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md transition duration-500 hover:shadow-xl scroll-slide-left"
-                    style="animation-delay: 0.7s">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="./1740455143727.jpg" alt="Technology Manager" class="w-full h-full object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent h-20">
-                        </div>
-                    </div>
-                    <div class="p-6 relative">
-                        <div
-                            class="absolute -top-8 left-6 w-16 h-16 rounded-full border-4 border-white overflow-hidden">
-                            <img src="./1740455143727.jpg" alt="Technology Manager" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mt-4">Qasim Al Malih</h3>
-                        <p class="text-secondary font-medium mb-3">Chief Technology Officer</p>
-                        <p class="text-gray-600 mb-4">Michael leads our digital transformation, developing cutting-edge
-                            tracking and logistics management systems.</p>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-primary hover:text-secondary transition duration-300">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="text-primary hover:text-secondary transition duration-300">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="text-primary hover:text-secondary transition duration-300">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
             <!-- Executive Summary -->
@@ -1630,11 +1590,50 @@
         document.addEventListener('DOMContentLoaded', () => {
             const spinner = document.getElementById('news-spinner');
             const grid = document.getElementById('latest-news-grid');
+            const loadMore = document.getElementById('view-all-news-btn');
 
-            // 1️⃣ ensure spinner is visible, grid is hidden
+            let posts = [];
+            let currentPage = 1;
+            const perPage = 3;
+
+            function renderUpTo(page) {
+                // show posts[0 .. page*perPage-1]
+                const end = page * perPage;
+                const slice = posts.slice(0, end);
+                grid.innerHTML = slice.map(post => `
+      <a href="post.html?id=${post.id}"
+         class="news-card block bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+        <div class="h-48 overflow-hidden">
+          <img src="${post.image}" alt="${post.title}"
+               class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center text-sm text-gray-500 mb-2">
+            <span>${new Date(post.created_at).toLocaleDateString()}</span>
+            <span class="mx-2">•</span>
+            <span>${post.type}</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">${post.title}</h3>
+          <p class="text-gray-600 mb-4">
+            ${post.content.length > 100
+                        ? post.content.slice(0, 100) + '…'
+                        : post.content}
+          </p>
+          <span class="text-secondary font-medium flex items-center">
+            Read more <i class="fas fa-arrow-right ml-2"></i>
+          </span>
+        </div>
+      </a>
+    `).join('');
+                // Hide "Load More" if we've shown everything
+                if (end >= posts.length) {
+                    loadMore.classList.add('hidden');
+                }
+            }
+
+            // initial fetch
             spinner.classList.remove('hidden');
             grid.classList.add('hidden');
-
             fetch('https://aa-dev.site/sammantrans/api/show-news', {
                 headers: { 'Accept': 'application/json' }
             })
@@ -1647,48 +1646,72 @@
                     return res.json();
                 })
                 .then(json => {
-                    // 2️⃣ hide spinner, show grid
+                    posts = json.data.latest;
                     spinner.classList.add('hidden');
                     grid.classList.remove('hidden');
-
-                    const posts = json.data.latest;
-                    grid.innerHTML = posts.map(post => `
-      <a href="post.html?id=${post.id}"
-         class="news-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
-        <div class="h-48 overflow-hidden">
-          <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center text-sm text-gray-500 mb-2">
-            <span>${new Date(post.created_at).toLocaleDateString()}</span>
-            <span class="mx-2">•</span>
-            <span>${post.type}</span>
-          </div>
-          <h3 class="text-xl font-bold text-primary mb-3">${post.title}</h3>
-          <p class="text-gray-600 mb-4">
-            ${post.content.length > 100
-                            ? post.content.slice(0, 100) + '…'
-                            : post.content}
-          </p>
-          <span class="text-secondary font-medium flex items-center">
-            Read more <i class="fas fa-arrow-right ml-2"></i>
-          </span>
-        </div>
-      </a>
-    `).join('');
+                    renderUpTo(currentPage);
                 })
                 .catch(err => {
                     console.error(err);
-                    // 3️⃣ hide spinner, show grid (with error message)
+                    spinner.classList.add('hidden');
+                    grid.classList.remove('hidden');
+                    grid.innerHTML = '<p class="col-span-full text-center text-red-600">Failed to load news.</p>';
+                    loadMore.classList.add('hidden');
+                });
+
+            // "View All News" now loads more
+            loadMore.addEventListener('click', () => {
+                currentPage++;
+                renderUpTo(currentPage);
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const spinner = document.getElementById('partners-spinner');
+            const grid = document.getElementById('partners-grid');
+
+            // Show spinner, hide grid
+            spinner.classList.remove('hidden');
+            grid.classList.add('hidden');
+
+            fetch('https://aa-dev.site/sammantrans/api/show-companies', {
+                headers: { 'Accept': 'application/json' }
+            })
+                .then(async res => {
+                    if (!res.ok) {
+                        const txt = await res.text();
+                        console.error('HTTP', res.status, txt);
+                        throw new Error(`Status ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then(json => {
+                    const companies = json.data;  // array of { id, name, image, website_url, … }
+
+                    // Build logo links
+                    grid.innerHTML = companies.map(c => `
+      <a href="${c.website_url}" target="_blank"
+         class="flex justify-center">
+        <img src="${c.image}"
+             alt="${c.name}"
+             class="h-full opacity-70 hover:opacity-100 transition duration-300 w-full"/>
+      </a>
+    `).join('');
+
+                    // Hide spinner, show grid
+                    spinner.classList.add('hidden');
+                    grid.classList.remove('hidden');
+                })
+                .catch(err => {
+                    console.error(err);
                     spinner.classList.add('hidden');
                     grid.classList.remove('hidden');
                     grid.innerHTML = `
       <p class="col-span-full text-center text-red-600">
-        Failed to load latest news.
+        Failed to load partners.
       </p>
     `;
                 });
-        })
+        });
 
     </script>
 </body>

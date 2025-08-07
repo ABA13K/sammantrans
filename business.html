@@ -516,103 +516,26 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Event 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md exhibition-card animate-slide-up"
-                    style="animation-delay: 0.2s">
-                    <img src="./ArabEX.jpg" alt="Arab Logistics Exhibition" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
-                                <i class="fas fa-calendar-alt text-white"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Date</p>
-                                <p class="font-medium">15-18 November 2023</p>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-2">Arab Logistics Exhibition</h3>
-                        <p class="text-gray-600 mb-4">
-                            The premier logistics and supply chain event in the Middle East, showcasing the latest
-                            innovations in freight transport and warehousing.
-                        </p>
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-map-marker-alt text-secondary mr-2"></i>
-                            <span class="text-gray-600">Dubai World Trade Centre, UAE</span>
-                        </div>
-                        <a href="#register-interest"
-                            class="inline-block bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full text-sm font-medium transition duration-300">
-                            Register Interest
-                        </a>
-                    </div>
-                </div>
+            <!-- Spinner -->
+            <div id="upcoming-events-spinner" class="flex justify-center py-12">
+                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                </svg>
+            </div>
 
-                <!-- Event 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md exhibition-card animate-slide-up"
-                    style="animation-delay: 0.4s">
-                    <img src="./Syria.jpg" alt="Syria Trade Expo" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
-                                <i class="fas fa-calendar-alt text-white"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Date</p>
-                                <p class="font-medium">5-8 March 2024</p>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-2">Syria Trade Expo</h3>
-                        <p class="text-gray-600 mb-4">
-                            The most important international trade exhibition in Syria, bringing together businesses
-                            from across industries to explore new opportunities.
-                        </p>
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-map-marker-alt text-secondary mr-2"></i>
-                            <span class="text-gray-600">Damascus Exhibition City, Syria</span>
-                        </div>
-                        <a href="#register-interest"
-                            class="inline-block bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full text-sm font-medium transition duration-300">
-                            Register Interest
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md exhibition-card animate-slide-up"
-                    style="animation-delay: 0.6s">
-                    <img src="./Iraq.jpg" alt="Middle East Transport & Logistics" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
-                                <i class="fas fa-calendar-alt text-white"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Date</p>
-                                <p class="font-medium">10-12 September 2024</p>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-2">Middle East Transport & Logistics</h3>
-                        <p class="text-gray-600 mb-4">
-                            A specialized exhibition focusing on transport solutions, freight forwarding, and supply
-                            chain management for the Middle East market.
-                        </p>
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-map-marker-alt text-secondary mr-2"></i>
-                            <span class="text-gray-600">Amman International Motor Show, Jordan</span>
-                        </div>
-                        <a href="#register-interest"
-                            class="inline-block bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full text-sm font-medium transition duration-300">
-                            Register Interest
-                        </a>
-                    </div>
-                </div>
+            <!-- Grid (initially empty + hidden) -->
+            <div id="upcoming-events-grid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JS will inject cards here -->
             </div>
         </div>
     </section>
 
     <!-- Past Events Timeline -->
-    <section class="py-20 bg-white">
+    <section id="ended-events" class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
                     Our <span class="text-secondary">Exhibition</span> History
@@ -622,95 +545,17 @@
                 </p>
             </div>
 
-            <div class="space-y-8">
-                <!-- Timeline Item 1 -->
-                <div class="timeline-item animate-slide-up" style="animation-delay: 0.2s">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-primary">International Transport & Logistics Fair 2023
-                            </h3>
-                            <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">Beirut,
-                                Lebanon</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            Showcased our cross-border transport solutions and participated in panel discussions about
-                            regional logistics challenges.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">Panel
-                                Speaker</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">Innovation
-                                Award</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">100+
-                                Meetings</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="timeline-item animate-slide-up" style="animation-delay: 0.4s">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-primary">Syria Rebuild Expo 2022</h3>
-                            <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">Damascus,
-                                Syria</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            Presented our capabilities in supporting reconstruction efforts through reliable logistics
-                            solutions for construction materials and equipment.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">Gold
-                                Sponsor</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">Keynote
-                                Presentation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="timeline-item animate-slide-up" style="animation-delay: 0.6s">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-primary">Gulf Logistics Conference 2021</h3>
-                            <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">Dubai,
-                                UAE</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            Participated as exhibitors and shared our expertise in Middle East logistics networks and
-                            customs clearance procedures.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">Workshop
-                                Leader</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">New
-                                Partnerships</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 4 -->
-                <div class="timeline-item animate-slide-up" style="animation-delay: 0.8s">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-primary">Iraq Trade Connect 2020</h3>
-                            <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">Baghdad,
-                                Iraq</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            Demonstrated our Iraq-Syria logistics corridor solutions and established several new
-                            business
-                            relationships.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">Featured
-                                Exhibitor</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">Market
-                                Expansion</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- Spinner -->
+            <div id="ended-events-spinner" class="flex justify-center py-12">
+                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                </svg>
             </div>
+
+            <!-- Timeline Container (hidden until data loads) -->
+            <div id="ended-events-timeline" class="hidden space-y-8"></div>
         </div>
     </section>
 
@@ -975,7 +820,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Mobile menu functionality
+            // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const closeButton = document.getElementById('close-mobile-menu');
@@ -986,51 +831,134 @@
                     mobileMenu.classList.add('translate-x-0');
                     document.body.style.overflow = 'hidden';
                 } else {
-                    mobileMenu.classList.remove('translate-x-0');
                     mobileMenu.classList.add('translate-x-full');
+                    mobileMenu.classList.remove('translate-x-0');
                     document.body.style.overflow = 'auto';
                 }
             }
 
             mobileMenuButton.addEventListener('click', () => toggleMobileMenu(true));
             closeButton.addEventListener('click', () => toggleMobileMenu(false));
-
-            // FAQ toggle functionality
-            document.querySelectorAll('.faq-toggle').forEach(button => {
-                button.addEventListener('click', () => {
-                    const content = button.nextElementSibling;
-                    const icon = button.querySelector('i');
-
-                    // Toggle content
-                    content.classList.toggle('hidden');
-
-                    // Toggle icon
-                    if (content.classList.contains('hidden')) {
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    } else {
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    }
-                });
+            mobileMenu.addEventListener('click', e => {
+                if (e.target === mobileMenu) toggleMobileMenu(false);
             });
 
-            // Smooth scrolling for anchor links
+            // Smooth scrolling for hash links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
                     const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
+                    if (targetId === '#' || !document.querySelector(targetId)) return;
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
                 });
             });
+
+            // Upcoming Events Loader
+            (function loadUpcoming() {
+                const spinner = document.getElementById('upcoming-events-spinner');
+                const grid = document.getElementById('upcoming-events-grid');
+
+                fetch('https://aa-dev.site/sammantrans/api/show-projects-exhibitions/upcoming-lasted')
+                    .then(r => r.json())
+                    .then(json => {
+                        spinner.classList.add('hidden');
+                        grid.classList.remove('hidden');
+                        const items = json.data || [];
+                        if (!items.length) {
+                            grid.innerHTML = `<p class="col-span-full text-center text-gray-500">
+                              No upcoming events.
+                            </p>`;
+                            return;
+                        }
+                        grid.innerHTML = items.map(evt => `
+          <div class="bg-white rounded-xl overflow-hidden shadow-md exhibition-card animate-slide-up">
+            <img src="${evt.image}" alt="${evt.title}" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
+                  <i class="fas fa-calendar-alt text-white"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">Date</p>
+                  <p class="font-medium">${new Date(evt.date).toLocaleDateString()}</p>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-2">${evt.title}</h3>
+              <p class="text-gray-600 mb-4">${evt.description}</p>
+              <div class="flex items-center mb-4">
+                <i class="fas fa-map-marker-alt text-secondary mr-2"></i>
+                <span class="text-gray-600">${evt.country}</span>
+              </div>
+              <a href="#register-interest"
+                 class="inline-block bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full text-sm font-medium transition duration-300">
+                Register Interest
+              </a>
+            </div>
+          </div>
+        `).join('');
+                    })
+                    .catch(() => {
+                        spinner.classList.add('hidden');
+                        grid.classList.remove('hidden');
+                        grid.innerHTML = `<p class="col-span-full text-center text-red-600">
+                            Failed to load upcoming events.
+                          </p>`;
+                    });
+            })();
+
+            // Past Exhibitions Timeline Loader
+            (function loadEnded() {
+                const spinner = document.getElementById('ended-events-spinner');
+                const timeline = document.getElementById('ended-events-timeline');
+
+                fetch('https://aa-dev.site/sammantrans/api/show-projects-exhibitions/ended-lasted')
+                    .then(r => r.json())
+                    .then(json => {
+                        spinner.classList.add('hidden');
+                        timeline.classList.remove('hidden');
+                        const items = json.data || [];
+                        if (!items.length) {
+                            timeline.innerHTML = `<p class="text-center text-gray-500">
+                                No past exhibitions found.
+                              </p>`;
+                            return;
+                        }
+
+                        items.forEach((evt, idx) => {
+                            const card = document.createElement('div');
+                            card.className = 'timeline-item bg-gray-50 p-6 rounded-lg animate-slide-up';
+                            card.style.animationDelay = `${0.2 * (idx + 1)}s`;
+
+                            card.innerHTML = `
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="${evt.image}"
+                 alt="${evt.title}"
+                 class="w-full h-48 object-cover">
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-primary">${evt.title}</h3>
+            <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">
+              ${evt.country}
+            </span>
+          </div>
+          <p class="text-gray-600 mb-2">${evt.description}</p>
+          <div class="text-sm text-gray-500 flex items-center">
+            <i class="fas fa-calendar-alt mr-2"></i>
+            ${new Date(evt.date).toLocaleDateString()}
+          </div>
+        `;
+                            timeline.appendChild(card);
+                        });
+                    })
+                    .catch(() => {
+                        spinner.classList.add('hidden');
+                        timeline.classList.remove('hidden');
+                        timeline.innerHTML = `<p class="text-center text-red-600">
+                              Failed to load past exhibitions.
+                            </p>`;
+                    });
+            })()
+
         });
 
     </script>
