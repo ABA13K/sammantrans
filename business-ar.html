@@ -2,11 +2,13 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المعارض والأعمال | سمان ترانس</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الأعمال والمعارض | سمن ترانس</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -15,6 +17,7 @@
                         primary: '#003869',
                         secondary: '#F59E0B',
                         accent: '#3B82F6',
+                        'primary-light': '#0b4e86'
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -22,43 +25,68 @@
                         'slide-up': 'slideUp 1s ease-out',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(50px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
+                        float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(50px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'Arial', 'sans-serif'],
                     }
                 }
             }
         }
+        
+        // Language switcher function
+        function switchLanguage() {
+            const currentPath = window.location.pathname;
+            const currentFile = currentPath.split('/').pop();
+            
+            // Map Arabic files to English equivalents
+            const languageMap = {
+                'index-ar.html': 'index.html',
+                'aboutus-ar.html': 'aboutus.html',
+                'contactus-ar.html': 'contactus.html',
+                'news-ar.html': 'news.html',
+                'ocean-ar.html': 'ocean.html',
+                'airfreight-ar.html': 'airfreight.html',
+                'transport-ar.html': 'transport.html',
+                'ware-ar.html': 'ware.html',
+                'custom-ar.html': 'custom.html',
+                'business-ar.html': 'business.html',
+                'tools-ar.html': 'tools.html',
+                'joinus-ar.html': 'joinus.html'
+            };
+            
+            // If current file is in the map, navigate to English version
+            if (languageMap[currentFile]) {
+                window.location.href = languageMap[currentFile];
+            } else {
+                // Fallback to index.html
+                window.location.href = 'index.html';
+            }
+        }
     </script>
+
     <style>
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 56, 105, 0.85), rgba(0, 56, 105, 0.8)), url('./exhibition-hero.jpg');
+            background-image: linear-gradient(rgba(0, 56, 105, .85), rgba(0, 56, 105, .8)), url('./exhibition-hero.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
         .exhibition-card {
-            transition: all 0.3s ease;
+            transition: all .3s ease
         }
 
         .exhibition-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)
         }
 
         .timeline-item {
             position: relative;
-            padding-right: 3rem;
+            padding-right: 3rem
         }
 
         .timeline-item:before {
@@ -75,45 +103,45 @@
 
         @keyframes fadeIn {
             from {
-                opacity: 0;
+                opacity: 0
             }
 
             to {
-                opacity: 1;
+                opacity: 1
             }
         }
 
         @keyframes slideUp {
             from {
                 transform: translateY(30px);
-                opacity: 0;
+                opacity: 0
             }
 
             to {
                 transform: translateY(0);
-                opacity: 1;
+                opacity: 1
             }
         }
 
         .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
+            animation: fadeIn 1s ease-out forwards
         }
 
         .animate-slide-up {
-            animation: slideUp 1s ease-out forwards;
+            animation: slideUp 1s ease-out forwards
         }
 
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
+            gap: 1rem
         }
 
         .gallery-item {
             overflow: hidden;
-            border-radius: 0.5rem;
+            border-radius: .5rem;
             position: relative;
-            padding-bottom: 100%;
+            padding-bottom: 100%
         }
 
         .gallery-item img {
@@ -121,223 +149,127 @@
             object-fit: cover;
             width: 100%;
             height: 100%;
-            transition: transform 0.3s ease;
+            transition: transform .3s ease
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.05)
         }
 
         .bg-primary-dark {
-            background-color: #002851;
+            background-color: #002851
         }
 
         @keyframes zoomPan {
             0% {
-                transform: scale(1) translateY(0);
+                transform: scale(1) translateY(0)
             }
 
             50% {
-                transform: scale(1.1) translateY(-10px);
+                transform: scale(1.1) translateY(-10px)
             }
 
             100% {
-                transform: scale(1) translateY(0);
+                transform: scale(1) translateY(0)
             }
         }
 
         .animate-zoom-pan {
-            animation: zoomPan 20s ease-in-out infinite;
+            animation: zoomPan 20s ease-in-out infinite
         }
 
-        /* Content animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
-        /* RTL specific styles */
-        .rtl-direction {
-            direction: rtl;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .text-left {
-            text-align: left;
-        }
-
-        .mr-3 {
-            margin-left: 0.75rem;
-            margin-right: 0;
-        }
-
-        .ml-3 {
-            margin-right: 0.75rem;
-            margin-left: 0;
-        }
-
-        .pl-4 {
-            padding-right: 1rem;
-            padding-left: 0;
-        }
-
-        /* .left-1/2 {
-            right: 50%;
-            left: auto;
-        }
-
-        .translate-x-1/2 {
-            transform: translateX(50%);
-        }
-
-        .-translate-x-1/2 {
-            transform: translateX(-50%);
-        } */
-
-        .border-r {
-            border-left: 1px solid;
-            border-right: none;
-        }
-
-        .border-l {
-            border-right: 1px solid;
-            border-left: none;
-        }
-
-        .right-6 {
-            left: 1.5rem;
-            right: auto;
-        }
-
-        .left-0 {
-            right: 0;
-            left: auto;
-        }
-
-        .text-start {
-            text-align: right;
-        }
-
-        .text-end {
-            text-align: left;
-        }
-
-        .float-right {
-            float: left;
-        }
-
-        .float-left {
-            float: right;
-        }
+        /* تصحيحات RTL لخط التبويب أسفل الروابط */
+       
     </style>
 </head>
 
-<body class="font-sans antialiased rtl-direction">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+<body class="font-sans antialiased">
+    <!-- النافبار -->
+       <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative flex h-24 items-center">
-                <!-- Logo -->
+            <div class="relative flex h-24 items-center text-lg">
+
+                <!-- الشعار -->
                 <div class="flex-shrink-0">
-                    <a href="index.html" class="flex items-center">
-                        <img src="./12.png" alt="Samman Trans Logo" class="h-24 w-auto">
+                    <a href="index-ar.html" class="flex items-center">
+                        <img src="./12.png" alt="شعار سمن ترانس" class="h-24 w-auto">
                     </a>
                 </div>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex flex-1 justify-center ml-6">
-                    <div class="flex items-center space-x-8">
-                        <a href="index.html"
-                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                <!-- روابط سطح المكتب -->
+                <div class="hidden md:flex flex-1 justify-center mr-6">
+                    <div class="flex items-center space-x-8 space-x-reverse">
+                        <a href="index-ar.html"
+                           class="text-[#003869] font-bold mr-8 hover:text-[#0056a3] transition duration-300 relative group text-center">
                             الرئيسية
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#"
-                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            الأخبار
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
-                        <!-- Services Dropdown -->
+                        <a href="./news-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الأخبار
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- قائمة الخدمات -->
                         <div class="relative group">
                             <button
                                 class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
                                 الخدمات
-                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-4 h-4 mr-1 transition-transform duration-300 group-hover:rotate-180"
+                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7" />
+                                          d="M19 9l-7 7-7-7" />
                                 </svg>
-                                <span
-                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                             </button>
 
-                            <!-- Dropdown Menu -->
+                            <!-- القائمة المنسدلة -->
                             <div
                                 class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
-                                <a href="ocean-freight.html"
-                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                <a href="./ocean-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-ship text-blue-600"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-gray-900">الشحن البحري</h4>
-                                            <p class="text-xs text-gray-500">خدمات لوجستية بحرية عالمية</p>
+                                            <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
                                         </div>
                                     </div>
                                 </a>
 
-                                <a href="air-freight.html"
-                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                <a href="./airfreight-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-plane text-blue-600"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-gray-900">الشحن الجوي</h4>
-                                            <p class="text-xs text-gray-500">خدمات شحن جوي ذات أولوية</p>
+                                            <p class="text-xs text-gray-500">خدمات شحن جوي أولوية</p>
                                         </div>
                                     </div>
                                 </a>
 
-                                <a href="road-transport.html"
-                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                <a href="./transport-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-truck text-blue-600"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-gray-900">النقل البري</h4>
-                                            <p class="text-xs text-gray-500">حلول النقل بالشاحنات على مستوى البلاد</p>
+                                            <p class="text-xs text-gray-500">حلول نقل بري محلية وعابرة للحدود</p>
                                         </div>
                                     </div>
                                 </a>
 
-                                <a href="warehousing.html"
-                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                <a href="./ware-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-warehouse text-blue-600"></i>
                                         </div>
                                         <div>
@@ -347,177 +279,175 @@
                                     </div>
                                 </a>
 
-                                <a href="customs-clearance.html"
-                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                <a href="./custom-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-passport text-blue-600"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-gray-900">التخليص الجمركي</h4>
-                                            <p class="text-xs text-gray-500">معاملات حدودية سلسة</p>
+                                            <p class="text-xs text-gray-500">عبور حدودي سلس</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
 
-                        <a href="business-exhibitions.html"
-                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            المعارض والأعمال
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        <a href="./business-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الأعمال والمعارض
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
-                        <a href="#tracking"
-                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                        <a href="./tools-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             الأدوات
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
-                        <a href="./aboutus.html"
-                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            عن الشركة
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        <a href="./aboutus-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            من نحن
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
-                        <a href="#contact"
-                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            اتصل بنا
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        <a href="./contactus-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            تواصل معنا
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./joinus-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            انضم إلينا
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Get Quote Button -->
-                <div class="hidden md:block">
-                    <button class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
-                         text-white px-6 py-2 rounded-md font-bold transition-all duration-300
-                         transform hover:scale-105 shadow-md hover:shadow-lg">
-                        اطلب عرض سعر
-                    </button>
+                <!-- محوّل اللغة -->
+                <div class="hidden md:flex items-center mr-4 ml-5">
+                    <a href="javascript:void(0)" onclick="switchLanguage()" class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
+                    <span class="mx-2 text-gray-400">|</span>
+                    <a href="index-ar.html" class="text-sm font-bold text-primary">العربية</a>
                 </div>
 
-                <!-- Mobile menu button -->
+                <!-- زر عرض السعر -->
+                <div class="hidden md:block">
+                    <a href="#quote-form"
+                       class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
+                              text-white px-6 py-2 rounded-md font-bold transition-all duration-300
+                              transform hover:scale-105 shadow-md hover:shadow-lg">
+                        احصل على عرض سعر
+                    </a>
+                </div>
+
+                <!-- زر قائمة الجوال -->
                 <div class="md:hidden">
                     <button id="mobile-menu-button"
-                        class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300">
+                            class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
+                                  d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full mobile-menu-transition"
-            id="mobile-menu">
+        <!-- قائمة الجوال -->
+        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out"
+             id="mobile-menu" x-data="{ openServices: false }">
             <div class="flex flex-col h-full p-6 overflow-y-auto">
-                <!-- Close button -->
-                <div class="flex justify-end mb-6">
+                <!-- زر الإغلاق -->
+                <div class="flex justify-start mb-6">
                     <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0" 24 24">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
+                                  d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
 
-                <!-- Mobile navigation links -->
+                <!-- روابط الجوال -->
                 <div class="space-y-4">
-                    <a href="index.html"
-                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الرئيسية</a>
+                    <a href="./index-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الرئيسية</a>
 
-                    <!-- Services Accordion -->
-                    <div x-data="{ open: false }" class="border-b border-gray-200 pb-4">
-                        <button @click="open = !open"
-                            class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-900 hover:text-primary">
+                    <!-- أكورديون الخدمات -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button @click="openServices = !openServices"
+                                class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-900 hover:text-primary">
                             <span>الخدمات</span>
                             <svg class="w-5 h-5 transition-transform duration-200"
-                                :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
+                                 :class="{ 'transform rotate-180': openServices }" fill="none" stroke="currentColor"
+                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7" />
+                                      d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
 
-                        <div x-show="open" x-collapse class="mt-2 space-y-3 pl-4">
-                            <a href="ocean-freight.html"
-                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-ship text-primary mr-3 w-5 text-center"></i>
+                        <div x-show="openServices" x-collapse class="mt-2 space-y-3 pr-4">
+                            <a href="./ocean-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-ship text-primary ml-3 w-5 text-center"></i>
                                 الشحن البحري
                             </a>
-                            <a href="air-freight.html"
-                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-plane text-primary mr-3 w-5 text-center"></i>
+                            <a href="./airfreight-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-plane text-primary ml-3 w-5 text-center"></i>
                                 الشحن الجوي
                             </a>
-                            <a href="road-transport.html"
-                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-truck text-primary mr-3 w-5 text-center"></i>
+                            <a href="./transport-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-truck text-primary ml-3 w-5 text-center"></i>
                                 النقل البري
                             </a>
-                            <a href="warehousing.html"
-                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-warehouse text-primary mr-3 w-5 text-center"></i>
+                            <a href="./ware-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-warehouse text-primary ml-3 w-5 text-center"></i>
                                 التخزين
                             </a>
-                            <a href="customs-clearance.html"
-                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-passport text-primary mr-3 w-5 text-center"></i>
+                            <a href="./custom-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-passport text-primary ml-3 w-5 text-center"></i>
                                 التخليص الجمركي
                             </a>
                         </div>
                     </div>
 
-                    <a href="business-exhibitions.html"
-                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">المعارض والأعمال</a>
-                    <a href="#tracking"
-                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">التتبع</a>
-                    <a href="aboutus.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">عن
-                        الشركة</a>
-                    <a href="#contact" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">اتصل
-                        بنا</a>
+                    <a href="./business-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأعمال والمعارض</a>
+                    <a href="./tools-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأدوات</a>
+                    <a href="./aboutus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">من نحن</a>
+                    <a href="./contactus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">تواصل معنا</a>
+                    <a href="./joinus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">انضم إلينا</a>
 
-                    <!-- Get Quote Button for Mobile -->
-                    <button
-                        class="mt-6 w-full bg-gradient-to-r from-[#003869] to-[#0056a3] text-white py-3 rounded-md font-bold transition-all duration-300">
-                        اطلب عرض سعر
-                    </button>
+                    <!-- زر عرض السعر للجوال -->
+                    <a href="#quote-form"
+                       class="mt-6 w-full text-center bg-gradient-to-r from-[#003869] to-[#0056a3] text-white py-3 rounded-md font-bold transition-all duration-300">
+                        احصل على عرض سعر
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- هيرو -->
     <section class="relative h-[80vh] min-h-[600px] overflow-hidden">
-        <!-- Background Image with Primary Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="./busss.jpg" alt="Business Exhibition Background"
-                class="w-full h-full object-cover animate-zoom-pan" style="animation: zoomPan 20s linear infinite;">
+            <img src="./busss.jpg" alt="خلفية معرض أعمال" class="w-full h-full object-cover animate-zoom-pan"
+                style="animation: zoomPan 20s linear infinite;">
             <div class="absolute inset-0 bg-primary/90"></div>
         </div>
 
-        <!-- Content -->
         <div class="relative z-10 h-full flex items-center">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div class="md:w-2/3 lg:w-1/2 animate-fade-in-up">
+                <div class="md:w-2/3 lg:w-1/2 animate-fade-in">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
-                        <span class="text-secondary">المعارض</span> والأعمال
+                        <span class="text-secondary">الأعمال</span> والمعارض
                     </h1>
                     <p class="text-xl md:text-2xl mb-8 text-white/90">
-                        عرض خبراتنا اللوجستية في الفعاليات الصناعية وبناء علاقات عمل قيمة عبر المنطقة.
+                        نعرض خبراتنا اللوجستية في الفعاليات المتخصصة ونبني علاقات أعمال قيّمة عبر المنطقة.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#upcoming-events"
                             class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center shadow-lg">
-                            الفعاليات القادمة
+                            فعاليات قادمة
                         </a>
                         <a href="#gallery"
                             class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center shadow-lg">
@@ -529,356 +459,179 @@
         </div>
     </section>
 
-    <!-- Introduction Section -->
+    <!-- مقدمة -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-                    التواصل من خلال <span class="text-secondary">الفعاليات الصناعية</span>
+                    نتواصل عبر <span class="text-secondary">الفعاليات</span> المتخصصة
                 </h2>
                 <p class="text-gray-600 max-w-4xl mx-auto">
-                    تشارك سمان ترانس بشكل فعال في معارض اللوجستيات والتجارة الرئيسية في الشرق الأوسط، لعرض خدماتنا،
-                    والتواصل مع شركاء الصناعة، والبقاء في طليعة الابتكار في مجال النقل.
+                    تشارك سمن ترانس بفاعلية في المعارض والملتقيات الكبرى بقطاع اللوجستيات والتجارة في الشرق الأوسط،
+                    لإبراز خدماتنا، وبناء شبكة علاقات مهنية، والبقاء في طليعة الابتكار في النقل.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-8 rounded-xl text-center animate-slide-up" style="animation-delay: 0.2s">
+                <div class="bg-gray-50 p-8 rounded-xl text-center animate-slide-up" style="animation-delay:.2s">
                     <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-handshake text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-4">التواصل</h3>
-                    <p class="text-gray-600">
-                        بناء علاقات قيمة مع العملاء والموردين وخبراء الصناعة في الفعاليات التجارية الرئيسية.
+                    <h3 class="text-xl font-bold text-primary mb-4">شبكات وعلاقات</h3>
+                    <p class="text-gray-600">نبني علاقات قيّمة مع العملاء والموردين والخبراء خلال الفعاليات الرئيسية.
                     </p>
                 </div>
 
-                <div class="bg-gray-50 p-8 rounded-xl text-center animate-slide-up" style="animation-delay: 0.4s">
+                <div class="bg-gray-50 p-8 rounded-xl text-center animate-slide-up" style="animation-delay:.4s">
                     <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-bullhorn text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-4">الظهور</h3>
-                    <p class="text-gray-600">
-                        عرض إمكانياتنا وتعزيز مكانتنا كمزود رائد للخدمات اللوجستية في المنطقة.
-                    </p>
+                    <h3 class="text-xl font-bold text-primary mb-4">تعزيز العلامة</h3>
+                    <p class="text-gray-600">نستعرض قدراتنا ونرسخ مكانتنا كمزوّد لوجستي رائد في المنطقة.</p>
                 </div>
 
-                <div class="bg-gray-50 p-8 rounded-xl text-center animate-slide-up" style="animation-delay: 0.6s">
+                <div class="bg-gray-50 p-8 rounded-xl text-center animate-slide-up" style="animation-delay:.6s">
                     <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-lightbulb text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-4">رؤى الصناعة</h3>
-                    <p class="text-gray-600">
-                        البقاء على اطلاع بأحدث الاتجاهات والتقنيات واللوائح في قطاع اللوجستيات.
-                    </p>
+                    <h3 class="text-xl font-bold text-primary mb-4">رؤى قطاعية</h3>
+                    <p class="text-gray-600">نواكب أحدث التوجهات والتقنيات واللوائح في قطاع اللوجستيات.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Upcoming Events Section -->
+    <!-- فعاليات قادمة -->
     <section id="upcoming-events" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-                    الفعاليات <span class="text-secondary">القادمة</span>
-                </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    حيث يمكنك مقابلة ممثلي سمان ترانس في الأشهر القادمة
-                </p>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">فعاليات</span>
+                    قادمة</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">تعرف أين يمكنك لقاء ممثلي سمن ترانس في الأشهر المقبلة</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Event 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md exhibition-card animate-slide-up"
-                    style="animation-delay: 0.2s">
-                    <img src="./ArabEX.jpg" alt="Arab Logistics Exhibition" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
-                                <i class="fas fa-calendar-alt text-white"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">التاريخ</p>
-                                <p class="font-medium">15-18 نوفمبر 2023</p>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-2">معرض العرب للوجستيات</h3>
-                        <p class="text-gray-600 mb-4">
-                            الفعالية الرئيسية للوجستيات وسلسلة التوريد في الشرق الأوسط، تعرض أحدث الابتكارات في نقل
-                            البضائع والتخزين.
-                        </p>
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-map-marker-alt text-secondary mr-2"></i>
-                            <span class="text-gray-600">دبي وورلد تريد سنتر، الإمارات</span>
-                        </div>
-                        <a href="#register-interest"
-                            class="inline-block bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full text-sm font-medium transition duration-300">
-                            سجل اهتمامك
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Event 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md exhibition-card animate-slide-up"
-                    style="animation-delay: 0.4s">
-                    <img src="./Syria.jpg" alt="Syria Trade Expo" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
-                                <i class="fas fa-calendar-alt text-white"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">التاريخ</p>
-                                <p class="font-medium">5-8 مارس 2024</p>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-2">معرض سوريا التجاري</h3>
-                        <p class="text-gray-600 mb-4">
-                            أهم معرض تجاري دولي في سوريا، يجمع الشركات من مختلف الصناعات لاستكشاف فرص جديدة.
-                        </p>
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-map-marker-alt text-secondary mr-2"></i>
-                            <span class="text-gray-600">مدينة المعارض، دمشق، سوريا</span>
-                        </div>
-                        <a href="#register-interest"
-                            class="inline-block bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full text-sm font-medium transition duration-300">
-                            سجل اهتمامك
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md exhibition-card animate-slide-up"
-                    style="animation-delay: 0.6s">
-                    <img src="./Iraq.jpg" alt="Middle East Transport & Logistics" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
-                                <i class="fas fa-calendar-alt text-white"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">التاريخ</p>
-                                <p class="font-medium">10-12 سبتمبر 2024</p>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-2">النقل واللوجستيات في الشرق الأوسط</h3>
-                        <p class="text-gray-600 mb-4">
-                            معرض متخصص يركز على حلول النقل والشحن وإدارة سلسلة التوريد لسوق الشرق الأوسط.
-                        </p>
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-map-marker-alt text-secondary mr-2"></i>
-                            <span class="text-gray-600">معرض عمان الدولي للسيارات، الأردن</span>
-                        </div>
-                        <a href="#register-interest"
-                            class="inline-block bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full text-sm font-medium transition duration-300">
-                            سجل اهتمامك
-                        </a>
-                    </div>
-                </div>
+            <div id="upcoming-events-spinner" class="flex justify-center py-12">
+                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                </svg>
             </div>
+
+            <div id="upcoming-events-grid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
 
-    <!-- Past Events Timeline -->
-    <section class="py-20 bg-white">
+    <!-- سجل المشاركات السابقة -->
+    <section id="ended-events" class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-                    سجل <span class="text-secondary">المعارض</span> لدينا
-                </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    الفعاليات الرئيسية التي شاركت فيها سمان ترانس وساهمت في مجتمع اللوجستيات
-                </p>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">سجل <span
+                        class="text-secondary">المعارض</span> لدينا</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">فعاليات رئيسية شاركت فيها سمن ترانس وأسهمت في مجتمع
+                    اللوجستيات</p>
             </div>
 
-            <div class="space-y-8">
-                <!-- Timeline Item 1 -->
-                <div class="timeline-item animate-slide-up" style="animation-delay: 0.2s">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-primary">معرض النقل واللوجستيات الدولي 2023
-                            </h3>
-                            <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">بيروت،
-                                لبنان</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            عرضنا حلول النقل عبر الحدود وشاركنا في مناقشات حول تحديات اللوجستيات الإقليمية.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">متحدث
-                                رئيسي</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">جائزة
-                                الابتكار</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">100+
-                                اجتماع</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="timeline-item animate-slide-up" style="animation-delay: 0.4s">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-primary">معرض إعادة إعمار سوريا 2022</h3>
-                            <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">دمشق،
-                                سوريا</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            عرضنا قدراتنا في دعم جهود إعادة الإعمار من خلال حلول لوجستية موثوقة لمواد ومعدات البناء.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">الراعي
-                                الذهبي</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">عرض
-                                رئيسي</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="timeline-item animate-slide-up" style="animation-delay: 0.6s">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-primary">مؤتمر لوجستيات الخليج 2021</h3>
-                            <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">دبي،
-                                الإمارات</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            شاركنا كعارضين وشاركنا خبراتنا في شبكات اللوجستيات في الشرق الأوسط وإجراءات التخليص الجمركي.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">قائد
-                                ورشة عمل</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">شراكات
-                                جديدة</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 4 -->
-                <div class="timeline-item animate-slide-up" style="animation-delay: 0.8s">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-primary">معرض اتصال العراق التجاري 2020</h3>
-                            <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">بغداد،
-                                العراق</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            عرضنا حلول ممر اللوجستيات بين العراق وسوريا وأنشأنا عدة علاقات عمل جديدة.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">عارض
-                                مميز</span>
-                            <span class="bg-primary-light text-primary text-xs font-medium px-2 py-1 rounded">توسع
-                                السوق</span>
-                        </div>
-                    </div>
-                </div>
+            <div id="ended-events-spinner" class="flex justify-center py-12">
+                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                </svg>
             </div>
+
+            <div id="ended-events-timeline" class="hidden space-y-8"></div>
         </div>
     </section>
 
-    <!-- Event Gallery -->
+    <!-- معرض الصور -->
     <section id="gallery" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-                    معرض <span class="text-secondary">الصور</span>
-                </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    أبرز مشاركاتنا في المعارض والفعاليات التجارية الأخيرة
-                </p>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">معرض <span
+                        class="text-secondary">الفعاليات</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">لمحات من مشاركاتنا الأخيرة في المعارض وفعاليات الأعمال</p>
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item animate-fade-in" style="animation-delay: 0.1s">
-                    <img src="./gall1.jpg" alt="Exhibition Booth">
-                </div>
-                <div class="gallery-item animate-fade-in" style="animation-delay: 0.2s">
-                    <img src="./gall2.jpg" alt="Team at Event">
-                </div>
-                <div class="gallery-item animate-fade-in" style="animation-delay: 0.3s">
-                    <img src="./gall3.jpg" alt="Presentation">
-                </div>
-                <div class="gallery-item animate-fade-in" style="animation-delay: 0.4s">
-                    <img src="./gall4.jpg" alt="Networking">
-                </div>
-                <div class="gallery-item animate-fade-in" style="animation-delay: 0.5s">
-                    <img src="./gall5.jpg" alt="Award Ceremony">
-                </div>
-                <div class="gallery-item animate-fade-in" style="animation-delay: 0.6s">
-                    <img src="./gall6.jpg" alt="Booth Visitors">
-                </div>
+                <div class="gallery-item animate-fade-in" style="animation-delay:.1s"><img src="./gall1.jpg"
+                        alt="جناح المعرض"></div>
+                <div class="gallery-item animate-fade-in" style="animation-delay:.2s"><img src="./gall2.jpg"
+                        alt="فريق العمل في الفعالية"></div>
+                <div class="gallery-item animate-fade-in" style="animation-delay:.3s"><img src="./gall3.jpg"
+                        alt="عرض تقديمي"></div>
+                <div class="gallery-item animate-fade-in" style="animation-delay:.4s"><img src="./gall4.jpg"
+                        alt="جلسة تواصل"></div>
+                <div class="gallery-item animate-fade-in" style="animation-delay:.5s"><img src="./gall5.jpg"
+                        alt="حفل تكريم"></div>
+                <div class="gallery-item animate-fade-in" style="animation-delay:.6s"><img src="./gall6.jpg"
+                        alt="زوار الجناح"></div>
             </div>
         </div>
     </section>
 
-    <!-- Register Interest Section -->
+    <!-- سجل اهتمام -->
     <section id="register-interest" class="py-20 bg-primary text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-xl shadow-xl overflow-hidden animate-slide-up">
                 <div class="md:flex">
                     <div class="md:w-1/2 bg-primary text-white p-8 md:p-12">
-                        <h2 class="text-2xl md:text-3xl font-bold mb-6">
-                            قابلنا في <span class="text-secondary">الفعاليات القادمة</span>
-                        </h2>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6">قابلونا في <span
+                                class="text-secondary">الفعاليات القادمة</span></h2>
                         <p class="mb-6">
-                            مهتم بمقابلة فريقنا في معرض أو فعالية تجارية قادمة؟ سجل اهتمامك وسنرتب اجتماعًا لمناقشة كيف
-                            يمكن لسمان ترانس دعم احتياجاتك اللوجستية.
+                            مهتمّون بلقاء فريقنا في معرض أو فعالية أعمال قادمة؟ سجّل اهتمامك لنرتّب اجتماعًا ونبحث كيف
+                            يمكن لسمن ترانس دعم احتياجاتك اللوجستية.
                         </p>
                         <div class="space-y-4">
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 mt-1">
-                                    <i class="fas fa-calendar-check text-secondary"></i>
+                                <div class="flex-shrink-0 mt-1"><i class="fas fa-calendar-check text-secondary"></i>
                                 </div>
-                                <div class="ml-3">
+                                <div class="mr-3">
                                     <p class="text-sm font-medium">تنسيق الفعاليات</p>
                                     <p class="text-lg font-bold">events@sammantrans.com</p>
                                 </div>
                             </div>
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 mt-1">
-                                    <i class="fas fa-headset text-secondary"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm font-medium">الاستفسارات العامة</p>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1"><i class="fas fa-headset text-secondary"></i></div>
+                                <div class="mr-3">
+                                    <p class="text-sm font-medium">استفسارات عامة</p>
                                     <p class="text-lg font-bold">+963 4 123 4567</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="md:w-1/2 p-8 md:p-12">
                         <form>
                             <div class="space-y-6">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">الاسم
                                         الكامل</label>
-                                    <input type="text" id="name" name="name"
+                                    <input id="name" name="name" type="text"
                                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
                                 </div>
                                 <div>
                                     <label for="company" class="block text-sm font-medium text-gray-700 mb-1">اسم
                                         الشركة</label>
-                                    <input type="text" id="company" name="company"
+                                    <input id="company" name="company" type="text"
                                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
                                 </div>
                                 <div>
                                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1">البريد
                                         الإلكتروني</label>
-                                    <input type="email" id="email" name="email"
+                                    <input id="email" name="email" type="email"
                                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
                                 </div>
                                 <div>
-                                    <label for="event" class="block text-sm font-medium text-gray-700 mb-1">الفعالية
-                                        المطلوبة</label>
+                                    <label for="event"
+                                        class="block text-sm font-medium text-gray-700 mb-1">الفعالية</label>
                                     <select id="event" name="event"
                                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
-                                        <option value="">اختر فعالية</option>
-                                        <option value="arab-logistics">معرض العرب للوجستيات</option>
-                                        <option value="syria-trade">معرض سوريا التجاري</option>
-                                        <option value="me-transport">النقل واللوجستيات في الشرق الأوسط</option>
-                                        <option value="other">أخرى (حدد أدناه)</option>
+                                        <option value="">اختر الفعالية</option>
+                                        <option value="arab-logistics">معرض اللوجستيات العربي</option>
+                                        <option value="syria-trade">معرض سورية للتجارة</option>
+                                        <option value="me-transport">النقل واللوجستيات – الشرق الأوسط</option>
+                                        <option value="other">أخرى (اذكرها بالأسفل)</option>
                                     </select>
                                 </div>
                                 <div>
@@ -886,7 +639,7 @@
                                         class="block text-sm font-medium text-gray-700 mb-1">رسالتك</label>
                                     <textarea id="message" name="message" rows="3"
                                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary"
-                                        placeholder="طلبات اجتماع محددة أو مواضيع ترغب في مناقشتها"></textarea>
+                                        placeholder="طلبات لقاء محددة أو مواضيع ترغب بمناقشتها"></textarea>
                                 </div>
                                 <div>
                                     <button type="submit"
@@ -897,134 +650,124 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- دعوة للمشاركة -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6 animate-fade-in">
-                هل تريد سمان ترانس في <span class="text-secondary">فعاليتك</span>؟
+                تريدون سمن ترانس في <span class="text-secondary">فعاليتكم</span>؟
             </h2>
-            <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-600 animate-fade-in" style="animation-delay: 0.2s">
-                إذا كنت تنظم فعالية متعلقة باللوجستيات أو التجارة وترغب في مشاركة سمان ترانس كعارض أو متحدث أو راعي،
-                يسعدنا أن نسمع منك.
+            <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-600 animate-fade-in" style="animation-delay:.2s">
+                إذا كنتم تنظّمون فعالية تتعلق باللوجستيات أو التجارة وترغبون بمشاركة سمن ترانس كعارض أو متحدث أو راعٍ،
+                يسعدنا تواصلكم.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style="animation-delay: 0.4s">
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style="animation-delay:.4s">
                 <a href="#register-interest"
                     class="bg-primary hover:bg-blue-800 text-white px-8 py-3 rounded-full font-medium transition duration-300">
-                    ادعنا
+                    وجّهوا دعوة
                 </a>
                 <a href="mailto:events@sammantrans.com"
                     class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-medium transition duration-300">
-                    راسل فريق الفعاليات
+                    راسلوا فريق الفعاليات
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- الفوتر -->
     <footer class="bg-primary text-white pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                <!-- Logo Column -->
                 <div>
                     <div class="flex items-center mb-6">
-                        <img src="./ST.png" alt="Samman Trans Logo" class="h-36 w-auto">
+                        <img src="./ST.png" alt="شعار سمن ترانس" class="h-36 w-auto">
                     </div>
-                    <p class="mb-6 opacity-80">تقديم التميز عبر الحدود مع خدمات النقل واللوجستيات الشاملة لدينا.</p>
-                    <div class="flex space-x-4">
+                    <p class="mb-6 opacity-80">نقدّم التميّز عبر الحدود بخدمات النقل واللوجستيات الشاملة.</p>
+                    <div class="flex space-x-4 space-x-reverse">
                         <a href="#"
-                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-facebook-f"></i></a>
                         <a href="#"
-                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-twitter"></i></a>
                         <a href="#"
-                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-linkedin-in"></i></a>
                         <a href="#"
-                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html"
+                        <li><a href="index-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a></li>
-                        <li><a href="aboutus.html" class="opacity-80 hover:text-secondary transition duration-300">عن
-                                الشركة</a></li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الخدمات</a>
-                        </li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">التتبع</a>
-                        </li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الوظائف</a></li>
-                        <li><a href="#contact" class="opacity-80 hover:text-secondary transition duration-300">اتصل
-                                بنا</a></li>
+                        <li><a href="aboutus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">من
+                                نحن</a></li>
+                        <li><a href="transport-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الخدمات</a></li>
+                        <li><a href="tools-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">التتبع</a></li>
+                        <li><a href="joinus-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الوظائف</a></li>
+                        <li><a href="contactus-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">تواصل معنا</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-bold mb-6">الخدمات</h4>
                     <ul class="space-y-3">
-                        <li><a href="ocean-freight.html"
+                        <li><a href="ocean-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">الشحن البحري</a></li>
-                        <li><a href="air-freight.html"
+                        <li><a href="airfreight-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a></li>
-                        <li><a href="road-transport.html"
+                        <li><a href="transport-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">النقل البري</a></li>
-                        <li><a href="warehousing.html"
+                        <li><a href="ware-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">التخزين</a></li>
-                        <li><a href="customs-clearance.html"
-                                class="opacity-80 hover:text-secondary transition duration-300">التخليص الجمركي</a>
-                        </li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">سلاسل
+                                الإمداد</a></li>
+                        <li><a href="custom-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">التخليص الجمركي</a></li>
                     </ul>
                 </div>
 
-                <div id="contact">
-                    <h4 class="text-lg font-bold mb-6">اتصل بنا</h4>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">تواصل معنا</h4>
                     <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-secondary mt-1 mr-3"></i>
-                            <span class="opacity-80">123 منطقة لوجستية، المنطقة الصناعية، دمشق، سوريا</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone-alt text-secondary mr-3"></i>
-                            <span class="opacity-80">+963 4 123 4567</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope text-secondary mr-3"></i>
-                            <span class="opacity-80">info@sammantrans.com</span>
-                        </li>
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt text-secondary mt-1 ml-3"></i><span
+                                class="opacity-80">123 حديقة اللوجستيات، المنطقة الصناعية، دمشق، سوريا</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt text-secondary ml-3"></i><span
+                                class="opacity-80">+963 4 123 4567</span></li>
+                        <li class="flex items-center"><i class="fas fa-envelope text-secondary ml-3"></i><span
+                                class="opacity-80">sammantrans.com</span></li>
                     </ul>
                 </div>
             </div>
 
             <div
                 class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 سمان ترانس. جميع الحقوق محفوظة.</p>
-                <div class="flex space-x-6">
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 سمن ترانس. جميع الحقوق محفوظة.</p>
+                <div class="flex space-x-6 space-x-reverse">
                     <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة
                         الخصوصية</a>
-                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط
-                        الخدمة</a>
-                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">خريطة
-                        الموقع</a>
+                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط الخدمة</a>
+                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">خريطة الموقع</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <div class="fixed bottom-6 right-6 z-50">
+    <!-- زر واتساب -->
+    <div class="fixed bottom-6 left-6 z-50">
         <a href="https://wa.me/96341234567" target="_blank" class="flex flex-col items-center group">
             <div
                 class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
@@ -1032,14 +775,14 @@
             </div>
             <span
                 class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                تواصل معنا الان
+                تواصل معنا الآن
             </span>
         </a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Mobile menu functionality
+            // قائمة الجوال
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const closeButton = document.getElementById('close-mobile-menu');
@@ -1050,54 +793,123 @@
                     mobileMenu.classList.add('translate-x-0');
                     document.body.style.overflow = 'hidden';
                 } else {
-                    mobileMenu.classList.remove('translate-x-0');
                     mobileMenu.classList.add('translate-x-full');
+                    mobileMenu.classList.remove('translate-x-0');
                     document.body.style.overflow = 'auto';
                 }
             }
 
             mobileMenuButton.addEventListener('click', () => toggleMobileMenu(true));
             closeButton.addEventListener('click', () => toggleMobileMenu(false));
+            mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) toggleMobileMenu(false); });
 
-            // FAQ toggle functionality
-            document.querySelectorAll('.faq-toggle').forEach(button => {
-                button.addEventListener('click', () => {
-                    const content = button.nextElementSibling;
-                    const icon = button.querySelector('i');
-
-                    // Toggle content
-                    content.classList.toggle('hidden');
-
-                    // Toggle icon
-                    if (content.classList.contains('hidden')) {
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    } else {
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    }
-                });
-            });
-
-            // Smooth scrolling for anchor links
+            // تمرير سلس للروابط الداخلية
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
                     const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
+                    if (targetId === '#' || !document.querySelector(targetId)) return;
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
                 });
             });
-        });
 
+            // تحميل الفعاليات القادمة
+            (function loadUpcoming() {
+                const spinner = document.getElementById('upcoming-events-spinner');
+                const grid = document.getElementById('upcoming-events-grid');
+
+                fetch('https://aa-dev.site/sammantrans/api/show-projects-exhibitions/upcoming-lasted')
+                    .then(r => r.json())
+                    .then(json => {
+                        spinner.classList.add('hidden');
+                        grid.classList.remove('hidden');
+                        const items = json.data || [];
+                        if (!items.length) {
+                            grid.innerHTML = `<p class="col-span-full text-center text-gray-500">لا توجد فعاليات قادمة حاليًا.</p>`;
+                            return;
+                        }
+                        grid.innerHTML = items.map(evt => `
+              <div class="bg-white rounded-xl overflow-hidden shadow-md exhibition-card animate-slide-up">
+                <img src="${evt.image}" alt="${evt.title}" class="w-full h-48 object-cover">
+                <div class="p-6">
+                  <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center ml-3">
+                      <i class="fas fa-calendar-alt text-white"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-500">التاريخ</p>
+                      <p class="font-medium">${new Date(evt.date).toLocaleDateString('ar-SY')}</p>
+                    </div>
+                  </div>
+                  <h3 class="text-xl font-bold text-primary mb-2">${evt.title}</h3>
+                  <p class="text-gray-600 mb-4">${evt.description}</p>
+                  <div class="flex items-center mb-4">
+                    <i class="fas fa-map-marker-alt text-secondary ml-2"></i>
+                    <span class="text-gray-600">${evt.country}</span>
+                  </div>
+                  <a href="#register-interest" class="inline-block bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full text-sm font-medium transition duration-300">
+                    سجّل اهتمامك
+                  </a>
+                </div>
+              </div>
+            `).join('');
+                    })
+                    .catch(() => {
+                        spinner.classList.add('hidden');
+                        grid.classList.remove('hidden');
+                        grid.innerHTML = `<p class="col-span-full text-center text-red-600">تعذّر تحميل الفعاليات القادمة.</p>`;
+                    });
+            })();
+
+            // تحميل سجل الفعاليات المنتهية
+            (function loadEnded() {
+                const spinner = document.getElementById('ended-events-spinner');
+                const timeline = document.getElementById('ended-events-timeline');
+
+                fetch('https://aa-dev.site/sammantrans/api/show-projects-exhibitions/ended-lasted')
+                    .then(r => r.json())
+                    .then(json => {
+                        spinner.classList.add('hidden');
+                        timeline.classList.remove('hidden');
+                        const items = json.data || [];
+                        if (!items.length) {
+                            timeline.innerHTML = `<p class="text-center text-gray-500">لا توجد فعاليات سابقة.</p>`;
+                            return;
+                        }
+
+                        items.forEach((evt, idx) => {
+                            const card = document.createElement('div');
+                            card.className = 'timeline-item bg-gray-50 p-6 rounded-lg animate-slide-up';
+                            card.style.animationDelay = `${0.2 * (idx + 1)}s`;
+
+                            card.innerHTML = `
+                <div class="overflow-hidden rounded-lg mb-4">
+                  <img src="${evt.image}" alt="${evt.title}" class="w-full h-48 object-cover">
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="text-xl font-bold text-primary">${evt.title}</h3>
+                  <span class="bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">${evt.country}</span>
+                </div>
+                <p class="text-gray-600 mb-2">${evt.description}</p>
+                <div class="text-sm text-gray-500 flex items-center">
+                  <i class="fas fa-calendar-alt ml-2"></i>
+                  ${new Date(evt.date).toLocaleDateString('ar-SY')}
+                </div>
+              `;
+                            timeline.appendChild(card);
+                        });
+                    })
+                    .catch(() => {
+                        spinner.classList.add('hidden');
+                        timeline.classList.remove('hidden');
+                        timeline.innerHTML = `<p class="text-center text-red-600">تعذّر تحميل سجل الفعاليات.</p>`;
+                    });
+            })();
+
+        });
     </script>
+    <!-- AlpineJS لأكورديون الجوال -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>خدمات التخليص الجمركي - سمان ترانس | النقل واللوجستيات</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003869',
+            secondary: '#F59E0B',
+            accent: '#3B82F6',
+          },
+          animation: {
+            'float':'float 6s ease-in-out infinite',
+            'fade-in':'fadeIn 1.5s ease-in-out',
+            'slide-up':'slideUp 1s ease-out',
+            'flip':'flip 1s ease-out forwards',
+            'slide-left':'slideLeft 0.6s ease-out forwards',
+            'slide-in-up':'slideInUp 1s ease-out forwards',
+            'fade-in-delay':'fadeInDelay 1.5s ease-in-out forwards',
+          },
+          keyframes: {
+            float:{'0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-20px)'}},
+            fadeIn:{'0%':{opacity:'0'},'100%':{opacity:'1'}},
+            slideUp:{'0%':{transform:'translateY(50px)',opacity:'0'},'100%':{transform:'translateY(0)',opacity:'1'}},
+            flip:{'0%':{transform:'rotateY(0)'},'100%':{transform:'rotateY(180deg)'}},
+            slideLeft:{'0%':{transform:'translateX(50px)',opacity:'0'},'100%':{transform:'translateX(0)',opacity:'1'}},
+            slideInUp:{'0%':{opacity:'0',transform:'translateY(50px)'},'100%':{opacity:'1',transform:'translateY(0)'}},
+            fadeInDelay:{'0%':{opacity:'0'},'100%':{opacity:'1'}},
+          },
+          fontFamily: {
+            sans: ['Tajawal', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+    
+    // Language switcher function
+    function switchLanguage() {
+        const currentPath = window.location.pathname;
+        const currentFile = currentPath.split('/').pop();
+        
+        // Map Arabic files to English equivalents
+        const languageMap = {
+            'index-ar.html': 'index.html',
+            'aboutus-ar.html': 'aboutus.html',
+            'contactus-ar.html': 'contactus.html',
+            'news-ar.html': 'news.html',
+            'ocean-ar.html': 'ocean.html',
+            'airfreight-ar.html': 'airfreight.html',
+            'transport-ar.html': 'transport.html',
+            'ware-ar.html': 'ware.html',
+            'custom-ar.html': 'custom.html',
+            'business-ar.html': 'business.html',
+            'tools-ar.html': 'tools.html',
+            'joinus-ar.html': 'joinus.html'
+        };
+        
+        // If current file is in the map, navigate to English version
+        if (languageMap[currentFile]) {
+            window.location.href = languageMap[currentFile];
+        } else {
+            // Fallback to index.html
+            window.location.href = 'index.html';
+        }
+    }
+  </script>
+
+  <style>
+    .customs-hero{
+      background-image: linear-gradient(rgba(0,56,105,.8), rgba(0,56,105,.7)), url('./custom2.webp');
+      background-size: cover; background-position: center;
+    }
+    .service-feature-card{transition:all .3s ease; box-shadow:0 5px 15px rgba(0,0,0,.1)}
+    .service-feature-card:hover{transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,.2)}
+    /* RTL timeline */
+    .process-step{position:relative; padding-right:3rem;}
+    .process-step:before{
+      content:''; position:absolute; right:1.25rem; top:0; height:100%; width:2px; background-color:#E5E7EB;
+    }
+    .process-step:last-child:before{height:50%;}
+    .process-step-number{
+      position:absolute; right:0; top:0; width:2.5rem; height:2.5rem; border-radius:50%;
+      background-color:#F59E0B; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:bold; z-index:10;
+    }
+    .document-card{transition:.3s; box-shadow:0 4px 6px rgba(0,0,0,.1)}
+    .document-card:hover{transform:translateY(-5px); box-shadow:0 10px 15px rgba(0,0,0,.1)}
+    .country-card{transition:.3s}
+    .country-card:hover{transform:scale(1.05)}
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+  <!-- النافبار -->
+     <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative flex h-24 items-center text-lg">
+
+                <!-- الشعار -->
+                <div class="flex-shrink-0">
+                    <a href="index-ar.html" class="flex items-center">
+                        <img src="./12.png" alt="شعار سمن ترانس" class="h-24 w-auto">
+                    </a>
+                </div>
+
+                <!-- روابط سطح المكتب -->
+                <div class="hidden md:flex flex-1 justify-center mr-6">
+                    <div class="flex items-center space-x-8 space-x-reverse">
+                        <a href="index-ar.html"
+                           class="text-[#003869] font-bold mr-8 hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الرئيسية
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./news-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الأخبار
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- قائمة الخدمات -->
+                        <div class="relative group">
+                            <button
+                                class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
+                                الخدمات
+                                <svg class="w-4 h-4 mr-1 transition-transform duration-300 group-hover:rotate-180"
+                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M19 9l-7 7-7-7" />
+                                </svg>
+                                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            </button>
+
+                            <!-- القائمة المنسدلة -->
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
+                                <a href="./ocean-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-ship text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">الشحن البحري</h4>
+                                            <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="./airfreight-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-plane text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">الشحن الجوي</h4>
+                                            <p class="text-xs text-gray-500">خدمات شحن جوي أولوية</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="./transport-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-truck text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">النقل البري</h4>
+                                            <p class="text-xs text-gray-500">حلول نقل بري محلية وعابرة للحدود</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="./ware-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-warehouse text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">التخزين</h4>
+                                            <p class="text-xs text-gray-500">حلول تخزين آمنة</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="./custom-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-passport text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">التخليص الجمركي</h4>
+                                            <p class="text-xs text-gray-500">عبور حدودي سلس</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <a href="./business-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الأعمال والمعارض
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./tools-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الأدوات
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./aboutus-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            من نحن
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./contactus-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            تواصل معنا
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./joinus-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            انضم إلينا
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- محوّل اللغة -->
+                <div class="hidden md:flex items-center mr-4 ml-5">
+                    <a href="javascript:void(0)" onclick="switchLanguage()" class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
+                    <span class="mx-2 text-gray-400">|</span>
+                    <a href="index-ar.html" class="text-sm font-bold text-primary">العربية</a>
+                </div>
+
+                <!-- زر عرض السعر -->
+                <div class="hidden md:block">
+                    <a href="#quote-form"
+                       class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
+                              text-white px-6 py-2 rounded-md font-bold transition-all duration-300
+                              transform hover:scale-105 shadow-md hover:shadow-lg">
+                        احصل على عرض سعر
+                    </a>
+                </div>
+
+                <!-- زر قائمة الجوال -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button"
+                            class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- قائمة الجوال -->
+        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out"
+             id="mobile-menu" x-data="{ openServices: false }">
+            <div class="flex flex-col h-full p-6 overflow-y-auto">
+                <!-- زر الإغلاق -->
+                <div class="flex justify-start mb-6">
+                    <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- روابط الجوال -->
+                <div class="space-y-4">
+                    <a href="./index-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الرئيسية</a>
+
+                    <!-- أكورديون الخدمات -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button @click="openServices = !openServices"
+                                class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-900 hover:text-primary">
+                            <span>الخدمات</span>
+                            <svg class="w-5 h-5 transition-transform duration-200"
+                                 :class="{ 'transform rotate-180': openServices }" fill="none" stroke="currentColor"
+                                 viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div x-show="openServices" x-collapse class="mt-2 space-y-3 pr-4">
+                            <a href="./ocean-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-ship text-primary ml-3 w-5 text-center"></i>
+                                الشحن البحري
+                            </a>
+                            <a href="./airfreight-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-plane text-primary ml-3 w-5 text-center"></i>
+                                الشحن الجوي
+                            </a>
+                            <a href="./transport-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-truck text-primary ml-3 w-5 text-center"></i>
+                                النقل البري
+                            </a>
+                            <a href="./ware-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-warehouse text-primary ml-3 w-5 text-center"></i>
+                                التخزين
+                            </a>
+                            <a href="./custom-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-passport text-primary ml-3 w-5 text-center"></i>
+                                التخليص الجمركي
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="./business-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأعمال والمعارض</a>
+                    <a href="./tools-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأدوات</a>
+                    <a href="./aboutus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">من نحن</a>
+                    <a href="./contactus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">تواصل معنا</a>
+                    <a href="./joinus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">انضم إلينا</a>
+
+                    <!-- زر عرض السعر للجوال -->
+                    <a href="#quote-form"
+                       class="mt-6 w-full text-center bg-gradient-to-r from-[#003869] to-[#0056a3] text-white py-3 rounded-md font-bold transition-all duration-300">
+                        احصل على عرض سعر
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+  <!-- هيرو -->
+  <section class="customs-hero py-24 md:py-32 relative">
+    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-in-up">خدمات التخليص الجمركي</h1>
+        <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 animate-fade-in">
+          حلول تخليص احترافية للتعامل بكفاءة مع الأنظمة الدولية المعقّدة
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الميزات -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">مزايا <span class="text-secondary">خدماتنا</span></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">إجراءات مبسّطة لتقليل التأخيرات وخفض التكاليف على الحدود</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="service-feature-card bg-white p-8 rounded-lg text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">تخليص سريع</h3>
+          <p class="text-gray-600">تقليل التأخير عبر المعالجة المعجّلة وخيارات ما قبل التخليص.</p>
+        </div>
+
+        <div class="service-feature-card bg-white p-8 rounded-lg text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
+            <i class="fas fa-file-invoice-dollar"></i>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">تحسين الرسوم</h3>
+          <p class="text-gray-600">استراتيجيات قانونية لتقليل الرسوم والضرائب مع الامتثال التام.</p>
+        </div>
+
+        <div class="service-feature-card bg-white p-8 rounded-lg text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
+            <i class="fas fa-globe-americas"></i>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">تغطية عالمية</h3>
+          <p class="text-gray-600">خبرة بأنظمة الجمارك في أبرز مناطق ودول التجارة.</p>
+        </div>
+
+        <div class="service-feature-card bg-white p-8 rounded-lg text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">دعم 24/7</h3>
+          <p class="text-gray-600">مساندة على مدار الساعة لاحتياجات التخليص العاجلة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- عملية التخليص -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">عملية <span class="text-secondary">التخليص الجمركي</span></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">منهج مبسّط لضمان معاملات سلسة عبر الحدود</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <div class="process-step mb-12">
+          <div class="process-step-number">1</div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-primary mb-3">إعداد المستندات</h3>
+            <p class="text-gray-600">نجمع ونتحقق من جميع المستندات المطلوبة بما فيها الفواتير التجارية وكشوف التعبئة وشهادات المنشأ وأي تراخيص خاصة.</p>
+          </div>
+        </div>
+
+        <div class="process-step mb-12">
+          <div class="process-step-number">2</div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-primary mb-3">التصنيف والتقييم</h3>
+            <p class="text-gray-600">نصنّف البضائع وفق رموز HS الصحيحة ونضمن التقييم السليم لاحتساب الرسوم والضرائب بدقة.</p>
+          </div>
+        </div>
+
+        <div class="process-step mb-12">
+          <div class="process-step-number">3</div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-primary mb-3">التقديم والسداد</h3>
+            <p class="text-gray-600">نقدّم المستندات للسلطات الجمركية ونتولى سداد الرسوم وإدارة الضمانات أو التعهّدات عند الحاجة.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-number">4</div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-primary mb-3">الإفراج والتسليم</h3>
+            <p class="text-gray-600">بعد التخليص ننسّق إفراج بضاعتك ونرتّب التسليم النهائي إلى موقعك المحدد.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- المستندات المطلوبة -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">المستندات <span class="text-secondary">اللازمة</span></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">الأوراق الأساسية المطلوبة لتخليص جمركي سلس</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="document-card bg-white p-6 rounded-lg">
+          <div class="flex items-start mb-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center ml-4 text-primary text-xl">
+              <i class="fas fa-file-invoice"></i>
+            </div>
+            <h3 class="text-lg font-bold text-primary mt-2">فاتورة تجارية</h3>
+          </div>
+          <p class="text-gray-600">قيمة ووصف وشروط البيع لجميع البضائع المستوردة/المصدّرة.</p>
+        </div>
+
+        <div class="document-card bg-white p-6 rounded-lg">
+          <div class="flex items-start mb-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center ml-4 text-primary text-xl">
+              <i class="fas fa-boxes"></i>
+            </div>
+            <h3 class="text-lg font-bold text-primary mt-2">كشف التعبئة</h3>
+          </div>
+          <p class="text-gray-600">تفاصيل الطرود: الأوزان والأبعاد والمحتويات.</p>
+        </div>
+
+        <div class="document-card bg-white p-6 rounded-lg">
+          <div class="flex items-start mb-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center ml-4 text-primary text-xl">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <h3 class="text-lg font-bold text-primary mt-2">شهادة منشأ</h3>
+          </div>
+          <p class="text-gray-600">تُثبت بلد تصنيع البضائع.</p>
+        </div>
+
+        <div class="document-card bg-white p-6 rounded-lg">
+          <div class="flex items-start mb-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center ml-4 text-primary text-xl">
+              <i class="fas fa-ship"></i>
+            </div>
+            <h3 class="text-lg font-bold text-primary mt-2">بوليصة الشحن/الشحن الجوي</h3>
+          </div>
+          <p class="text-gray-600">مستند النقل الذي يثبت الاستلام والعقد بين الشاحن والناقل.</p>
+        </div>
+
+        <div class="document-card bg-white p-6 rounded-lg">
+          <div class="flex items-start mb-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center ml-4 text-primary text-xl">
+              <i class="fas fa-file-medical"></i>
+            </div>
+            <h3 class="text-lg font-bold text-primary mt-2">شهادات صحية/سلامة</h3>
+          </div>
+          <p class="text-gray-600">مطلوبة للأغذية والأدوية والمواد الكيميائية والسلع المقيدة.</p>
+        </div>
+
+        <div class="document-card bg-white p-6 rounded-lg">
+          <div class="flex items-start mb-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center ml-4 text-primary text-xl">
+              <i class="fas fa-id-card"></i>
+            </div>
+            <h3 class="text-lg font-bold text-primary mt-2">رخص الاستيراد/التصدير</h3>
+          </div>
+          <p class="text-gray-600">تصاريح خاصة للبضائع المقيّدة أو الخاضعة للرقابة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- خبرتنا حسب الدولة -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">خبرتنا <span class="text-secondary">حسب الدولة</span></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">معرفة عميقة بلوائح الجمارك في الأسواق الرئيسية</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="country-card bg-white p-4 rounded-lg border border-gray-200 text-center">
+          <div class="w-16 h-16 mx-auto mb-3">
+            <img src="https://flagcdn.com/sy.svg" alt="سوريا" class="w-full h-full object-contain rounded-full border border-gray-200">
+          </div>
+          <h4 class="font-medium text-primary">سوريا</h4>
+        </div>
+
+        <div class="country-card bg-white p-4 rounded-lg border border-gray-200 text-center">
+          <div class="w-16 h-16 mx-auto mb-3">
+            <img src="https://flagcdn.com/sa.svg" alt="السعودية" class="w-full h-full object-contain rounded-full border border-gray-200">
+          </div>
+          <h4 class="font-medium text-primary">السعودية</h4>
+        </div>
+
+        <div class="country-card bg-white p-4 rounded-lg border border-gray-200 text-center">
+          <div class="w-16 h-16 mx-auto mb-3">
+            <img src="https://flagcdn.com/ae.svg" alt="الإمارات" class="w-full h-full object-contain rounded-full border border-gray-200">
+          </div>
+          <h4 class="font-medium text-primary">الإمارات</h4>
+        </div>
+
+        <div class="country-card bg-white p-4 rounded-lg border border-gray-200 text-center">
+          <div class="w-16 h-16 mx-auto mb-3">
+            <img src="https://flagcdn.com/tr.svg" alt="تركيا" class="w-full h-full object-contain rounded-full border border-gray-200">
+          </div>
+          <h4 class="font-medium text-primary">تركيا</h4>
+        </div>
+
+        <div class="country-card bg-white p-4 rounded-lg border border-gray-200 text-center">
+          <div class="w-16 h-16 mx-auto mb-3">
+            <img src="https://flagcdn.com/cn.svg" alt="الصين" class="w-full h-full object-contain rounded-full border border-gray-200">
+          </div>
+          <h4 class="font-medium text-primary">الصين</h4>
+        </div>
+
+        <div class="country-card bg-white p-4 rounded-lg border border-gray-200 text-center">
+          <div class="w-16 h-16 mx-auto mb-3">
+            <img src="https://flagcdn.com/de.svg" alt="ألمانيا" class="w-full h-full object-contain rounded-full border border-gray-200">
+          </div>
+          <h4 class="font-medium text-primary">ألمانيا</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- الأسئلة الشائعة للتخليص -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">أسئلة <span class="text-secondary">شائعة</span> حول التخليص</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">إجابات عن الأسئلة الأكثر تداولًا بخصوص الإجراءات الجمركية</p>
+      </div>
+
+      <div class="space-y-4">
+        <div x-data="{ open:false }" class="border border-gray-200 rounded-lg overflow-hidden">
+          <button @click="open = !open" class="w-full px-6 py-4 bg-white text-right flex justify-between items-center">
+            <span class="font-medium text-primary">كم يستغرق التخليص الجمركي عادةً؟</span>
+            <svg class="w-5 h-5 transition-transform duration-200" :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div x-show="open" x-collapse class="px-6 pb-4 bg-white text-gray-600">
+            <p>تختلف المدة حسب الدولة ونوع البضائع وكمال المستندات. للشحنات القياسية مع أوراق مكتملة يستغرق عادةً 1–3 أيام عمل. الشحنات المعقّدة قد تستغرق أكثر. نقدّم خدمة التعجيل للحالات العاجلة.</p>
+          </div>
+        </div>
+
+        <div x-data="{ open:false }" class="border border-gray-200 rounded-lg overflow-hidden">
+          <button @click="open = !open" class="w-full px-6 py-4 bg-white text-right flex justify-between items-center">
+            <span class="font-medium text-primary">ما أكثر أسباب التأخير شيوعًا في الجمارك؟</span>
+            <svg class="w-5 h-5 transition-transform duration-200" :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div x-show="open" x-collapse class="px-6 pb-4 bg-white text-gray-600">
+            <p>أبرز الأسباب:</p>
+            <ul class="list-disc pr-5 mt-2 space-y-1">
+              <li>نواقص أو أخطاء في المستندات</li>
+              <li>تصنيف خاطئ للبضائع (رموز HS غير صحيحة)</li>
+              <li>تقييم أقل من القيمة الحقيقية</li>
+              <li>بضائع محظورة أو مقيّدة</li>
+              <li>تفتيشات عشوائية من الجمارك</li>
+              <li>غياب تراخيص أو شهادات خاصة</li>
+            </ul>
+          </div>
+        </div>
+
+        <div x-data="{ open:false }" class="border border-gray-200 rounded-lg overflow-hidden">
+          <button @click="open = !open" class="w-full px-6 py-4 bg-white text-right flex justify-between items-center">
+            <span class="font-medium text-primary">كيف أقلّل رسوم الجمارك بشكل قانوني؟</span>
+            <svg class="w-5 h-5 transition-transform duration-200" :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div x-show="open" x-collapse class="px-6 pb-4 bg-white text-gray-600">
+            <p>بعض الاستراتيجيات:</p>
+            <ul class="list-disc pr-5 mt-2 space-y-1">
+              <li>التصنيف الصحيح ضمن رموز HS الأكثر ملاءمة</li>
+              <li>الاستفادة من اتفاقيات التجارة الحرة والتعرفة التفضيلية</li>
+              <li>المناطق الحرة والمستودعات الجمركية</li>
+              <li>التقييم وفق “البيع الأول” حيث ينطبق</li>
+              <li>برامج استرداد الرسوم (Duty Drawback)</li>
+              <li>هيكلة الشحنات للاستفادة من حدود الإعفاء (De minimis)</li>
+            </ul>
+            <p class="mt-2">يحلّل خبراؤنا وضعك ويوصون بالأنسب.</p>
+          </div>
+        </div>
+
+        <div x-data="{ open:false }" class="border border-gray-200 rounded-lg overflow-hidden">
+          <button @click="open = !open" class="w-full px-6 py-4 bg-white text-right flex justify-between items-center">
+            <span class="font-medium text-primary">ما الفرق بين التخليص للشحن الجوي والبحري؟</span>
+            <svg class="w-5 h-5 transition-transform duration-200" :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div x-show="open" x-collapse class="px-6 pb-4 bg-white text-gray-600">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+              <div>
+                <h4 class="font-medium text-primary mb-2">الشحن الجوي:</h4>
+                <ul class="list-disc pr-5 space-y-1">
+                  <li>تخليص أسرع عمومًا</li>
+                  <li>احتمالية أعلى للتفتيش لقيم أعلى</li>
+                  <li>يتطلّب غالبًا تخليصًا مسبقًا</li>
+                  <li>متطلبات أمنية أشد</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-primary mb-2">الشحن البحري:</h4>
+                <ul class="list-disc pr-5 space-y-1">
+                  <li>وقت أطول لتحضير المستندات أثناء العبور</li>
+                  <li>تدقيق أكبر على الوثائق لكثرة الحجم</li>
+                  <li>احتمال أعلى لحجز زراعي/سلامة</li>
+                  <li>حسابات رسوم أكثر تعقيدًا أحيانًا</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary text-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full opacity-10">
+      <div class="absolute top-20 left-20 w-40 h-40 bg-secondary rounded-full animate-float"></div>
+      <div class="absolute bottom-20 right-20 w-60 h-60 bg-secondary rounded-full animate-float" style="animation-delay:2s"></div>
+      <div class="absolute top-1/2 left-1/3 w-32 h-32 bg-secondary rounded-full animate-float" style="animation-delay:4s"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">تحتاج مساعدة خبيرة في التخليص الجمركي؟</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">فريق خبرائنا جاهز لمساعدتك في تجاوز التعقيدات وتقليل التأخير.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105">
+            اطلب خدمة التخليص
+          </button>
+          <button class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105">
+            تحدث إلى خبير
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer class="bg-primary text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div>
+          <div class="flex items-center mb-6">
+            <img src="./ST.png" alt="Samman Trans" class="h-36 w-auto">
+          </div>
+          <p class="mb-6 opacity-80">نوفّر خدمات نقل ولوجستيات متكاملة عبر الحدود بجودة عالية ومستدامة.</p>
+          <div class="flex space-x-4 space-x-reverse">
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
+          <ul class="space-y-3">
+            <li><a href="index-ar.html" class="opacity-80 hover:text-secondary transition">الرئيسية</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">من نحن</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">الخدمات</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">التتبع</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">الوظائف</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">اتصل بنا</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6">الخدمات</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">الشحن البحري</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">الشحن الجوي</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">النقل البري</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">التخزين</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">سلسلة الإمداد</a></li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition">التخليص الجمركي</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6">تواصل معنا</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-secondary mt-1 ml-3"></i>
+              <span class="opacity-80">123 حديقة اللوجستيات، المنطقة الصناعية، دمشق، سوريا</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone-alt text-secondary ml-3"></i>
+              <span class="opacity-80">+963 4 123 4567</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-secondary ml-3"></i>
+              <span class="opacity-80">sammantrans.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-primary/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 سمان ترانس. جميع الحقوق محفوظة.</p>
+        <div class="flex space-x-6 space-x-reverse">
+          <a href="#" class="text-sm opacity-80 hover:text-secondary transition">سياسة الخصوصية</a>
+          <a href="#" class="text-sm opacity-80 hover:text-secondary transition">شروط الخدمة</a>
+          <a href="#" class="text-sm opacity-80 hover:text-secondary transition">خريطة الموقع</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- زر واتساب عائم -->
+  <div class="fixed bottom-6 left-6 z-50">
+    <a href="https://wa.me/96341234567" target="_blank" class="flex flex-col items-center group">
+      <div class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
+        <i class="fab fa-whatsapp text-2xl"></i>
+      </div>
+      <span class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        تواصل معنا الآن
+      </span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeButton = document.getElementById('close-mobile-menu');
+
+      function toggleMobileMenu(show){
+        if(show){
+          mobileMenu.classList.remove('translate-x-full');
+          mobileMenu.classList.add('translate-x-0');
+          document.body.style.overflow='hidden';
+        }else{
+          mobileMenu.classList.remove('translate-x-0');
+          mobileMenu.classList.add('translate-x-full');
+          document.body.style.overflow='auto';
+        }
+      }
+
+      mobileMenuButton && mobileMenuButton.addEventListener('click', () => toggleMobileMenu(true));
+      closeButton && closeButton.addEventListener('click', () => toggleMobileMenu(false));
+
+      document.querySelectorAll('#mobile-menu a').forEach(link=>{
+        link.addEventListener('click',()=>toggleMobileMenu(false));
+      });
+
+      mobileMenu.addEventListener('click',(e)=>{ if(e.target===mobileMenu) toggleMobileMenu(false); });
+
+      // تمرير سلس
+      document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+        anchor.addEventListener('click',function(e){
+          const targetId = this.getAttribute('href');
+          if(targetId==='#' || !document.querySelector(targetId)) return;
+          e.preventDefault();
+          document.querySelector(targetId).scrollIntoView({behavior:'smooth'});
+        });
+      });
+    });
+  </script>
+</body>
+</html>

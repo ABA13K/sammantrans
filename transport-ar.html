@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات النقل البري | سمن ترانس</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- AlpineJS للجوال -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003869',
+                        secondary: '#F59E0B',
+                        accent: '#3B82F6',
+                        'primary-light': '#0b4e86'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1.5s ease-in-out',
+                        'slide-up': 'slideUp 1s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 56, 105, 0.85), rgba(0, 56, 105, 0.8)), url('./road-transport-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .benefit-item {
+            position: relative;
+            padding-right: 2.5rem; /* RTL */
+        }
+
+        .benefit-item:before {
+            content: '';
+            position: absolute;
+            right: 0; /* RTL */
+            top: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #F59E0B;
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z' clip-rule='evenodd' /%3E%3C/svg%3E");
+            mask-repeat: no-repeat;
+            mask-position: center;
+        }
+
+        .route-map {
+            background-image: url('./middle-east-map.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-slide-up { animation: slideUp 1s ease-out forwards; }
+
+        /* تصحيح خط التحديد أسفل عناصر النافبار في RTL */
+        
+    </style>
+</head>
+
+<body class="font-sans antialiased">
+    <!-- النافبار -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative flex h-24 items-center text-lg">
+
+                <!-- الشعار -->
+                <div class="flex-shrink-0">
+                    <a href="index-ar.html" class="flex items-center">
+                        <img src="./12.png" alt="شعار سمن ترانس" class="h-24 w-auto">
+                    </a>
+                </div>
+
+                <!-- روابط سطح المكتب -->
+                <div class="hidden md:flex flex-1 justify-center mr-6">
+                    <div class="flex items-center space-x-8 space-x-reverse">
+                        <a href="index-ar.html"
+                           class="text-[#003869] font-bold mr-8 hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الرئيسية
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./news-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الأخبار
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- قائمة الخدمات -->
+                        <div class="relative group">
+                            <button
+                                class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
+                                الخدمات
+                                <svg class="w-4 h-4 mr-1 transition-transform duration-300 group-hover:rotate-180"
+                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M19 9l-7 7-7-7" />
+                                </svg>
+                                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            </button>
+
+                            <!-- القائمة المنسدلة -->
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
+                                <a href="./ocean-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-ship text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">الشحن البحري</h4>
+                                            <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="./airfreight-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-plane text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">الشحن الجوي</h4>
+                                            <p class="text-xs text-gray-500">خدمات شحن جوي أولوية</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="./transport-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-truck text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">النقل البري</h4>
+                                            <p class="text-xs text-gray-500">حلول نقل بري محلية وعابرة للحدود</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="./ware-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-warehouse text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">التخزين</h4>
+                                            <p class="text-xs text-gray-500">حلول تخزين آمنة</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="./custom-ar.html"
+                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                            <i class="fas fa-passport text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900">التخليص الجمركي</h4>
+                                            <p class="text-xs text-gray-500">عبور حدودي سلس</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <a href="./business-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الأعمال والمعارض
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./tools-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الأدوات
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./aboutus-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            من نحن
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./contactus-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            تواصل معنا
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <a href="./joinus-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            انضم إلينا
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- محوّل اللغة -->
+                <div class="hidden md:flex items-center mr-4 ml-5">
+                    <a href="index.html" class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
+                    <span class="mx-2 text-gray-400">|</span>
+                    <a href="index-ar.html" class="text-sm font-bold text-primary">العربية</a>
+                </div>
+
+                <!-- زر عرض السعر -->
+                <div class="hidden md:block">
+                    <a href="#quote-form"
+                       class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
+                              text-white px-6 py-2 rounded-md font-bold transition-all duration-300
+                              transform hover:scale-105 shadow-md hover:shadow-lg">
+                        احصل على عرض سعر
+                    </a>
+                </div>
+
+                <!-- زر قائمة الجوال -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button"
+                            class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- قائمة الجوال -->
+        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out"
+             id="mobile-menu" x-data="{ openServices: false }">
+            <div class="flex flex-col h-full p-6 overflow-y-auto">
+                <!-- زر الإغلاق -->
+                <div class="flex justify-start mb-6">
+                    <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- روابط الجوال -->
+                <div class="space-y-4">
+                    <a href="./index-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الرئيسية</a>
+
+                    <!-- أكورديون الخدمات -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button @click="openServices = !openServices"
+                                class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-900 hover:text-primary">
+                            <span>الخدمات</span>
+                            <svg class="w-5 h-5 transition-transform duration-200"
+                                 :class="{ 'transform rotate-180': openServices }" fill="none" stroke="currentColor"
+                                 viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div x-show="openServices" x-collapse class="mt-2 space-y-3 pr-4">
+                            <a href="./ocean-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-ship text-primary ml-3 w-5 text-center"></i>
+                                الشحن البحري
+                            </a>
+                            <a href="./airfreight-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-plane text-primary ml-3 w-5 text-center"></i>
+                                الشحن الجوي
+                            </a>
+                            <a href="./transport-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-truck text-primary ml-3 w-5 text-center"></i>
+                                النقل البري
+                            </a>
+                            <a href="./ware-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-warehouse text-primary ml-3 w-5 text-center"></i>
+                                التخزين
+                            </a>
+                            <a href="./custom-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-passport text-primary ml-3 w-5 text-center"></i>
+                                التخليص الجمركي
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="./business-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأعمال والمعارض</a>
+                    <a href="./tools-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأدوات</a>
+                    <a href="./aboutus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">من نحن</a>
+                    <a href="./contactus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">تواصل معنا</a>
+                    <a href="./joinus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">انضم إلينا</a>
+
+                    <!-- زر عرض السعر للجوال -->
+                    <a href="#quote-form"
+                       class="mt-6 w-full text-center bg-gradient-to-r from-[#003869] to-[#0056a3] text-white py-3 rounded-md font-bold transition-all duration-300">
+                        احصل على عرض سعر
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- القسم الافتتاحي -->
+    <section class="hero-bg py-32 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="md:w-2/3 lg:w-1/2 animate-fade-in">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                    حلول <span class="text-secondary">النقل البري</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">
+                    خدمات نقل بري موثوقة وفعّالة وبتكلفة مناسبة عبر سوريا والدول المجاورة بأسطول حديث وسائقين ذوي خبرة.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#quote-form"
+                       class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">
+                        طلب عرض سعر
+                    </a>
+                    <a href="#services"
+                       class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 text-center">
+                        خدماتنا
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نظرة عامة -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-up" style="animation-delay: 0.2s">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+                        خدمات <span class="text-secondary">النقل البري</span> الشاملة
+                    </h2>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        تقدم سمن ترانس حلول نقل بري موثوقة عبر أسطول حديث من الشاحنات والمقطورات. نوفر خدمات مجدولة وعند الطلب
+                        للشحنات الكاملة (FTL) والأقل من حمولة الشاحنة (LTL) داخل سوريا وعبر الحدود.
+                    </p>
+                    <p class="text-gray-600 mb-8 text-lg">
+                        يضمن فريقنا من السائقين واللوجستيين وصول شحنتك بأمان وفي الوقت المحدد، مع تتبع لحظي لجميع الشحنات.
+                        نتعامل مع جميع أنواع البضائع من العامة إلى المبردة والخطرة.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#services"
+                           class="bg-primary hover:bg-blue-800 text-white px-8 py-3 rounded-full font-medium transition duration-300">
+                            استكشاف الخدمات
+                        </a>
+                        <a href="#contact"
+                           class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-medium transition duration-300">
+                            تواصل مع فريقنا
+                        </a>
+                    </div>
+                </div>
+                <div class="animate-slide-up" style="animation-delay: 0.4s">
+                    <img src="./tr.jpg" alt="أسطول شاحنات سمن ترانس" class="w-full rounded-xl shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المزايا -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+                    مزايا <span class="text-secondary">النقل البري</span> لدينا
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    نجمع بين الموثوقية والمرونة لتقديم حلول نقل بري متفوقة.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay: 0.2s">
+                    <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-map-marked-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">تغطية واسعة</h3>
+                    <p class="text-gray-600">
+                        شبكة شاملة تغطي المدن السورية الرئيسية ومسارات عابرة للحدود إلى لبنان والأردن والعراق وتركيا.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay: 0.4s">
+                    <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-truck-moving text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">أسطول حديث</h3>
+                    <p class="text-gray-600">
+                        أسطول مُصان جيدًا يشمل ستاير، وقلابات، ومبردات، ومركبات متخصصة للأحمال الكبيرة أو الخطرة.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay: 0.6s">
+                    <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">نقل آمن</h3>
+                    <p class="text-gray-600">
+                        تتبع GPS، ومواقف آمنة، وكوادر مدرّبة لضمان أمان بضاعتك طوال الرحلة.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay: 0.2s">
+                    <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">جداول موثوقة</h3>
+                    <p class="text-gray-600">
+                        مواعيد انطلاق ثابتة بين المراكز الرئيسية وخيارات مرنة للتسليم في الميل الأخير.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay: 0.4s">
+                    <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-snowflake text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">تحكم حراري</h3>
+                    <p class="text-gray-600">
+                        مقطورات مبردة ومعزولة مع مراقبة للحرارة للمنتجات الحساسة والأدوية.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay: 0.6s">
+                    <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">دعم 24/7</h3>
+                    <p class="text-gray-600">
+                        فريق خدمة عملاء متاح على مدار الساعة للرد على الاستفسارات وتحديثات الشحن.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الخدمات -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+                    حلول <span class="text-secondary">النقل البري</span> لدينا
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    خدمات مصممة لتناسب متطلباتك اللوجستية بدقة.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- الشحنة الكاملة FTL -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md animate-slide-up" style="animation-delay: 0.2s">
+                    <img src="./FCCl.png" alt="خدمة الشحنة الكاملة" class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center ml-4">
+                                <i class="fas fa-truck-loading text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-primary">الشحنة الكاملة (FTL)</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            تخصيص شاحنة كاملة لشحنتك — مثالي للأحجام الكبيرة أو الحساسة التي تتطلب نقلًا مخصصًا.
+                        </p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="benefit-item">مركبة مخصصة لبضاعتك فقط</li>
+                            <li class="benefit-item">نقل أسرع بلا توقفات وسيطة</li>
+                            <li class="benefit-item">أمان أعلى وتقليل المناولة</li>
+                            <li class="benefit-item">توفّر أنواع متعددة من المقطورات</li>
+                            <li class="benefit-item">تحميل وتفريغ مخصصان</li>
+                        </ul>
+                        <a href="#quote-form"
+                           class="inline-block bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-medium transition duration-300">
+                            اطلب عرض FTL
+                        </a>
+                    </div>
+                </div>
+
+                <!-- أقل من حمولة الشاحنة LTL -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md animate-slide-up" style="animation-delay: 0.4s">
+                    <img src="./lcl.png" alt="خدمة أقل من حمولة الشاحنة" class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center ml-4">
+                                <i class="fas fa-boxes text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-primary">أقل من حمولة الشاحنة (LTL)</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            حل اقتصادي للشحنات الصغيرة عبر الدمج لتحسين الكفاءة وتقليل التكلفة.
+                        </p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="benefit-item">تدفع مقابل المساحة التي تستخدمها فقط</li>
+                            <li class="benefit-item">مواعيد انطلاق مجدولة بانتظام</li>
+                            <li class="benefit-item">تتبع متقدم للشحنة</li>
+                            <li class="benefit-item">خيارات شحن على منصات أو سائبة</li>
+                            <li class="benefit-item">شبكة توزيع إقليمية</li>
+                        </ul>
+                        <a href="#quote-form"
+                           class="inline-block bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-medium transition duration-300">
+                            اطلب عرض LTL
+                        </a>
+                    </div>
+                </div>
+
+                <!-- بإمكانك لاحقًا إضافة النقل عبر الحدود والنقل المتخصص -->
+            </div>
+        </div>
+    </section>
+
+    <!-- خريطة التغطية -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-up" style="animation-delay: 0.2s">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        شبكة <span class="text-secondary">النقل</span> لدينا
+                    </h2>
+                    <p class="text-xl mb-8 opacity-90">
+                        تدير سمن ترانس شبكة طرق واسعة تغطي المدن السورية الرئيسية ومسارات عابرة للحدود بخدمات مجدولة ومرنة.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 text-secondary">مسارات داخلية</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>دمشق — حلب</span></li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>حمص — اللاذقية</span></li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>دير الزور — الحسكة</span></li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>درعا — قامشلي</span></li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>كافة المسارات الإقليمية</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 text-secondary">مسارات دولية</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>سوريا — لبنان</span></li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>سوريا — الأردن</span></li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>سوريا — العراق</span></li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>سوريا — تركيا</span></li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>ترانزيت إلى دول الخليج</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-map h-96 animate-slide-up" style="animation-delay: 0.4s">
+                    <!-- هنا تعرض الخريطة -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- العملية -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+                    <span class="text-secondary">عملية</span> النقل البري لدينا
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    نهج مبسّط يضمن خدمة نقل فعّالة وموثوقة.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center animate-slide-up" style="animation-delay: 0.2s">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">الطلب والتخطيط</h3>
+                    <p class="text-gray-600">
+                        نقيّم متطلباتك ونخطط للمسار ونوع المركبة والجدول الأمثل لشحنتك.
+                    </p>
+                </div>
+
+                <div class="text-center animate-slide-up" style="animation-delay: 0.4s">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">الاستلام والتحميل</h3>
+                    <p class="text-gray-600">
+                        يتولى فريقنا الاستلام من موقعك مع تحميل وتأمين مناسبين للبضاعة.
+                    </p>
+                </div>
+
+                <div class="text-center animate-slide-up" style="animation-delay: 0.6s">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">النقل والتتبع</h3>
+                    <p class="text-gray-600">
+                        تُنقل شحنتك مع تتبع GPS لحظي وتحديثات منتظمة عن تقدمها.
+                    </p>
+                </div>
+
+                <div class="text-center animate-slide-up" style="animation-delay: 0.8s">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">التسليم والمستندات</h3>
+                    <p class="text-gray-600">
+                        تفريغ آمن في الوجهة مع اكتمال المستندات وإثبات التسليم.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج عرض السعر -->
+    <section id="quote-form" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden animate-slide-up">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-primary text-white p-8 md:p-12">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6">
+                            اطلب <span class="text-secondary">عرض سعر للنقل البري</span>
+                        </h2>
+                        <p class="mb-6">
+                            املأ النموذج وسيقدم لك فريق اللوجستيات لدينا عرضًا تنافسيًا يتضمن زمن العبور وخيارات الخدمة.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-phone-alt text-secondary"></i>
+                                </div>
+                                <div class="mr-3">
+                                    <p class="text-sm font-medium">نقل عاجل؟</p>
+                                    <p class="text-lg font-bold">+963 4 123 4567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-envelope text-secondary"></i>
+                                </div>
+                                <div class="mr-3">
+                                    <p class="text-sm font-medium">راسلنا</p>
+                                    <p class="text-lg font-bold">road@sammantrans.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-clock text-secondary"></i>
+                                </div>
+                                <div class="mr-3">
+                                    <p class="text-sm font-medium">زمن الاستجابة</p>
+                                    <p class="text-lg font-bold">خلال ساعتين عمل</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <form>
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">الاسم الكامل</label>
+                                    <input type="text" id="name" name="name"
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">البريد الإلكتروني</label>
+                                    <input type="email" id="email" name="email"
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">رقم الهاتف</label>
+                                    <input type="tel" id="phone" name="phone"
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="service" class="block text-sm font-medium text-gray-700 mb-1">نوع الخدمة</label>
+                                    <select id="service" name="service"
+                                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
+                                        <option value="">اختر نوع الخدمة</option>
+                                        <option value="ftl">الشحنة الكاملة (FTL)</option>
+                                        <option value="ltl">أقل من حمولة الشاحنة (LTL)</option>
+                                        <option value="cross-border">نقل عابر للحدود</option>
+                                        <option value="specialized">نقل متخصص</option>
+                                        <option value="refrigerated">نقل مبرد</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="details" class="block text-sm font-medium text-gray-700 mb-1">تفاصيل الشحنة</label>
+                                    <textarea id="details" name="details" rows="3"
+                                              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary"
+                                              placeholder="المنشأ، الوجهة، وصف البضاعة، الوزن، الأبعاد، المتطلبات الخاصة..."></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit"
+                                            class="w-full bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                                        إرسال الطلب
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+                    <span class="text-secondary">الأسئلة</span> الشائعة في النقل البري
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    إجابات عن أبرز الأسئلة حول خدمات النقل البري لدينا.
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay: 0.2s">
+                    <button class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
+                        <h3 class="text-lg font-medium text-primary">ما أنواع المركبات ضمن أسطولكم؟</h3>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6">
+                        <p class="text-gray-600">يشمل أسطولنا المتنوع:</p>
+                        <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
+                            <li>شاحنات صندوقية قياسية (سعة 3.5 إلى 24 طنًا)</li>
+                            <li>مقطورات مسطّحة وستائرية</li>
+                            <li>شاحنات ومقطورات مبردة</li>
+                            <li>مقطورات منخفضة للمعدات الثقيلة</li>
+                            <li>صهاريج للسوائل</li>
+                            <li>مركبات متخصصة للبضائع الخطرة</li>
+                        </ul>
+                        <p class="text-gray-600 mt-2">نوصي بنوع المركبة الأنسب حسب مواصفات بضاعتك.</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay: 0.4s">
+                    <button class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
+                        <h3 class="text-lg font-medium text-primary">كيف تضمنون سلامة البضاعة أثناء النقل؟</h3>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6">
+                        <p class="text-gray-600">نطبق عدة إجراءات أمان:</p>
+                        <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
+                            <li>تتبع GPS لجميع المركبات</li>
+                            <li>سائقون ذوو خبرة ومُدقَّقون</li>
+                            <li>تثبيت الأحمال وتوزيعها بالشكل الصحيح</li>
+                            <li>مواقف آمنة</li>
+                            <li>مركز مراقبة على مدار الساعة</li>
+                            <li>خيارات تأمين شاملة</li>
+                        </ul>
+                        <p class="text-gray-600 mt-2">للبضائع عالية القيمة نوفر إجراءات إضافية عند الطلب.</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay: 0.6s">
+                    <button class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
+                        <h3 class="text-lg font-medium text-primary">ما أزمنة العبور للشحنات الداخلية؟</h3>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6">
+                        <p class="text-gray-600">أزمنة عبور قياسية بين المدن الرئيسية:</p>
+                        <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
+                            <li>دمشق — حلب: يوم واحد</li>
+                            <li>دمشق — حمص: 4–6 ساعات</li>
+                            <li>دمشق — اللاذقية: 6–8 ساعات</li>
+                            <li>دمشق — درعا: 2–3 ساعات</li>
+                            <li>حلب — قامشلي: 1–2 يوم</li>
+                        </ul>
+                        <p class="text-gray-600 mt-2">تتوفر خدمات مستعجلة. تختلف أزمنة العبور عبر الحدود حسب الوجهة وإجراءات المعابر.</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay: 0.8s">
+                    <button class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
+                        <h3 class="text-lg font-medium text-primary">هل تتولون التخليص الجمركي للشحنات العابرة للحدود؟</h3>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6">
+                        <p class="text-gray-600">نعم، نقدم خدمات تخليص جمركي متكاملة:</p>
+                        <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
+                            <li>إعداد وتقديم المستندات</li>
+                            <li>حساب الرسوم والضرائب</li>
+                            <li>التنسيق مع الجهات الجمركية</li>
+                            <li>دعم مستندات بلغتين</li>
+                            <li>المساعدة في التصاريح الخاصة</li>
+                        </ul>
+                        <p class="text-gray-600 mt-2">فريقنا ذو خبرة بإجراءات جميع المعابر الرئيسية في المنطقة.</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay: 1s">
+                    <button class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
+                        <h3 class="text-lg font-medium text-primary">كيف يمكنني تتبّع شحنتي؟</h3>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6">
+                        <p class="text-gray-600">نوفر عدة خيارات تتبع:</p>
+                        <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
+                            <li>بوابة تتبع عبر الإنترنت بتحديثات GPS لحظية</li>
+                            <li>إشعارات SMS/البريد الإلكتروني تلقائية</li>
+                            <li>خط ساخن لخدمة العملاء 24/7</li>
+                            <li>تحديثات من مدير حساب مخصص</li>
+                            <li>مستندات إثبات التسليم</li>
+                        </ul>
+                        <p class="text-gray-600 mt-2">ستصلك معلومات التتبع بمجرد شحن الطلب.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- دعوة لاتخاذ إجراء -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
+                هل أنت مستعد لنقل <span class="text-secondary">بضاعتك</span> برًا؟
+            </h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90 animate-fade-in" style="animation-delay: 0.2s">
+                متخصصو النقل البري لدينا جاهزون لمناقشة متطلباتك وتقديم حلول مخصصة للشحنات الداخلية والعابرة للحدود.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style="animation-delay: 0.4s">
+                <a href="#quote-form"
+                   class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300">
+                    احصل على عرض مجاني
+                </a>
+                <a href="tel:+96341234567"
+                   class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300">
+                    اتصل الآن
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="bg-primary text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="./ST.png" alt="شعار سمن ترانس" class="h-36 w-auto">
+                    </div>
+                    <p class="mb-6 opacity-80">
+                        نقدم التميز عبر الحدود من خلال خدماتنا الشاملة في النقل واللوجستيات.
+                    </p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a></li>
+                        <li><a href="aboutus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">من نحن</a></li>
+                        <li><a href="transport-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الخدمات</a></li>
+                        <li><a href="tools-ar.html" class="opacity-80 hover:text-secondary transition duration-300">التتبع</a></li>
+                        <li><a href="joinus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الوظائف</a></li>
+                        <li><a href="contactus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">الخدمات</h4>
+                    <ul class="space-y-3">
+                        <li><a href="ocean-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الشحن البحري</a></li>
+                        <li><a href="airfreight-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a></li>
+                        <li><a href="transport-ar.html" class="opacity-80 hover:text-secondary transition duration-300">النقل البري</a></li>
+                        <li><a href="ware-ar.html" class="opacity-80 hover:text-secondary transition duration-300">التخزين</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">سلاسل الإمداد</a></li>
+                        <li><a href="custom-ar.html" class="opacity-80 hover:text-secondary transition duration-300">التخليص الجمركي</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">تواصل معنا</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-secondary mt-1 ml-3"></i>
+                            <span class="opacity-80">123 حديقة اللوجستيات، المنطقة الصناعية، دمشق، سوريا</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-secondary ml-3"></i>
+                            <span class="opacity-80">+963 4 123 4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-secondary ml-3"></i>
+                            <span class="opacity-80">sammantrans.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 سمن ترانس. جميع الحقوق محفوظة.</p>
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة الخصوصية</a>
+                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط الخدمة</a>
+                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">خريطة الموقع</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر واتساب عائم -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <a href="https://wa.me/96341234567" target="_blank" class="flex flex-col items-center group">
+            <div
+                class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
+                <i class="fab fa-whatsapp text-2xl"></i>
+            </div>
+            <span
+                class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                تواصل معنا الآن
+            </span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // قائمة الجوال
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeButton = document.getElementById('close-mobile-menu');
+
+            function toggleMobileMenu(show) {
+                if (show) {
+                    mobileMenu.classList.remove('translate-x-full');
+                    mobileMenu.classList.add('translate-x-0');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenu.classList.remove('translate-x-0');
+                    mobileMenu.classList.add('translate-x-full');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            mobileMenuButton.addEventListener('click', () => toggleMobileMenu(true));
+            closeButton.addEventListener('click', () => toggleMobileMenu(false));
+
+            // تبديل الأسئلة الشائعة
+            document.querySelectorAll('.faq-toggle').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    content.classList.toggle('hidden');
+                    if (content.classList.contains('hidden')) {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                });
+            });
+
+            // تمرير سلس للروابط الداخلية
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

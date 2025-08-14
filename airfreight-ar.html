@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>خدمات الشحن البحري | سمن ترانس</title>
+  <title>خدمات الشحن الجوي | سمن ترانس</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
           keyframes: {
             float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
             fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-            slideUp: { '0%': { transform: 'translateY(50px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            slideUp: { '0%': { transform: 'translateY(50px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } }
           },
           fontFamily: {
             sans: ['Tajawal', 'Arial', 'sans-serif'],
@@ -69,7 +69,7 @@
 
   <style>
     .hero-bg {
-      background-image: linear-gradient(rgba(0, 56, 105, .85), rgba(0, 56, 105, .8)), url('./ocean-freight-hero.jpg');
+      background-image: linear-gradient(rgba(0, 56, 105, .85), rgba(0, 56, 105, .8)), url('./air-freight-hero.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -398,19 +398,16 @@
     </div>
   </nav>
 
-  <!-- الهيرو -->
+  <!-- هيرو -->
   <section class="hero-bg py-32 text-white relative overflow-hidden">
     <div class="absolute inset-0 bg-black opacity-20"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="md:w-2/3 lg:w-1/2 animate-fade-in">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-          خدمات <span class="text-secondary">الشحن البحري</span>
+          خدمات <span class="text-secondary">الشحن الجوي</span>
         </h1>
-        <p class="text-xl md:text-2xl mb-4 opacity-90">
-          حلول لوجستية بحرية عالمية مع شحن حاويات موثوق وخدمات من ميناء إلى ميناء.
-        </p>
-        <p class="text-2xl md:text-3xl font-bold text-secondary mb-8">
-          إلى كل أنحاء العالم — بلا حدود
+        <p class="text-xl md:text-2xl mb-8 opacity-90">
+          حلول شحن جوي سريعة وموثوقة بانتشار عالمي ومعالجة أولوية للشحنات الحساسة للوقت.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="#quote-form"
@@ -432,15 +429,15 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="animate-slide-up" style="animation-delay:.2s">
           <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
-            حلول <span class="text-secondary">الشحن البحري</span> الشاملة
+            حلول <span class="text-secondary">شحن جوي</span> متميزة
           </h2>
           <p class="text-gray-600 mb-6 text-lg">
-            تقدم سمن ترانس خدمات شحن بحري متكاملة مصممة لتلبية متطلبات التجارة العالمية المعقدة. من خلال شبكة واسعة من
-            الشركاء والناقلين، نوفر حلول شحن موثوقة وبتكلفة مناسبة، ومُخصصة حسب احتياجاتك.
+            تقدم سمن ترانس خدمات شحن جوي استثنائية تركز على السرعة والموثوقية والأمان. بفضل شبكة شركائنا من شركات
+            الطيران وخبراء الشحن، تصل شحناتك في الوقت المناسب أينما كانت الوجهة.
           </p>
           <p class="text-gray-600 mb-8 text-lg">
-            سواء كنت بحاجة إلى شحن حاوية كاملة (FCL) أو تجميع شحنات أقل من حاوية (LCL) أو معدات خاصة للشحنات كبيرة
-            الحجم، يضمن فريقنا وصول بضاعتك بأمان وفي الموعد.
+            من التوصيل العاجل في نفس اليوم إلى الشحن الموحد، نوفر خيارات مرنة تناسب ميزانيتك وجدولك. نتولى كل شيء من
+            الحجز حتى التسليم النهائي لتكون مطمئنًا تمامًا.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <a href="#services"
@@ -454,8 +451,8 @@
           </div>
         </div>
         <div class="animate-slide-up" style="animation-delay:.4s">
-          <img src="./sea-freight-flip-e1658396854509.webp" alt="سفينة حاويات في الميناء"
-            class="w-full rounded-xl shadow-xl" />
+          <img src="./s-and-l_deep-dive_air-cargo_for-design_desktop.jpg" alt="تحميل طائرة شحن"
+            class="w-full rounded-xl shadow-xl">
         </div>
       </div>
     </div>
@@ -466,52 +463,62 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          لماذا تختار <span class="text-secondary">الشحن البحري</span> معنا؟
+          مزايا <span class="text-secondary">الشحن الجوي</span> لدينا
         </h2>
         <p class="text-gray-600 max-w-2xl mx-auto">
-          نجمع بين الانتشار العالمي والخبرة المحلية لتقديم حلول شحن بحرية استثنائية.
+          نجمع بين السرعة والدقة لنقدم حلول شحن جوي متفوقة.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay:.2s">
           <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-globe text-white text-2xl"></i>
+            <i class="fas fa-stopwatch text-white text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold text-primary mb-4">شبكة عالمية</h3>
-          <p class="text-gray-600">وصول إلى أهم الخطوط والموانئ حول العالم مع أسعار منافسة وجداول منتظمة.</p>
+          <h3 class="text-xl font-bold text-primary mb-4">سرعة وكفاءة</h3>
+          <p class="text-gray-600">
+            أسرع أزمنة عبور مع رحلات يومية إلى أهم الوجهات العالمية — مثالي للشحنات الحساسة للوقت.
+          </p>
         </div>
 
         <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay:.4s">
           <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-clock text-white text-2xl"></i>
+            <i class="fas fa-globe-americas text-white text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold text-primary mb-4">التزام بالمواعيد</h3>
-          <p class="text-gray-600">أنظمة تتبع متقدمة وإدارة استباقية لضمان وصول الشحنات في الوقت المحدد.</p>
+          <h3 class="text-xl font-bold text-primary mb-4">تغطية عالمية</h3>
+          <p class="text-gray-600">
+            وصول مباشر لأكثر من 300 مطار حول العالم عبر شراكات جوية واسعة.
+          </p>
         </div>
 
         <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay:.6s">
           <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-lock text-white text-2xl"></i>
+            <i class="fas fa-shield-alt text-white text-2xl"></i>
           </div>
           <h3 class="text-xl font-bold text-primary mb-4">تعامل آمن</h3>
-          <p class="text-gray-600">خيارات تأمين شاملة وبروتوكولات أمان صارمة لحماية بضاعتك القيّمة.</p>
+          <p class="text-gray-600">
+            بروتوكولات أمان صارمة وخيارات تأمين شاملة لحماية قصوى للشحنات.
+          </p>
         </div>
 
         <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay:.2s">
           <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-money-bill-wave text-white text-2xl"></i>
+            <i class="fas fa-snowflake text-white text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold text-primary mb-4">كفاءة في التكلفة</h3>
-          <p class="text-gray-600">مسارات محسّنة وتجميع شحنات لخفض تكاليف النقل الإجمالية.</p>
+          <h3 class="text-xl font-bold text-primary mb-4">تحكم بالحرارة</h3>
+          <p class="text-gray-600">
+            معالجة متخصصة للمواد سريعة التلف والأدوية وغيرها من الشحنات الحساسة للحرارة.
+          </p>
         </div>
 
         <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay:.4s">
           <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-cogs text-white text-2xl"></i>
+            <i class="fas fa-bell text-white text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold text-primary mb-4">حلول مخصصة</h3>
-          <p class="text-gray-600">خدمات مخصصة للشحنات المبردة والكبيرة والخطرة وغيرها.</p>
+          <h3 class="text-xl font-bold text-primary mb-4">تتبع لحظي</h3>
+          <p class="text-gray-600">
+            تتبع عبر الإنترنت على مدار الساعة مع تنبيهات آلية في كل مرحلة.
+          </p>
         </div>
 
         <div class="bg-white p-8 rounded-xl shadow-md service-card animate-slide-up" style="animation-delay:.6s">
@@ -519,7 +526,9 @@
             <i class="fas fa-headset text-white text-2xl"></i>
           </div>
           <h3 class="text-xl font-bold text-primary mb-4">دعم مخصص</h3>
-          <p class="text-gray-600">خدمة عملاء 24/7 ونقطة اتصال واحدة لكل احتياجات الشحن لديك.</p>
+          <p class="text-gray-600">
+            إدارة حسابات شخصية ودعم طارئ 24/7 لكل احتياجات الشحن الجوي لديك.
+          </p>
         </div>
       </div>
     </div>
@@ -530,61 +539,62 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          حلول <span class="text-secondary">الشحن البحري</span> لدينا
+          حلول <span class="text-secondary">الشحن الجوي</span> لدينا
         </h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">خدمات لوجستية بحرية متكاملة مصممة لاحتياجات عملك</p>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          خدمات شحن جوي متكاملة ومصممة حسب متطلباتك
+        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- FCL -->
+        <!-- الشحن الجوي السريع -->
         <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md animate-slide-up" style="animation-delay:.2s">
-          <img src="./fcl.png" alt="شحن حاوية كاملة FCL" class="w-full h-64 object-contain" />
+          <img src="./express.jpg" alt="الشحن الجوي السريع" class="w-full h-64 object-cover">
           <div class="p-8">
             <div class="flex items-center mb-4">
               <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center ml-4">
-                <i class="fas fa-boxes text-white text-xl"></i>
+                <i class="fas fa-bolt text-white text-xl"></i>
               </div>
-              <h3 class="text-2xl font-bold text-primary">FCL (شحن حاوية كاملة)</h3>
+              <h3 class="text-2xl font-bold text-primary">الشحن الجوي السريع</h3>
             </div>
             <p class="text-gray-600 mb-6">
-              خيار مثالي للشحنات الكبيرة التي تتطلب استخدام حاوية كاملة. نقدم أسعارًا تنافسية ومساحات مضمونة على أهم
-              الخطوط.
+              معالجة أولوية للشحنات العاجلة بأسرع أزمنة عبور، مع سعات مخصصة على رحلات الركاب والشحن.
             </p>
             <ul class="space-y-3 mb-6">
-              <li class="benefit-item">خيارات حاويات 20' و40' و40' High Cube</li>
-              <li class="benefit-item">حلول باب إلى باب/ميناء إلى ميناء/متعددة الوسائط</li>
-              <li class="benefit-item">إبحارات أسبوعية إلى أهم الموانئ العالمية</li>
-              <li class="benefit-item">تتبع للحاويات في الوقت الفعلي</li>
+              <li class="benefit-item">خيارات نفس اليوم أو أول رحلة متاحة</li>
+              <li class="benefit-item">أولوية في التحميل والمناولة</li>
+              <li class="benefit-item">من باب إلى باب أو مطار إلى مطار</li>
+              <li class="benefit-item">مراقبة وتحديثات 24/7</li>
             </ul>
             <a href="#quote-form"
               class="inline-block bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-medium transition duration-300">
-              اطلب عرض FCL
+              اطلب عرض السريع
             </a>
           </div>
         </div>
 
-        <!-- LCL -->
+        <!-- الشحن الجوي القياسي -->
         <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md animate-slide-up" style="animation-delay:.4s">
-          <img src="./lclocean.jpeg" alt="شحن مجزأ LCL" class="w-full h-64 object-contain" />
+          <img src="./standair.webp" alt="الشحن الجوي القياسي" class="w-full h-64 object-cover">
           <div class="p-8">
             <div class="flex items-center mb-4">
               <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center ml-4">
-                <i class="fas fa-box-open text-white text-xl"></i>
+                <i class="fas fa-plane text-white text-xl"></i>
               </div>
-              <h3 class="text-2xl font-bold text-primary">LCL (أقل من حاوية)</h3>
+              <h3 class="text-2xl font-bold text-primary">الشحن الجوي القياسي</h3>
             </div>
             <p class="text-gray-600 mb-6">
-              حل اقتصادي للشحنات الصغيرة التي لا تتطلب حاوية كاملة. نقوم بتجميع بضاعتك مع شحنات أخرى لنفس الوجهة.
+              حلول اقتصادية بجدولة موثوقة للشحنات الدورية التي لا تتطلب خدمة عاجلة.
             </p>
             <ul class="space-y-3 mb-6">
-              <li class="benefit-item">إبحارات مجمعة أسبوعية لوجهات عالمية</li>
-              <li class="benefit-item">خيارات تأمين على البضائع</li>
-              <li class="benefit-item">خدمات تعبئة وتغليف احترافية</li>
-              <li class="benefit-item">خيارات تسليم باب إلى باب</li>
+              <li class="benefit-item">خيارات رحلات مباشرة ومجمّعة</li>
+              <li class="benefit-item">إقلاعات يومية إلى الوجهات الرئيسية</li>
+              <li class="benefit-item">مجموعة كاملة من الخدمات الإضافية</li>
+              <li class="benefit-item">أسعار تنافسية للشاحنين الدائمين</li>
             </ul>
             <a href="#quote-form"
               class="inline-block bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-medium transition duration-300">
-              اطلب عرض LCL
+              اطلب عرض القياسي
             </a>
           </div>
         </div>
@@ -598,40 +608,41 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="animate-slide-up" style="animation-delay:.2s">
           <h2 class="text-3xl md:text-4xl font-bold mb-6">
-            <span class="text-secondary">تغطية</span> وشبكة عالمية
+            تغطية <span class="text-secondary">شبكة جوية</span> عالمية
           </h2>
           <p class="text-xl mb-8 opacity-90">
-            بشراكات استراتيجية عبر أهم طرق الشحن، نوفر خدمات بحرية موثوقة من وإلى الأسواق العالمية الرئيسية.
+            بفضل الوصول إلى جميع شركات الطيران والناقلين الرئيسيين، نوفر رحلات يومية موثوقة من وإلى أهم المراكز
+            العالمية.
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <h3 class="text-xl font-bold mb-4 text-secondary">دول الانطلاق الرئيسية</h3>
+              <h3 class="text-xl font-bold mb-4 text-secondary">مطارات الانطلاق الأساسية</h3>
               <ul class="space-y-2">
-                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>الهند</span>
-                </li>
-                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>الصين</span>
-                </li>
-                <li class="flex items-center"><i
-                    class="fas fa-check-circle text-secondary ml-2"></i><span>إيطاليا</span></li>
-                <li class="flex items-center"><i
-                    class="fas fa-check-circle text-secondary ml-2"></i><span>ألمانيا</span></li>
-                <li class="flex items-center"><i
-                    class="fas fa-check-circle text-secondary ml-2"></i><span>إسبانيا</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>دمشق
+                    (DAM)</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>دبي
+                    (DXB)</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>إسطنبول
+                    (IST)</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>فرانكفورت
+                    (FRA)</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>هونغ كونغ
+                    (HKG)</span></li>
               </ul>
             </div>
             <div>
-              <h3 class="text-xl font-bold mb-4 text-secondary">الوجهات الرئيسية</h3>
+              <h3 class="text-xl font-bold mb-4 text-secondary">مطارات الوجهة الأساسية</h3>
               <ul class="space-y-2">
-                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>طرطوس،
-                    سوريا</span></li>
-                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>إسطنبول،
-                    تركيا</span></li>
-                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>بيروت،
-                    لبنان</span></li>
-                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>الإسكندرية،
-                    مصر</span></li>
-                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>العقبة،
-                    الأردن</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>بيروت
+                    (BEY)</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>عمّان
+                    (AMM)</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>القاهرة
+                    (CAI)</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>الرياض
+                    (RUH)</span></li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i><span>بغداد
+                    (BGW)</span></li>
               </ul>
             </div>
           </div>
@@ -646,9 +657,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          عملية <span class="text-secondary">الشحن البحري</span> لدينا
+          عملية <span class="text-secondary">الشحن الجوي</span> لدينا
         </h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">نهج مبسّط لضمان شحن فعال وخالٍ من التعقيدات</p>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          نهج مبسّط لضمان شحن جوي فعّال وخالٍ من التعقيدات
+        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -656,32 +669,32 @@
           <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
             <span class="text-white text-2xl font-bold">1</span>
           </div>
-          <h3 class="text-xl font-bold text-primary mb-3">استشارة وعرض سعر</h3>
-          <p class="text-gray-600">نُقيّم احتياجاتك ونقدم عرضًا تنافسيًا مع عدة خيارات.</p>
+          <h3 class="text-xl font-bold text-primary mb-3">استشارة وحجز</h3>
+          <p class="text-gray-600">نقيّم احتياجاتك ونؤمّن المساحة على الرحلة الأنسب لشحنتك.</p>
         </div>
 
         <div class="text-center animate-slide-up" style="animation-delay:.4s">
           <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
             <span class="text-white text-2xl font-bold">2</span>
           </div>
-          <h3 class="text-xl font-bold text-primary mb-3">الحجز والمستندات</h3>
-          <p class="text-gray-600">نتولى كافة الأعمال الورقية ونؤمن المساحة لدى الناقل الأنسب لشحنتك.</p>
+          <h3 class="text-xl font-bold text-primary mb-3">الاستلام والمستندات</h3>
+          <p class="text-gray-600">نتولى الاستلام والتغليف وكافة مستندات الشحن الجوي والتخليص الجمركي.</p>
         </div>
 
         <div class="text-center animate-slide-up" style="animation-delay:.6s">
           <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
             <span class="text-white text-2xl font-bold">3</span>
           </div>
-          <h3 class="text-xl font-bold text-primary mb-3">مناولة وشحن البضائع</h3>
-          <p class="text-gray-600">يتم تحميل بضاعتك بعناية وشحنها مع مراقبة مستمرة أثناء الرحلة.</p>
+          <h3 class="text-xl font-bold text-primary mb-3">النقل الجوي والمتابعة</h3>
+          <p class="text-gray-600">يتم شحن بضاعتك مع مراقبة مستمرة طوال الرحلة.</p>
         </div>
 
         <div class="text-center animate-slide-up" style="animation-delay:.8s">
           <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
             <span class="text-white text-2xl font-bold">4</span>
           </div>
-          <h3 class="text-xl font-bold text-primary mb-3">التسليم والمتابعة</h3>
-          <p class="text-gray-600">تسليم نهائي مع إثبات استلام ومتابعة بعد الشحن لضمان رضاك.</p>
+          <h3 class="text-xl font-bold text-primary mb-3">التخليص والتسليم</h3>
+          <p class="text-gray-600">تخليص سريع وتسليم نهائي مع إثبات استلام ومتابعة لاحقة.</p>
         </div>
       </div>
     </div>
@@ -694,31 +707,31 @@
         <div class="md:flex">
           <div class="md:w-1/2 bg-primary text-white p-8 md:p-12">
             <h2 class="text-2xl md:text-3xl font-bold mb-6">
-              اطلب <span class="text-secondary">عرض سعر للشحن</span>
+              اطلب <span class="text-secondary">عرض سعر للشحن الجوي</span>
             </h2>
             <p class="mb-6">
-              املأ النموذج وسيقدم لك فريق الشحن البحري لدينا عرضًا تنافسيًا حسب احتياجاتك.
+              املأ النموذج وسيقدم لك خبراؤنا عرضًا تنافسيًا وفق احتياجاتك، مع خيارات زمن العبور ومستويات الخدمة.
             </p>
             <div class="space-y-4">
               <div class="flex items-start">
                 <div class="flex-shrink-0 mt-1"><i class="fas fa-phone-alt text-secondary"></i></div>
                 <div class="mr-3">
-                  <p class="text-sm font-medium">هل لديك أسئلة؟</p>
+                  <p class="text-sm font-medium">شحنة عاجلة؟</p>
                   <p class="text-lg font-bold">+963 4 123 4567</p>
                 </div>
               </div>
               <div class="flex items-start">
                 <div class="flex-shrink-0 mt-1"><i class="fas fa-envelope text-secondary"></i></div>
                 <div class="mr-3">
-                  <p class="text-sm font-medium">راسلنا عبر البريد</p>
-                  <p class="text-lg font-bold">ocean@sammantrans.com</p>
+                  <p class="text-sm font-medium">راسلنا</p>
+                  <p class="text-lg font-bold">air@sammantrans.com</p>
                 </div>
               </div>
               <div class="flex items-start">
                 <div class="flex-shrink-0 mt-1"><i class="fas fa-clock text-secondary"></i></div>
                 <div class="mr-3">
                   <p class="text-sm font-medium">زمن الاستجابة</p>
-                  <p class="text-lg font-bold">خلال ساعتين عمل</p>
+                  <p class="text-lg font-bold">خلال ساعة عمل واحدة</p>
                 </div>
               </div>
             </div>
@@ -730,33 +743,35 @@
                 <div>
                   <label for="name" class="block text-sm font-medium text-gray-700 mb-1">الاسم الكامل</label>
                   <input id="name" name="name" type="text"
-                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary" />
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
                 </div>
                 <div>
                   <label for="email" class="block text-sm font-medium text-gray-700 mb-1">البريد الإلكتروني</label>
                   <input id="email" name="email" type="email"
-                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary" />
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
                 </div>
                 <div>
                   <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">رقم الهاتف</label>
                   <input id="phone" name="phone" type="tel"
-                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary" />
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
                 </div>
                 <div>
-                  <label for="service" class="block text-sm font-medium text-gray-700 mb-1">الخدمة المطلوبة</label>
+                  <label for="service" class="block text-sm font-medium text-gray-700 mb-1">نوع الخدمة</label>
                   <select id="service" name="service"
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary">
-                    <option value="">اختر خدمة</option>
-                    <option value="fcl">FCL (شحن حاوية كاملة)</option>
-                    <option value="lcl">LCL (أقل من حاوية)</option>
-                    <option value="other">أخرى</option>
+                    <option value="">اختر نوع الخدمة</option>
+                    <option value="express">الشحن الجوي السريع</option>
+                    <option value="standard">الشحن الجوي القياسي</option>
+                    <option value="perishable">مواد سريعة التلف</option>
+                    <option value="dangerous">مواد خطرة</option>
+                    <option value="oversized">شحنات كبيرة الحجم</option>
                   </select>
                 </div>
                 <div>
                   <label for="details" class="block text-sm font-medium text-gray-700 mb-1">تفاصيل الشحنة</label>
                   <textarea id="details" name="details" rows="3"
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary"
-                    placeholder="بلد المنشأ، الوجهة، وصف البضائع، الوزن، الأبعاد، إلخ."></textarea>
+                    placeholder="المنشأ، الوجهة، وصف البضائع، الوزن، الأبعاد، درجة الإلحاح، إلخ."></textarea>
                 </div>
                 <div>
                   <button type="submit"
@@ -778,114 +793,127 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          <span class="text-secondary">أسئلة</span> الشحن البحري الشائعة
+          <span class="text-secondary">أسئلة</span> الشحن الجوي الشائعة
         </h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">إجابات عن أكثر الأسئلة تكرارًا حول خدماتنا</p>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          إجابات عن أبرز الأسئلة حول خدمات الشحن الجوي لدينا
+        </p>
       </div>
 
       <div class="space-y-6">
         <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay:.2s">
           <button
             class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
-            <h3 class="text-lg font-medium text-primary">ما الفرق بين شحن FCL وLCL؟</h3>
+            <h3 class="text-lg font-medium text-primary">ما مدى سرعة الشحن الجوي مقارنة بالبحري؟</h3>
             <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
           </button>
           <div class="faq-content hidden p-6">
-            <p class="text-gray-600">
-              يعني FCL أن شحنتك تشغل حاوية كاملة بشكل حصري، بينما LCL يعني مشاركة الحاوية مع شحنات أخرى. عادة يكون FCL
-              أوفر للشحنات الكبيرة (أكثر من 10–15 م³)، بينما LCL مناسب للشحنات الصغيرة.
-            </p>
+            <p class="text-gray-600">الشحن الجوي أسرع بكثير من الشحن البحري. أزمنة عبور تقريبية:</p>
+            <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
+              <li>الشرق الأوسط ⇐ أوروبا: 1–2 يوم</li>
+              <li>آسيا ⇐ الشرق الأوسط: 2–3 أيام</li>
+              <li>الولايات المتحدة ⇐ الشرق الأوسط: 3–5 أيام</li>
+              <li>داخل الشرق الأوسط: نفس اليوم أو اليوم التالي</li>
+            </ul>
+            <p class="text-gray-600 mt-2">الأوقات تقريبية وتشمل التخليص الجمركي عند الاقتضاء.</p>
           </div>
         </div>
 
         <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay:.4s">
           <button
             class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
-            <h3 class="text-lg font-medium text-primary">كم تستغرق مدة الشحن البحري؟</h3>
+            <h3 class="text-lg font-medium text-primary">ما حدود الوزن والحجم في الشحن الجوي؟</h3>
             <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
           </button>
           <div class="faq-content hidden p-6">
-            <p class="text-gray-600">تختلف المدة حسب المنشأ والوجهة والمسار. أمثلة تقريبية:</p>
+            <p class="text-gray-600">حدود شائعة على طائرات الركاب:</p>
             <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
-              <li>الصين ⇐ الشرق الأوسط: 14–21 يومًا</li>
-              <li>أوروبا ⇐ الشرق الأوسط: 10–18 يومًا</li>
-              <li>الولايات المتحدة ⇐ الشرق الأوسط: 25–35 يومًا</li>
+              <li>الوزن الأقصى للقطعة: عادة 100–150 كغ</li>
+              <li>الأبعاد القصوى: 120 × 80 × 80 سم (تختلف حسب شركة الطيران)</li>
+              <li>الشحنات كبيرة الحجم تحتاج معالجة خاصة وطائرات شحن</li>
             </ul>
-            <p class="text-gray-600 mt-2">هذه أزمنة إبحار فقط ولا تشمل النقل البري أو التخليص الجمركي.</p>
+            <p class="text-gray-600 mt-2">على طائرات الشحن، الحدود أعلى بكثير — تواصل معنا لتفاصيل الشحنات الضخمة.</p>
           </div>
         </div>
 
         <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay:.6s">
           <button
             class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
-            <h3 class="text-lg font-medium text-primary">ما هي المستندات المطلوبة للشحن البحري؟</h3>
+            <h3 class="text-lg font-medium text-primary">ما المستندات المطلوبة للشحن الجوي؟</h3>
             <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
           </button>
           <div class="faq-content hidden p-6">
             <p class="text-gray-600">عادة نحتاج إلى:</p>
             <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
+              <li>بوليصة شحن جوي (AWB)</li>
               <li>فاتورة تجارية</li>
               <li>كشف تعبئة</li>
-              <li>بوليصة شحن بحري (B/L)</li>
               <li>شهادة منشأ</li>
               <li>رخص استيراد/تصدير (إن وجدت)</li>
               <li>تصريح بضائع خطرة (إن وجدت)</li>
             </ul>
-            <p class="text-gray-600 mt-2">نرشدك عبر جميع متطلبات المستندات الخاصة بشحنتك.</p>
+            <p class="text-gray-600 mt-2">يقوم فريقنا بإعداد جميع المستندات اللازمة وفقًا لشحنتك.</p>
           </div>
         </div>
 
         <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay:.8s">
           <button
             class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
-            <h3 class="text-lg font-medium text-primary">هل تتولون التخليص الجمركي؟</h3>
+            <h3 class="text-lg font-medium text-primary">هل يمكنكم شحن المواد الحساسة للحرارة؟</h3>
             <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
           </button>
           <div class="faq-content hidden p-6">
-            <p class="text-gray-600">
-              نعم، نقدم خدمات تخليص جمركي شاملة في البلدان التي نخدمها عبر خبراء مرخّصين لضمان انسيابية الإجراءات وحساب
-              الرسوم والضرائب وسدادها بدقة.
-            </p>
+            <p class="text-gray-600">نعم، نتخصص في الشحن المُتحكم بالحرارة لـ:</p>
+            <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
+              <li>الأدوية واللقاحات</li>
+              <li>الأغذية الزهرية والسريعة التلف</li>
+              <li>عينات كيميائية/بيولوجية</li>
+              <li>منتجات أخرى حساسة للحرارة</li>
+            </ul>
+            <p class="text-gray-600 mt-2">نوفر حلول تبريد نشطة وسلبية مع مراقبة درجة الحرارة في الوقت الفعلي.</p>
           </div>
         </div>
 
         <div class="border border-gray-200 rounded-xl overflow-hidden animate-slide-up" style="animation-delay:1s">
           <button
             class="faq-toggle w-full text-right p-6 bg-gray-50 hover:bg-gray-100 transition duration-300 flex justify-between items-center">
-            <h3 class="text-lg font-medium text-primary">كيف أتتبع شحنتي البحرية؟</h3>
+            <h3 class="text-lg font-medium text-primary">كيف تضمنون أمان الشحنات عالية القيمة؟</h3>
             <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
           </button>
           <div class="faq-content hidden p-6">
-            <p class="text-gray-600">نوفّر عدة خيارات تتبع:</p>
+            <p class="text-gray-600">نطبق عدة إجراءات أمان للشحنات القيّمة:</p>
             <ul class="list-disc pr-5 mt-2 space-y-1 text-gray-600">
-              <li>بوابة عملاء عبر الإنترنت مع تحديثات آنية</li>
-              <li>تنبيهات بريد إلكتروني عند المحطات الرئيسية</li>
-              <li>تطبيق جوال بإشعارات</li>
-              <li>مدير حساب مخصص</li>
+              <li>إجراءات مناولة آمنة مخصصة</li>
+              <li>أختام وعبوات كاشفة للتلاعب</li>
+              <li>تتبع GPS لرؤية من الباب إلى الباب</li>
+              <li>مرافقة مسلحة عند الطلب</li>
+              <li>تأمين متخصص</li>
             </ul>
-            <p class="text-gray-600 mt-2">ستصلك بيانات التتبع فور حجز الشحنة.</p>
+            <p class="text-gray-600 mt-2">تخضع الشحنات القيّمة لإشراف مباشر من فريق مدرّب أمنيًا.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- دعوة للإجراء -->
+  <!-- CTA -->
   <section class="py-20 bg-primary text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
-        مستعد لشحن بضاعتك <span class="text-secondary">بحرًا</span>؟
+        تحتاج <span class="text-secondary">حلولًا عاجلة</span> للشحن الجوي؟
       </h2>
       <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90 animate-fade-in" style="animation-delay:.2s">
-        خبراؤنا جاهزون لمساعدتك بالحل الأكثر كفاءة وتكلفة لعملك.
+        خبراؤنا متوفرون 24/7 لترتيب الشحنات الفورية وتقديم الاستشارات لاحتياجك اللوجستي الحساس للوقت.
       </p>
       <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style="animation-delay:.4s">
         <a href="#quote-form"
-          class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300">احصل
-          على عرض مجاني</a>
+          class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300">
+          احصل على عرض مجاني
+        </a>
         <a href="tel:+96341234567"
-          class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300">اتصل
-          بالخبراء</a>
+          class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300">
+          اتصل الآن
+        </a>
       </div>
     </div>
   </section>
@@ -896,9 +924,9 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <div>
           <div class="flex items-center mb-6">
-            <img src="./ST.png" alt="شعار سمن ترانس" class="h-36 w-auto" />
+            <img src="./ST.png" alt="شعار سمن ترانس" class="h-36 w-auto">
           </div>
-          <p class="mb-6 opacity-80">نقدّم التميز عبر الحدود بخدماتنا الشاملة في النقل واللوجستيات.</p>
+          <p class="mb-6 opacity-80">نقدم التميز عبر الحدود بخدماتنا الشاملة في النقل واللوجستيات.</p>
           <div class="flex space-x-4 space-x-reverse">
             <a href="#"
               class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300"><i
@@ -935,9 +963,9 @@
         <div>
           <h4 class="text-lg font-bold mb-6">الخدمات</h4>
           <ul class="space-y-3">
-            <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الشحن البحري</a></li>
-            <li><a href="airfreight-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الشحن
-                الجوي</a></li>
+            <li><a href="ocean-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الشحن البحري</a>
+            </li>
+            <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a></li>
             <li><a href="transport-ar.html" class="opacity-80 hover:text-secondary transition duration-300">النقل
                 البري</a></li>
             <li><a href="ware-ar.html" class="opacity-80 hover:text-secondary transition duration-300">التخزين</a></li>
@@ -1007,22 +1035,30 @@
       mobileMenuButton.addEventListener('click', () => toggleMobileMenu(true));
       closeButton.addEventListener('click', () => toggleMobileMenu(false));
 
-      // الأسئلة الشائعة
-      document.querySelectorAll('.faq-toggle').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const content = btn.nextElementSibling;
-          const icon = btn.querySelector('i');
+      // أكورديون الأسئلة الشائعة
+      document.querySelectorAll('.faq-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          const icon = button.querySelector('i');
           content.classList.toggle('hidden');
-          if (content.classList.contains('hidden')) { icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down'); }
-          else { icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); }
+          if (content.classList.contains('hidden')) {
+            icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down');
+          } else {
+            icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up');
+          }
         });
       });
 
       // تمرير سلس
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', function (e) {
-          const id = this.getAttribute('href'); if (id === '#') return;
-          const el = document.querySelector(id); if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
         });
       });
     });

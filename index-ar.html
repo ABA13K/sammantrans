@@ -62,6 +62,36 @@
                 }
             }
         }
+        
+        // Language switcher function
+        function switchLanguage() {
+            const currentPath = window.location.pathname;
+            const currentFile = currentPath.split('/').pop();
+            
+            // Map Arabic files to English equivalents
+            const languageMap = {
+                'index-ar.html': 'index.html',
+                'aboutus-ar.html': 'aboutus.html',
+                'contactus-ar.html': 'contactus.html',
+                'news-ar.html': 'news.html',
+                'ocean-ar.html': 'ocean.html',
+                'airfreight-ar.html': 'airfreight.html',
+                'transport-ar.html': 'transport.html',
+                'ware-ar.html': 'ware.html',
+                'custom-ar.html': 'custom.html',
+                'business-ar.html': 'business.html',
+                'tools-ar.html': 'tools.html',
+                'joinus-ar.html': 'joinus.html'
+            };
+            
+            // If current file is in the map, navigate to English version
+            if (languageMap[currentFile]) {
+                window.location.href = languageMap[currentFile];
+            } else {
+                // Fallback to index.html
+                window.location.href = 'index.html';
+            }
+        }
     </script>
     <style>
         .clip-pentagon {
@@ -356,7 +386,7 @@
         }
 
         /* RTL specific adjustments */
-        [dir="rtl"] .float-right {
+        /* [dir="rtl"] .float-right {
             float: left !important;
         }
 
@@ -499,9 +529,9 @@
 
         [dir="rtl"] .-translate-x-1\/2 {
             transform: translateX(50%) !important;
-        }
+        } */
 
-        [dir="rtl"] .space-x-4> :not([hidden])~ :not([hidden]) {
+        /* [dir="rtl"] .space-x-4> :not([hidden])~ :not([hidden]) {
             margin-right: 0 !important;
             margin-left: 1rem !important;
         }
@@ -509,107 +539,103 @@
         [dir="rtl"] .space-x-8> :not([hidden])~ :not([hidden]) {
             margin-right: 0 !important;
             margin-left: 2rem !important;
+        } */
+        /* فراغ ثابت بين الشعار وأول رابط في سطح المكتب */
+.nav-gap-left { margin-left: 1rem; }
+@media (min-width: 768px) {
+  .nav-gap-left { margin-left: 2rem; }
         }
+
     </style>
 </head>
 
 <body class="font-sans antialiased">
-    <!-- Navigation -->
     <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative flex h-24 items-center text-lg">
 
-                <!-- Logo -->
+                <!-- الشعار -->
                 <div class="flex-shrink-0">
-                    <a href="#" class="flex items-center">
-                        <img src="./12.png" alt="شعار سمن للنقل" class="h-24 w-auto">
+                    <a href="index-ar.html" class="flex items-center">
+                        <img src="./12.png" alt="شعار سمن ترانس" class="h-24 w-auto">
                     </a>
                 </div>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex flex-1 justify-center ml-6">
-                    <div class="flex items-center space-x-8">
-                        <a href="#"
-                            class="text-[#003869] font-bold ml-5 hover:text-[#0056a3] transition duration-300 relative group text-center">
+                <!-- روابط سطح المكتب -->
+                 <div class="hidden md:flex flex-1 justify-center nav-gap-left">
+
+                    <div class="flex items-center space-x-8 space-x-reverse">
+                        <a href="index-ar.html"
+                           class="text-[#003869] font-bold mr-8 hover:text-[#0056a3] transition duration-300 relative group text-center">
                             الرئيسية
-                            <span
-                                class="absolute bottom-0  transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full ml-5"></span>
-                        </a>
-                        <a href="./news.html"
-                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center ml-5">
-                            الأخبار
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
-                        <!-- Services Dropdown -->
+                        <a href="./news-ar.html"
+                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            الأخبار
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- قائمة الخدمات -->
                         <div class="relative group">
                             <button
-                                class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center ml-3">
+                                class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
                                 الخدمات
-                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                                <svg class="w-4 h-4 mr-1 transition-transform duration-300 group-hover:rotate-180"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19 9l-7 7-7-7" />
                                 </svg>
-                                <span
-                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                             </button>
 
-                            <!-- Dropdown Menu -->
+                            <!-- القائمة المنسدلة -->
                             <div
                                 class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
-                                <!-- Ocean Freight -->
-                                <a href="./ocean.html"
+                                <a href="./ocean-ar.html"
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-ship text-blue-600"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-gray-900">الشحن البحري</h4>
-                                            <p class="text-xs text-gray-500">خدمات لوجستية بحرية عالمية</p>
+                                            <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
                                         </div>
                                     </div>
                                 </a>
 
-                                <!-- Air Freight -->
-                                <a href="./airfreight.html"
+                                <a href="./airfreight-ar.html"
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-plane text-blue-600"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-gray-900">الشحن الجوي</h4>
-                                            <p class="text-xs text-gray-500">خدمات شحن جوي سريعة</p>
+                                            <p class="text-xs text-gray-500">خدمات شحن جوي أولوية</p>
                                         </div>
                                     </div>
                                 </a>
 
-                                <!-- Road Transport -->
-                                <a href="./transport.html"
+                                <a href="./transport-ar.html"
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-truck text-blue-600"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-gray-900">النقل البري</h4>
-                                            <p class="text-xs text-gray-500">حلول النقل البري</p>
+                                            <p class="text-xs text-gray-500">حلول نقل بري محلية وعابرة للحدود</p>
                                         </div>
                                     </div>
                                 </a>
 
-                                <!-- Warehousing -->
-                                <a href="./ware.html"
+                                <a href="./ware-ar.html"
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-warehouse text-blue-600"></i>
                                         </div>
                                         <div>
@@ -619,82 +645,71 @@
                                     </div>
                                 </a>
 
-                                <!-- Customs Clearance -->
-                                <a href="./custom.html"
+                                <a href="./custom-ar.html"
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-passport text-blue-600"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-gray-900">التخليص الجمركي</h4>
-                                            <p class="text-xs text-gray-500">معاملات حدودية سلسة</p>
+                                            <p class="text-xs text-gray-500">عبور حدودي سلس</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
 
-                        <!-- الأعمال والمعارض Tab -->
-                        <a href="./business.html"
+                        <a href="./business-ar.html"
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             الأعمال والمعارض
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
-                        <!-- Tracking -->
-                        <a href="./tools.html"
+                        <a href="./tools-ar.html"
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             الأدوات
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
-                        <!-- About -->
-                        <a href="./aboutus.html"
+                        <a href="./aboutus-ar.html"
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            عن الشركة
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            من نحن
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
-                        <!-- Contact -->
-                        <a href="./contactus.html"
+                        <a href="./contactus-ar.html"
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            اتصل بنا
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            تواصل معنا
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
-                        <!-- Join Us (Career) -->
-                        <a href="./joinus.html"
+                        <a href="./joinus-ar.html"
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             انضم إلينا
-                            <span
-                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Language Switcher -->
-                <div class="hidden md:flex items-center ml-4 mr-5">
-                    <a href="index.html" class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
+                <!-- محوّل اللغة -->
+                <div class="hidden md:flex items-center mr-4 ml-5">
+                    <a href="javascript:void(0)" onclick="switchLanguage()" class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
                     <span class="mx-2 text-gray-400">|</span>
                     <a href="index-ar.html" class="text-sm font-bold text-primary">العربية</a>
                 </div>
 
-                <!-- Get Quote Button -->
-                <div class="hidden md:block mr-5">
-                    <button class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
+                <!-- زر عرض السعر -->
+                <div class="hidden md:block">
+                    <a href="#quote-form"
+                       class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
                          text-white px-6 py-2 rounded-md font-bold transition-all duration-300
                          transform hover:scale-105 shadow-md hover:shadow-lg">
-                        اطلب عرض سعر
-                    </button>
+                        احصل على عرض سعر
+                    </a>
                 </div>
 
-                <!-- Mobile menu button -->
+                <!-- زر قائمة الجوال -->
                 <div class="md:hidden">
                     <button id="mobile-menu-button"
                         class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300">
@@ -707,12 +722,12 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full mobile-menu-transition"
-            id="mobile-menu">
+        <!-- قائمة الجوال -->
+        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out"
+             id="mobile-menu" x-data="{ openServices: false }">
             <div class="flex flex-col h-full p-6 overflow-y-auto">
-                <!-- Close button -->
-                <div class="flex justify-end mb-6">
+                <!-- زر الإغلاق -->
+                <div class="flex justify-start mb-6">
                     <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -721,84 +736,64 @@
                     </button>
                 </div>
 
-                <!-- Language Switcher for Mobile -->
-                <div class="flex justify-center mb-6">
-                    <a href="index.html"
-                        class="px-4 py-2 text-gray-600 border-b-2 border-transparent hover:text-primary hover:border-primary">EN</a>
-                    <a href="index-ar.html" class="px-4 py-2 text-primary border-b-2 border-primary">العربية</a>
-                </div>
-
-                <!-- Mobile navigation links -->
+                <!-- روابط الجوال -->
                 <div class="space-y-4">
-                    <a href="./index-ar.html"
-                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الرئيسية</a>
+                    <a href="./index-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الرئيسية</a>
 
-                    <!-- Services Accordion -->
-                    <div x-data="{ open: false }" class="border-b border-gray-200 pb-4">
-                        <button @click="open = !open"
+                    <!-- أكورديون الخدمات -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button @click="openServices = !openServices"
                             class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-900 hover:text-primary">
                             <span>الخدمات</span>
                             <svg class="w-5 h-5 transition-transform duration-200"
-                                :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor"
+                                 :class="{ 'transform rotate-180': openServices }" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
 
-                        <div x-show="open" x-collapse class="mt-2 space-y-3 pl-4">
-                            <a href="./ocean.html"
-                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-ship text-primary mr-3 w-5 text-center"></i>
+                        <div x-show="openServices" x-collapse class="mt-2 space-y-3 pr-4">
+                            <a href="./ocean-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-ship text-primary ml-3 w-5 text-center"></i>
                                 الشحن البحري
                             </a>
-                            <a href="./airfreight.html"
-                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-plane text-primary mr-3 w-5 text-center"></i>
+                            <a href="./airfreight-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-plane text-primary ml-3 w-5 text-center"></i>
                                 الشحن الجوي
                             </a>
-                            <a href="./transport.html"
-                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-truck text-primary mr-3 w-5 text-center"></i>
+                            <a href="./transport-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-truck text-primary ml-3 w-5 text-center"></i>
                                 النقل البري
                             </a>
-                            <a href="./ware.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-warehouse text-primary mr-3 w-5 text-center"></i>
+                            <a href="./ware-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-warehouse text-primary ml-3 w-5 text-center"></i>
                                 التخزين
                             </a>
-                            <a href="./custom.html"
-                                class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-passport text-primary mr-3 w-5 text-center"></i>
+                            <a href="./custom-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
+                                <i class="fas fa-passport text-primary ml-3 w-5 text-center"></i>
                                 التخليص الجمركي
                             </a>
                         </div>
                     </div>
 
-                    <!-- الأعمال والمعارض Tab -->
-                    <a href="./business.html"
-                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأعمال والمعارض</a>
+                    <a href="./business-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأعمال والمعارض</a>
+                    <a href="./tools-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأدوات</a>
+                    <a href="./aboutus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">من نحن</a>
+                    <a href="./contactus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">تواصل معنا</a>
+                    <a href="./joinus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">انضم إلينا</a>
 
-                    <!-- Other links -->
-                    <a href="#tracking" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">تتبع
-                        الشحنات</a>
-                    <a href="./aboutus.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">عن
-                        الشركة</a>
-                    <a href="./contactus.html"
-                        class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">اتصل بنا</a>
-
-                    <!-- Join Us for mobile -->
-                    <a href="./joinus.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">انضم
-                        إلينا</a>
-
-                    <!-- Get Quote Button for Mobile -->
-                    <button
-                        class="mt-6 w-full bg-gradient-to-r from-[#003869] to-[#0056a3] text-white py-3 rounded-md font-bold transition-all duration-300">
-                        اطلب عرض سعر
-                    </button>
+                    <!-- زر عرض السعر للجوال -->
+                    <a href="#quote-form"
+                       class="mt-6 w-full text-center bg-gradient-to-r from-[#003869] to-[#0056a3] text-white py-3 rounded-md font-bold transition-all duration-300">
+                        احصل على عرض سعر
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
+    <!-- Navigation -->
+      
 
     <!-- Hero Section -->
     <section class="relative h-screen overflow-hidden">
