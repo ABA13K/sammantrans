@@ -1474,6 +1474,81 @@
                 dragging = false;
             }, { passive: true });
         });
+        (() => {
+            const QUOTE_API = 'https://aa-dev.site/sammantrans/api/send-order-request';
+
+            const form = document.getElementById('ocean-quote-form');
+            if (!form) return;
+
+            const nameEl = document.getElementById('q-name');
+            const emailEl = document.getElementById('q-email');
+            const phoneEl = document.getElementById('q-phone');
+            const servEl = document.getElementById('q-service');
+            const detEl = document.getElementById('q-details');
+
+            const statusBox = document.getElementById('quote-status');
+            const btn = document.getElementById('quote-btn');
+            const btnText = document.getElementById('quote-btn-text');
+            const btnSpin = document.getElementById('quote-btn-spinner');
+
+            const showStatus = (ok, msg) => {
+                statusBox.className = 'mt-2 p-3 rounded-lg text-sm ' + (ok
+                    ? 'bg-green-50 text-green-700 border border-green-200'
+                    : 'bg-red-50 text-red-700 border border-red-200');
+                statusBox.textContent = msg;
+                statusBox.classList.remove('hidden');
+            };
+
+            const setBusy = (busy) => {
+                btn.disabled = busy;
+                btn.classList.toggle('opacity-70', busy);
+                btn.classList.toggle('cursor-not-allowed', busy);
+                btnSpin.classList.toggle('hidden', !busy);
+                btnText.textContent = busy ? 'Sending…' : 'Request Quote';
+            };
+
+            const validate = () => {
+                if (!nameEl.value.trim()) { showStatus(false, 'Please enter your full name.'); return false; }
+                if (!emailEl.value.trim()) { showStatus(false, 'Please enter your email address.'); return false; }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) { showStatus(false, 'Please enter a valid email.'); return false; }
+                if (!phoneEl.value.trim()) { showStatus(false, 'Please enter your phone number.'); return false; }
+                if (!servEl.value) { showStatus(false, 'Please select the service you need.'); return false; }
+                if (!detEl.value.trim()) { showStatus(false, 'Please add shipment details.'); return false; }
+                return true;
+            };
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                statusBox.classList.add('hidden');
+                if (!validate()) return;
+
+                const fd = new FormData();
+                fd.append('full_name', nameEl.value.trim());
+                fd.append('email_address', emailEl.value.trim());
+                fd.append('phone_number', phoneEl.value.trim());
+                fd.append('service_needed', servEl.value);
+                fd.append('shipment_details', detEl.value.trim());
+
+                setBusy(true);
+                try {
+                    const resp = await fetch(QUOTE_API, { method: 'POST', body: fd });
+                    let data = null; try { data = await resp.json(); } catch (_) { }
+                    if (resp.ok) {
+                        const msg = (data && (data.message || data.msg)) || 'Thanks! Your request has been sent. We’ll get back soon.';
+                        showStatus(true, msg);
+                        form.reset();
+                        servEl.value = '';
+                    } else {
+                        const err = (data && (data.error || data.message)) || `Request failed (HTTP ${resp.status}).`;
+                        showStatus(false, err);
+                    }
+                } catch (err) {
+                    showStatus(false, 'Could not submit. Check your connection or server CORS settings.');
+                } finally {
+                    setBusy(false);
+                }
+            });
+        })();
     </script>
 </body>
 
