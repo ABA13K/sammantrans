@@ -1405,129 +1405,83 @@
                 dragging = false;
             }, { passive: true });
         });
-        (function () {
-            const OPENINGS_API = 'https://aa-dev.site/sammantrans/api/show-current-openings';
-            const APPLY_API = 'https://aa-dev.site/sammantrans/api/send-request-jobs';
-
+        (function hookCareerForm() {
             const form = document.getElementById('career-form');
-            const statusBox = document.getElementById('form-status');
-            const btn = form?.querySelector('button[type="submit"]');
-            const btnText = document.getElementById('btn-text');
-            const btnSpin = document.getElementById('btn-spinner');
+            if (!form) return;
 
-            const posSel = document.getElementById('position');
-            const fullName = document.getElementById('full-name');
-            const email = document.getElementById('email');
-            const phone = document.getElementById('phone');
-            const resume = document.getElementById('resume');
-            const cover = document.getElementById('cover-letter');
+            // add a status box once
+            let statusBox = document.getElementById('form-status');
+            if (!statusBox) {
+                statusBox = document.createElement('div');
+                statusBox.id = 'form-status';
+                statusBox.className = 'mt-4 hidden p-3 rounded-lg text-sm';
+                form.appendChild(statusBox);
+            }
 
-            // helpers
+            const endpoint = 'https://aa-dev.site/sammantrans/api/send-request-jobs';
+
             const showStatus = (ok, msg) => {
-                statusBox.className = 'mt-2 p-3 rounded-lg text-sm ' + (ok
+                statusBox.className = 'mt-4 p-3 rounded-lg text-sm ' + (ok
                     ? 'bg-green-50 text-green-700 border border-green-200'
                     : 'bg-red-50 text-red-700 border border-red-200');
                 statusBox.textContent = msg;
                 statusBox.classList.remove('hidden');
             };
 
-            const setBusy = (busy) => {
-                if (!btn) return;
-                btn.disabled = busy;
-                btn.classList.toggle('opacity-70', busy);
-                btn.classList.toggle('cursor-not-allowed', busy);
-                if (btnSpin) btnSpin.classList.toggle('hidden', !busy);
-                if (btnText) btnText.textContent = busy ? 'Sending…' : 'Submit Application';
-            };
-
-            // load openings -> select
-            async function loadOpenings() {
-                try {
-                    const res = await fetch(OPENINGS_API);
-                    const json = await res.json();
-                    const jobs = Array.isArray(json?.data) ? json.data : [];
-
-                    const opts = [
-                        '<option value="">— Select a position —</option>',
-                        ...jobs.map(j => `<option value="${(j.job_title || '').replace(/"/g, '&quot;')}">${j.job_title || 'Untitled role'}</option>`),
-                        '<option value="General Application">General Application</option>'
-                    ];
-                    posSel.innerHTML = opts.join('');
-                } catch (e) {
-                    posSel.innerHTML = `
-        <option value="">Failed to load positions</option>
-        <option value="General Application">General Application</option>
-      `;
-                }
-            }
-
-            // client validation
-            function validate() {
-                if (!posSel.value) { showStatus(false, 'Please select a position.'); return false; }
-                if (!fullName.value.trim()) { showStatus(false, 'Please enter your full name.'); return false; }
-                if (!email.value.trim()) { showStatus(false, 'Please enter your email address.'); return false; }
-                if (!phone.value.trim()) { showStatus(false, 'Please enter your phone number.'); return false; }
-                const file = resume.files[0];
-                if (!file) { showStatus(false, 'Please attach your resume/CV.'); return false; }
-                const okExt = /\.(pdf|docx?)$/i.test(file.name);
-                if (!okExt) { showStatus(false, 'Unsupported file type. Use PDF, DOC, or DOCX.'); return false; }
-                if (file.size > 5 * 1024 * 1024) { showStatus(false, 'File must be 5MB or smaller.'); return false; }
-                if (!cover.value.trim()) { showStatus(false, 'Please write a short cover letter.'); return false; }
-                return true;
-            }
-
-            // submit -> POST multipart/form-data
-            async function onSubmit(e) {
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                statusBox.classList.add('hidden');
-                if (!validate()) return;
 
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const pos = document.getElementById('position');
+                const fullName = document.getElementById('full-name');
+                const email = document.getElementById('email');
+                const phone = document.getElementById('phone');
+                const resume = document.getElementById('resume');
+                const cover = document.getElementById('cover-letter');
+
+                // basic validations
+                if (!pos.value) { showStatus(false, 'يرجى اختيار المنصب.'); return; }
+                if (!fullName.value.trim()) { showStatus(false, 'يرجى إدخال الاسم الكامل.'); return; }
+                if (!email.value.trim()) { showStatus(false, 'يرجى إدخال البريد الإلكتروني.'); return; }
+                if (!phone.value.trim()) { showStatus(false, 'يرجى إدخال رقم الهاتف.'); return; }
+                if (!resume.files[0]) { showStatus(false, 'يرجى إرفاق السيرة الذاتية.'); return; }
+                if (resume.files[0].size > 5 * 1024 * 1024) { showStatus(false, 'حجم السيرة الذاتية يجب ألا يتجاوز 5MB.'); return; }
+
+                // build payload (use backend keys exactly)
                 const fd = new FormData();
-                fd.append('position', posSel.value);
+                fd.append('position', pos.value);
                 fd.append('full_name', fullName.value.trim());
                 fd.append('email', email.value.trim());
                 fd.append('phone_number', phone.value.trim());
                 fd.append('cv', resume.files[0]);
                 fd.append('cover_letter', cover.value.trim());
 
-                setBusy(true);
+                // UI: disable button while sending
+                const oldBtnText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+                submitBtn.textContent = 'جارٍ الإرسال...';
+
                 try {
-                    const resp = await fetch(APPLY_API, { method: 'POST', body: fd });
+                    const resp = await fetch(endpoint, { method: 'POST', body: fd });
+                    // try to parse JSON either way
                     let data = null;
                     try { data = await resp.json(); } catch (_) { }
 
                     if (resp.ok) {
-                        const msg = (data && (data.message || data.msg)) || 'Your application has been sent. We’ll be in touch soon.';
-                        showStatus(true, msg);
+                        showStatus(true, (data && (data.message || data.msg)) || 'تم إرسال طلبك بنجاح. سنعاود الاتصال بك قريبًا.');
                         form.reset();
-                        // keep selected position? uncomment to clear:
-                        // posSel.value = '';
                     } else {
-                        const apiErr = (data && (data.error || data.message)) || `Request failed (HTTP ${resp.status}).`;
+                        const apiErr = (data && (data.error || data.message)) || `حدث خطأ (HTTP ${resp.status}).`;
                         showStatus(false, apiErr);
                     }
                 } catch (err) {
-                    showStatus(false, 'Could not submit. Check your connection or server CORS settings.');
+                    // likely CORS/network
+                    showStatus(false, 'تعذر الإرسال. تحقق من الاتصال أو سماحيات CORS على الخادم.');
                 } finally {
-                    setBusy(false);
-                }
-            }
-
-            // attach + init
-            loadOpenings();
-            form.addEventListener('submit', onSubmit);
-
-            // validate file on change
-            resume.addEventListener('change', () => {
-                statusBox.classList.add('hidden');
-                const f = resume.files[0];
-                if (!f) return;
-                if (!/\.(pdf|docx?)$/i.test(f.name)) {
-                    showStatus(false, 'Unsupported file type. Use PDF, DOC, or DOCX.');
-                    resume.value = '';
-                } else if (f.size > 5 * 1024 * 1024) {
-                    showStatus(false, 'File must be 5MB or smaller.');
-                    resume.value = '';
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    submitBtn.textContent = oldBtnText;
                 }
             });
         })();
