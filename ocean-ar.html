@@ -865,7 +865,7 @@
           </div>
 
           <div class="md:w-1/2 p-8 md:p-12">
-            <form id="ocean-quote-form" novalidate>
+            <form id="ocean-quote-form" method="post" action="#" accept-charset="UTF-8" novalidate>
               <div class="space-y-6">
                 <div>
                   <label for="q-name" class="block text-sm font-medium text-gray-700 mb-1">
@@ -916,7 +916,7 @@
                     placeholder="المنشأ، الوجهة، وصف البضاعة، الوزن، الأبعاد، شروط الشحن (INCOTERMS)، التاريخ المتوقع…"></textarea>
                 </div>
 
-                <!-- صندوق الحالة -->
+                <!-- حالة الإرسال -->
                 <div id="quote-status" role="status" aria-live="polite" class="hidden mt-2 p-3 rounded-lg text-sm">
                 </div>
 
@@ -932,6 +932,7 @@
                 </div>
               </div>
             </form>
+
 
           </div>
 
@@ -1283,9 +1284,10 @@
       const btnSpin = document.getElementById('quote-btn-spinner');
 
       const showStatus = (ok, msg) => {
-        statusBox.className = 'mt-2 p-3 rounded-lg text-sm ' + (ok
-          ? 'bg-green-50 text-green-700 border border-green-200'
-          : 'bg-red-50 text-red-700 border border-red-200');
+        statusBox.className =
+          'mt-2 p-3 rounded-lg text-sm ' +
+          (ok ? 'bg-green-50 text-green-700 border border-green-200'
+            : 'bg-red-50 text-red-700 border border-red-200');
         statusBox.textContent = msg;
         statusBox.classList.remove('hidden');
       };
@@ -1299,17 +1301,18 @@
       };
 
       const validate = () => {
-        if (!nameEl.value.trim()) { showStatus(false, 'يرجى إدخال الاسم الكامل.'); return false; }
-        if (!emailEl.value.trim()) { showStatus(false, 'يرجى إدخال البريد الإلكتروني.'); return false; }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) { showStatus(false, 'يرجى إدخال بريد إلكتروني صحيح.'); return false; }
-        if (!phoneEl.value.trim()) { showStatus(false, 'يرجى إدخال رقم الهاتف.'); return false; }
-        if (!servEl.value) { showStatus(false, 'يرجى اختيار الخدمة المطلوبة.'); return false; }
-        if (!detEl.value.trim()) { showStatus(false, 'يرجى إضافة تفاصيل الشحنة.'); return false; }
+        if (!nameEl.value.trim()) return showStatus(false, 'يرجى إدخال الاسم الكامل.'), false;
+        if (!emailEl.value.trim()) return showStatus(false, 'يرجى إدخال البريد الإلكتروني.'), false;
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim()))
+          return showStatus(false, 'يرجى إدخال بريد إلكتروني صحيح.'), false;
+        if (!phoneEl.value.trim()) return showStatus(false, 'يرجى إدخال رقم الهاتف.'), false;
+        if (!servEl.value) return showStatus(false, 'يرجى اختيار الخدمة المطلوبة.'), false;
+        if (!detEl.value.trim()) return showStatus(false, 'يرجى إضافة تفاصيل الشحنة.'), false;
         return true;
       };
 
       form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // يمنع إعادة التحميل وظهور الاستعلام في الرابط
         statusBox.classList.add('hidden');
         if (!validate()) return;
 
