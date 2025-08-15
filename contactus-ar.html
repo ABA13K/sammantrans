@@ -41,341 +41,751 @@
         }
       }
     }
-    
+
     // Language switcher function
     function switchLanguage() {
-        const currentPath = window.location.pathname;
-        const currentFile = currentPath.split('/').pop();
-        
-        // Map Arabic files to English equivalents
-        const languageMap = {
-            'index-ar.html': 'index.html',
-            'aboutus-ar.html': 'aboutus.html',
-            'contactus-ar.html': 'contactus.html',
-            'news-ar.html': 'news.html',
-            'ocean-ar.html': 'ocean.html',
-            'airfreight-ar.html': 'airfreight.html',
-            'transport-ar.html': 'transport.html',
-            'ware-ar.html': 'ware.html',
-            'custom-ar.html': 'custom.html',
-            'business-ar.html': 'business.html',
-            'tools-ar.html': 'tools.html',
-            'joinus-ar.html': 'joinus.html'
-        };
-        
-        // If current file is in the map, navigate to English version
-        if (languageMap[currentFile]) {
-            window.location.href = languageMap[currentFile];
-        } else {
-            // Fallback to index.html
-            window.location.href = 'index.html';
-        }
+      const currentPath = window.location.pathname;
+      const currentFile = currentPath.split('/').pop();
+
+      // Map Arabic files to English equivalents
+      const languageMap = {
+        'index-ar.html': 'index.html',
+        'aboutus-ar.html': 'aboutus.html',
+        'contactus-ar.html': 'contactus.html',
+        'news-ar.html': 'news.html',
+        'ocean-ar.html': 'ocean.html',
+        'airfreight-ar.html': 'airfreight.html',
+        'transport-ar.html': 'transport.html',
+        'ware-ar.html': 'ware.html',
+        'custom-ar.html': 'custom.html',
+        'business-ar.html': 'business.html',
+        'tools-ar.html': 'tools.html',
+        'joinus-ar.html': 'joinus.html'
+      };
+
+      // If current file is in the map, navigate to English version
+      if (languageMap[currentFile]) {
+        window.location.href = languageMap[currentFile];
+      } else {
+        // Fallback to index.html
+        window.location.href = 'index.html';
+      }
     }
   </script>
   <style>
-    .clip-pentagon { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
+    .clip-pentagon {
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    }
+
     @media (min-width: 768px) {
-      .logo-container { width: 6rem; height: 6rem; }
+      .logo-container {
+        width: 6rem;
+        height: 6rem;
+      }
     }
-    .logo-container { transition: all 0.3s ease; }
-    .service-card-container { perspective: 1000px; transition: all 0.5s ease; }
-    .service-card-container:hover { transform: translateY(-5px); }
-    .service-card-image, .service-card-content { backface-visibility: hidden; }
-    .service-card-content { transform: translateY(20px); transition: all 0.5s ease; }
-    .service-card-container:hover .service-card-content { transform: translateY(0); }
-    .backdrop-blur-sm { backdrop-filter: blur(4px); }
-    .backdrop-blur-md { backdrop-filter: blur(8px); }
-    .scroll-zoom { opacity: 0; transform: scale(0.95); transition: all 0.6s cubic-bezier(.25,.46,.45,.94); }
-    .scroll-zoom.animated { opacity: 1; transform: scale(1); }
-    .scroll-slide-left { opacity: 0; transform: translateX(30px); transition: all 0.8s cubic-bezier(.22,.61,.36,1); }
-    .scroll-slide-left.animated { opacity: 1; transform: translateX(0); }
-    .hero-slide img { transition: transform 5s ease-in-out; }
-    .hero-slide.active img { animation: zoomInOut 20s ease-in-out infinite; }
-    @keyframes zoomIn { from { transform: scale(1); } to { transform: scale(1.5); } }
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-    @keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideUp { 0% { transform: translateY(30px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-    @keyframes zoomInOutHero { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-    .typing-effect { overflow: hidden; white-space: nowrap; border-right: 3px solid orange; width: 0; animation: typing 2s steps(30,end) forwards, blinkCaret .75s step-end infinite; }
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-    @keyframes blinkCaret { from, to { border-color: transparent } 50% { border-color: orange; } }
-    .animate-slide-in-up { animation: slideInUp 1s ease-out forwards; }
-    .animate-fade-in { animation: fadeIn 1.2s ease-in-out forwards; animation-delay: 0.3s; }
-    .service-card { transition: transform .8s cubic-bezier(.68,-.55,.265,1.55); position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .6s; min-height: 300px; }
-    .service-card:hover { transform: rotateY(180deg); }
-    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; z-index: 0; }
-    .hero-slide.active { opacity: 1; z-index: 1; }
-    .service-card-front, .service-card-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: .75rem; overflow: hidden; }
-    .service-card-back { background: linear-gradient(135deg,#1E40AF,#3B82F6); color: #fff; transform: rotateY(180deg); padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; }
-    .news-card:hover { transform: scale(1.03); }
-    .logo-text { font-family: Arial, sans-serif; font-weight: bold; letter-spacing: 1px; }
+
+    .logo-container {
+      transition: all 0.3s ease;
+    }
+
+    .service-card-container {
+      perspective: 1000px;
+      transition: all 0.5s ease;
+    }
+
+    .service-card-container:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-card-image,
+    .service-card-content {
+      backface-visibility: hidden;
+    }
+
+    .service-card-content {
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .service-card-container:hover .service-card-content {
+      transform: translateY(0);
+    }
+
+    .backdrop-blur-sm {
+      backdrop-filter: blur(4px);
+    }
+
+    .backdrop-blur-md {
+      backdrop-filter: blur(8px);
+    }
+
+    .scroll-zoom {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.6s cubic-bezier(.25, .46, .45, .94);
+    }
+
+    .scroll-zoom.animated {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .scroll-slide-left {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.8s cubic-bezier(.22, .61, .36, 1);
+    }
+
+    .scroll-slide-left.animated {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .hero-slide img {
+      transition: transform 5s ease-in-out;
+    }
+
+    .hero-slide.active img {
+      animation: zoomInOut 20s ease-in-out infinite;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.5);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      0% {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoomInOutHero {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .typing-effect {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid orange;
+      width: 0;
+      animation: typing 2s steps(30, end) forwards, blinkCaret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0
+      }
+
+      to {
+        width: 100%
+      }
+    }
+
+    @keyframes blinkCaret {
+
+      from,
+      to {
+        border-color: transparent
+      }
+
+      50% {
+        border-color: orange;
+      }
+    }
+
+    .animate-slide-in-up {
+      animation: slideInUp 1s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-in-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    .service-card {
+      transition: transform .8s cubic-bezier(.68, -.55, .265, 1.55);
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .6s;
+      min-height: 300px;
+    }
+
+    .service-card:hover {
+      transform: rotateY(180deg);
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .service-card-front,
+    .service-card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: .75rem;
+      overflow: hidden;
+    }
+
+    .service-card-back {
+      background: linear-gradient(135deg, #1E40AF, #3B82F6);
+      color: #fff;
+      transform: rotateY(180deg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .news-card:hover {
+      transform: scale(1.03);
+    }
+
+    .logo-text {
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
     .contact-hero {
-      background-image: linear-gradient(rgba(0,56,105,.8), rgba(0,56,105,.7)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1469&q=80');
-      background-size: cover; background-position: center;
+      background-image: linear-gradient(rgba(0, 56, 105, .8), rgba(0, 56, 105, .7)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1469&q=80');
+      background-size: cover;
+      background-position: center;
     }
-    .contact-card { transition: all .3s ease; box-shadow: 0 10px 25px rgba(0,0,0,.1); }
-    .contact-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,.2); }
-    .contact-icon { transition: all .3s ease; }
-    .contact-card:hover .contact-icon { transform: scale(1.1); color: #F59E0B; }
-    .form-input { transition: all .3s ease; border: 1px solid #d1d5db; }
-    .form-input:focus { border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(59,130,246,.2); }
-    .map-container { height: 400px; border-radius: .75rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,.1); }
-    .contact-form { background: rgba(255,255,255,.95); border-radius: .75rem; box-shadow: 0 10px 25px rgba(0,0,0,.1); }
-    .floating-label { position: absolute; top: .75rem; right: 1rem; color: #6b7280; transition: all .2s ease; pointer-events: none; }
-    .form-input:focus + .floating-label,
-    .form-input:not(:placeholder-shown) + .floating-label {
-      top: -0.5rem; right: .8rem; font-size: .75rem; background: #fff; padding: 0 .25rem; color: #3B82F6;
+
+    .contact-card {
+      transition: all .3s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
     }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, .2);
+    }
+
+    .contact-icon {
+      transition: all .3s ease;
+    }
+
+    .contact-card:hover .contact-icon {
+      transform: scale(1.1);
+      color: #F59E0B;
+    }
+
+    .form-input {
+      transition: all .3s ease;
+      border: 1px solid #d1d5db;
+    }
+
+    .form-input:focus {
+      border-color: #3B82F6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, .2);
+    }
+
+    .map-container {
+      height: 400px;
+      border-radius: .75rem;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, .95);
+      border-radius: .75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+    }
+
+    .floating-label {
+      position: absolute;
+      top: .75rem;
+      right: 1rem;
+      color: #6b7280;
+      transition: all .2s ease;
+      pointer-events: none;
+    }
+
+    .form-input:focus+.floating-label,
+    .form-input:not(:placeholder-shown)+.floating-label {
+      top: -0.5rem;
+      right: .8rem;
+      font-size: .75rem;
+      background: #fff;
+      padding: 0 .25rem;
+      color: #3B82F6;
+    }
+
     /* عكس بعض الهوامش الشائعة لملاءمة RTL بسرعة */
-    .rtl-ml { margin-left: 0 !important; margin-right: .75rem !important; }
-    .rtl-mr { margin-right: 0 !important; margin-left: .75rem !important; }
+    .rtl-ml {
+      margin-left: 0 !important;
+      margin-right: .75rem !important;
+    }
+
+    .rtl-mr {
+      margin-right: 0 !important;
+      margin-left: .75rem !important;
+    }
   </style>
 </head>
 
 <body class="font-sans antialiased">
   <!-- Navigation -->
-         <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative flex h-24 items-center text-lg">
+  <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative flex h-24 items-center text-lg">
 
-                <!-- الشعار -->
-                <div class="flex-shrink-0">
-                    <a href="index-ar.html" class="flex items-center">
-                        <img src="./12.png" alt="شعار سمن ترانس" class="h-24 w-auto">
-                    </a>
-                </div>
+        <!-- الشعار -->
+        <div class="flex-shrink-0">
+          <a href="index-ar.html" class="flex items-center">
+            <img src="./12.png" alt="شعار سمن ترانس" class="h-24 w-auto">
+          </a>
+        </div>
 
-                <!-- روابط سطح المكتب -->
-                <div class="hidden md:flex flex-1 justify-center mr-6">
-                    <div class="flex items-center space-x-8 space-x-reverse">
-                        <a href="index-ar.html"
-                           class="text-[#003869] font-bold mr-8 hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            الرئيسية
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
-                        </a>
+        <!-- روابط سطح المكتب -->
+        <div class="hidden md:flex flex-1 justify-center mr-6">
+          <div class="flex items-center space-x-8 space-x-reverse">
+            <a href="index-ar.html"
+              class="text-[#003869] font-bold mr-8 hover:text-[#0056a3] transition duration-300 relative group text-center">
+              الرئيسية
+              <span
+                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+            </a>
 
-                        <a href="./news-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            الأخبار
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
-                        </a>
+            <a href="./news-ar.html"
+              class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+              الأخبار
+              <span
+                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+            </a>
 
-                        <!-- قائمة الخدمات -->
-                        <div class="relative group">
-                            <button
-                                class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
-                                الخدمات
-                                <svg class="w-4 h-4 mr-1 transition-transform duration-300 group-hover:rotate-180"
-                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M19 9l-7 7-7-7" />
-                                </svg>
-                                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
-                            </button>
+            <!-- قائمة الخدمات -->
+            <div class="relative group">
+              <button class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
+                الخدمات
+                <svg class="w-4 h-4 mr-1 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+                <span
+                  class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+              </button>
 
-                            <!-- القائمة المنسدلة -->
-                            <div
-                                class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
-                                <a href="./ocean-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
-                                            <i class="fas fa-ship text-blue-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-gray-900">الشحن البحري</h4>
-                                            <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="./airfreight-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
-                                            <i class="fas fa-plane text-blue-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-gray-900">الشحن الجوي</h4>
-                                            <p class="text-xs text-gray-500">خدمات شحن جوي أولوية</p>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="./transport-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
-                                            <i class="fas fa-truck text-blue-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-gray-900">النقل البري</h4>
-                                            <p class="text-xs text-gray-500">حلول نقل بري محلية وعابرة للحدود</p>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="./ware-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
-                                            <i class="fas fa-warehouse text-blue-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-gray-900">التخزين</h4>
-                                            <p class="text-xs text-gray-500">حلول تخزين آمنة</p>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="./custom-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
-                                            <i class="fas fa-passport text-blue-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-gray-900">التخليص الجمركي</h4>
-                                            <p class="text-xs text-gray-500">عبور حدودي سلس</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <a href="./business-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            الأعمال والمعارض
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-
-                        <a href="./tools-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            الأدوات
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-
-                        <a href="./aboutus-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            من نحن
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-
-                        <a href="./contactus-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            تواصل معنا
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-
-                        <a href="./joinus-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
-                            انضم إلينا
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
-                        </a>
+              <!-- القائمة المنسدلة -->
+              <div
+                class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
+                <a href="./ocean-ar.html"
+                  class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                  <div class="flex items-center">
+                    <div
+                      class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                      <i class="fas fa-ship text-blue-600"></i>
                     </div>
-                </div>
+                    <div>
+                      <h4 class="font-medium text-gray-900">الشحن البحري</h4>
+                      <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
+                    </div>
+                  </div>
+                </a>
 
-                <!-- محوّل اللغة -->
-                <div class="hidden md:flex items-center mr-4 ml-5">
-                    <a href="javascript:void(0)" onclick="switchLanguage()" class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
-                    <span class="mx-2 text-gray-400">|</span>
-                    <a href="index-ar.html" class="text-sm font-bold text-primary">العربية</a>
-                </div>
+                <a href="./airfreight-ar.html"
+                  class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                  <div class="flex items-center">
+                    <div
+                      class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                      <i class="fas fa-plane text-blue-600"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium text-gray-900">الشحن الجوي</h4>
+                      <p class="text-xs text-gray-500">خدمات شحن جوي أولوية</p>
+                    </div>
+                  </div>
+                </a>
 
-                <!-- زر عرض السعر -->
-                <div class="hidden md:block">
-                    <a href="#quote-form"
-                       class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
+                <a href="./transport-ar.html"
+                  class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                  <div class="flex items-center">
+                    <div
+                      class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                      <i class="fas fa-truck text-blue-600"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium text-gray-900">النقل البري</h4>
+                      <p class="text-xs text-gray-500">حلول نقل بري محلية وعابرة للحدود</p>
+                    </div>
+                  </div>
+                </a>
+
+                <a href="./ware-ar.html"
+                  class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                  <div class="flex items-center">
+                    <div
+                      class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                      <i class="fas fa-warehouse text-blue-600"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium text-gray-900">التخزين</h4>
+                      <p class="text-xs text-gray-500">حلول تخزين آمنة</p>
+                    </div>
+                  </div>
+                </a>
+
+                <a href="./custom-ar.html"
+                  class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                  <div class="flex items-center">
+                    <div
+                      class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                      <i class="fas fa-passport text-blue-600"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium text-gray-900">التخليص الجمركي</h4>
+                      <p class="text-xs text-gray-500">عبور حدودي سلس</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <a href="./business-ar.html"
+              class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+              الأعمال والمعارض
+              <span
+                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+
+            <a href="./tools-ar.html"
+              class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+              الأدوات
+              <span
+                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+
+            <a href="./aboutus-ar.html"
+              class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+              من نحن
+              <span
+                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+
+            <a href="./contactus-ar.html"
+              class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+              تواصل معنا
+              <span
+                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+
+            <a href="./joinus-ar.html"
+              class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+              انضم إلينا
+              <span
+                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- محوّل اللغة -->
+        <div class="hidden md:flex items-center mr-4 ml-5">
+          <a href="javascript:void(0)" onclick="switchLanguage()"
+            class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
+          <span class="mx-2 text-gray-400">|</span>
+          <a href="index-ar.html" class="text-sm font-bold text-primary">العربية</a>
+        </div>
+
+        <!-- زر عرض السعر -->
+        <div class="hidden md:block">
+          <a href="#quote-form" class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
                               text-white px-6 py-2 rounded-md font-bold transition-all duration-300
                               transform hover:scale-105 shadow-md hover:shadow-lg">
-                        احصل على عرض سعر
-                    </a>
-                </div>
-
-                <!-- زر قائمة الجوال -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button"
-                            class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+            احصل على عرض سعر
+          </a>
         </div>
 
-        <!-- قائمة الجوال -->
-        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out"
-             id="mobile-menu" x-data="{ openServices: false }">
-            <div class="flex flex-col h-full p-6 overflow-y-auto">
-                <!-- زر الإغلاق -->
-                <div class="flex justify-start mb-6">
-                    <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- روابط الجوال -->
-                <div class="space-y-4">
-                    <a href="./index-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الرئيسية</a>
-
-                    <!-- أكورديون الخدمات -->
-                    <div class="border-b border-gray-200 pb-4">
-                        <button @click="openServices = !openServices"
-                                class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-900 hover:text-primary">
-                            <span>الخدمات</span>
-                            <svg class="w-5 h-5 transition-transform duration-200"
-                                 :class="{ 'transform rotate-180': openServices }" fill="none" stroke="currentColor"
-                                 viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div x-show="openServices" x-collapse class="mt-2 space-y-3 pr-4">
-                            <a href="./ocean-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-ship text-primary ml-3 w-5 text-center"></i>
-                                الشحن البحري
-                            </a>
-                            <a href="./airfreight-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-plane text-primary ml-3 w-5 text-center"></i>
-                                الشحن الجوي
-                            </a>
-                            <a href="./transport-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-truck text-primary ml-3 w-5 text-center"></i>
-                                النقل البري
-                            </a>
-                            <a href="./ware-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-warehouse text-primary ml-3 w-5 text-center"></i>
-                                التخزين
-                            </a>
-                            <a href="./custom-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-passport text-primary ml-3 w-5 text-center"></i>
-                                التخليص الجمركي
-                            </a>
-                        </div>
-                    </div>
-
-                    <a href="./business-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأعمال والمعارض</a>
-                    <a href="./tools-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأدوات</a>
-                    <a href="./aboutus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">من نحن</a>
-                    <a href="./contactus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">تواصل معنا</a>
-                    <a href="./joinus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">انضم إلينا</a>
-
-                    <!-- زر عرض السعر للجوال -->
-                    <a href="#quote-form"
-                       class="mt-6 w-full text-center bg-gradient-to-r from-[#003869] to-[#0056a3] text-white py-3 rounded-md font-bold transition-all duration-300">
-                        احصل على عرض سعر
-                    </a>
-                </div>
-            </div>
+        <!-- زر قائمة الجوال -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button"
+            class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
-    </nav>
+      </div>
+    </div>
+
+    <!-- قائمة الجوال -->
+    <!-- Mobile Menu (RTL / slides in from the right) -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 hidden" aria-hidden="true" dir="rtl" lang="ar">
+      <!-- Backdrop -->
+      <div id="mobile-overlay"
+        class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+
+      <!-- Right drawer -->
+      <nav id="mobile-panel"
+        class="fixed inset-y-0 right-0 w-[86%] max-w-[360px] bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col rounded-l-2xl overflow-hidden">
+
+        <!-- Header -->
+        <div class="relative p-4 bg-gradient-to-br from-[#003869] to-[#0056a3] text-white">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <img src="./12.png" alt="Samman Trans" class="h-10 w-auto bg-white/10 rounded-xl p-1.5">
+              <div class="text-right">
+                <p class="text-sm opacity-90">Samman Trans</p>
+                <h2 class="text-lg font-semibold leading-tight">القائمة</h2>
+              </div>
+            </div>
+            <button id="close-mobile-menu" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition"
+              aria-label="إغلاق القائمة">
+              <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+          </div>
+
+          <!-- Quick action (WhatsApp only) -->
+          <div class="mt-4">
+            <a href="https://wa.me/96341234567" target="_blank" rel="noopener"
+              class="block rounded-xl bg-white/10 hover:bg-white/20 p-3 text-center">
+              <i class="fa-brands fa-whatsapp block text-2xl mb-1"></i>
+              <span class="text-xs opacity-95">واتساب</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="p-4 space-y-1 overflow-y-auto">
+          <p class="px-2 pt-2 text-xs tracking-wide text-gray-500 text-right">استكشف</p>
+
+          <a href="./index-ar.html"
+            class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+            <i class="fa-solid fa-house text-primary w-5 text-center"></i>
+            <span class="text-gray-900 font-medium">الرئيسية</span>
+            <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+          </a>
+
+          <a href="./news-ar.html"
+            class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+            <i class="fa-regular fa-newspaper text-primary w-5 text-center"></i>
+            <span class="text-gray-900 font-medium">الأخبار</span>
+            <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+          </a>
+
+          <!-- Services accordion -->
+          <details class="group rounded-xl bg-gray-50 open:bg-gray-100 transition">
+            <summary class="list-none flex items-center gap-3 px-3 py-3 cursor-pointer">
+              <i class="fa-solid fa-grid-2 text-primary w-5 text-center"></i>
+              <span class="text-gray-900 font-medium">الخدمات</span>
+              <i class="fa-solid fa-chevron-down mr-auto text-gray-400 transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="px-3 pb-3">
+              <div class="grid grid-cols-1 gap-2">
+                <a href="./ocean-ar.html"
+                  class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                  <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <i class="fa-solid fa-ship text-blue-600"></i>
+                  </span>
+                  <div class="text-right">
+                    <p class="font-medium text-gray-900">الشحن البحري</p>
+                    <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                </a>
+
+                <a href="./airfreight-ar.html"
+                  class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                  <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <i class="fa-solid fa-plane text-blue-600"></i>
+                  </span>
+                  <div class="text-right">
+                    <p class="font-medium text-gray-900">الشحن الجوي</p>
+                    <p class="text-xs text-gray-500">أولوية ومساحات مضمونة</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                </a>
+
+                <a href="./transport-ar.html"
+                  class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                  <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <i class="fa-solid fa-truck text-blue-600"></i>
+                  </span>
+                  <div class="text-right">
+                    <p class="font-medium text-gray-900">النقل البري</p>
+                    <p class="text-xs text-gray-500">حلول مرنة وشبكة واسعة</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                </a>
+
+                <a href="./ware-ar.html"
+                  class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                  <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <i class="fa-solid fa-warehouse text-blue-600"></i>
+                  </span>
+                  <div class="text-right">
+                    <p class="font-medium text-gray-900">التخزين</p>
+                    <p class="text-xs text-gray-500">حلول تخزين آمنة</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                </a>
+
+                <a href="./custom-ar.html"
+                  class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                  <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <i class="fa-solid fa-passport text-blue-600"></i>
+                  </span>
+                  <div class="text-right">
+                    <p class="font-medium text-gray-900">التخليص الجمركي</p>
+                    <p class="text-xs text-gray-500">معاملات حدودية سلسة</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                </a>
+              </div>
+            </div>
+          </details>
+
+          <a href="./business-ar.html"
+            class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+            <i class="fa-solid fa-briefcase text-primary w-5 text-center"></i>
+            <span class="text-gray-900 font-medium">الأعمال والمعارض</span>
+            <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+          </a>
+
+          <a href="./tools-ar.html"
+            class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+            <i class="fa-solid fa-screwdriver-wrench text-primary w-5 text-center"></i>
+            <span class="text-gray-900 font-medium">الأدوات</span>
+            <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+          </a>
+
+          <p class="px-2 pt-4 text-xs tracking-wide text-gray-500 text-right">الشركة</p>
+
+          <a href="./aboutus-ar.html"
+            class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+            <i class="fa-solid fa-circle-info text-primary w-5 text-center"></i>
+            <span class="text-gray-900 font-medium">من نحن</span>
+            <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+          </a>
+
+          <a href="./contactus-ar.html"
+            class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+            <i class="fa-solid fa-paper-plane text-primary w-5 text-center"></i>
+            <span class="text-gray-900 font-medium">تواصل معنا</span>
+            <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+          </a>
+
+          <a href="./joinus-ar.html"
+            class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+            <i class="fa-solid fa-user-plus text-primary w-5 text-center"></i>
+            <span class="text-gray-900 font-medium">انضم إلينا</span>
+            <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+          </a>
+
+          <!-- Language -->
+          <div class="mt-4 px-3 py-3 rounded-xl bg-gray-50 flex items-center gap-3">
+            <i class="fa-solid fa-language text-primary w-5 text-center"></i>
+            <div class="flex items-center gap-2 text-sm">
+              <a href="javascript:void(0)" onclick="switchLanguage()" class="text-gray-700 hover:text-primary">EN</a>
+              <span class="text-gray-300">|</span>
+              <span class="font-semibold text-primary">العربية</span>
+            </div>
+          </div>
+
+          <!-- Social (responsive grid) -->
+          <div class="px-3">
+            <div class="mt-3 grid grid-cols-4 gap-3 sm:grid-cols-6">
+              <a href="#" aria-label="فيسبوك"
+                class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+                <i class="fab fa-facebook-f"></i><span class="sr-only">فيسبوك</span>
+              </a>
+              <a href="#" aria-label="تويتر"
+                class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+                <i class="fab fa-twitter"></i><span class="sr-only">تويتر</span>
+              </a>
+              <a href="#" aria-label="لينكدإن"
+                class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+                <i class="fab fa-linkedin-in"></i><span class="sr-only">لينكدإن</span>
+              </a>
+              <a href="#" aria-label="إنستغرام"
+                class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+                <i class="fab fa-instagram"></i><span class="sr-only">إنستغرام</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="h-24"></div>
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="p-4 border-t bg-white">
+          <a href="./contactus-ar.html"
+            class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0] text-white py-3 rounded-xl font-semibold shadow-md active:scale-[0.99] transition">
+            <i class="fa-solid fa-calculator"></i>
+            احصل على عرض سعر
+          </a>
+        </div>
+      </nav>
+    </div>
+
+  </nav>
 
   <!-- هيرو -->
   <section class="contact-hero py-24 md:py-32 relative">
@@ -404,8 +814,10 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- موقعنا -->
-        <div class="contact-card bg-white p-8 rounded-lg text-center hover:border-secondary border border-transparent transition-all duration-300">
-          <div class="contact-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
+        <div
+          class="contact-card bg-white p-8 rounded-lg text-center hover:border-secondary border border-transparent transition-all duration-300">
+          <div
+            class="contact-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
             <i class="fas fa-map-marker-alt"></i>
           </div>
           <h3 class="text-xl font-bold text-primary mb-3">موقعنا</h3>
@@ -416,8 +828,10 @@
         </div>
 
         <!-- اتصل بنا -->
-        <div class="contact-card bg-white p-8 rounded-lg text-center hover:border-secondary border border-transparent transition-all duration-300">
-          <div class="contact-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
+        <div
+          class="contact-card bg-white p-8 rounded-lg text-center hover:border-secondary border border-transparent transition-all duration-300">
+          <div
+            class="contact-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
             <i class="fas fa-phone-alt"></i>
           </div>
           <h3 class="text-xl font-bold text-primary mb-3">اتصل بنا</h3>
@@ -429,8 +843,10 @@
         </div>
 
         <!-- راسلنا -->
-        <div class="contact-card bg-white p-8 rounded-lg text-center hover:border-secondary border border-transparent transition-all duration-300">
-          <div class="contact-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
+        <div
+          class="contact-card bg-white p-8 rounded-lg text-center hover:border-secondary border border-transparent transition-all duration-300">
+          <div
+            class="contact-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary text-2xl">
             <i class="fas fa-envelope"></i>
           </div>
           <h3 class="text-xl font-bold text-primary mb-3">راسلنا</h3>
@@ -456,27 +872,32 @@
           <form>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="relative">
-                <input type="text" id="first-name" placeholder=" " class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <input type="text" id="first-name" placeholder=" "
+                  class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                 <label for="first-name" class="floating-label text-gray-500">الاسم الأول</label>
               </div>
               <div class="relative">
-                <input type="text" id="last-name" placeholder=" " class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <input type="text" id="last-name" placeholder=" "
+                  class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                 <label for="last-name" class="floating-label text-gray-500">اسم العائلة</label>
               </div>
             </div>
 
             <div class="mb-6 relative">
-              <input type="email" id="email" placeholder=" " class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              <input type="email" id="email" placeholder=" "
+                class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
               <label for="email" class="floating-label text-gray-500">البريد الإلكتروني</label>
             </div>
 
             <div class="mb-6 relative">
-              <input type="tel" id="phone" placeholder=" " class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              <input type="tel" id="phone" placeholder=" "
+                class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
               <label for="phone" class="floating-label text-gray-500">رقم الهاتف</label>
             </div>
 
             <div class="mb-6">
-              <select class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-500">
+              <select
+                class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-500">
                 <option value="" disabled selected>اختر الخدمة</option>
                 <option value="ocean">الشحن البحري</option>
                 <option value="air">الشحن الجوي</option>
@@ -488,11 +909,13 @@
             </div>
 
             <div class="mb-6 relative">
-              <textarea id="message" rows="5" placeholder=" " class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+              <textarea id="message" rows="5" placeholder=" "
+                class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
               <label for="message" class="floating-label text-gray-500">رسالتك</label>
             </div>
 
-            <button type="submit" class="w-full bg-gradient-to-r from-primary to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0] text-white py-4 rounded-lg font-bold transition-all duration-300 transform hover:scale-[1.02]">
+            <button type="submit"
+              class="w-full bg-gradient-to-r from-primary to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0] text-white py-4 rounded-lg font-bold transition-all duration-300 transform hover:scale-[1.02]">
               إرسال الرسالة
             </button>
           </form>
@@ -501,7 +924,9 @@
         <!-- الخريطة + الدوام -->
         <div>
           <div class="map-container mb-8">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.072647224526!2d36.29141531520818!3d33.79697438068224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f1706bde5f7a9%3A0x2a4a9a7e1a1a1a1a!2sDamascus%2C%20Syria!5e0!3m2!1sar!2s!4v1620000000000!5m2!1sar!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.072647224526!2d36.29141531520818!3d33.79697438068224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f1706bde5f7a9%3A0x2a4a9a7e1a1a1a1a!2sDamascus%2C%20Syria!5e0!3m2!1sar!2s!4v1620000000000!5m2!1sar!2s"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
 
           <div class="bg-gray-50 p-8 rounded-lg">
@@ -538,7 +963,8 @@
   <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">مكاتبنا <span class="text-secondary">الإقليمية</span></h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">مكاتبنا <span
+            class="text-secondary">الإقليمية</span></h2>
         <p class="text-gray-600 max-w-2xl mx-auto">ابحث عن أقرب مكتب لشركة سمان ترانس</p>
       </div>
 
@@ -546,7 +972,8 @@
         <!-- دمشق -->
         <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
           <div class="h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1470&q=80" alt="مقر دمشق" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1470&q=80"
+              alt="مقر دمشق" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-primary mb-2">المقر الرئيسي – دمشق</h3>
@@ -559,7 +986,8 @@
               <i class="fas fa-envelope ml-3 text-secondary"></i>
               <span>damascus@sammantrans.com</span>
             </div>
-            <a href="#" class="text-secondary font-medium inline-flex items-center hover:text-primary transition duration-300">
+            <a href="#"
+              class="text-secondary font-medium inline-flex items-center hover:text-primary transition duration-300">
               عرض على الخريطة <i class="fas fa-map-marker-alt mr-2"></i>
             </a>
           </div>
@@ -568,7 +996,8 @@
         <!-- حلب -->
         <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
           <div class="h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1632&q=80" alt="مكتب حلب" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1632&q=80"
+              alt="مكتب حلب" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-primary mb-2">مكتب حلب الإقليمي</h3>
@@ -581,7 +1010,8 @@
               <i class="fas fa-envelope ml-3 text-secondary"></i>
               <span>aleppo@sammantrans.com</span>
             </div>
-            <a href="#" class="text-secondary font-medium inline-flex items-center hover:text-primary transition duration-300">
+            <a href="#"
+              class="text-secondary font-medium inline-flex items-center hover:text-primary transition duration-300">
               عرض على الخريطة <i class="fas fa-map-marker-alt mr-2"></i>
             </a>
           </div>
@@ -590,7 +1020,8 @@
         <!-- اللاذقية -->
         <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
           <div class="h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1580652611975-afc3b85a70ed?auto=format&fit=crop&w=1470&q=80" alt="مكتب اللاذقية" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1580652611975-afc3b85a70ed?auto=format&fit=crop&w=1470&q=80"
+              alt="مكتب اللاذقية" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-primary mb-2">مكتب ميناء اللاذقية</h3>
@@ -603,7 +1034,8 @@
               <i class="fas fa-envelope ml-3 text-secondary"></i>
               <span>latakia@sammantrans.com</span>
             </div>
-            <a href="#" class="text-secondary font-medium inline-flex items-center hover:text-primary transition duration-300">
+            <a href="#"
+              class="text-secondary font-medium inline-flex items-center hover:text-primary transition duration-300">
               عرض على الخريطة <i class="fas fa-map-marker-alt mr-2"></i>
             </a>
           </div>
@@ -611,7 +1043,8 @@
       </div>
 
       <div class="text-center mt-12">
-        <button class="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-full font-medium transition duration-300">
+        <button
+          class="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-full font-medium transition duration-300">
           عرض جميع المكاتب
         </button>
       </div>
@@ -622,7 +1055,8 @@
   <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">الأسئلة <span class="text-secondary">الشائعة</span></h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">الأسئلة <span class="text-secondary">الشائعة</span>
+        </h2>
         <p class="text-gray-600 max-w-2xl mx-auto">اعثر على إجابات لأكثر الأسئلة شيوعًا حول خدماتنا</p>
       </div>
 
@@ -676,8 +1110,10 @@
             <i class="fas fa-chevron-down text-secondary transition-transform duration-300"></i>
           </button>
           <div class="faq-answer mt-4 text-gray-600 hidden">
-            <p><strong>FCL (حاوية كاملة):</strong> تحجز الحاوية كاملةً لبضاعتك — اقتصادي للشحنات الكبيرة (عادةً أكثر من 10 متر مكعب) وتقليل للمخاطر.</p>
-            <p class="mt-3"><strong>LCL (أقل من حاوية):</strong> تشارك مساحة الحاوية مع شحنات أخرى — مناسب للأحجام الصغيرة، لكن قد يطول زمن العبور بسبب التجميع.</p>
+            <p><strong>FCL (حاوية كاملة):</strong> تحجز الحاوية كاملةً لبضاعتك — اقتصادي للشحنات الكبيرة (عادةً أكثر من
+              10 متر مكعب) وتقليل للمخاطر.</p>
+            <p class="mt-3"><strong>LCL (أقل من حاوية):</strong> تشارك مساحة الحاوية مع شحنات أخرى — مناسب للأحجام
+              الصغيرة، لكن قد يطول زمن العبور بسبب التجميع.</p>
           </div>
         </div>
         <!-- 4 -->
@@ -722,7 +1158,8 @@
       </div>
 
       <div class="text-center mt-12">
-        <a href="#" class="inline-block bg-primary hover:bg-[#00457a] text-white px-8 py-3 rounded-full font-medium transition duration-300">
+        <a href="#"
+          class="inline-block bg-primary hover:bg-[#00457a] text-white px-8 py-3 rounded-full font-medium transition duration-300">
           عرض جميع الأسئلة
         </a>
       </div>
@@ -733,18 +1170,22 @@
   <section class="bg-primary py-16 relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-full opacity-10">
       <div class="absolute top-20 left-20 w-40 h-40 bg-secondary rounded-full animate-float"></div>
-      <div class="absolute bottom-20 right-20 w-60 h-60 bg-secondary rounded-full animate-float" style="animation-delay: 2s"></div>
-      <div class="absolute top-1/2 left-1/3 w-32 h-32 bg-secondary rounded-full animate-float" style="animation-delay: 4s"></div>
+      <div class="absolute bottom-20 right-20 w-60 h-60 bg-secondary rounded-full animate-float"
+        style="animation-delay: 2s"></div>
+      <div class="absolute top-1/2 left-1/3 w-32 h-32 bg-secondary rounded-full animate-float"
+        style="animation-delay: 4s"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
       <div class="text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">تحتاج مساعدة فورية؟</h2>
         <p class="text-white text-xl mb-8 max-w-3xl mx-auto">فريق خدمة العملاء متاح 24/7 لدعم الشحنات العاجلة.</p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="tel:+963112345678" class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 flex items-center justify-center">
+          <a href="tel:+963112345678"
+            class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 flex items-center justify-center">
             <i class="fas fa-phone-alt mr-2"></i> اتصل الآن: +963 11 234 5678
           </a>
-          <a href="mailto:emergency@sammantrans.com" class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 flex items-center justify-center">
+          <a href="mailto:emergency@sammantrans.com"
+            class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 flex items-center justify-center">
             <i class="fas fa-envelope mr-2"></i> بريد الطوارئ
           </a>
         </div>
@@ -762,16 +1203,20 @@
           </div>
           <p class="mb-6 opacity-80">نقدّم خدمات نقل ولوجستيات متكاملة عبر الحدود بتميّز مستمر.</p>
           <div class="flex space-x-4 space-x-reverse">
-            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+            <a href="#"
+              class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+            <a href="#"
+              class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+            <a href="#"
+              class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+            <a href="#"
+              class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
               <i class="fab fa-instagram"></i>
             </a>
           </div>
@@ -780,7 +1225,8 @@
         <div>
           <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
           <ul class="space-y-3">
-            <li><a href="index-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a></li>
+            <li><a href="index-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a>
+            </li>
             <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">من نحن</a></li>
             <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">الخدمات</a></li>
             <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">التتبع</a></li>
@@ -834,10 +1280,12 @@
   <!-- زر واتساب عائم -->
   <div class="fixed bottom-6 left-6 z-50">
     <a href="https://wa.me/96341234567" target="_blank" class="flex flex-col items-center group">
-      <div class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
+      <div
+        class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
         <i class="fab fa-whatsapp text-2xl"></i>
       </div>
-      <span class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <span
+        class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         تواصل معنا الآن
       </span>
     </a>
@@ -914,6 +1362,79 @@
         });
       });
     });
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      const panel = document.getElementById('mobile-panel');
+      const overlay = document.getElementById('mobile-overlay');
+      const closeBtn = document.getElementById('close-mobile-menu');
+
+      if (!btn || !menu || !panel || !overlay || !closeBtn) return;
+
+      let lastFocused = null;
+      const ANIM_MS = 300;
+      const focusableSel = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+
+      const getFocusable = () => panel.querySelectorAll(focusableSel);
+
+      function openMenu() {
+        lastFocused = document.activeElement;
+        menu.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          overlay.classList.remove('opacity-0'); overlay.classList.add('opacity-100');
+          panel.classList.remove('translate-x-full');      // slide in from right
+        });
+        document.body.classList.add('overflow-hidden');
+        btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
+        const f = getFocusable(); if (f.length) f[0].focus();
+      }
+
+      function closeMenu() {
+        overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0');
+        panel.classList.add('translate-x-full');
+        document.body.classList.remove('overflow-hidden');
+        btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true');
+        panel.style.transform = '';
+        setTimeout(() => { menu.classList.add('hidden'); if (lastFocused) lastFocused.focus(); }, ANIM_MS);
+      }
+
+      btn.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+      overlay.addEventListener('click', closeMenu);
+
+      // close on any link click inside
+      panel.addEventListener('click', (e) => {
+        if (e.target.closest('a')) closeMenu();
+      });
+
+      // ESC + focus trap
+      document.addEventListener('keydown', (e) => {
+        if (menu.classList.contains('hidden')) return;
+        if (e.key === 'Escape') { e.preventDefault(); closeMenu(); return; }
+        if (e.key === 'Tab') {
+          const f = Array.from(getFocusable()); if (!f.length) return;
+          const first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+
+      // swipe-to-close (rightward swipe in RTL)
+      let startX = 0, currentX = 0, dragging = false;
+      panel.addEventListener('touchstart', (e) => {
+        if (menu.classList.contains('hidden')) return;
+        dragging = true; startX = e.touches[0].clientX; currentX = startX;
+      }, { passive: true });
+      panel.addEventListener('touchmove', (e) => {
+        if (!dragging) return;
+        currentX = e.touches[0].clientX; const dx = currentX - startX; if (dx > 0) panel.style.transform = `translateX(${dx}px)`;
+      }, { passive: true });
+      panel.addEventListener('touchend', () => {
+        if (!dragging) return;
+        const dx = currentX - startX; if (dx > 100) closeMenu(); else panel.style.transform = ''; dragging = false;
+      }, { passive: true });
+    });
   </script>
 </body>
+
 </html>

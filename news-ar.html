@@ -45,12 +45,12 @@
                 }
             }
         }
-        
+
         // Language switcher function
         function switchLanguage() {
             const currentPath = window.location.pathname;
             const currentFile = currentPath.split('/').pop();
-            
+
             // Map Arabic files to English equivalents
             const languageMap = {
                 'index-ar.html': 'index.html',
@@ -66,7 +66,7 @@
                 'tools-ar.html': 'tools.html',
                 'joinus-ar.html': 'joinus.html'
             };
-            
+
             // If current file is in the map, navigate to English version
             if (languageMap[currentFile]) {
                 window.location.href = languageMap[currentFile];
@@ -83,44 +83,97 @@
             background-position: center;
         }
 
-        .news-card { transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
-        .news-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
+        .news-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
 
         .news-category {
-            position: absolute; top: 20px; left: 20px; /* RTL */
-            background-color: #F59E0B; color: white; padding: 5px 15px; border-radius: 20px;
-            font-size: 0.8rem; font-weight: bold;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            /* RTL */
+            background-color: #F59E0B;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
         .news-date {
-            position: absolute; bottom: 20px; right: 20px; /* RTL */
-            background-color: rgba(0, 56, 105, 0.9); color: white; padding: 5px 15px; border-radius: 20px;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            /* RTL */
+            background-color: rgba(0, 56, 105, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
             font-size: 0.8rem;
         }
 
         .news-tag {
-            display: inline-block; background-color: #E5E7EB; color: #4B5563;
-            padding: 3px 10px; border-radius: 20px; font-size: 0.75rem;
-            margin-left: 5px; margin-bottom: 5px; /* RTL */
+            display: inline-block;
+            background-color: #E5E7EB;
+            color: #4B5563;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-left: 5px;
+            margin-bottom: 5px;
+            /* RTL */
             transition: all 0.3s ease;
         }
-        .news-tag:hover { background-color: #F59E0B; color: white; }
+
+        .news-tag:hover {
+            background-color: #F59E0B;
+            color: white;
+        }
 
         .pagination-item {
-            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; margin: 0 5px; transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: all 0.3s ease;
         }
-        .pagination-item:hover:not(.active) { background-color: #E5E7EB; }
-        .pagination-item.active { background-color: #003869; color: white; }
 
-        .news-sidebar-card { transition: all 0.3s ease; }
-        .news-sidebar-card:hover { transform: translateX(-5px); /* RTL */ }
+        .pagination-item:hover:not(.active) {
+            background-color: #E5E7EB;
+        }
 
-        .news-archive-year { transition: all 0.3s ease; }
-        .news-archive-year:hover { color: #F59E0B; }
+        .pagination-item.active {
+            background-color: #003869;
+            color: white;
+        }
+
+        .news-sidebar-card {
+            transition: all 0.3s ease;
+        }
+
+        .news-sidebar-card:hover {
+            transform: translateX(-5px);
+            /* RTL */
+        }
+
+        .news-archive-year {
+            transition: all 0.3s ease;
+        }
+
+        .news-archive-year:hover {
+            color: #F59E0B;
+        }
 
         /* تصحيحات RTL لخط التحديد في النافبار */
-        
     </style>
 </head>
 
@@ -141,15 +194,17 @@
                 <div class="hidden md:flex flex-1 justify-center mr-6">
                     <div class="flex items-center space-x-8 space-x-reverse">
                         <a href="index-ar.html"
-                           class="text-[#003869] font-bold mr-8 hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            class="text-[#003869] font-bold mr-8 hover:text-[#0056a3] transition duration-300 relative group text-center">
                             الرئيسية
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
                         <a href="./news-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             الأخبار
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
                         <!-- قائمة الخدمات -->
@@ -158,20 +213,22 @@
                                 class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
                                 الخدمات
                                 <svg class="w-4 h-4 mr-1 transition-transform duration-300 group-hover:rotate-180"
-                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M19 9l-7 7-7-7" />
+                                        d="M19 9l-7 7-7-7" />
                                 </svg>
-                                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                                <span
+                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                             </button>
 
                             <!-- القائمة المنسدلة -->
                             <div
                                 class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
                                 <a href="./ocean-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-ship text-blue-600"></i>
                                         </div>
                                         <div>
@@ -182,9 +239,10 @@
                                 </a>
 
                                 <a href="./airfreight-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-plane text-blue-600"></i>
                                         </div>
                                         <div>
@@ -195,9 +253,10 @@
                                 </a>
 
                                 <a href="./transport-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-truck text-blue-600"></i>
                                         </div>
                                         <div>
@@ -208,9 +267,10 @@
                                 </a>
 
                                 <a href="./ware-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-warehouse text-blue-600"></i>
                                         </div>
                                         <div>
@@ -221,9 +281,10 @@
                                 </a>
 
                                 <a href="./custom-ar.html"
-                                   class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+                                    class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
                                     <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
                                             <i class="fas fa-passport text-blue-600"></i>
                                         </div>
                                         <div>
@@ -236,48 +297,53 @@
                         </div>
 
                         <a href="./business-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             الأعمال والمعارض
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
                         <a href="./tools-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             الأدوات
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
                         <a href="./aboutus-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             من نحن
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
                         <a href="./contactus-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             تواصل معنا
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
 
                         <a href="./joinus-ar.html"
-                           class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+                            class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
                             انضم إلينا
-                            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
                         </a>
                     </div>
                 </div>
 
                 <!-- محوّل اللغة -->
                 <div class="hidden md:flex items-center mr-4 ml-5">
-                    <a href="javascript:void(0)" onclick="switchLanguage()" class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
+                    <a href="javascript:void(0)" onclick="switchLanguage()"
+                        class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
                     <span class="mx-2 text-gray-400">|</span>
                     <a href="index-ar.html" class="text-sm font-bold text-primary">العربية</a>
                 </div>
 
                 <!-- زر عرض السعر -->
                 <div class="hidden md:block">
-                    <a href="#quote-form"
-                       class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
+                    <a href="#quote-form" class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
                               text-white px-6 py-2 rounded-md font-bold transition-all duration-300
                               transform hover:scale-105 shadow-md hover:shadow-lg">
                         احصل على عرض سعر
@@ -298,74 +364,217 @@
         </div>
 
         <!-- قائمة الجوال -->
-        <div class="md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out"
-             id="mobile-menu" x-data="{ openServices: false }">
-            <div class="flex flex-col h-full p-6 overflow-y-auto">
-                <!-- زر الإغلاق -->
-                <div class="flex justify-start mb-6">
-                    <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
+        <!-- Mobile Menu (RTL / slides in from the right) -->
+        <div id="mobile-menu" class="fixed inset-0 z-50 hidden" aria-hidden="true" dir="rtl" lang="ar">
+            <!-- Backdrop -->
+            <div id="mobile-overlay"
+                class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+
+            <!-- Right drawer -->
+            <nav id="mobile-panel"
+                class="fixed inset-y-0 right-0 w-[86%] max-w-[360px] bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col rounded-l-2xl overflow-hidden">
+
+                <!-- Header -->
+                <div class="relative p-4 bg-gradient-to-br from-[#003869] to-[#0056a3] text-white">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="./12.png" alt="Samman Trans" class="h-10 w-auto bg-white/10 rounded-xl p-1.5">
+                            <div class="text-right">
+                                <p class="text-sm opacity-90">Samman Trans</p>
+                                <h2 class="text-lg font-semibold leading-tight">القائمة</h2>
+                            </div>
+                        </div>
+                        <button id="close-mobile-menu" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition"
+                            aria-label="إغلاق القائمة">
+                            <i class="fa-solid fa-xmark text-xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Quick action (WhatsApp only) -->
+                    <div class="mt-4">
+                        <a href="https://wa.me/96341234567" target="_blank" rel="noopener"
+                            class="block rounded-xl bg-white/10 hover:bg-white/20 p-3 text-center">
+                            <i class="fa-brands fa-whatsapp block text-2xl mb-1"></i>
+                            <span class="text-xs opacity-95">واتساب</span>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- روابط الجوال -->
-                <div class="space-y-4">
-                    <a href="./index-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الرئيسية</a>
+                <!-- Scrollable content -->
+                <div class="p-4 space-y-1 overflow-y-auto">
+                    <p class="px-2 pt-2 text-xs tracking-wide text-gray-500 text-right">استكشف</p>
 
-                    <!-- أكورديون الخدمات -->
-                    <div class="border-b border-gray-200 pb-4">
-                        <button @click="openServices = !openServices"
-                            class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-900 hover:text-primary">
-                            <span>الخدمات</span>
-                            <svg class="w-5 h-5 transition-transform duration-200"
-                                 :class="{ 'transform rotate-180': openServices }" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
+                    <a href="./index-ar.html"
+                        class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+                        <i class="fa-solid fa-house text-primary w-5 text-center"></i>
+                        <span class="text-gray-900 font-medium">الرئيسية</span>
+                        <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+                    </a>
 
-                        <div x-show="openServices" x-collapse class="mt-2 space-y-3 pr-4">
-                            <a href="./ocean-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-ship text-primary ml-3 w-5 text-center"></i>
-                                الشحن البحري
+                    <a href="./news-ar.html"
+                        class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+                        <i class="fa-regular fa-newspaper text-primary w-5 text-center"></i>
+                        <span class="text-gray-900 font-medium">الأخبار</span>
+                        <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+                    </a>
+
+                    <!-- Services accordion -->
+                    <details class="group rounded-xl bg-gray-50 open:bg-gray-100 transition">
+                        <summary class="list-none flex items-center gap-3 px-3 py-3 cursor-pointer">
+                            <i class="fa-solid fa-grid-2 text-primary w-5 text-center"></i>
+                            <span class="text-gray-900 font-medium">الخدمات</span>
+                            <i
+                                class="fa-solid fa-chevron-down mr-auto text-gray-400 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="px-3 pb-3">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="./ocean-ar.html"
+                                    class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                                    <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                                        <i class="fa-solid fa-ship text-blue-600"></i>
+                                    </span>
+                                    <div class="text-right">
+                                        <p class="font-medium text-gray-900">الشحن البحري</p>
+                                        <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                                </a>
+
+                                <a href="./airfreight-ar.html"
+                                    class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                                    <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                                        <i class="fa-solid fa-plane text-blue-600"></i>
+                                    </span>
+                                    <div class="text-right">
+                                        <p class="font-medium text-gray-900">الشحن الجوي</p>
+                                        <p class="text-xs text-gray-500">أولوية ومساحات مضمونة</p>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                                </a>
+
+                                <a href="./transport-ar.html"
+                                    class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                                    <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                                        <i class="fa-solid fa-truck text-blue-600"></i>
+                                    </span>
+                                    <div class="text-right">
+                                        <p class="font-medium text-gray-900">النقل البري</p>
+                                        <p class="text-xs text-gray-500">حلول مرنة وشبكة واسعة</p>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                                </a>
+
+                                <a href="./ware-ar.html"
+                                    class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                                    <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                                        <i class="fa-solid fa-warehouse text-blue-600"></i>
+                                    </span>
+                                    <div class="text-right">
+                                        <p class="font-medium text-gray-900">التخزين</p>
+                                        <p class="text-xs text-gray-500">حلول تخزين آمنة</p>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                                </a>
+
+                                <a href="./custom-ar.html"
+                                    class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+                                    <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                                        <i class="fa-solid fa-passport text-blue-600"></i>
+                                    </span>
+                                    <div class="text-right">
+                                        <p class="font-medium text-gray-900">التخليص الجمركي</p>
+                                        <p class="text-xs text-gray-500">معاملات حدودية سلسة</p>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </details>
+
+                    <a href="./business-ar.html"
+                        class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+                        <i class="fa-solid fa-briefcase text-primary w-5 text-center"></i>
+                        <span class="text-gray-900 font-medium">الأعمال والمعارض</span>
+                        <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+                    </a>
+
+                    <a href="./tools-ar.html"
+                        class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+                        <i class="fa-solid fa-screwdriver-wrench text-primary w-5 text-center"></i>
+                        <span class="text-gray-900 font-medium">الأدوات</span>
+                        <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+                    </a>
+
+                    <p class="px-2 pt-4 text-xs tracking-wide text-gray-500 text-right">الشركة</p>
+
+                    <a href="./aboutus-ar.html"
+                        class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+                        <i class="fa-solid fa-circle-info text-primary w-5 text-center"></i>
+                        <span class="text-gray-900 font-medium">من نحن</span>
+                        <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+                    </a>
+
+                    <a href="./contactus-ar.html"
+                        class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+                        <i class="fa-solid fa-paper-plane text-primary w-5 text-center"></i>
+                        <span class="text-gray-900 font-medium">تواصل معنا</span>
+                        <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+                    </a>
+
+                    <a href="./joinus-ar.html"
+                        class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+                        <i class="fa-solid fa-user-plus text-primary w-5 text-center"></i>
+                        <span class="text-gray-900 font-medium">انضم إلينا</span>
+                        <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+                    </a>
+
+                    <!-- Language -->
+                    <div class="mt-4 px-3 py-3 rounded-xl bg-gray-50 flex items-center gap-3">
+                        <i class="fa-solid fa-language text-primary w-5 text-center"></i>
+                        <div class="flex items-center gap-2 text-sm">
+                            <a href="javascript:void(0)" onclick="switchLanguage()"
+                                class="text-gray-700 hover:text-primary">EN</a>
+                            <span class="text-gray-300">|</span>
+                            <span class="font-semibold text-primary">العربية</span>
+                        </div>
+                    </div>
+
+                    <!-- Social (responsive grid) -->
+                    <div class="px-3">
+                        <div class="mt-3 grid grid-cols-4 gap-3 sm:grid-cols-6">
+                            <a href="#" aria-label="فيسبوك"
+                                class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+                                <i class="fab fa-facebook-f"></i><span class="sr-only">فيسبوك</span>
                             </a>
-                            <a href="./airfreight-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-plane text-primary ml-3 w-5 text-center"></i>
-                                الشحن الجوي
+                            <a href="#" aria-label="تويتر"
+                                class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+                                <i class="fab fa-twitter"></i><span class="sr-only">تويتر</span>
                             </a>
-                            <a href="./transport-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-truck text-primary ml-3 w-5 text-center"></i>
-                                النقل البري
+                            <a href="#" aria-label="لينكدإن"
+                                class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+                                <i class="fab fa-linkedin-in"></i><span class="sr-only">لينكدإن</span>
                             </a>
-                            <a href="./ware-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-warehouse text-primary ml-3 w-5 text-center"></i>
-                                التخزين
-                            </a>
-                            <a href="./custom-ar.html" class="block py-2 text-gray-600 hover:text-primary flex items-center">
-                                <i class="fas fa-passport text-primary ml-3 w-5 text-center"></i>
-                                التخليص الجمركي
+                            <a href="#" aria-label="إنستغرام"
+                                class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+                                <i class="fab fa-instagram"></i><span class="sr-only">إنستغرام</span>
                             </a>
                         </div>
                     </div>
 
-                    <a href="./business-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأعمال والمعارض</a>
-                    <a href="./tools-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">الأدوات</a>
-                    <a href="./aboutus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">من نحن</a>
-                    <a href="./contactus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">تواصل معنا</a>
-                    <a href="./joinus-ar.html" class="block py-2 text-lg font-medium text-gray-900 hover:text-primary">انضم إلينا</a>
+                    <div class="h-24"></div>
+                </div>
 
-                    <!-- زر عرض السعر للجوال -->
-                    <a href="#quote-form"
-                       class="mt-6 w-full text-center bg-gradient-to-r from-[#003869] to-[#0056a3] text-white py-3 rounded-md font-bold transition-all duration-300">
+                <!-- Bottom CTA -->
+                <div class="p-4 border-t bg-white">
+                    <a href="./contactus-ar.html"
+                        class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0] text-white py-3 rounded-xl font-semibold shadow-md active:scale-[0.99] transition">
+                        <i class="fa-solid fa-calculator"></i>
                         احصل على عرض سعر
                     </a>
                 </div>
-            </div>
+            </nav>
         </div>
+
     </nav>
 
     <!-- بطل الصفحة -->
@@ -388,13 +597,18 @@
                 <!-- العمود الرئيسي -->
                 <div class="lg:col-span-3">
                     <div class="mb-16">
-                        <h2 id="featured-heading" class="text-2xl font-bold text-primary mb-8 border-b pb-2">أبرز الأخبار</h2>
-                        <div id="featured-news" class="news-card bg-white rounded-lg overflow-hidden opacity-0 transition-opacity duration-300">
+                        <h2 id="featured-heading" class="text-2xl font-bold text-primary mb-8 border-b pb-2">أبرز
+                            الأخبار</h2>
+                        <div id="featured-news"
+                            class="news-card bg-white rounded-lg overflow-hidden opacity-0 transition-opacity duration-300">
                             <!-- سبينر أثناء التحميل -->
                             <div class="flex justify-center items-center h-64">
-                                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4" />
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                                 </svg>
                             </div>
                         </div>
@@ -402,14 +616,19 @@
 
                     <!-- أحدث الأخبار -->
                     <div class="mb-16">
-                        <h2 id="latest-heading" class="text-2xl font-bold text-primary mb-8 border-b pb-2">أحدث الأخبار</h2>
+                        <h2 id="latest-heading" class="text-2xl font-bold text-primary mb-8 border-b pb-2">أحدث الأخبار
+                        </h2>
                         <div id="news-spinner" class="flex justify-center items-center py-12">
-                            <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                            <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4" />
                                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                             </svg>
                         </div>
-                        <div id="latest-news-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 opacity-0 transition-opacity duration-300"></div>
+                        <div id="latest-news-grid"
+                            class="grid grid-cols-1 md:grid-cols-2 gap-8 opacity-0 transition-opacity duration-300">
+                        </div>
                         <div class="text-center mt-12">
                             <button id="view-all-news-btn" type="button"
                                 class="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-full font-medium transition duration-300 hidden">
@@ -420,12 +639,17 @@
 
                     <!-- أخبار الصناعة -->
                     <div class="mb-16">
-                        <h2 id="industry-heading" class="text-2xl font-bold text-primary mb-8 border-b pb-2">أخبار الصناعة</h2>
-                        <div id="industry-news" class="grid grid-cols-1 gap-8 opacity-0 transition-opacity duration-300">
+                        <h2 id="industry-heading" class="text-2xl font-bold text-primary mb-8 border-b pb-2">أخبار
+                            الصناعة</h2>
+                        <div id="industry-news"
+                            class="grid grid-cols-1 gap-8 opacity-0 transition-opacity duration-300">
                             <div class="col-span-full flex justify-center items-center h-32">
-                                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                                <svg class="h-12 w-12 text-primary animate-spin" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4" />
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                                 </svg>
                             </div>
                         </div>
@@ -434,7 +658,9 @@
                     <!-- ترقيم الصفحات (عرض تجميلي فقط) -->
                     <div class="flex justify-center">
                         <div class="flex items-center">
-                            <button class="pagination-item hover:bg-gray-100 ml-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                            <button
+                                class="pagination-item hover:bg-gray-100 ml-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                disabled>
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                             <button class="pagination-item active">1</button>
@@ -457,7 +683,8 @@
                         <div class="relative">
                             <input id="search-input" type="text" placeholder="ابحث عن مقالات..."
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <button id="search-btn" class="absolute left-3 top-2 text-gray-400 hover:text-primary" aria-label="بحث">
+                            <button id="search-btn" class="absolute left-3 top-2 text-gray-400 hover:text-primary"
+                                aria-label="بحث">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
@@ -474,31 +701,39 @@
                         <h3 class="text-lg font-bold text-primary mb-4">التصنيفات</h3>
                         <ul class="space-y-2">
                             <li>
-                                <a href="#" class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
+                                <a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>أخبار الشركة</span>
-                                    <span id="cat-featured" class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
+                                    <span id="cat-featured"
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
+                                <a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>تحديثات الصناعة</span>
-                                    <span id="cat-industry" class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
+                                    <span id="cat-industry"
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
+                                <a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>فعاليات</span>
-                                    <span id="cat-internal" class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
+                                    <span id="cat-internal"
+                                        class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
+                                <a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>التقنية</span>
                                     <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
+                                <a href="#"
+                                    class="flex justify-between items-center text-gray-700 hover:text-primary transition duration-300">
                                     <span>الاستدامة</span>
                                     <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">0</span>
                                 </a>
@@ -525,11 +760,16 @@
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-lg font-bold text-primary mb-4">أرشيف الأخبار</h3>
                         <div class="space-y-2">
-                            <a href="#" class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2023</a>
-                            <a href="#" class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2022</a>
-                            <a href="#" class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2021</a>
-                            <a href="#" class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2020</a>
-                            <a href="#" class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2019</a>
+                            <a href="#"
+                                class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2023</a>
+                            <a href="#"
+                                class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2022</a>
+                            <a href="#"
+                                class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2021</a>
+                            <a href="#"
+                                class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2020</a>
+                            <a href="#"
+                                class="news-archive-year block text-gray-700 hover:text-primary transition duration-300">2019</a>
                         </div>
                     </div>
                 </div>
@@ -565,16 +805,20 @@
                     </div>
                     <p class="mb-6 opacity-80">نقدم التميز عبر الحدود من خلال خدماتنا الشاملة في النقل واللوجستيات.</p>
                     <div class="flex space-x-4 space-x-reverse">
-                        <a href="#" class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
@@ -583,24 +827,36 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
                     <ul class="space-y-3">
-                        <li><a href="index-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a></li>
-                        <li><a href="aboutus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">من نحن</a></li>
-                        <li><a href="transport-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الخدمات</a></li>
-                        <li><a href="tools-ar.html" class="opacity-80 hover:text-secondary transition duration-300">التتبع</a></li>
-                        <li><a href="joinus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الوظائف</a></li>
-                        <li><a href="contactus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">تواصل معنا</a></li>
+                        <li><a href="index-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a></li>
+                        <li><a href="aboutus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">من
+                                نحن</a></li>
+                        <li><a href="transport-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الخدمات</a></li>
+                        <li><a href="tools-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">التتبع</a></li>
+                        <li><a href="joinus-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الوظائف</a></li>
+                        <li><a href="contactus-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">تواصل معنا</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-bold mb-6">الخدمات</h4>
                     <ul class="space-y-3">
-                        <li><a href="ocean-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الشحن البحري</a></li>
-                        <li><a href="airfreight-ar.html" class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a></li>
-                        <li><a href="transport-ar.html" class="opacity-80 hover:text-secondary transition duration-300">النقل البري</a></li>
-                        <li><a href="ware-ar.html" class="opacity-80 hover:text-secondary transition duration-300">التخزين</a></li>
-                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">سلاسل الإمداد</a></li>
-                        <li><a href="custom-ar.html" class="opacity-80 hover:text-secondary transition duration-300">التخليص الجمركي</a></li>
+                        <li><a href="ocean-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الشحن البحري</a></li>
+                        <li><a href="airfreight-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a></li>
+                        <li><a href="transport-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">النقل البري</a></li>
+                        <li><a href="ware-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">التخزين</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-secondary transition duration-300">سلاسل
+                                الإمداد</a></li>
+                        <li><a href="custom-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">التخليص الجمركي</a></li>
                     </ul>
                 </div>
 
@@ -623,10 +879,12 @@
                 </div>
             </div>
 
-            <div class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div
+                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 سمن ترانس. جميع الحقوق محفوظة.</p>
                 <div class="flex space-x-6 space-x-reverse">
-                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة الخصوصية</a>
+                    <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة
+                        الخصوصية</a>
                     <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط الخدمة</a>
                     <a href="#" class="text-sm opacity-80 hover:text-secondary transition duration-300">خريطة الموقع</a>
                 </div>
@@ -637,10 +895,12 @@
     <!-- زر واتساب -->
     <div class="fixed bottom-6 left-6 z-50">
         <a href="https://wa.me/96341234567" target="_blank" class="flex flex-col items-center group">
-            <div class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
+            <div
+                class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
                 <i class="fab fa-whatsapp text-2xl"></i>
             </div>
-            <span class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span
+                class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 تواصل معنا الآن
             </span>
         </a>
@@ -859,6 +1119,79 @@
             btnEl.addEventListener('click', doSearch);
             inputEl.addEventListener('keyup', e => { if (e.key === 'Enter') doSearch(); });
         });
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const panel = document.getElementById('mobile-panel');
+            const overlay = document.getElementById('mobile-overlay');
+            const closeBtn = document.getElementById('close-mobile-menu');
+
+            if (!btn || !menu || !panel || !overlay || !closeBtn) return;
+
+            let lastFocused = null;
+            const ANIM_MS = 300;
+            const focusableSel = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+
+            const getFocusable = () => panel.querySelectorAll(focusableSel);
+
+            function openMenu() {
+                lastFocused = document.activeElement;
+                menu.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    overlay.classList.remove('opacity-0'); overlay.classList.add('opacity-100');
+                    panel.classList.remove('translate-x-full');      // slide in from right
+                });
+                document.body.classList.add('overflow-hidden');
+                btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
+                const f = getFocusable(); if (f.length) f[0].focus();
+            }
+
+            function closeMenu() {
+                overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0');
+                panel.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+                btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true');
+                panel.style.transform = '';
+                setTimeout(() => { menu.classList.add('hidden'); if (lastFocused) lastFocused.focus(); }, ANIM_MS);
+            }
+
+            btn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // close on any link click inside
+            panel.addEventListener('click', (e) => {
+                if (e.target.closest('a')) closeMenu();
+            });
+
+            // ESC + focus trap
+            document.addEventListener('keydown', (e) => {
+                if (menu.classList.contains('hidden')) return;
+                if (e.key === 'Escape') { e.preventDefault(); closeMenu(); return; }
+                if (e.key === 'Tab') {
+                    const f = Array.from(getFocusable()); if (!f.length) return;
+                    const first = f[0], last = f[f.length - 1];
+                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+            });
+
+            // swipe-to-close (rightward swipe in RTL)
+            let startX = 0, currentX = 0, dragging = false;
+            panel.addEventListener('touchstart', (e) => {
+                if (menu.classList.contains('hidden')) return;
+                dragging = true; startX = e.touches[0].clientX; currentX = startX;
+            }, { passive: true });
+            panel.addEventListener('touchmove', (e) => {
+                if (!dragging) return;
+                currentX = e.touches[0].clientX; const dx = currentX - startX; if (dx > 0) panel.style.transform = `translateX(${dx}px)`;
+            }, { passive: true });
+            panel.addEventListener('touchend', () => {
+                if (!dragging) return;
+                const dx = currentX - startX; if (dx > 100) closeMenu(); else panel.style.transform = ''; dragging = false;
+            }, { passive: true });
+        });
     </script>
 </body>
+
 </html>
