@@ -14,6 +14,9 @@
     <meta property="og:image" content="./ST.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -117,6 +120,36 @@
             border-radius: 50%;
             background: #003869;
             border: 3px solid #F59E0B
+        }
+
+        .flag-marker {
+            border-radius: 9999px;
+            /* fully rounded */
+            border: 2px solid rgba(0, 0, 0, .08);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+            background: #fff;
+            /* خلفية بيضاء خلف العلم */
+        }
+
+        /* صندوق الوسيلة/الليجند */
+        .map-legend {
+            direction: rtl;
+            background: #fff;
+            padding: .75rem .9rem;
+            border-radius: .75rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+            font-family: Tajawal, Arial, sans-serif;
+            font-size: .9rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .legend-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 9999px;
+            margin-inline-start: .4rem;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -623,68 +656,125 @@
     </section>
 
     <!-- تاريخ الشركة / محطات -->
-    <section class="py-16 bg-white">
+    <!-- التاريخ (نسخة عربية) -->
+    <section class="py-20 bg-white" dir="rtl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary">رحلتنا <span
-                        class="text-secondary">بالأعوام</span></h2>
-                <p class="text-gray-600 mt-2">أبرز المحطات خلال 25 عاماً</p>
+            <div class="text-center mb-16 animate-on-scroll" data-animation="slide-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+                    رحلتنا <span class="text-secondary">التاريخية</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    أبرز المحطات في تاريخنا
+                </p>
             </div>
             <div class="history-timeline max-w-3xl mx-auto">
+
+                <!-- 1999 -->
                 <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
                     <div class="md:grid md:grid-cols-3 gap-6 items-center">
                         <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">1999 — التأسيس</h3>
-                            <p class="text-gray-700">انطلاق سَمّان ترانس من دمشق برؤية تغيير مشهد اللوجستيات في المنطقة.
+                            <h3 class="text-xl font-bold text-primary mb-2">1999 - مكتب برج دمشق</h3>
+                            <p class="text-gray-600">
+                                افتتاح أول مكتب لنا في برج دمشق. وأصبحنا أعضاء في FIATA.
                             </p>
                         </div>
-                        <img src="./off.jpg" alt="مكتب الشركة عند التأسيس"
-                            class="rounded-lg shadow w-full h-40 object-cover" loading="lazy" />
+                        <img src="./logos/fiata.png" alt="FIATA"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-28 object-contain bg-white p-2">
                     </div>
                 </div>
+
+                <!-- 2000 -->
                 <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
                     <div class="md:grid md:grid-cols-3 gap-6 items-center">
                         <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">2005 — التوسّع الإقليمي</h3>
-                            <p class="text-gray-700">إرساء شراكات دولية في دول الجوار لخدمة أوسع.</p>
+                            <h3 class="text-xl font-bold text-primary mb-2">2000 - أول وكالة تجميع</h3>
+                            <p class="text-gray-600">التعاون مع شركة TUSCOR Lloyds UK كأول وكالة تجميع.</p>
                         </div>
-                        <img src="./wq.jpg" alt="التوسع الإقليمي" class="rounded-lg shadow w-full h-40 object-cover"
-                            loading="lazy" />
+                        <img src="./logos/tuscor.png" alt="Tuscor Lloyds"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-28 object-contain bg-white p-2">
                     </div>
                 </div>
+
+                <!-- 2005 -->
                 <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
                     <div class="md:grid md:grid-cols-3 gap-6 items-center">
                         <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">2012 — خدمات متعددة الوسائط</h3>
-                            <p class="text-gray-700">إطلاق حلول متكاملة للنقل الجوي والبحري والبري.</p>
+                            <h3 class="text-xl font-bold text-primary mb-2">2005 - منشآت تل الكردي</h3>
+                            <p class="text-gray-600">توسيع المكاتب والمجمع في عدرا تل الكردي وإنشاء مستودعاتنا.</p>
                         </div>
-                        <img src="./tru.jpg" alt="النقل المتعدد الوسائط"
-                            class="rounded-lg shadow w-full h-40 object-cover" loading="lazy" />
+                        <img src="./images/warehouse.jpg" alt="Warehouses"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-40 object-cover">
                     </div>
                 </div>
+
+                <!-- 2009 -->
                 <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
                     <div class="md:grid md:grid-cols-3 gap-6 items-center">
                         <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">2018 — حضور عالمي</h3>
-                            <p class="text-gray-700">توسيع الشبكة لخدمة العملاء في أكثر من 150 دولة.</p>
+                            <h3 class="text-xl font-bold text-primary mb-2">2009 - المنطقة الحرة بالمطار</h3>
+                            <p class="text-gray-600">إنشاء مكاتب ومستودع في المنطقة الحرة بالمطار.</p>
                         </div>
-                        <img src="./2o.jpg" alt="شبكة عالمية" class="rounded-lg shadow w-full h-40 object-cover"
-                            loading="lazy" />
+                        <img src="./images/airport.jpg" alt="Airport Free Zone"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-40 object-cover">
                     </div>
                 </div>
+
+                <!-- 2012 -->
                 <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
                     <div class="md:grid md:grid-cols-3 gap-6 items-center">
                         <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">2023 — التحوّل الرقمي</h3>
-                            <p class="text-gray-700">تنفيذ أنظمة تتبّع وإدارة لوجستية متقدمة.</p>
+                            <h3 class="text-xl font-bold text-primary mb-2">2012 - إضافة أسطول شاحنات</h3>
+                            <p class="text-gray-600">تعزيز قدرات النقل لدينا عبر إضافة أسطول جديد من الشاحنات.</p>
                         </div>
-                        <img src="./ooo.jpg" alt="التحول الرقمي" class="rounded-lg shadow w-full h-40 object-cover"
-                            loading="lazy" />
+                        <img src="./images/trucks.jpg" alt="Trucks"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-40 object-cover">
                     </div>
                 </div>
+
+                <!-- 2023 -->
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2023 - مستودع جمركي</h3>
+                            <p class="text-gray-600">إنشاء مستودع جمركي في المنطقة الحرة بعدرا.</p>
+                        </div>
+                        <img src="./images/bonded.jpg" alt="Bonded warehouse"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-40 object-cover">
+                    </div>
+                </div>
+
+                <!-- 2024 -->
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2024 - شبكة كونكر</h3>
+                            <p class="text-gray-600">انضممنا إلى شبكة Conqueror Freight.</p>
+                        </div>
+                        <img src="./logos/conqueror.png" alt="Conqueror"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-28 object-contain bg-white p-2">
+                    </div>
+                </div>
+
+                <!-- 2025 -->
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2025 - منظمات ألفا وأطلس</h3>
+                            <p class="text-gray-600">أصبحنا أعضاء في منظمتي Alpha وAtlas.</p>
+                        </div>
+                        <div class="flex gap-2 mt-4 md:mt-0">
+                            <img src="./logos/alpha.png" alt="Alpha"
+                                class="timeline-image rounded-lg shadow-md w-1/2 h-28 object-contain bg-white p-2">
+                            <img src="./logos/atlas.png" alt="Atlas"
+                                class="timeline-image rounded-lg shadow-md w-1/2 h-28 object-contain bg-white p-2">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+
 
     <!-- الخدمات -->
     <section class="py-16 bg-gray-50" id="services">
@@ -748,45 +838,31 @@
     </section>
 
     <!-- شبكة عالمية -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white" id="global-network">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">شبكتنا <span
-                    class="text-secondary">العالمية</span></h2>
-            <p class="text-gray-600 mb-8">شركاء استراتيجيون في أهم مراكز الخدمات اللوجستية</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <div
-                        class="w-14 h-14 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
-                        <i class="fas fa-globe-asia"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-primary">آسيا</h3>
-                    <p class="text-gray-600">شنغهاي، سنغافورة</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <div
-                        class="w-14 h-14 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
-                        <i class="fas fa-globe-europe"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-primary">أوروبا</h3>
-                    <p class="text-gray-600">هامبورغ، روتردام</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <div
-                        class="w-14 h-14 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
-                        <i class="fas fa-globe-africa"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-primary">الشرق الأوسط وشمال أفريقيا</h3>
-                    <p class="text-gray-600">دبي، جدة</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <div
-                        class="w-14 h-14 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
-                        <i class="fas fa-globe-americas"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-primary">الأمريكيتان</h3>
-                    <p class="text-gray-600">نيويورك، ميامي</p>
-                </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-2">
+                شبكتنا <span class="text-secondary">العالمية</span>
+            </h2>
+            <p class="text-gray-600 mb-6">دول الانطلاق الرئيسية والوجهات الأساسية</p>
+
+            <!-- فلاتر بسيطة -->
+            <div class="flex items-center justify-center gap-3 mb-5">
+                <label class="inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2">
+                    <input id="toggle-origins" type="checkbox" class="w-4 h-4 accent-[#003869]" checked>
+                    <span class="text-sm text-gray-700">عرض دول الانطلاق</span>
+                </label>
+                <label class="inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2">
+                    <input id="toggle-destinations" type="checkbox" class="w-4 h-4 accent-[#F59E0B]" checked>
+                    <span class="text-sm text-gray-700">عرض الوجهات</span>
+                </label>
+                <button id="fit-bounds"
+                    class="text-sm bg-primary text-white px-4 py-2 rounded-full hover:bg-[#0056a3] transition">
+                    إظهار جميع العلامات
+                </button>
             </div>
+
+            <!-- الخريطة -->
+            <div id="worldMap" class="w-full h-[520px] rounded-xl shadow-lg border border-gray-200"></div>
         </div>
     </section>
 
@@ -1026,86 +1102,214 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            /* =========================
+               1) قائمة الجوال (RTL Drawer)
+               ========================= */
             const btn = document.getElementById('mobile-menu-button');
             const menu = document.getElementById('mobile-menu');
             const panel = document.getElementById('mobile-panel');
             const overlay = document.getElementById('mobile-overlay');
             const closeBtn = document.getElementById('close-mobile-menu');
 
-            if (!btn || !menu || !panel || !overlay || !closeBtn) return;
+            if (btn && menu && panel && overlay && closeBtn) {
+                let lastFocused = null;
+                const ANIM_MS = 300;
+                const focusableSel = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+                const getFocusable = () => panel.querySelectorAll(focusableSel);
 
-            let lastFocused = null;
-            const ANIM_MS = 300;
-            const focusableSel = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
-
-            const getFocusable = () => panel.querySelectorAll(focusableSel);
-
-            function openMenu() {
-                lastFocused = document.activeElement;
-                menu.classList.remove('hidden');
-                requestAnimationFrame(() => {
-                    overlay.classList.remove('opacity-0'); overlay.classList.add('opacity-100');
-                    panel.classList.remove('translate-x-full');      // slide in from right
-                });
-                document.body.classList.add('overflow-hidden');
-                btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
-                const f = getFocusable(); if (f.length) f[0].focus();
-            }
-
-            function closeMenu() {
-                overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0');
-                panel.classList.add('translate-x-full');
-                document.body.classList.remove('overflow-hidden');
-                btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true');
-                panel.style.transform = '';
-                setTimeout(() => { menu.classList.add('hidden'); if (lastFocused) lastFocused.focus(); }, ANIM_MS);
-            }
-
-            btn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
-
-            // close on any link click inside
-            panel.addEventListener('click', (e) => {
-                if (e.target.closest('a')) closeMenu();
-            });
-
-            // ESC + focus trap
-            document.addEventListener('keydown', (e) => {
-                if (menu.classList.contains('hidden')) return;
-                if (e.key === 'Escape') { e.preventDefault(); closeMenu(); return; }
-                if (e.key === 'Tab') {
-                    const f = Array.from(getFocusable()); if (!f.length) return;
-                    const first = f[0], last = f[f.length - 1];
-                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                function openMenu() {
+                    lastFocused = document.activeElement;
+                    menu.classList.remove('hidden');
+                    requestAnimationFrame(() => {
+                        overlay.classList.remove('opacity-0'); overlay.classList.add('opacity-100');
+                        panel.classList.remove('translate-x-full');
+                    });
+                    document.body.classList.add('overflow-hidden');
+                    btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
+                    const f = getFocusable(); if (f.length) f[0].focus();
                 }
+
+                function closeMenu() {
+                    overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0');
+                    panel.classList.add('translate-x-full');
+                    document.body.classList.remove('overflow-hidden');
+                    btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true');
+                    panel.style.transform = '';
+                    setTimeout(() => { menu.classList.add('hidden'); if (lastFocused) lastFocused.focus(); }, ANIM_MS);
+                }
+
+                btn.addEventListener('click', openMenu);
+                closeBtn.addEventListener('click', closeMenu);
+                overlay.addEventListener('click', closeMenu);
+
+                // إغلاق عند الضغط على رابط داخل الدرج
+                panel.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
+
+                // ESC + focus trap
+                document.addEventListener('keydown', (e) => {
+                    if (menu.classList.contains('hidden')) return;
+                    if (e.key === 'Escape') { e.preventDefault(); closeMenu(); return; }
+                    if (e.key === 'Tab') {
+                        const f = Array.from(getFocusable()); if (!f.length) return;
+                        const first = f[0], last = f[f.length - 1];
+                        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                    }
+                });
+
+                // سحب للإغلاق (نحو اليمين في RTL)
+                let startX = 0, currentX = 0, dragging = false;
+                panel.addEventListener('touchstart', (e) => {
+                    if (menu.classList.contains('hidden')) return;
+                    dragging = true; startX = e.touches[0].clientX; currentX = startX;
+                }, { passive: true });
+                panel.addEventListener('touchmove', (e) => {
+                    if (!dragging) return;
+                    currentX = e.touches[0].clientX; const dx = currentX - startX;
+                    if (dx > 0) panel.style.transform = `translateX(${dx}px)`;
+                }, { passive: true });
+                panel.addEventListener('touchend', () => {
+                    if (!dragging) return;
+                    const dx = currentX - startX;
+                    if (dx > 100) closeMenu(); else panel.style.transform = '';
+                    dragging = false;
+                }, { passive: true });
+            }
+
+            /* =========================================
+               2) أنيميشن الظهور عند التمرير (IntersectionObserver)
+               - لا نعيد تعريفه إن وُجد: نخزّنه على window.__scrollIO
+               ========================================= */
+            const scrollIO = window.__scrollIO || (window.__scrollIO = new IntersectionObserver((entries) => {
+                entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-in-view'); });
+            }, { threshold: 0.1 }));
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => scrollIO.observe(el));
+
+            /* ==============================
+               3) زر لأعلى (مع حارس Alpine.js)
+               ============================== */
+            document.addEventListener('scroll', () => {
+                const bodyX = document.querySelector('body').__x;
+                if (bodyX && bodyX.$data) bodyX.$data.atTop = window.scrollY < 200;
             });
 
-            // swipe-to-close (rightward swipe in RTL)
-            let startX = 0, currentX = 0, dragging = false;
-            panel.addEventListener('touchstart', (e) => {
-                if (menu.classList.contains('hidden')) return;
-                dragging = true; startX = e.touches[0].clientX; currentX = startX;
-            }, { passive: true });
-            panel.addEventListener('touchmove', (e) => {
-                if (!dragging) return;
-                currentX = e.touches[0].clientX; const dx = currentX - startX; if (dx > 0) panel.style.transform = `translateX(${dx}px)`;
-            }, { passive: true });
-            panel.addEventListener('touchend', () => {
-                if (!dragging) return;
-                const dx = currentX - startX; if (dx > 100) closeMenu(); else panel.style.transform = ''; dragging = false;
-            }, { passive: true });
-        });
-        // مراقبة التمرير للأنيمايشن
+            /* =========================
+               4) خريطة Leaflet (شبكتنا العالمية)
+               - بدون خطوط
+               - مع دوائر تلوين حول نقاط الانطلاق والوجهات
+               ========================= */
+            (function initWorldMap() {
+                const mapEl = document.getElementById('worldMap');
+                if (!mapEl || !window.L) return; // تحقّق من وجود العنصر والمكتبة
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => io.observe(el));
+                const map = L.map(mapEl, { zoomControl: true }).setView([25, 20], 2);
 
-        // حالة زر لأعلى
-        document.addEventListener('scroll', () => {
-            document.querySelector('body').__x.$data.atTop = window.scrollY < 200;
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+
+                function flagIcon(url) {
+                    return L.icon({ iconUrl: url, iconSize: [34, 34], className: 'flag-marker' });
+                }
+
+                // ألوان وخصائص الدوائر
+                const originColor = "#003869";     // primary
+                const destinationColor = "#F59E0B"; // secondary
+                const originRadius = 500000;        // متر — عدّل حسب الحاجة
+                const destinationRadius = 300000;   // متر — عدّل حسب الحاجة
+
+                // دول الانطلاق
+                const origins = [
+                    { name: "الهند", coords: [20.5937, 78.9629], flag: "https://flagcdn.com/w40/in.png" },
+                    { name: "الصين", coords: [35.8617, 104.1954], flag: "https://flagcdn.com/w40/cn.png" },
+                    { name: "إيطاليا", coords: [41.8719, 12.5674], flag: "https://flagcdn.com/w40/it.png" },
+                    { name: "ألمانيا", coords: [51.1657, 10.4515], flag: "https://flagcdn.com/w40/de.png" },
+                    { name: "إسبانيا", coords: [40.4637, -3.7492], flag: "https://flagcdn.com/w40/es.png" }
+                ];
+
+                // الوجهات
+                const destinations = [
+                    { name: "طرطوس، سوريا", coords: [34.8881, 35.8866], flag: "https://flagcdn.com/w40/sy.png" },
+                    { name: "إسطنبول، تركيا", coords: [41.0082, 28.9784], flag: "https://flagcdn.com/w40/tr.png" },
+                    { name: "بيروت، لبنان", coords: [33.8938, 35.5018], flag: "https://flagcdn.com/w40/lb.png" },
+                    { name: "الإسكندرية، مصر", coords: [31.2001, 29.9187], flag: "https://flagcdn.com/w40/eg.png" },
+                    { name: "العقبة، الأردن", coords: [29.5321, 35.0063], flag: "https://flagcdn.com/w40/jo.png" }
+                ];
+
+                // طبقات
+                const originsLayer = L.layerGroup().addTo(map);
+                const destinationsLayer = L.layerGroup().addTo(map);
+
+                // ماركرات ودائرة تلوين حول دول الانطلاق
+                origins.forEach(o => {
+                    L.marker(o.coords, { icon: flagIcon(o.flag), title: o.name })
+                        .bindPopup(`<b>${o.name}</b><br>دولة انطلاق رئيسية`)
+                        .addTo(originsLayer);
+
+                    L.circle(o.coords, {
+                        radius: originRadius,
+                        color: originColor,
+                        weight: 1,
+                        fillColor: originColor,
+                        fillOpacity: 0.15
+                    }).addTo(originsLayer);
+                });
+
+                // ماركرات ودائرة تلوين حول الوجهات
+                destinations.forEach(d => {
+                    L.marker(d.coords, { icon: flagIcon(d.flag), title: d.name })
+                        .bindPopup(`<b>${d.name}</b><br>وجهة رئيسية`)
+                        .addTo(destinationsLayer);
+
+                    L.circle(d.coords, {
+                        radius: destinationRadius,
+                        color: destinationColor,
+                        weight: 1,
+                        fillColor: destinationColor,
+                        fillOpacity: 0.15
+                    }).addTo(destinationsLayer);
+                });
+
+                // احتواء كل العلامات
+                const fitAll = () => {
+                    const group = L.featureGroup([
+                        ...originsLayer.getLayers(),
+                        ...destinationsLayer.getLayers()
+                    ]);
+                    if (group.getLayers().length) map.fitBounds(group.getBounds().pad(0.2));
+                };
+                fitAll();
+
+                // أدوات التحكم البسيطة
+                document.getElementById('fit-bounds')?.addEventListener('click', fitAll);
+
+                document.getElementById('toggle-origins')?.addEventListener('change', (e) => {
+                    e.target.checked ? map.addLayer(originsLayer) : map.removeLayer(originsLayer);
+                });
+
+                document.getElementById('toggle-destinations')?.addEventListener('change', (e) => {
+                    e.target.checked ? map.addLayer(destinationsLayer) : map.removeLayer(destinationsLayer);
+                });
+
+                // ليجند
+                const legend = L.control({ position: 'topright' });
+                legend.onAdd = () => {
+                    const div = L.DomUtil.create('div', 'map-legend');
+                    div.innerHTML = `
+            <div style="font-weight:700; color:#003869; margin-bottom:.35rem">دليل الخريطة</div>
+            <div style="margin-bottom:.25rem"><span class="legend-dot" style="background:#003869"></span> دول الانطلاق</div>
+            <div style="margin-bottom:.25rem"><span class="legend-dot" style="background:#F59E0B"></span> الوجهات</div>
+            <div style="margin-top:.35rem; font-size:.8rem; color:#6b7280">اضغط على أي علم لعرض التفاصيل</div>
+          `;
+                    return div;
+                };
+                legend.addTo(map);
+            })();
         });
     </script>
+
+
 </body>
 
 </html>

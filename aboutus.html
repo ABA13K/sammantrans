@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -195,6 +197,44 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+        .flag-marker {
+            border-radius: 9999px;
+            border: 2px solid rgba(0, 0, 0, .08);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+            background: #fff;
+        }
+
+        /* Legend box */
+        .map-legend {
+            direction: ltr;
+            background: #fff;
+            padding: .75rem .9rem;
+            border-radius: .75rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+            font-family: inherit;
+            font-size: .9rem;
+            border: 1px solid #e5e7eb
+        }
+
+        .legend-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 9999px;
+            margin-right: .4rem;
+            vertical-align: middle
+        }
+
+        /* reveal-on-scroll helper (already have classes, keep consistent) */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity .6s ease, transform .6s ease
+        }
+
+        .animate-on-scroll.is-in-view {
+            opacity: 1
         }
     </style>
 </head>
@@ -742,71 +782,126 @@
     </section>
 
     <!-- Company History -->
+    <!-- Company History -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 animate-on-scroll" data-animation="slide-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our <span
-                        class="text-secondary">Journey</span></h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Key milestones in our 25-year history</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+                    Our <span class="text-secondary">Journey</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Key milestones in our history
+                </p>
             </div>
             <div class="history-timeline max-w-3xl mx-auto">
+
+                <!-- 1999 -->
                 <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
                     <div class="md:grid md:grid-cols-3 gap-6 items-center">
                         <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">1999 - Foundation</h3>
-                            <p class="text-gray-600">SAMMAN TRANS is established in Damascus, Syria with a vision to
-                                revolutionize logistics in the region.</p>
-                        </div>
-                        <img src="./off.jpg" alt="Original office"
-                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
-                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
-                        <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">2005 - Regional Expansion</h3>
-                            <p class="text-gray-600">Established our first international partnerships in neighboring
-                                countries.</p>
-                        </div>
-                        <img src="./wq.jpg" alt="Regional expansion"
-                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
-                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
-                        <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">2012 - Multimodal Services</h3>
-                            <p class="text-gray-600">Launched integrated air, sea, and land transportation solutions.
+                            <h3 class="text-xl font-bold text-primary mb-2">1999 - Damascus Tower Office</h3>
+                            <p class="text-gray-600">
+                                Official opening of our first office in Damascus Tower. Became a member of FIATA.
                             </p>
                         </div>
-                        <img src="./tru.jpg" alt="Multimodal transport"
-                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
+                        <img src="./logos/fiata.png" alt="FIATA"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-28 object-contain bg-white p-2">
                     </div>
                 </div>
+
+                <!-- 2000 -->
                 <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
                     <div class="md:grid md:grid-cols-3 gap-6 items-center">
                         <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">2018 - Global Reach</h3>
-                            <p class="text-gray-600">Expanded our network to serve clients in over 150 countries
-                                worldwide.</p>
+                            <h3 class="text-xl font-bold text-primary mb-2">2000 - First Collouding Agency</h3>
+                            <p class="text-gray-600">Partnership with TUSCOR Lloyds UK as first collouding agency.</p>
                         </div>
-                        <img src="./2o.jpg" alt="Global network"
-                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
+                        <img src="./logos/tuscor.png" alt="Tuscor Lloyds"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-28 object-contain bg-white p-2">
                     </div>
                 </div>
+
+                <!-- 2005 -->
                 <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
                     <div class="md:grid md:grid-cols-3 gap-6 items-center">
                         <div class="md:col-span-2">
-                            <h3 class="text-xl font-bold text-primary mb-2">2023 - Digital Transformation</h3>
-                            <p class="text-gray-600">Implemented advanced tracking and logistics management systems.</p>
+                            <h3 class="text-xl font-bold text-primary mb-2">2005 - Adraa Tal Kurdi Facilities</h3>
+                            <p class="text-gray-600">Expanded offices and compound in Adraa Tal Kurdi and built our
+                                warehouses.</p>
                         </div>
-                        <img src="./ooo.jpg" alt="Digital transformation"
-                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-48 object-cover">
+                        <img src="./images/warehouse.jpg" alt="Warehouses"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-40 object-cover">
                     </div>
                 </div>
+
+                <!-- 2009 -->
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2009 - Airport Free Zone</h3>
+                            <p class="text-gray-600">Established offices and warehouse in the Airport Free Zone.</p>
+                        </div>
+                        <img src="./images/airport.jpg" alt="Airport Free Zone"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-40 object-cover">
+                    </div>
+                </div>
+
+                <!-- 2012 -->
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2012 - Added New Truck Fleet</h3>
+                            <p class="text-gray-600">Expanded logistics capabilities with a new fleet of trucks.</p>
+                        </div>
+                        <img src="./images/trucks.jpg" alt="Trucks"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-40 object-cover">
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2023 - Bonded Warehouse</h3>
+                            <p class="text-gray-600">Established bonded warehouse in Adraa Free Zone.</p>
+                        </div>
+                        <img src="./images/bonded.jpg" alt="Bonded warehouse"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-40 object-cover">
+                    </div>
+                </div>
+
+                <!-- 2024 -->
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2024 - Conqueror Network</h3>
+                            <p class="text-gray-600">Joined Conqueror Freight Network.</p>
+                        </div>
+                        <img src="./logos/conqueror.png" alt="Conqueror"
+                            class="timeline-image mt-4 md:mt-0 rounded-lg shadow-md w-full h-28 object-contain bg-white p-2">
+                    </div>
+                </div>
+
+                <!-- 2025 -->
+                <div class="timeline-item animate-on-scroll" data-animation="slide-in-up">
+                    <div class="md:grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-bold text-primary mb-2">2025 - Alpha & Atlas</h3>
+                            <p class="text-gray-600">Became a member of Alpha and Atlas organizations.</p>
+                        </div>
+                        <div class="flex gap-2 mt-4 md:mt-0">
+                            <img src="./logos/alpha.png" alt="Alpha"
+                                class="timeline-image rounded-lg shadow-md w-1/2 h-28 object-contain bg-white p-2">
+                            <img src="./logos/atlas.png" alt="Atlas"
+                                class="timeline-image rounded-lg shadow-md w-1/2 h-28 object-contain bg-white p-2">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+
 
     <!-- Services Section -->
     <section class="py-20 bg-gray-50">
@@ -966,48 +1061,35 @@
     </section>
 
     <!-- Global Network -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 animate-on-scroll" data-animation="slide-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Global <span
-                        class="text-secondary">Network</span></h2>
-                <p class="text-gray-600 max-w-3xl mx-auto">Our extensive network spans across continents with strategic
-                    partners in key logistics hubs</p>
+    <section class="py-20 bg-white" id="global-network-map">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8 animate-on-scroll" data-animation="slide-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-3">
+                    Global <span class="text-secondary">Network</span>
+                </h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Primary origin countries and key destination hubs we serve.
+                </p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 stagger-container">
-                <div class="stagger-item bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                    <div
-                        class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fas fa-globe-asia"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-2">Asia Hub</h3>
-                    <p class="text-gray-600">Shanghai, Singapore</p>
-                </div>
-                <div class="stagger-item bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                    <div
-                        class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fas fa-globe-europe"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-2">Europe Hub</h3>
-                    <p class="text-gray-600">Hamburg, Rotterdam</p>
-                </div>
-                <div class="stagger-item bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                    <div
-                        class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fas fa-globe-africa"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-2">MENA Hub</h3>
-                    <p class="text-gray-600">Dubai, Jeddah</p>
-                </div>
-                <div class="stagger-item bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                    <div
-                        class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fas fa-globe-americas"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-2">Americas Hub</h3>
-                    <p class="text-gray-600">New York, Miami</p>
-                </div>
+
+            <!-- Simple filters -->
+            <div class="flex items-center justify-center gap-3 mb-5">
+                <label class="inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2">
+                    <input id="toggle-origins" type="checkbox" class="w-4 h-4 accent-[#003869]" checked>
+                    <span class="text-sm text-gray-700">Show Origins</span>
+                </label>
+                <label class="inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2">
+                    <input id="toggle-destinations" type="checkbox" class="w-4 h-4 accent-[#F59E0B]" checked>
+                    <span class="text-sm text-gray-700">Show Destinations</span>
+                </label>
+                <button id="fit-bounds"
+                    class="text-sm bg-primary text-white px-4 py-2 rounded-full hover:bg-[#0056a3] transition">
+                    Fit All
+                </button>
             </div>
+
+            <!-- Map -->
+            <div id="worldMap" class="w-full h-[520px] rounded-xl shadow-lg border border-gray-200"></div>
         </div>
     </section>
 
@@ -1214,12 +1296,16 @@
                     <ul class="space-y-3">
                         <li><a href="index.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">Home</a></li>
-                        <li><a href="aboutus.html" class="opacity-80 hover:text-secondary transition duration-300">About Us</a>
+                        <li><a href="aboutus.html" class="opacity-80 hover:text-secondary transition duration-300">About
+                                Us</a>
                         </li>
-                        <li><a href="airfreight.html" class="opacity-80 hover:text-secondary transition duration-300">Services</a>
+                        <li><a href="airfreight.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Services</a>
                         </li>
-                        <li><a href="joinus.html" class="opacity-80 hover:text-secondary transition duration-300">Careers</a></li>
-                        <li><a href="contactus.html" class="opacity-80 hover:text-secondary transition duration-300">Contact</a></li>
+                        <li><a href="joinus.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Careers</a></li>
+                        <li><a href="contactus.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Contact</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1227,13 +1313,17 @@
                     <ul class="space-y-3">
                         <li><a href="ocean.html" class="opacity-80 hover:text-secondary transition duration-300">Ocean
                                 Freight</a></li>
-                        <li><a href="airfreight.html" class="opacity-80 hover:text-secondary transition duration-300">Air Freight</a>
+                        <li><a href="airfreight.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Air Freight</a>
                         </li>
-                        <li><a href="transport.html" class="opacity-80 hover:text-secondary transition duration-300">Road
+                        <li><a href="transport.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Road
                                 Transport</a></li>
-                        <li><a href="ware.html" class="opacity-80 hover:text-secondary transition duration-300">Warehousing</a>
+                        <li><a href="ware.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Warehousing</a>
                         </li>
-                        <li><a href="custom.html" class="opacity-80 hover:text-secondary transition duration-300">Customs
+                        <li><a href="custom.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Customs
                                 Clearance</a></li>
                     </ul>
                 </div>
@@ -1286,368 +1376,204 @@
     </button>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Enhanced Mobile menu functionality
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const closeButton = document.getElementById('close-mobile-menu');
+        document.addEventListener('DOMContentLoaded', () => {
+            /* =========================
+               A) Enhanced Mobile Drawer
+               ========================= */
+            const btn = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const panel = document.getElementById('mobile-panel');
+            const overlay = document.getElementById('mobile-overlay');
+            const closeBtn = document.getElementById('close-mobile-menu');
 
-            function toggleMobileMenu(show) {
-                if (show) {
-                    // Add entrance animation
-                    mobileMenu.classList.remove('translate-x-full');
-                    mobileMenu.classList.add('translate-x-0');
+            if (btn && menu && panel && overlay && closeBtn) {
+                let lastFocused = null;
+                const ANIM_MS = 300;
+                const focusableSel = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+                const getFocusable = () => panel.querySelectorAll(focusableSel);
+
+                function openMenu() {
+                    lastFocused = document.activeElement;
+                    menu.classList.remove('hidden');
+                    requestAnimationFrame(() => {
+                        overlay.classList.remove('opacity-0'); overlay.classList.add('opacity-100');
+                        panel.classList.remove('translate-x-full');
+                    });
                     document.body.style.overflow = 'hidden';
-
-                    // Add haptic feedback for mobile devices
-                    if ('vibrate' in navigator) {
-                        navigator.vibrate(50);
-                    }
-
-                    // Animate menu items with stagger
-                    const menuItems = mobileMenu.querySelectorAll('.mobile-menu-item');
-                    menuItems.forEach((item, index) => {
-                        item.style.animationDelay = `${index * 0.1}s`;
-                        item.style.animation = 'slideInLeft 0.6s ease-out forwards';
-                    });
-                } else {
-                    // Add exit animation
-                    mobileMenu.classList.remove('translate-x-0');
-                    mobileMenu.classList.add('translate-x-full');
-                    document.body.style.overflow = 'auto';
-
-                    // Reset menu items animation
-                    const menuItems = mobileMenu.querySelectorAll('.mobile-menu-item');
-                    menuItems.forEach(item => {
-                        item.style.animation = 'none';
-                    });
+                    btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
+                    const f = getFocusable(); if (f.length) f[0].focus();
+                    if ('vibrate' in navigator) navigator.vibrate(20);
                 }
+                function closeMenu() {
+                    overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0');
+                    panel.classList.add('translate-x-full');
+                    document.body.style.overflow = 'auto';
+                    btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true');
+                    panel.style.transform = '';
+                    setTimeout(() => { menu.classList.add('hidden'); if (lastFocused) lastFocused.focus(); }, ANIM_MS);
+                }
+
+                btn.addEventListener('click', openMenu);
+                closeBtn.addEventListener('click', closeMenu);
+                overlay.addEventListener('click', closeMenu);
+                panel.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
+
+                // Esc + focus trap
+                document.addEventListener('keydown', (e) => {
+                    if (menu.classList.contains('hidden')) return;
+                    if (e.key === 'Escape') { e.preventDefault(); closeMenu(); return; }
+                    if (e.key === 'Tab') {
+                        const f = Array.from(getFocusable()); if (!f.length) return;
+                        const first = f[0], last = f[f.length - 1];
+                        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                    }
+                });
+
+                // Swipe-to-close (right swipe)
+                let startX = 0, currentX = 0, dragging = false;
+                panel.addEventListener('touchstart', (e) => { if (menu.classList.contains('hidden')) return; dragging = true; startX = e.touches[0].clientX; currentX = startX; }, { passive: true });
+                panel.addEventListener('touchmove', (e) => { if (!dragging) return; currentX = e.touches[0].clientX; const dx = currentX - startX; if (dx > 0) panel.style.transform = `translateX(${dx}px)`; }, { passive: true });
+                panel.addEventListener('touchend', () => { if (!dragging) return; const dx = currentX - startX; if (dx > 100) closeMenu(); else panel.style.transform = ''; dragging = false; }, { passive: true });
             }
 
-            // Enhanced event listeners
-            mobileMenuButton.addEventListener('click', () => {
-                toggleMobileMenu(true);
-                // Add button animation
-                mobileMenuButton.classList.add('scale-95');
-                setTimeout(() => mobileMenuButton.classList.remove('scale-95'), 150);
-            });
-
-            closeButton.addEventListener('click', () => {
-                toggleMobileMenu(false);
-                // Add button animation
-                closeButton.classList.add('scale-95');
-                setTimeout(() => closeButton.classList.remove('scale-95'), 150);
-            });
-
-            // Close menu when clicking on links with smooth transition
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // Add click animation
-                    link.classList.add('scale-95');
-                    setTimeout(() => {
-                        link.classList.remove('scale-95');
-                        toggleMobileMenu(false);
-                    }, 150);
-                });
-            });
-
-            // Close menu when clicking outside with backdrop blur
-            mobileMenu.addEventListener('click', (e) => {
-                if (e.target === mobileMenu) {
-                    toggleMobileMenu(false);
-                }
-            });
-
-            // Add keyboard support
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
-                    toggleMobileMenu(false);
-                }
-            });
-
-            // Add swipe to close functionality for mobile
-            let startX = 0;
-            let currentX = 0;
-            let isDragging = false;
-
-            mobileMenu.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-
-            mobileMenu.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                currentX = e.touches[0].clientX;
-                const diffX = currentX - startX;
-
-                if (diffX > 50) { // Swipe right to close
-                    mobileMenu.style.transform = `translateX(${diffX}px)`;
-                }
-            });
-
-            mobileMenu.addEventListener('touchend', (e) => {
-                if (!isDragging) return;
-                const diffX = currentX - startX;
-
-                if (diffX > 100) { // Threshold to close
-                    toggleMobileMenu(false);
-                } else {
-                    mobileMenu.style.transform = 'translateX(0)';
-                }
-
-                isDragging = false;
-                mobileMenu.style.transform = '';
-            });
-
-            // Intersection Observer for animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.classList.contains('animate-on-scroll')) {
-                            entry.target.classList.add('is-in-view');
-                        }
-                        if (entry.target.classList.contains('stagger-container')) {
-                            const items = entry.target.querySelectorAll('.stagger-item');
-                            items.forEach((item, index) => {
-                                item.style.transitionDelay = `${index * 150}ms`;
-                                item.classList.add('is-in-view');
-                            });
-                        }
-                        if (entry.target.classList.contains('count-up')) {
-                            animateCountUp(entry.target);
-                        }
-                        if (entry.target.classList.contains('timeline-item')) {
-                            entry.target.classList.add('is-in-view');
-                        }
+            /* =========================
+               B) Scroll reveal + counters
+               ========================= */
+            const scrollIO = window.__scrollIO || (window.__scrollIO = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const el = entry.target;
+                    if (el.classList.contains('animate-on-scroll')) el.classList.add('is-in-view');
+                    if (el.classList.contains('stagger-container')) {
+                        el.querySelectorAll('.stagger-item').forEach((item, i) => {
+                            item.style.transitionDelay = `${i * 150}ms`;
+                            item.classList.add('is-in-view');
+                        });
                     }
+                    if (el.classList.contains('count-up')) animateCountUp(el);
+                    if (el.classList.contains('timeline-item')) el.classList.add('is-in-view');
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.1 }));
 
-            document.querySelectorAll('.animate-on-scroll, .stagger-container, .count-up, .timeline-item').forEach(el => observer.observe(el));
+            document.querySelectorAll('.animate-on-scroll, .stagger-container, .count-up, .timeline-item')
+                .forEach(el => scrollIO.observe(el));
 
             function animateCountUp(el) {
                 const target = parseInt(el.dataset.target, 10);
-                const duration = 2000;
-                const startTime = performance.now();
-
-                const updateCount = (currentTime) => {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const value = Math.floor(progress * target);
-                    el.textContent = value.toLocaleString();
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCount);
-                    } else {
-                        el.textContent = target.toLocaleString();
-                    }
+                if (isNaN(target)) return;
+                const duration = 2000, startTime = performance.now();
+                const step = (t) => {
+                    const p = Math.min((t - startTime) / duration, 1);
+                    el.textContent = Math.floor(p * target).toLocaleString();
+                    if (p < 1) requestAnimationFrame(step);
                 };
-
-                requestAnimationFrame(updateCount);
-            }
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('mobile-menu-button');
-            const menu = document.getElementById('mobile-menu');
-            const panel = document.getElementById('mobile-panel');
-            const overlay = document.getElementById('mobile-overlay');
-            const closeBtn = document.getElementById('close-mobile-menu');
-
-            if (!btn || !menu || !panel || !overlay || !closeBtn) return;
-
-            let lastFocused = null;
-            const focusableSel = [
-                'a[href]', 'button:not([disabled])', 'input', 'select', 'textarea', '[tabindex]:not([tabindex="-1"])'
-            ].join(',');
-
-            function getFocusable() { return panel.querySelectorAll(focusableSel); }
-
-            function openMenu() {
-                lastFocused = document.activeElement;
-                menu.classList.remove('hidden');
-                requestAnimationFrame(() => {
-                    overlay.classList.remove('opacity-0'); overlay.classList.add('opacity-100');
-                    panel.classList.remove('translate-x-full');
-                });
-                document.body.classList.add('overflow-hidden');
-                btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
-
-                const f = getFocusable(); if (f.length) f[0].focus();
+                requestAnimationFrame(step);
             }
 
-            function closeMenu() {
-                overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0');
-                panel.classList.add('translate-x-full');
-                document.body.classList.remove('overflow-hidden');
-                btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true');
-                setTimeout(() => { menu.classList.add('hidden'); if (lastFocused) lastFocused.focus(); }, 300);
-            }
-
-            btn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
-
-            // Close on link click (navigate or same-page)
-            panel.addEventListener('click', (e) => {
-                const el = e.target.closest('a');
-                if (el) closeMenu();
+            // Alpine helper for "Scroll to top" button state (if Alpine exists)
+            document.addEventListener('scroll', () => {
+                const bodyX = document.querySelector('body').__x;
+                if (bodyX && bodyX.$data) bodyX.$data.atTop = window.scrollY < 200;
             });
 
-            // Esc + focus trap
-            document.addEventListener('keydown', (e) => {
-                if (menu.classList.contains('hidden')) return;
-                if (e.key === 'Escape') closeMenu();
-                if (e.key === 'Tab') {
-                    const f = Array.from(getFocusable());
-                    if (!f.length) return;
-                    const first = f[0], last = f[f.length - 1];
-                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-                }
-            });
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('mobile-menu-button');
-            const menu = document.getElementById('mobile-menu');
-            const panel = document.getElementById('mobile-panel');
-            const overlay = document.getElementById('mobile-overlay');
-            const closeBtn = document.getElementById('close-mobile-menu');
+            /* =========================
+               C) Leaflet Map (no lines)
+               - colored circles for origins/destinations
+               ========================= */
+            (function initWorldMap() {
+                const mapEl = document.getElementById('worldMap');
+                if (!mapEl || !window.L) return;
 
-            if (!btn || !menu || !panel || !overlay || !closeBtn) return;
+                const map = L.map(mapEl, { zoomControl: true }).setView([25, 20], 2);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
 
-            let lastFocused = null;
-            const ANIM_MS = 300;
+                function flagIcon(url) { return L.icon({ iconUrl: url, iconSize: [34, 34], className: 'flag-marker' }); }
 
-            const focusableSel = [
-                'a[href]',
-                'button:not([disabled])',
-                'textarea',
-                'input[type="text"]',
-                'input[type="email"]',
-                'input[type="search"]',
-                'input[type="radio"]',
-                'input[type="checkbox"]',
-                'select',
-                '[tabindex]:not([tabindex="-1"])'
-            ].join(',');
+                // Brand colors
+                const originColor = '#003869';     // primary
+                const destinationColor = '#F59E0B';// secondary
+                const originRadius = 500000;       // m
+                const destinationRadius = 300000;  // m
 
-            function getFocusable() {
-                return panel.querySelectorAll(focusableSel);
-            }
+                // Primary origins
+                const origins = [
+                    { name: 'India', coords: [20.5937, 78.9629], flag: 'https://flagcdn.com/w40/in.png' },
+                    { name: 'China', coords: [35.8617, 104.1954], flag: 'https://flagcdn.com/w40/cn.png' },
+                    { name: 'Italy', coords: [41.8719, 12.5674], flag: 'https://flagcdn.com/w40/it.png' },
+                    { name: 'Germany', coords: [51.1657, 10.4515], flag: 'https://flagcdn.com/w40/de.png' },
+                    { name: 'Spain', coords: [40.4637, -3.7492], flag: 'https://flagcdn.com/w40/es.png' }
+                ];
 
-            function openMenu() {
-                lastFocused = document.activeElement;
+                // Key destinations (MENA + region)
+                const destinations = [
+                    { name: 'Tartus, Syria', coords: [34.8881, 35.8866], flag: 'https://flagcdn.com/w40/sy.png' },
+                    { name: 'Istanbul, Turkey', coords: [41.0082, 28.9784], flag: 'https://flagcdn.com/w40/tr.png' },
+                    { name: 'Beirut, Lebanon', coords: [33.8938, 35.5018], flag: 'https://flagcdn.com/w40/lb.png' },
+                    { name: 'Alexandria, Egypt', coords: [31.2001, 29.9187], flag: 'https://flagcdn.com/w40/eg.png' },
+                    { name: 'Aqaba, Jordan', coords: [29.5321, 35.0063], flag: 'https://flagcdn.com/w40/jo.png' }
+                ];
 
-                // show container, then animate in
-                menu.classList.remove('hidden');
-                requestAnimationFrame(() => {
-                    overlay.classList.remove('opacity-0');
-                    overlay.classList.add('opacity-100');
-                    panel.classList.remove('translate-x-full');
+                const originsLayer = L.layerGroup().addTo(map);
+                const destinationsLayer = L.layerGroup().addTo(map);
+
+                // Origins: marker + colored circle
+                origins.forEach(o => {
+                    L.marker(o.coords, { icon: flagIcon(o.flag), title: o.name })
+                        .bindPopup(`<b>${o.name}</b><br>Primary origin`)
+                        .addTo(originsLayer);
+                    L.circle(o.coords, {
+                        radius: originRadius, color: originColor, weight: 1,
+                        fillColor: originColor, fillOpacity: .15
+                    }).addTo(originsLayer);
                 });
 
-                document.body.classList.add('overflow-hidden');
-                btn.setAttribute('aria-expanded', 'true');
-                menu.setAttribute('aria-hidden', 'false');
+                // Destinations: marker + colored circle
+                destinations.forEach(d => {
+                    L.marker(d.coords, { icon: flagIcon(d.flag), title: d.name })
+                        .bindPopup(`<b>${d.name}</b><br>Key destination`)
+                        .addTo(destinationsLayer);
+                    L.circle(d.coords, {
+                        radius: destinationRadius, color: destinationColor, weight: 1,
+                        fillColor: destinationColor, fillOpacity: .15
+                    }).addTo(destinationsLayer);
+                });
 
-                // focus first focusable
-                const f = getFocusable();
-                if (f.length) f[0].focus();
-            }
+                // Fit all
+                const fitAll = () => {
+                    const group = L.featureGroup([...originsLayer.getLayers(), ...destinationsLayer.getLayers()]);
+                    if (group.getLayers().length) map.fitBounds(group.getBounds().pad(0.2));
+                };
+                fitAll();
 
-            function closeMenu() {
-                overlay.classList.remove('opacity-100');
-                overlay.classList.add('opacity-0');
-                panel.classList.add('translate-x-full');
-                document.body.classList.remove('overflow-hidden');
-                btn.setAttribute('aria-expanded', 'false');
-                menu.setAttribute('aria-hidden', 'true');
+                // UI controls
+                document.getElementById('fit-bounds')?.addEventListener('click', fitAll);
+                document.getElementById('toggle-origins')?.addEventListener('change', (e) => {
+                    e.target.checked ? map.addLayer(originsLayer) : map.removeLayer(originsLayer);
+                });
+                document.getElementById('toggle-destinations')?.addEventListener('change', (e) => {
+                    e.target.checked ? map.addLayer(destinationsLayer) : map.removeLayer(destinationsLayer);
+                });
 
-                // clear any inline transform (from swipe)
-                panel.style.transform = '';
-
-                setTimeout(() => {
-                    menu.classList.add('hidden');
-                    if (lastFocused) lastFocused.focus();
-                }, ANIM_MS);
-            }
-
-            // Open/close actions
-            btn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
-
-            // Close on any link click inside the drawer
-            panel.addEventListener('click', (e) => {
-                const link = e.target.closest('a');
-                if (link) closeMenu();
-            });
-
-            // ESC to close + focus trap
-            document.addEventListener('keydown', (e) => {
-                if (menu.classList.contains('hidden')) return;
-
-                if (e.key === 'Escape') {
-                    e.preventDefault();
-                    closeMenu();
-                    return;
-                }
-
-                if (e.key === 'Tab') {
-                    const f = Array.from(getFocusable());
-                    if (!f.length) return;
-
-                    const first = f[0];
-                    const last = f[f.length - 1];
-
-                    if (e.shiftKey && document.activeElement === first) {
-                        e.preventDefault();
-                        last.focus();
-                    } else if (!e.shiftKey && document.activeElement === last) {
-                        e.preventDefault();
-                        first.focus();
-                    }
-                }
-            });
-
-            // Swipe-to-close (rightward swipe)
-            let startX = 0;
-            let currentX = 0;
-            let dragging = false;
-
-            panel.addEventListener('touchstart', (e) => {
-                if (menu.classList.contains('hidden')) return;
-                dragging = true;
-                startX = e.touches[0].clientX;
-                currentX = startX;
-            }, { passive: true });
-
-            panel.addEventListener('touchmove', (e) => {
-                if (!dragging) return;
-                currentX = e.touches[0].clientX;
-                const dx = currentX - startX;
-                if (dx > 0) {
-                    // translate the drawer rightward as you drag
-                    panel.style.transform = `translateX(${dx}px)`;
-                }
-            }, { passive: true });
-
-            panel.addEventListener('touchend', () => {
-                if (!dragging) return;
-                const dx = currentX - startX;
-
-                // Threshold to close
-                if (dx > 100) {
-                    closeMenu();
-                } else {
-                    // snap back
-                    panel.style.transform = '';
-                }
-
-                dragging = false;
-            }, { passive: true });
+                // Legend
+                const legend = L.control({ position: 'topright' });
+                legend.onAdd = () => {
+                    const div = L.DomUtil.create('div', 'map-legend');
+                    div.innerHTML = `
+            <div style="font-weight:700; color:#003869; margin-bottom:.35rem">Map Legend</div>
+            <div style="margin-bottom:.25rem"><span class="legend-dot" style="background:#003869"></span> Origins</div>
+            <div style="margin-bottom:.25rem"><span class="legend-dot" style="background:#F59E0B"></span> Destinations</div>
+            <div style="margin-top:.35rem; font-size:.8rem; color:#6b7280">Tap any flag for details</div>
+          `;
+                    return div;
+                };
+                legend.addTo(map);
+            })();
         });
     </script>
+
 </body>
 
 </html>
