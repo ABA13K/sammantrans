@@ -869,34 +869,34 @@
           <h2 class="text-3xl font-bold text-primary mb-2">أرسل لنا رسالة</h2>
           <p class="text-gray-600 mb-8">املأ النموذج أدناه وسنعاود الاتصال بك خلال 24 ساعة.</p>
 
-          <form>
+          <form id="contact-form">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="relative">
-                <input type="text" id="first-name" placeholder=" "
+                <input type="text" id="first-name" name="first-name" placeholder=" "
                   class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                 <label for="first-name" class="floating-label text-gray-500">الاسم الأول</label>
               </div>
               <div class="relative">
-                <input type="text" id="last-name" placeholder=" "
+                <input type="text" id="last-name" name="last-name" placeholder=" "
                   class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                 <label for="last-name" class="floating-label text-gray-500">اسم العائلة</label>
               </div>
             </div>
 
             <div class="mb-6 relative">
-              <input type="email" id="email" placeholder=" "
+              <input type="email" id="email" name="email" placeholder=" "
                 class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
               <label for="email" class="floating-label text-gray-500">البريد الإلكتروني</label>
             </div>
 
             <div class="mb-6 relative">
-              <input type="tel" id="phone" placeholder=" "
+              <input type="tel" id="phone" name="phone" placeholder=" "
                 class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
               <label for="phone" class="floating-label text-gray-500">رقم الهاتف</label>
             </div>
 
             <div class="mb-6">
-              <select
+              <select id="service" name="service"
                 class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-500">
                 <option value="" disabled selected>اختر الخدمة</option>
                 <option value="ocean">الشحن البحري</option>
@@ -909,14 +909,20 @@
             </div>
 
             <div class="mb-6 relative">
-              <textarea id="message" rows="5" placeholder=" "
+              <textarea id="message" name="message" rows="5" placeholder=" "
                 class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
               <label for="message" class="floating-label text-gray-500">رسالتك</label>
             </div>
 
-            <button type="submit"
+            <!-- Status Message -->
+            <div id="contact-status" class="hidden mb-6 p-4 rounded-lg text-sm"></div>
+
+            <button type="submit" id="contact-submit"
               class="w-full bg-gradient-to-r from-primary to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0] text-white py-4 rounded-lg font-bold transition-all duration-300 transform hover:scale-[1.02]">
-              إرسال الرسالة
+              <span id="contact-btn-text">إرسال الرسالة</span>
+              <span id="contact-btn-spinner" class="hidden">
+                <i class="fas fa-spinner fa-spin ml-2"></i>
+              </span>
             </button>
           </form>
         </div>
@@ -1451,8 +1457,106 @@
       panel.addEventListener('touchend', () => {
         if (!dragging) return;
         const dx = currentX - startX; if (dx > 100) closeMenu(); else panel.style.transform = ''; dragging = false;
-      }, { passive: true });
+      }, { passive: true       });
     });
+
+    // Contact Form API functionality
+    (() => {
+      const CONTACT_API = 'https://aa-dev.site/sammantrans/api/send-order-request';
+
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+
+      const firstNameEl = document.getElementById('first-name');
+      const lastNameEl = document.getElementById('last-name');
+      const emailEl = document.getElementById('email');
+      const phoneEl = document.getElementById('phone');
+      const serviceEl = document.getElementById('service');
+      const messageEl = document.getElementById('message');
+
+      const statusBox = document.getElementById('contact-status');
+      const btn = document.getElementById('contact-submit');
+      const btnText = document.getElementById('contact-btn-text');
+      const btnSpin = document.getElementById('contact-btn-spinner');
+
+      const showStatus = (ok, msg) => {
+        statusBox.className =
+          'mb-6 p-4 rounded-lg text-sm ' +
+          (ok ? 'bg-green-50 text-green-700 border border-green-200'
+            : 'bg-red-50 text-red-700 border border-red-200');
+        statusBox.textContent = msg;
+        statusBox.classList.remove('hidden');
+      };
+
+      const setBusy = (busy) => {
+        btn.disabled = busy;
+        btnText.classList.toggle('hidden', busy);
+        btnSpin.classList.toggle('hidden', !busy);
+      };
+
+      const validate = () => {
+        if (!firstNameEl.value.trim()) {
+          showStatus(false, 'يرجى إدخال الاسم الأول');
+          return false;
+        }
+        if (!lastNameEl.value.trim()) {
+          showStatus(false, 'يرجى إدخال اسم العائلة');
+          return false;
+        }
+        if (!emailEl.value.trim()) {
+          showStatus(false, 'يرجى إدخال البريد الإلكتروني');
+          return false;
+        }
+        if (!phoneEl.value.trim()) {
+          showStatus(false, 'يرجى إدخال رقم الهاتف');
+          return false;
+        }
+        if (!serviceEl.value) {
+          showStatus(false, 'يرجى اختيار الخدمة');
+          return false;
+        }
+        if (!messageEl.value.trim()) {
+          showStatus(false, 'يرجى إدخال الرسالة');
+          return false;
+        }
+        return true;
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        statusBox.classList.add('hidden');
+        if (!validate()) return;
+
+        const fullName = `${firstNameEl.value.trim()} ${lastNameEl.value.trim()}`;
+        const shipmentDetails = `الخدمة المطلوبة: ${serviceEl.value}\n\nالرسالة:\n${messageEl.value.trim()}`;
+
+        const fd = new FormData();
+        fd.append('full_name', fullName);
+        fd.append('email_address', emailEl.value.trim());
+        fd.append('phone_number', phoneEl.value.trim());
+        fd.append('service_needed', serviceEl.value);
+        fd.append('shipment_details', shipmentDetails);
+
+        setBusy(true);
+        try {
+          const resp = await fetch(CONTACT_API, { method: 'POST', body: fd });
+          let data = null; try { data = await resp.json(); } catch (_) { }
+          if (resp.ok) {
+            const msg = (data && (data.message || data.msg)) || 'شكرًا لك! تم إرسال رسالتك وسنتواصل معك قريبًا.';
+            showStatus(true, msg);
+            form.reset();
+            serviceEl.value = '';
+          } else {
+            const err = (data && (data.error || data.message)) || `فشل الإرسال (HTTP ${resp.status}).`;
+            showStatus(false, err);
+          }
+        } catch (err) {
+          showStatus(false, 'تعذّر الإرسال. تحقّق من الاتصال أو إعدادات CORS على الخادم.');
+        } finally {
+          setBusy(false);
+        }
+      });
+    })();
   </script>
 </body>
 
