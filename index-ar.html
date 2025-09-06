@@ -1999,7 +1999,9 @@
                                 <span>أخبار الصناعة</span>
                             </div>
                             <h3 class="text-xl font-bold text-primary mb-3">${post.title}</h3>
-                            <p class="text-gray-600 mb-4">${post.description}</p>
+                            <p class="text-gray-600 mb-4">${post.content.length > 100
+                        ? post.content.slice(0, 100) + '…'
+                        : post.content}</p>
                             <a href="./post.html?id=${post.id}" class="text-secondary font-medium flex items-center">
                                 اقرأ المزيد <i class="fas fa-arrow-left ml-2"></i>
                             </a>
