@@ -1,2122 +1,4242 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 
+
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>مواصفات الحاويات | سمان ترانس</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <script>
+
         tailwind.config = {
+
             theme: {
+
                 extend: {
+
                     colors: {
+
                         primary: '#003869',
+
                         secondary: '#F59E0B',
+
                         accent: '#3B82F6',
+
                     },
+
                     animation: {
+
                         'float': 'float 6s ease-in-out infinite',
+
                         'fade-in': 'fadeIn 1s ease-in-out',
+
                         'slide-up': 'slideUp 1s ease-out',
+
                     },
+
                     keyframes: {
+
                         float: {
+
                             '0%, 100%': { transform: 'translateY(0)' },
+
                             '50%': { transform: 'translateY(-20px)' },
+
                         },
+
                         fadeIn: {
+
                             '0%': { opacity: '0' },
+
                             '100%': { opacity: '1' },
+
                         },
+
                         slideUp: {
+
                             '0%': { transform: 'translateY(50px)', opacity: '0' },
+
                             '100%': { transform: 'translateY(0)', opacity: '1' },
+
                         },
+
                     },
+
                     fontFamily: {
+
                         sans: ['Tajawal', 'Arial', 'sans-serif'],
+
                     },
+
                 }
+
             }
+
         }
+
+
 
         // Language switcher function
+
         function switchLanguage() {
+
             const currentPath = window.location.pathname;
+
             const currentFile = currentPath.split('/').pop();
 
+
+
             // Map Arabic files to English equivalents
+
             const languageMap = {
+
                 'index-ar.html': 'index.html',
+
                 'aboutus-ar.html': 'aboutus.html',
+
                 'contactus-ar.html': 'contactus.html',
+
                 'news-ar.html': 'news.html',
+
                 'ocean-ar.html': 'ocean.html',
+
                 'airfreight-ar.html': 'airfreight.html',
+
                 'transport-ar.html': 'transport.html',
+
                 'ware-ar.html': 'ware.html',
+
                 'custom-ar.html': 'custom.html',
+
                 'business-ar.html': 'business.html',
+
                 'tools-ar.html': 'tools.html',
+
                 'joinus-ar.html': 'joinus.html'
+
             };
 
+
+
             // If current file is in the map, navigate to English version
+
             if (languageMap[currentFile]) {
+
                 window.location.href = languageMap[currentFile];
+
             } else {
+
                 // Fallback to index.html
+
                 window.location.href = 'index.html';
+
             }
-        }
-    </script>
-    <style>
-        html {
-            scroll-behavior: smooth;
+
         }
 
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 56, 105, 0.85), rgba(0, 56, 105, 0.8)), url('./containers-hero.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+    </script>
+
+    <style>
+
+        html {
+
+            scroll-behavior: smooth;
+
         }
+
+
+
+        .hero-bg {
+
+            background-image: linear-gradient(rgba(0, 56, 105, 0.85), rgba(0, 56, 105, 0.8)), url('./containers-hero.jpg');
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+
+        }
+
+
 
         .animate-fade-in {
+
             animation: fadeIn 1s ease-out forwards;
+
         }
+
+
 
         .animate-slide-up {
+
             animation: slideUp 1s ease-out forwards;
+
         }
+
+
 
         .tab-content {
+
             display: none;
+
         }
+
+
 
         .tab-content.active {
+
             display: block;
+
             animation: fadeIn 0.5s ease-in-out;
+
         }
+
+
 
         .tab-button {
+
             transition: all 0.3s ease;
+
         }
+
+
 
         .tab-button.active {
+
             background-color: #003869;
+
             color: white;
+
             border-color: #003869;
+
         }
+
+
 
         .dropdown-menu {
+
             display: none;
+
             position: absolute;
+
             z-index: 50;
+
             min-width: 200px;
+
             background-color: white;
+
             border-radius: 0.5rem;
+
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
             padding: 0.5rem 0;
+
         }
+
+
 
         .dropdown-menu.show {
+
             display: block;
+
         }
+
+
 
         .dropdown-item {
+
             display: block;
+
             padding: 0.5rem 1rem;
+
             color: #4b5563;
+
             font-size: 0.875rem;
+
             line-height: 1.25rem;
+
             transition: all 0.2s;
+
         }
+
+
 
         .dropdown-item:hover {
+
             background-color: #f3f4f6;
+
             color: #1f2937;
+
         }
+
+
 
         .hero-bg {
+
             position: relative;
+
             overflow: hidden;
+
             background-image: linear-gradient(rgba(0, 56, 105, 0.85), rgba(0, 56, 105, 0.8));
+
         }
 
+
+
         .hero-bg::before {
+
             content: '';
+
             position: absolute;
+
             inset: 0;
+
             background-image: url('./shipping-containers-11.jpeg');
+
             background-size: cover;
+
             background-position: center;
+
             background-attachment: fixed;
+
             animation: zoom-in-out 20s ease-in-out infinite;
+
             z-index: -1;
+
         }
+
+
 
         @keyframes zoom-in-out {
 
+
+
             0%,
+
             100% {
+
                 transform: scale(1);
+
             }
+
+
 
             50% {
+
                 transform: scale(1.1);
+
             }
+
         }
+
     </style>
+
 </head>
 
+
+
 <body class="font-sans antialiased">
+
     <!-- Navigation -->
+
     <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="relative flex h-24 items-center text-lg">
 
+
+
                 <!-- الشعار -->
+
                 <div class="flex-shrink-0">
+
                     <a href="index-ar.html" class="flex items-center">
+
                         <img src="./12.png" alt="شعار سمن ترانس" class="h-24 w-auto">
+
                     </a>
+
                 </div>
 
+
+
                 <!-- روابط سطح المكتب -->
+
                 <div class="hidden md:flex flex-1 justify-center mr-6">
+
                     <div class="flex items-center space-x-8 space-x-reverse">
+
                         <a href="index-ar.html"
+
                             class="text-[#003869] font-bold mr-8 hover:text-[#0056a3] transition duration-300 relative group text-center">
+
                             الرئيسية
+
                             <span
+
                                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+
                         </a>
+
                         <a href="./aboutus-ar.html"
+
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+
                             من نحن
+
                             <span
+
                                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+
                         </a>
+
+
 
                         <a href="./news-ar.html"
+
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+
                             الأخبار
+
                             <span
+
                                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+
                         </a>
+
+
 
                         <!-- قائمة الخدمات -->
+
                         <div class="relative group">
+
                             <button
+
                                 class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 flex items-center">
+
                                 الخدمات
+
                                 <svg class="w-4 h-4 mr-1 transition-transform duration-300 group-hover:rotate-180"
+
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+
                                         d="M19 9l-7 7-7-7" />
+
                                 </svg>
+
                                 <span
+
                                     class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+
                             </button>
 
+
+
                             <!-- القائمة المنسدلة -->
+
                             <div
+
                                 class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0 z-50">
+
                                 <a href="./ocean-ar.html"
+
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+
                                     <div class="flex items-center">
+
                                         <div
+
                                             class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+
                                             <i class="fas fa-ship text-blue-600"></i>
+
                                         </div>
+
                                         <div>
+
                                             <h4 class="font-medium text-gray-900">الشحن البحري</h4>
+
                                             <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
+
                                         </div>
+
                                     </div>
+
                                 </a>
+
+
 
                                 <a href="./airfreight-ar.html"
+
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+
                                     <div class="flex items-center">
+
                                         <div
+
                                             class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+
                                             <i class="fas fa-plane text-blue-600"></i>
+
                                         </div>
+
                                         <div>
+
                                             <h4 class="font-medium text-gray-900">الشحن الجوي</h4>
+
                                             <p class="text-xs text-gray-500">خدمات شحن جوي أولوية</p>
+
                                         </div>
+
                                     </div>
+
                                 </a>
+
+
 
                                 <a href="./transport-ar.html"
+
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+
                                     <div class="flex items-center">
+
                                         <div
+
                                             class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+
                                             <i class="fas fa-truck text-blue-600"></i>
+
                                         </div>
+
                                         <div>
+
                                             <h4 class="font-medium text-gray-900">النقل البري</h4>
+
                                             <p class="text-xs text-gray-500">حلول نقل بري محلية وعابرة للحدود</p>
+
                                         </div>
+
                                     </div>
+
                                 </a>
+
+
 
                                 <a href="./ware-ar.html"
+
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+
                                     <div class="flex items-center">
+
                                         <div
+
                                             class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+
                                             <i class="fas fa-warehouse text-blue-600"></i>
+
                                         </div>
+
                                         <div>
+
                                             <h4 class="font-medium text-gray-900">التخزين</h4>
+
                                             <p class="text-xs text-gray-500">حلول تخزين آمنة</p>
+
                                         </div>
+
                                     </div>
+
                                 </a>
+
+
 
                                 <a href="./custom-ar.html"
+
                                     class="block px-4 py-3 hover:bg-blue-50 transition-all duration-200 group/item">
+
                                     <div class="flex items-center">
+
                                         <div
+
                                             class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ml-3 group-hover/item:bg-blue-200 transition duration-300">
+
                                             <i class="fas fa-passport text-blue-600"></i>
+
                                         </div>
+
                                         <div>
+
                                             <h4 class="font-medium text-gray-900">التخليص الجمركي</h4>
+
                                             <p class="text-xs text-gray-500">عبور حدودي سلس</p>
+
                                         </div>
+
                                     </div>
+
                                 </a>
+
                             </div>
+
                         </div>
 
+
+
                         <a href="./business-ar.html"
+
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+
                             الأعمال والمعارض
+
                             <span
+
                                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+
                         </a>
 
+
+
                         <a href="./tools-ar.html"
+
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+
                             الأدوات
+
                             <span
+
                                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+
                         </a>
+
+
+
+
 
 
 
                         <a href="./contactus-ar.html"
+
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+
                             تواصل معنا
+
                             <span
+
                                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+
                         </a>
+
+
 
                         <a href="./joinus-ar.html"
+
                             class="text-[#003869] font-bold hover:text-[#0056a3] transition duration-300 relative group text-center">
+
                             انضم إلينا
+
                             <span
+
                                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0056a3] transition-all duration-300 group-hover:w-full"></span>
+
                         </a>
+
                     </div>
+
                 </div>
+
+
 
                 <!-- محوّل اللغة -->
+
                 <div class="hidden md:flex items-center mr-4 ml-5">
+
                     <a href="javascript:void(0)" onclick="switchLanguage()"
+
                         class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
+
                     <span class="mx-2 text-gray-400">|</span>
+
                     <a href="index-ar.html" class="text-sm font-bold text-primary">العربية</a>
+
                 </div>
+
+
 
                 <!-- زر عرض السعر -->
+
                 <div class="hidden md:block">
+
                     <a href="#quote-form" class="bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0]
+
                          text-white px-6 py-2 rounded-md font-bold transition-all duration-300
+
                          transform hover:scale-105 shadow-md hover:shadow-lg">
+
                         احصل على عرض سعر
+
                     </a>
+
                 </div>
+
+
 
                 <!-- زر قائمة الجوال -->
+
                 <div class="md:hidden">
+
                     <button id="mobile-menu-button"
+
                         class="text-[#003869] hover:text-[#0056a3] focus:outline-none transition duration-300">
+
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+
                                 d="M4 6h16M4 12h16M4 18h16" />
+
                         </svg>
+
                     </button>
+
                 </div>
+
             </div>
+
         </div>
 
+
+
         <!-- قائمة الجوال -->
+
         <!-- Mobile Menu (RTL / slides in from the right) -->
+
         <div id="mobile-menu" class="fixed inset-0 z-50 hidden" aria-hidden="true" dir="rtl" lang="ar">
+
             <!-- Backdrop -->
+
             <div id="mobile-overlay"
+
                 class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
 
+
+
             <!-- Right drawer -->
+
             <nav id="mobile-panel"
+
                 class="fixed inset-y-0 right-0 w-[86%] max-w-[360px] bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col rounded-l-2xl overflow-hidden">
 
+
+
                 <!-- Header -->
+
                 <div class="relative p-4 bg-gradient-to-br from-[#003869] to-[#0056a3] text-white">
+
                     <div class="flex items-center justify-between">
+
                         <div class="flex items-center gap-3">
+
                             <img src="./12.png" alt="Samman Trans" class="h-10 w-auto bg-white/10 rounded-xl p-1.5">
+
                             <div class="text-right">
+
                                 <p class="text-sm opacity-90">Samman Trans</p>
+
                                 <h2 class="text-lg font-semibold leading-tight">القائمة</h2>
+
                             </div>
+
                         </div>
+
                         <button id="close-mobile-menu" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition"
+
                             aria-label="إغلاق القائمة">
+
                             <i class="fa-solid fa-xmark text-xl"></i>
+
                         </button>
+
                     </div>
+
+
 
                     <!-- Quick action (WhatsApp only) -->
+
                     <div class="mt-4">
+
                         <a href="https://wa.me/96341234567" target="_blank" rel="noopener"
+
                             class="block rounded-xl bg-white/10 hover:bg-white/20 p-3 text-center">
+
                             <i class="fa-brands fa-whatsapp block text-2xl mb-1"></i>
+
                             <span class="text-xs opacity-95">واتساب</span>
+
                         </a>
+
                     </div>
+
                 </div>
 
+
+
                 <!-- Scrollable content -->
+
                 <div class="p-4 space-y-1 overflow-y-auto">
+
                     <p class="px-2 pt-2 text-xs tracking-wide text-gray-500 text-right">استكشف</p>
 
+
+
                     <a href="./index-ar.html"
+
                         class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+
                         <i class="fa-solid fa-house text-primary w-5 text-center"></i>
+
                         <span class="text-gray-900 font-medium">الرئيسية</span>
+
                         <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+
                     </a>
+
+
 
                     <a href="./news-ar.html"
+
                         class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+
                         <i class="fa-regular fa-newspaper text-primary w-5 text-center"></i>
+
                         <span class="text-gray-900 font-medium">الأخبار</span>
+
                         <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+
                     </a>
+
+
 
                     <!-- Services accordion -->
+
                     <details class="group rounded-xl bg-gray-50 open:bg-gray-100 transition">
+
                         <summary class="list-none flex items-center gap-3 px-3 py-3 cursor-pointer">
+
                             <i class="fa-solid fa-grid-2 text-primary w-5 text-center"></i>
+
                             <span class="text-gray-900 font-medium">الخدمات</span>
+
                             <i
+
                                 class="fa-solid fa-chevron-down mr-auto text-gray-400 transition-transform group-open:rotate-180"></i>
+
                         </summary>
+
                         <div class="px-3 pb-3">
+
                             <div class="grid grid-cols-1 gap-2">
+
                                 <a href="./ocean-ar.html"
+
                                     class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+
                                     <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+
                                         <i class="fa-solid fa-ship text-blue-600"></i>
+
                                     </span>
+
                                     <div class="text-right">
+
                                         <p class="font-medium text-gray-900">الشحن البحري</p>
+
                                         <p class="text-xs text-gray-500">لوجستيات بحرية عالمية</p>
+
                                     </div>
+
                                     <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+
                                 </a>
+
+
 
                                 <a href="./airfreight-ar.html"
+
                                     class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+
                                     <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+
                                         <i class="fa-solid fa-plane text-blue-600"></i>
+
                                     </span>
+
                                     <div class="text-right">
+
                                         <p class="font-medium text-gray-900">الشحن الجوي</p>
+
                                         <p class="text-xs text-gray-500">أولوية ومساحات مضمونة</p>
+
                                     </div>
+
                                     <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+
                                 </a>
+
+
 
                                 <a href="./transport-ar.html"
+
                                     class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+
                                     <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+
                                         <i class="fa-solid fa-truck text-blue-600"></i>
+
                                     </span>
+
                                     <div class="text-right">
+
                                         <p class="font-medium text-gray-900">النقل البري</p>
+
                                         <p class="text-xs text-gray-500">حلول مرنة وشبكة واسعة</p>
+
                                     </div>
+
                                     <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+
                                 </a>
+
+
 
                                 <a href="./ware-ar.html"
+
                                     class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+
                                     <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+
                                         <i class="fa-solid fa-warehouse text-blue-600"></i>
+
                                     </span>
+
                                     <div class="text-right">
+
                                         <p class="font-medium text-gray-900">التخزين</p>
+
                                         <p class="text-xs text-gray-500">حلول تخزين آمنة</p>
+
                                     </div>
+
                                     <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+
                                 </a>
+
+
 
                                 <a href="./custom-ar.html"
+
                                     class="flex items-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-50 border border-gray-100">
+
                                     <span class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+
                                         <i class="fa-solid fa-passport text-blue-600"></i>
+
                                     </span>
+
                                     <div class="text-right">
+
                                         <p class="font-medium text-gray-900">التخليص الجمركي</p>
+
                                         <p class="text-xs text-gray-500">معاملات حدودية سلسة</p>
+
                                     </div>
+
                                     <i class="fa-solid fa-arrow-left mr-auto text-gray-300"></i>
+
                                 </a>
+
                             </div>
+
                         </div>
+
                     </details>
 
+
+
                     <a href="./business-ar.html"
+
                         class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+
                         <i class="fa-solid fa-briefcase text-primary w-5 text-center"></i>
+
                         <span class="text-gray-900 font-medium">الأعمال والمعارض</span>
+
                         <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+
                     </a>
 
+
+
                     <a href="./tools-ar.html"
+
                         class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+
                         <i class="fa-solid fa-screwdriver-wrench text-primary w-5 text-center"></i>
+
                         <span class="text-gray-900 font-medium">الأدوات</span>
+
                         <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+
                     </a>
+
+
 
                     <p class="px-2 pt-4 text-xs tracking-wide text-gray-500 text-right">الشركة</p>
 
+
+
                     <a href="./aboutus-ar.html"
+
                         class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+
                         <i class="fa-solid fa-circle-info text-primary w-5 text-center"></i>
+
                         <span class="text-gray-900 font-medium">من نحن</span>
+
                         <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+
                     </a>
 
+
+
                     <a href="./contactus-ar.html"
+
                         class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+
                         <i class="fa-solid fa-paper-plane text-primary w-5 text-center"></i>
+
                         <span class="text-gray-900 font-medium">تواصل معنا</span>
+
                         <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+
                     </a>
+
+
 
                     <a href="./joinus-ar.html"
+
                         class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-100 active:bg-gray-200 transition">
+
                         <i class="fa-solid fa-user-plus text-primary w-5 text-center"></i>
+
                         <span class="text-gray-900 font-medium">انضم إلينا</span>
+
                         <i class="fa-solid fa-chevron-left mr-auto text-gray-400"></i>
+
                     </a>
+
+
 
                     <!-- Language -->
+
                     <div class="mt-4 px-3 py-3 rounded-xl bg-gray-50 flex items-center gap-3">
+
                         <i class="fa-solid fa-language text-primary w-5 text-center"></i>
+
                         <div class="flex items-center gap-2 text-sm">
+
                             <a href="javascript:void(0)" onclick="switchLanguage()"
+
                                 class="text-gray-700 hover:text-primary">EN</a>
+
                             <span class="text-gray-300">|</span>
+
                             <span class="font-semibold text-primary">العربية</span>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- Social (responsive grid) -->
+
                     <div class="px-3">
+
                         <div class="mt-3 grid grid-cols-4 gap-3 sm:grid-cols-6">
+
                             <a href="#" aria-label="فيسبوك"
+
                                 class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+
                                 <i class="fab fa-facebook-f"></i><span class="sr-only">فيسبوك</span>
+
                             </a>
+
                             <a href="#" aria-label="تويتر"
+
                                 class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+
                                 <i class="fab fa-twitter"></i><span class="sr-only">تويتر</span>
+
                             </a>
+
                             <a href="#" aria-label="لينكدإن"
+
                                 class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+
                                 <i class="fab fa-linkedin-in"></i><span class="sr-only">لينكدإن</span>
+
                             </a>
+
                             <a href="#" aria-label="إنستغرام"
+
                                 class="rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center aspect-square">
+
                                 <i class="fab fa-instagram"></i><span class="sr-only">إنستغرام</span>
+
                             </a>
+
                         </div>
+
                     </div>
 
+
+
                     <div class="h-24"></div>
+
                 </div>
 
+
+
                 <!-- Bottom CTA -->
+
                 <div class="p-4 border-t bg-white">
+
                     <a href="./contactus-ar.html"
+
                         class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#003869] to-[#0056a3] hover:from-[#00457a] hover:to-[#0066c0] text-white py-3 rounded-xl font-semibold shadow-md active:scale-[0.99] transition">
+
                         <i class="fa-solid fa-calculator"></i>
+
                         احصل على عرض سعر
+
                     </a>
+
                 </div>
+
             </nav>
+
         </div>
+
+
 
     </nav>
 
+
+
     <header class="hero-bg py-32 text-white relative overflow-hidden">
+
         <div class="absolute inset-0 bg-black opacity-20"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
             <div class="md:w-2/3 lg:w-1/2 animate-fade-in">
+
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"><span class="text-secondary">مواصفات</span>
+
                     الحاويات</h1>
+
                 <p class="text-xl md:text-2xl mb-8 opacity-90">مواصفات فنية مفصلة وأدلة شروط الشحن لمساعدتك في تخطيط
+
                     شحناتك.</p>
+
                 <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+
                     <a href="#ocean-standard"
+
                         class="bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-medium text-sm sm:text-base transition duration-300 transform hover:scale-105 text-center">حاويات
+
                         بحرية</a>
+
                     <a href="#air-containers"
+
                         class="bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-full font-medium text-sm sm:text-base transition duration-300 transform hover:scale-105 text-center">حاويات
+
                         جوية</a>
+
                     <a href="#dangerous-goods"
+
                         class="border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-3 rounded-full font-medium text-sm sm:text-base transition duration-300 transform hover:scale-105 text-center">البضائع
+
                         الخطرة</a>
+
                     <a href="#incoterms"
+
                         class="border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-3 rounded-full font-medium text-sm sm:text-base transition duration-300 transform hover:scale-105 text-center">دليل
+
                         شروط التجارة الدولية</a>
+
                 </div>
+
             </div>
+
         </div>
+
     </header>
+
     <section id="tabs-nav" class="py-12 bg-gray-50 sticky top-[104px] md:top-[112px] z-40 shadow-sm">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="flex flex-wrap justify-center gap-4">
+
                 <div class="relative">
+
                     <button id="ocean-dropdown-toggle"
+
                         class="dropdown-toggle bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base flex items-center gap-2 active">
+
                         حاويات بحرية <i class="fas fa-chevron-down text-xs"></i>
+
                     </button>
+
                     <div id="ocean-dropdown-menu" class="dropdown-menu">
+
                         <a href="#" data-tab="ocean-standard" class="dropdown-item tab-control">حاويات بحرية قياسية</a>
+
                         <a href="#" data-tab="ocean-refrigerated" class="dropdown-item tab-control">حاويات بحرية
+
                             مبردة</a>
+
                         <a href="#" data-tab="ocean-open-top" class="dropdown-item tab-control">حاويات مفتوحة السقف</a>
+
                         <a href="#" data-tab="ocean-flat-rack" class="dropdown-item tab-control">حاويات مسطحة</a>
+
                         <a href="#" data-tab="ocean-platform" class="dropdown-item tab-control">حاويات منصة</a>
+
                     </div>
+
                 </div>
+
                 <button data-tab="air-containers"
+
                     class="tab-button tab-control bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">حاويات
+
                     جوية</button>
+
                 <button data-tab="dangerous-goods"
+
                     class="tab-button tab-control bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">البضائع
+
                     الخطرة</button>
+
                 <button data-tab="incoterms"
+
                     class="tab-button tab-control bg-white text-primary border border-primary px-4 py-2 rounded-full font-medium text-sm md:text-base">شروط
+
                     التجارة الدولية</button>
+
             </div>
+
         </div>
+
     </section>
 
+
+
     <main id="specifications-section" class="py-20 bg-gray-100">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
 
             <div id="ocean-standard" class="tab-content active">
+
                 <div class="text-center mb-16">
+
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">حاويات
+
                             بحرية</span> قياسية</h2>
+
                     <p class="text-gray-600 max-w-2xl mx-auto">حاويات متعددة الأغراض مناسبة لمعظم شحنات البضائع الجافة.
+
                     </p>
+
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./20ft cont.jpeg" alt="حاوية قياسية 20 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 20 قدم قياسية</div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">الطول الداخلي</span><span
+
                                     class="text-gray-800 text-left">5.89م</span><span
+
                                     class="font-semibold text-gray-500">العرض الداخلي</span><span
+
                                     class="text-gray-800 text-left">2.35م</span><span
+
                                     class="font-semibold text-gray-500">الارتفاع الداخلي</span><span
+
                                     class="text-gray-800 text-left">2.39م</span><span
+
                                     class="font-semibold text-gray-500">السعة</span><span
+
                                     class="text-gray-800 font-bold text-left">33.2 م³</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">28,200 كغ</span></div>
+
                         </div>
+
                     </div>
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./40ft con.webp" alt="حاوية قياسية 40 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 40 قدم قياسية</div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">الطول الداخلي</span><span
+
                                     class="text-gray-800 text-left">12.03م</span><span
+
                                     class="font-semibold text-gray-500">العرض الداخلي</span><span
+
                                     class="text-gray-800 text-left">2.35م</span><span
+
                                     class="font-semibold text-gray-500">الارتفاع الداخلي</span><span
+
                                     class="text-gray-800 text-left">2.39م</span><span
+
                                     class="font-semibold text-gray-500">السعة</span><span
+
                                     class="text-gray-800 font-bold text-left">67.7 م³</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">28,800 كغ</span></div>
+
                         </div>
+
                     </div>
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./40 gigh cube.jpg"
+
                                 alt="حاوية عالية 40 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 40 قدم عالية</div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">الطول الداخلي</span><span
+
                                     class="text-gray-800 text-left">12.03م</span><span
+
                                     class="font-semibold text-gray-500">العرض الداخلي</span><span
+
                                     class="text-gray-800 text-left">2.35م</span><span
+
                                     class="font-semibold text-gray-500">الارتفاع الداخلي</span><span
+
                                     class="text-gray-800 text-left">2.69م</span><span
+
                                     class="font-semibold text-gray-500">السعة</span><span
+
                                     class="text-gray-800 font-bold text-left">76.3 م³</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">28,560 كغ</span></div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <div id="ocean-refrigerated" class="tab-content">
+
                 <div class="text-center mb-16">
+
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">حاويات
+
                             بحرية</span> مبردة</h2>
+
                     <p class="text-gray-600 max-w-2xl mx-auto">حاويات مبردة للبضائع القابلة للتلف وغيرها من البضائع
+
                         الحساسة لدرجات الحرارة.</p>
+
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./20ft.png" alt="حاوية مبردة 20 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-snowflake"></i>20 قدم مبردة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">السعة</span><span
+
                                     class="text-gray-800 font-bold text-left">28.3 م³</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">27,450 كغ</span><span
+
                                     class="font-semibold text-gray-500 col-span-2 pt-2 border-t mt-1">مدى
+
                                     الحرارة</span><span class="text-gray-800 col-span-2 text-left">-35°C إلى
+
                                     +30°C</span>
+
                             </div>
+
                         </div>
+
                     </div>
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./40ft.jpg" alt="حاوية مبردة 40 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-snowflake"></i>40 قدم مبردة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">السعة</span><span
+
                                     class="text-gray-800 font-bold text-left">59.3 م³</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">28,700 كغ</span><span
+
                                     class="font-semibold text-gray-500 col-span-2 pt-2 border-t mt-1">مدى
+
                                     الحرارة</span><span class="text-gray-800 col-span-2 text-left">-35°C إلى
+
                                     +30°C</span>
+
                             </div>
+
                         </div>
+
                     </div>
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./40ftcube.webp"
+
                                 alt="حاوية مبردة عالية 40 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-snowflake"></i>40 قدم مبردة عالية
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">السعة</span><span
+
                                     class="text-gray-800 font-bold text-left">67.7 م³</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">28,600 كغ</span><span
+
                                     class="font-semibold text-gray-500 col-span-2 pt-2 border-t mt-1">مدى
+
                                     الحرارة</span><span class="text-gray-800 col-span-2 text-left">-35°C إلى
+
                                     +30°C</span>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <div id="ocean-open-top" class="tab-content">
+
                 <div class="text-center mb-16">
+
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">حاويات
+
                             مفتوحة السقف</span> بحرية</h2>
+
                     <p class="text-gray-600 max-w-2xl mx-auto">حاويات بسقف قابل للإزالة لسهولة تحميل البضائع الكبيرة أو
+
                         الطويلة.</p>
+
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./20fr open.jpg"
+
                                 alt="حاوية مفتوحة السقف 20 قدم"
+
                                 class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-box-open"></i>20 قدم مفتوحة السقف
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">طول الفتحة</span><span
+
                                     class="text-gray-800 text-left">5.89م</span><span
+
                                     class="font-semibold text-gray-500">عرض الفتحة</span><span
+
                                     class="text-gray-800 text-left">2.28م</span><span
+
                                     class="font-semibold text-gray-500">السعة</span><span
+
                                     class="text-gray-800 font-bold text-left">32.6 م³</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">28,020 كغ</span></div>
+
                         </div>
+
                     </div>
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./40ft open .jpg"
+
                                 alt="حاوية مفتوحة السقف 40 قدم"
+
                                 class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-box-open"></i>40 قدم مفتوحة السقف
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">طول الفتحة</span><span
+
                                     class="text-gray-800 text-left">12.03م</span><span
+
                                     class="font-semibold text-gray-500">عرض الفتحة</span><span
+
                                     class="text-gray-800 text-left">2.28م</span><span
+
                                     class="font-semibold text-gray-500">السعة</span><span
+
                                     class="text-gray-800 font-bold text-left">66.7 م³</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">28,600 كغ</span></div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <div id="ocean-flat-rack" class="tab-content">
+
                 <div class="text-center mb-16">
+
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">حاويات
+
                             مسطحة</span> بحرية</h2>
+
                     <p class="text-gray-600 max-w-2xl mx-auto">حاويات ذات جوانب قابلة للطي مثالية للبضائع الثقيلة أو
+
                         كبيرة الحجم التي تتطلب تحميلاً جانبيًا.</p>
+
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./flat back 20.webp"
+
                                 alt="حاوية مسطحة 20 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-pallet"></i>20 قدم مسطحة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">طول المنصة</span><span
+
                                     class="text-gray-800 text-left">5.65م</span><span
+
                                     class="font-semibold text-gray-500">عرض المنصة</span><span
+
                                     class="text-gray-800 text-left">2.24م</span><span
+
                                     class="font-semibold text-gray-500">أقصى ارتفاع للحمولة</span><span
+
                                     class="text-gray-800 font-bold text-left">2.01م</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">29,750 كغ</span></div>
+
                         </div>
+
                     </div>
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./40flat back.png" alt="حاوية مسطحة 40 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-pallet"></i>40 قدم مسطحة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">طول المنصة</span><span
+
                                     class="text-gray-800 text-left">12.04م</span><span
+
                                     class="font-semibold text-gray-500">عرض المنصة</span><span
+
                                     class="text-gray-800 text-left">2.24م</span><span
+
                                     class="font-semibold text-gray-500">أقصى ارتفاع للحمولة</span><span
+
                                     class="text-gray-800 font-bold text-left">2.01م</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">39,950 كغ</span></div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <div id="ocean-platform" class="tab-content">
+
                 <div class="text-center mb-16">
+
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span
+
                             class="text-secondary">حاويات</span> منصة</h2>
+
                     <p class="text-gray-600 max-w-2xl mx-auto">منصات مسطحة للبضائع الثقيلة جدًا أو كبيرة الحجم التي لا
+
                         تتطلب جدران حاوية.</p>
+
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./20 ft paltf.png" alt="حاوية منصة 20 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-border-none"></i>20 قدم منصة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">طول المنصة</span><span
+
                                     class="text-gray-800 text-left">6.05م</span><span
+
                                     class="font-semibold text-gray-500">عرض المنصة</span><span
+
                                     class="text-gray-800 text-left">2.44م</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">29,750 كغ</span></div>
+
                         </div>
+
                     </div>
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./40ftplat.webp" alt="حاوية منصة 40 قدم"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-border-none"></i>40 قدم منصة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">طول المنصة</span><span
+
                                     class="text-gray-800 text-left">12.19م</span><span
+
                                     class="font-semibold text-gray-500">عرض المنصة</span><span
+
                                     class="text-gray-800 text-left">2.44م</span><span
+
                                     class="font-semibold text-gray-500">أقصى حمولة</span><span
+
                                     class="text-primary font-bold text-left">39,950 كغ</span></div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <div id="air-containers" class="tab-content">
+
                 <div class="text-center mb-16">
+
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">حاويات
+
                             جوية</span> ومنصات</h2>
+
                     <p class="text-gray-600 max-w-2xl mx-auto">مجموعة واسعة من أجهزة تحميل الوحدات (ULDs) لمختلف
+
                         احتياجات الشحن الجوي، من المنصات القياسية إلى الحاويات المتخصصة.</p>
+
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48"><img src="./pallet 84 125.jpg" alt="منصة"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
                                 <i class="fas fa-pallet"></i>منصة 88x125 بوصة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">النوع</span><span
+
                                     class="text-gray-800 text-left">PAG / PMC</span><span
+
                                     class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
                                     class="text-primary font-bold text-left">6,804 كغ</span></div>
+
                         </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./9797.webp" alt="منصة"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-pallet"></i>منصة 96x125 بوصة
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">P6P / PMC</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">6,804 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./pallet 96 125.png" alt="منصة"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-pallet"></i>منصة 96x238.5 بوصة
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">PRA / PGF</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">13,608 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./pallet 235.jpeg" alt="منصة"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-pallet"></i>منصة 95x196 بوصة
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">خاصة بالسطح الرئيسي</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">11,340 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./pallet 60 80.jpg" alt="منصة"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-pallet"></i>منصة 60x125 بوصة
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">جسم ضيق</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">4,536 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./A320.jpg" alt="منصة"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-pallet"></i>منصة عائلة A320
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">PAJ / PKC</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">2,450 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./196.webp" alt="حاوية"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-box"></i>حاوية 96x125x96 بوصة
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">AMA / AMF</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">6,804 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./9999999.webp" alt="حاوية"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-box"></i>حاوية 88x125x63 بوصة
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">AAP / AAF</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">6,033 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./xkh.webp" alt="حاوية"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-box"></i>حاوية XKH
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">خاصة LD</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">1,588 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./Akh.webp" alt="حاوية"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-box"></i>حاويات LD
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">الرموز</span><span
-                                    class="text-gray-800 text-left">AKE, AKH, AKN</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">1,588 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./cool.jpg" alt="حاوية تبريد"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-snowflake"></i>حاوية تبريد AKE
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">تبريد سلبي</span><span
-                                    class="font-semibold text-gray-500">المدى</span><span
-                                    class="text-gray-800 font-bold text-left">+2° إلى +8°C</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./iso.jpg" alt="حاوية عازلة"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-thermometer-half"></i>حاوية عازلة
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">معزولة</span><span
-                                    class="font-semibold text-gray-500">الاستخدام</span><span
-                                    class="text-primary font-bold text-left">ثبات درجة الحرارة</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./rap.png" alt="حاوية تبريد"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-temperature-full"></i>حاوية تبريد RAP
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">تبريد نشط</span><span
-                                    class="font-semibold text-gray-500">المدى</span><span
-                                    class="text-gray-800 font-bold text-left">-20° إلى +20°C</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./rmp.jpg" alt="حاوية تبريد"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-temperature-full"></i>حاوية تبريد RMP
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">تبريد نشط</span><span
-                                    class="font-semibold text-gray-500">السطح</span><span
-                                    class="text-primary font-bold text-left">السفلي</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./ump.png" alt="مثبت"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-boxes-stacked"></i>مثبتات UMC/UAP
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">الوظيفة</span><span
-                                    class="text-gray-800 text-left">تثبيت البضائع</span><span
-                                    class="font-semibold text-gray-500">الاستخدام</span><span
-                                    class="text-primary font-bold text-left">أشكال غير منتظمة</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./meat.jpg" alt="حاوية لحوم"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-drumstick-bite"></i>حاوية لحوم
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">الاستخدام</span><span
-                                    class="text-gray-800 text-left">لحوم معلقة</span><span
-                                    class="font-semibold text-gray-500">الميزة</span><span
-                                    class="text-primary font-bold text-left">صحية</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./horse.webp" alt="إسطبل خيول"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-horse"></i>إسطبل خيول
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">السعة</span><span
-                                    class="text-gray-800 text-left">2-3 خيول</span><span
-                                    class="font-semibold text-gray-500">الميزات</span><span
-                                    class="text-primary font-bold text-left">معتمد من IATA</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./cattle.jpg" alt="حظيرة ماشية"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-cow"></i>حظيرة ماشية
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">السعة</span><span
-                                    class="text-gray-800 text-left">4-6 رؤوس ماشية</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">4,500 كغ</span></div>
-                        </div>
+
                     </div>
 
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./motocycle.webp" alt="حامل دراجات نارية"
+
+                        <div class="relative overflow-hidden h-48"><img src="./9797.webp" alt="منصة"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-motorcycle"></i>حامل دراجات نارية
+
+                                <i class="fas fa-pallet"></i>منصة 96x125 بوصة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">السعة</span><span
-                                    class="text-gray-800 text-left">3-6 دراجات</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">1,500 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./car container.webp" alt="وحدة نقل سيارات"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-car"></i>وحدة نقل سيارات
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
-                                    class="font-semibold text-gray-500">السعة</span><span
-                                    class="text-gray-800 text-left">1-2 مركبة</span><span
-                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
-                                    class="text-primary font-bold text-left">~6,800 كغ</span></div>
-                        </div>
-                    </div>
-                    <div
-                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./secure.webp" alt="حاوية مؤمنة"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div
-                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-lock"></i>حاوية مؤمنة AAP
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">النوع</span><span
-                                    class="text-gray-800 text-left">أمان عالي</span><span
+
+                                    class="text-gray-800 text-left">P6P / PMC</span><span
+
                                     class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
                                     class="text-primary font-bold text-left">6,804 كغ</span></div>
+
                         </div>
+
                     </div>
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative overflow-hidden h-48"><img src="./card.webp" alt="صناديق كرتونية"
+
+                        <div class="relative overflow-hidden h-48"><img src="./pallet 96 125.png" alt="منصة"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
-                                <i class="fas fa-box-open"></i>صناديق كرتونية
+
+                                <i class="fas fa-pallet"></i>منصة 96x238.5 بوصة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">PRA / PGF</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">13,608 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./pallet 235.jpeg" alt="منصة"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-pallet"></i>منصة 95x196 بوصة
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">خاصة بالسطح الرئيسي</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">11,340 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./pallet 60 80.jpg" alt="منصة"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-pallet"></i>منصة 60x125 بوصة
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">جسم ضيق</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">4,536 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./A320.jpg" alt="منصة"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-pallet"></i>منصة عائلة A320
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">PAJ / PKC</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">2,450 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./196.webp" alt="حاوية"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-box"></i>حاوية 96x125x96 بوصة
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">AMA / AMF</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">6,804 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./9999999.webp" alt="حاوية"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-box"></i>حاوية 88x125x63 بوصة
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">AAP / AAF</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">6,033 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./xkh.webp" alt="حاوية"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-box"></i>حاوية XKH
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">خاصة LD</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">1,588 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./Akh.webp" alt="حاوية"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-box"></i>حاويات LD
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
                                     class="font-semibold text-gray-500">الرموز</span><span
-                                    class="text-gray-800 text-left">PMC, GMC, CXC</span><span
+
+                                    class="text-gray-800 text-left">AKE, AKH, AKN</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">1,588 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./cool.jpg" alt="حاوية تبريد"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-snowflake"></i>حاوية تبريد AKE
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">تبريد سلبي</span><span
+
+                                    class="font-semibold text-gray-500">المدى</span><span
+
+                                    class="text-gray-800 font-bold text-left">+2° إلى +8°C</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./iso.jpg" alt="حاوية عازلة"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-thermometer-half"></i>حاوية عازلة
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">معزولة</span><span
+
+                                    class="font-semibold text-gray-500">الاستخدام</span><span
+
+                                    class="text-primary font-bold text-left">ثبات درجة الحرارة</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./rap.png" alt="حاوية تبريد"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-temperature-full"></i>حاوية تبريد RAP
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">تبريد نشط</span><span
+
+                                    class="font-semibold text-gray-500">المدى</span><span
+
+                                    class="text-gray-800 font-bold text-left">-20° إلى +20°C</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./rmp.jpg" alt="حاوية تبريد"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-secondary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-temperature-full"></i>حاوية تبريد RMP
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">تبريد نشط</span><span
+
+                                    class="font-semibold text-gray-500">السطح</span><span
+
+                                    class="text-primary font-bold text-left">السفلي</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./ump.png" alt="مثبت"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-boxes-stacked"></i>مثبتات UMC/UAP
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">الوظيفة</span><span
+
+                                    class="text-gray-800 text-left">تثبيت البضائع</span><span
+
+                                    class="font-semibold text-gray-500">الاستخدام</span><span
+
+                                    class="text-primary font-bold text-left">أشكال غير منتظمة</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./meat.jpg" alt="حاوية لحوم"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-drumstick-bite"></i>حاوية لحوم
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">الاستخدام</span><span
+
+                                    class="text-gray-800 text-left">لحوم معلقة</span><span
+
                                     class="font-semibold text-gray-500">الميزة</span><span
+
+                                    class="text-primary font-bold text-left">صحية</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./horse.webp" alt="إسطبل خيول"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-horse"></i>إسطبل خيول
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">السعة</span><span
+
+                                    class="text-gray-800 text-left">2-3 خيول</span><span
+
+                                    class="font-semibold text-gray-500">الميزات</span><span
+
+                                    class="text-primary font-bold text-left">معتمد من IATA</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./cattle.jpg" alt="حظيرة ماشية"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-cow"></i>حظيرة ماشية
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">السعة</span><span
+
+                                    class="text-gray-800 text-left">4-6 رؤوس ماشية</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">4,500 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./motocycle.webp" alt="حامل دراجات نارية"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-motorcycle"></i>حامل دراجات نارية
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">السعة</span><span
+
+                                    class="text-gray-800 text-left">3-6 دراجات</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">1,500 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./car container.webp" alt="وحدة نقل سيارات"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-car"></i>وحدة نقل سيارات
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">السعة</span><span
+
+                                    class="text-gray-800 text-left">1-2 مركبة</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">~6,800 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./secure.webp" alt="حاوية مؤمنة"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-lock"></i>حاوية مؤمنة AAP
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">النوع</span><span
+
+                                    class="text-gray-800 text-left">أمان عالي</span><span
+
+                                    class="font-semibold text-gray-500">الوزن الأقصى</span><span
+
+                                    class="text-primary font-bold text-left">6,804 كغ</span></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
+                        <div class="relative overflow-hidden h-48"><img src="./card.webp" alt="صناديق كرتونية"
+
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                            <div
+
+                                class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg flex items-center gap-2">
+
+                                <i class="fas fa-box-open"></i>صناديق كرتونية
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-6">
+
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm"><span
+
+                                    class="font-semibold text-gray-500">الرموز</span><span
+
+                                    class="text-gray-800 text-left">PMC, GMC, CXC</span><span
+
+                                    class="font-semibold text-gray-500">الميزة</span><span
+
                                     class="text-primary font-bold text-left">خفيفة الوزن</span></div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
             <div id="dangerous-goods" class="tab-content">
+
                 <div class="text-center mb-16">
+
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">تصنيف
+
                             البضائع</span> الخطرة</h2>
+
                     <p class="text-gray-600 max-w-3xl mx-auto">تصنف البضائع الخطرة إلى الفئات التالية وفقًا للوائح
+
                         الدولية لمدونة البضائع الخطرة البحرية الدولية (IMDG):</p>
+
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                     <!-- Class 1 -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="h-40 bg-red-50 flex items-center justify-center p-4"><img src="./explos.png"
+
                                 alt="رمز المواد المتفجرة" class="h-32 w-32 object-contain"></div>
+
                         <div class="p-6">
+
                             <h3 class="text-xl font-bold text-primary mb-3">الفئة 1: مواد متفجرة</h3>
+
                             <ul class="space-y-2 text-sm text-gray-600">
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         معرضة لخطر الانفجار الجماعي.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>خطر
+
                                         القذف ولكن بدون خطر انفجار جماعي.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>خطر
+
                                         حريق/انفجار طفيف، بدون خطر انفجار جماعي.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         بدون خطر كبير.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         غير حساسة جدًا مع خطر انفجار جماعي.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         غير حساسة للغاية.</span></li>
+
                             </ul>
+
                         </div>
+
                     </div>
+
                     <!-- Class 2 -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="h-40 bg-gray-100 flex items-center justify-center p-4"><img src="./gases.png"
+
                                 alt="رمز الغازات" class="h-32 w-32 object-contain"></div>
+
                         <div class="p-6">
+
                             <h3 class="text-xl font-bold text-primary mb-3">الفئة 2: غازات</h3>
+
                             <ul class="space-y-2 text-sm text-gray-600">
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>غازات
+
                                         قابلة للاشتعال.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>غازات
+
                                         غير قابلة للاشتعال وغير سامة.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>غازات
+
                                         سامة.</span></li>
+
                             </ul>
+
                         </div>
+
                     </div>
+
                     <!-- Class 3 -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="h-40 bg-red-50 flex items-center justify-center p-4"><img src="./luquid.png"
+
                                 alt="رمز السوائل القابلة للاشتعال" class="h-32 w-32 object-contain"></div>
+
                         <div class="p-6">
+
                             <h3 class="text-xl font-bold text-primary mb-3">الفئة 3: سوائل قابلة للاشتعال</h3>
+
                             <p class="text-sm text-gray-600">تشمل هذه الفئة السوائل التي تنبعث منها أبخرة قابلة للاشتعال
+
                                 عند أو تحت درجة حرارة معينة (نقطة الوميض).</p>
+
                         </div>
+
                     </div>
+
                     <!-- Class 4 -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="h-40 bg-red-50 flex items-center justify-center p-4"><img src="./solid.png"
+
                                 alt="رمز المواد الصلبة القابلة للاشتعال" class="h-32 w-32 object-contain"></div>
+
                         <div class="p-6">
+
                             <h3 class="text-xl font-bold text-primary mb-3">الفئة 4: مواد صلبة قابلة للاشتعال</h3>
+
                             <ul class="space-y-2 text-sm text-gray-600">
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         صلبة قابلة للاشتعال، مواد ذاتية التفاعل.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         قابلة للاشتعال تلقائيًا.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         تنبعث منها غازات قابلة للاشتعال عند ملامستها للماء.</span></li>
+
                             </ul>
+
                         </div>
+
                     </div>
+
                     <!-- Class 5 -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="h-40 bg-yellow-50 flex items-center justify-center p-4"><img src="./oxiding.png"
+
                                 alt="رمز المواد المؤكسدة" class="h-32 w-32 object-contain"></div>
+
                         <div class="p-6">
+
                             <h3 class="text-xl font-bold text-primary mb-3">الفئة 5: مواد مؤكسدة</h3>
+
                             <ul class="space-y-2 text-sm text-gray-600">
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         مؤكسدة.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>بيروكسيدات
+
                                         عضوية.</span></li>
+
                             </ul>
+
                         </div>
+
                     </div>
+
                     <!-- Class 6 -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="h-40 bg-gray-100 flex items-center justify-center p-4"><img src="./toxic.png"
+
                                 alt="رمز المواد السامة" class="h-32 w-32 object-contain"></div>
+
                         <div class="p-6">
+
                             <h3 class="text-xl font-bold text-primary mb-3">الفئة 6: مواد سامة ومعدية</h3>
+
                             <ul class="space-y-2 text-sm text-gray-600">
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         سامة.</span></li>
+
                                 <li class="flex items-start"><i
+
                                         class="fas fa-arrow-left text-secondary text-xs mt-1 ml-3 flex-shrink-0"></i><span>مواد
+
                                         معدية.</span></li>
+
                             </ul>
+
                         </div>
+
                     </div>
+
                     <!-- Class 7 -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="h-40 bg-yellow-50 flex items-center justify-center p-4"><img src="./radioactive.png"
+
                                 alt="رمز المواد المشعة" class="h-32 w-32 object-contain"></div>
+
                         <div class="p-6">
+
                             <h3 class="text-xl font-bold text-primary mb-3">الفئة 7: مواد مشعة</h3>
+
                             <p class="text-sm text-gray-600">تشمل هذه الفئة أي مادة تحتوي على نظائر مشعة حيث تتجاوز كل
+
                                 من تركيز النشاط والنشاط الإجمالي قيمًا محددة مسبقًا.</p>
+
                         </div>
+
                     </div>
+
                     <!-- Class 8 -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="h-40 bg-gray-100 flex items-center justify-center p-4"><img src="./corrosive.gif"
+
                                 alt="رمز المواد المسببة للتآكل" class="h-32 w-32 object-contain"></div>
+
                         <div class="p-6">
+
                             <h3 class="text-xl font-bold text-primary mb-3">الفئة 8: مواد مسببة للتآكل</h3>
+
                             <p class="text-sm text-gray-600">هذه مواد تسبب، عن طريق الفعل الكيميائي، أضرارًا شديدة عند
+
                                 ملامستها للأنسجة الحية، أو في حالة التسرب، ستلحق أضرارًا مادية ببضائع أخرى أو بوسيلة
+
                                 النقل.</p>
+
                         </div>
+
                     </div>
+
                     <!-- Class 9 -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="h-40 bg-gray-100 flex items-center justify-center p-4"><img src="./millos.png"
+
                                 alt="رمز مواد متنوعة" class="h-32 w-32 object-contain"></div>
+
                         <div class="p-6">
+
                             <h3 class="text-xl font-bold text-primary mb-3">الفئة 9: مواد متنوعة</h3>
+
                             <p class="text-sm text-gray-600">مواد خطرة لا تندرج تحت الفئات الثمانية الأخرى. وهذا يشمل
+
                                 عناصر مثل بطاريات الليثيوم والجليد الجاف والمواد الضارة بالبيئة.</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Incoterms Section -->
+
             <div id="incoterms" class="tab-content">
+
                 <div class="text-center mb-16">
+
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4"><span class="text-secondary">شروط
+
                             التجارة
+
                         </span> الدولية</h2>
+
                     <p class="text-gray-600 max-w-2xl mx-auto">شروط تجارية موحدة تحدد المسؤوليات بين المشترين والبائعين
+
                         في التجارة الدولية.</p>
+
                 </div>
+
+
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                     <!-- EXW -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./exw.jpg" alt="Ex Works (EXW)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 EXW - تسليم المصنع
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يضع البائع البضائع تحت تصرف المشتري في مقر البائع. يتحمل
+
                                 المشتري جميع التكاليف والمخاطر.</p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> الحد الأدنى من التزامات
+
                                     البائع</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     المشتري
+
                                     يرتب جميع وسائل النقل</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- FCA -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./fca.jpg" alt="Free Carrier (FCA)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 FCA - تسليم الناقل
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يسلم البائع البضائع للناقل أو طرف آخر يعينه المشتري.</p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> البائع
+
                                     ينهي إجراءات التصدير</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     تنتقل المخاطر
+
                                     عند تسليم البضائع للناقل</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- CPT -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./cpt.jpg" alt="Carriage Paid To (CPT)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 CPT - نقل مدفوع إلى
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يدفع البائع أجرة النقل إلى الوجهة المحددة، تنتقل المخاطر عند
+
                                 تسليم البضائع لأول ناقل.</p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> البائع
+
                                     يرتب النقل الرئيسي</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     يتحمل المشتري
+
                                     المخاطر أثناء النقل</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- CIP -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./cip.jpg" alt="Carriage and Insurance Paid To (CIP)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 CIP - نقل وتأمين مدفوع إلى
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يدفع البائع أجرة النقل والتأمين إلى الوجهة المحددة.</p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> الحد الأدنى
+
                                     لتغطية التأمين 110%</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     المخاطر
+
                                     تنتقل إلى المشتري أثناء النقل</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- DPU -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./dpu.jpg" alt="Delivered at Place Unloaded (DPU)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 DPU - تسليم في مكان مع تفريغ
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يسلم البائع عندما يتم تفريغ البضائع في المكان المحدد للوجهة.
+
                             </p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> البائع
+
                                     يتحمل جميع المخاطر/التكاليف حتى التفريغ</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     المشتري
+
                                     مسؤول عن إتمام إجراءات الاستيراد</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- DAP -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./da[.jpg" alt="Delivered at Place (DAP)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 DAP - تسليم في مكان
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يسلم البائع عندما توضع البضائع تحت تصرف المشتري في المكان
+
                                 المحدد.
+
                             </p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> البائع
+
                                     يتحمل جميع المخاطر/التكاليف حتى الوصول</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     المشتري
+
                                     مسؤول عن التفريغ</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- DDP -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./ddp.jpg" alt="Delivered Duty Paid (DDP)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 DDP - تسليم مع دفع الرسوم
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يتحمل البائع جميع التكاليف والمخاطر بما في ذلك الرسوم الجمركية
+
                                 والضرائب.</p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> الحد الأقصى
+
                                     من التزامات البائع</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     يشمل جميع
+
                                     الإجراءات الجمركية</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- FAS -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./fas.jpg" alt="Free Alongside Ship (FAS)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 FAS - تسليم بجانب السفينة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يضع البائع البضائع بجانب السفينة في ميناء الشحن المحدد.</p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> المشتري
+
                                     يتحمل جميع التكاليف من تلك النقطة</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     فقط للنقل
+
                                     البحري أو المائي الداخلي</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- FOB -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./fob.jpg" alt="Free On Board (FOB)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 FOB - تسليم على ظهر السفينة
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يسلم البائع البضائع على متن السفينة التي يعينها المشتري.
+
                             </p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> المخاطر
+
                                     تنتقل عند وضع البضائع على متن السفينة</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     فقط للنقل
+
                                     البحري أو المائي الداخلي</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- CFR -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./cfr.jpg" alt="Cost and Freight (CFR)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 CFR - التكلفة والشحن
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يدفع البائع التكاليف وأجرة الشحن لإحضار البضائع إلى ميناء
+
                                 الوجهة.</p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> المخاطر
+
                                     تنتقل عند وضع البضائع على متن السفينة</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     المشتري
+
                                     يرتب التأمين</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- CIF -->
+
                     <div
+
                         class="group bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+
                         <div class="relative overflow-hidden h-48">
+
                             <img src="./cif.jpg" alt="Cost, Insurance and Freight (CIF)"
+
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
                             <div
+
                                 class="absolute top-0 left-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-br-lg">
+
                                 CIF - التكلفة والتأمين والشحن
+
                             </div>
+
                         </div>
+
                         <div class="p-6">
+
                             <p class="text-gray-600 mb-4">يدفع البائع التكاليف وأجرة الشحن والتأمين لإحضار البضائع إلى
+
                                 ميناء الوجهة.</p>
+
                             <div class="text-sm text-gray-500">
+
                                 <div class="flex items-center mb-2"><i
+
                                         class="fas fa-check-circle text-secondary ml-2"></i> الحد الأدنى
+
                                     لتغطية التأمين 110%</div>
+
                                 <div class="flex items-center"><i class="fas fa-check-circle text-secondary ml-2"></i>
+
                                     المخاطر
+
                                     تنتقل عند وضع البضائع على متن السفينة</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </main>
 
+
+
 <footer class="bg-primary text-white pt-16 pb-8">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
                 <!-- Logo Column -->
+
                 <div>
+
                     <div class="flex items-center mb-6">
+
                         <img src="./ST.png" alt="شعار سمن للنقل" class="h-36 w-auto">
+
                     </div>
+
                     <p class="mb-6 opacity-80">تقديم التميز عبر الحدود مع خدمات النقل والشحن الشاملة لدينا.</p>
+
                     <div class="flex gap-4">
+
                         <a href="https://www.facebook.com/share/19Z2qXjRjF/"
+
                             class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+
                             <i class="fab fa-facebook-f"></i>
+
                         </a>
+
                         <a href="#"
+
                             class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+
                             <i class="fab fa-twitter"></i>
+
                         </a>
+
                         <a href="https://www.linkedin.com/company/samman-trans-company/"
+
                             class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+
                             <i class="fab fa-linkedin-in"></i>
+
                         </a>
+
                         <a href="https://www.instagram.com/samman.trans?igsh=bHY1eGJyYzJ1bGg0"
+
                             class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+
                             <i class="fab fa-instagram"></i>
+
                         </a>
+
                     </div>
+
                 </div>
+
+
 
                 <!-- Quick Links -->
+
                 <div>
+
                     <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
+
                     <ul class="space-y-3">
+
                         <li><a href="./index-ar.html"
+
                                 class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a>
+
                         </li>
+
                         <li><a href="./aboutus-ar.html"
+
                                 class="opacity-80 hover:text-secondary transition duration-300">عن الشركة</a>
+
                         </li>
+
+
 
                         <li><a href="./joinus-ar.html"
+
                                 class="opacity-80 hover:text-secondary transition duration-300">الوظائف</a></li>
+
                         <li><a href="./contactus-ar.html"
+
                                 class="opacity-80 hover:text-secondary transition duration-300">اتصل بنا</a>
+
                         </li>
+
                     </ul>
+
                 </div>
+
+
 
                 <!-- Services -->
+
                 <div>
+
                     <h4 class="text-lg font-bold mb-6">الخدمات</h4>
+
                     <ul class="space-y-3">
+
                         <li><a href="./ocean-ar.html"
+
                                 class="opacity-80 hover:text-secondary transition duration-300">الشحن البحري</a>
+
                         </li>
+
                         <li><a href="./airfreight-ar.html"
+
                                 class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a>
+
                         </li>
+
                         <li><a href="./transport-ar.html"
+
                                 class="opacity-80 hover:text-secondary transition duration-300">النقل البري</a>
+
                         </li>
+
                         <li><a href="./ware-ar.html"
+
                                 class="opacity-80 hover:text-secondary transition duration-300">التخزين</a>
+
                         </li>
+
+
 
                         <li><a href="./custom-ar.html"
+
                                 class="opacity-80 hover:text-secondary transition duration-300">التخليص
+
                                 الجمركي</a></li>
+
                     </ul>
+
                 </div>
+
+
 
                 <!-- Contact Us -->
+
                 <div>
+
                     <h4 class="text-lg font-bold mb-6">اتصل بنا</h4>
+
                     <ul class="space-y-4">
+
                         <li class="flex items-start">
+
                             <i class="fas fa-map-marker-alt text-secondary mt-1 mr-3"></i>
+
                             <span class="opacity-80  ml-2 mr-2">دمشق-ركن الدين-ساحة شمدين</span>
+
                         </li>
+
                         <li class="flex items-center">
+
                             <i class="fas fa-phone-alt text-secondary mr-3"></i>
+
                             <span class="opacity-80 ml-2 mr-2" dir="ltr">+963 11 7042</span>
+
                         </li>
+
                         <li class="flex items-center">
+
                             <i class="fas fa-envelope text-secondary mr-3"></i>
+
                             <span class="opacity-80  ml-2 mr-2">info@sammantrans.com</span>
+
                         </li>
+
                     </ul>
+
                 </div>
+
             </div>
+
+
 
             <div
-                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 السمان للنقل والشحن الدولي. جميع الحقوق محفوظة.</p>
-                <div class="flex gap-3">
 
-                    <a href="./terms.html" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط
+                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 السمان للنقل والشحن الدولي. جميع الحقوق محفوظة.</p>
+
+                <div class="flex gap-3">
+                    <a href="privacy-ar.html"
+                        class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة الخصوصية</a>
+                    <a href="terms-ar.html" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط
+
                         الخدمة</a>
+
                 </div>
+
             </div>
+
         </div>
+
     </footer>
 
+
+
     <div class="fixed bottom-6 left-6 z-50">
+
         <a href="https://wa.me/96341234567" target="_blank" class="flex flex-col items-center group">
+
             <div
+
                 class="w-14 h-14 bg-primary hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-bounce mb-2">
+
                 <i class="fab fa-whatsapp text-2xl"></i>
+
             </div><span
+
                 class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">تواصل
+
                 معنا الان</span>
+
         </a>
+
     </div>
 
+
+
     <script>
+
         document.addEventListener('DOMContentLoaded', function () {
+
             // Mobile menu toggle
+
             const mobileMenuButton = document.getElementById('mobile-menu-button');
+
             const mobileMenu = document.getElementById('mobile-menu');
+
             if (mobileMenuButton) {
+
                 mobileMenuButton.addEventListener('click', () => {
+
                     mobileMenu.classList.toggle('translate-x-full');
+
                     document.body.classList.toggle('overflow-hidden');
+
                 });
+
             }
+
+
 
             // Ocean containers dropdown functionality
+
             const oceanDropdownToggle = document.getElementById('ocean-dropdown-toggle');
+
             const oceanDropdownMenu = document.getElementById('ocean-dropdown-menu');
 
+
+
             if (oceanDropdownToggle && oceanDropdownMenu) {
+
                 oceanDropdownToggle.addEventListener('click', function (e) {
+
                     e.stopPropagation();
+
                     oceanDropdownMenu.classList.toggle('show');
+
                     const icon = this.querySelector('i');
+
                     icon.classList.toggle('rotate-180');
+
                 });
+
+
 
                 // Close dropdown when clicking outside
+
                 document.addEventListener('click', function (e) {
+
                     if (!oceanDropdownMenu.contains(e.target)) {
+
                         oceanDropdownMenu.classList.remove('show');
+
                         const icon = oceanDropdownToggle.querySelector('i');
+
                         icon.classList.remove('rotate-180');
+
                     }
+
                 });
+
             }
+
+
 
             // Tab switching functionality
+
             const tabButtons = document.querySelectorAll('.tab-button');
+
             const tabContents = document.querySelectorAll('.tab-content');
+
             const specificationsSection = document.getElementById('specifications-section');
+
             const stickyHeader = document.querySelector('nav');
+
             const stickyTabs = document.getElementById('tabs-nav');
 
+
+
             function calculateScrollOffset() {
+
                 const headerHeight = stickyHeader ? stickyHeader.offsetHeight : 0;
+
                 const tabsHeight = stickyTabs ? stickyTabs.offsetHeight : 0;
+
                 return headerHeight + tabsHeight + 20; // Add small buffer
+
             }
+
+
 
             function switchTab(tabButton) {
+
                 const tabId = tabButton.getAttribute('data-tab');
+
                 const targetContent = document.getElementById(tabId);
+
                 if (!targetContent || tabButton.classList.contains('active')) return;
 
+
+
                 // Update active states
+
                 tabButtons.forEach(btn => btn.classList.remove('active'));
+
                 tabContents.forEach(content => content.classList.remove('active'));
+
                 tabButton.classList.add('active');
+
                 targetContent.classList.add('active');
 
+
+
                 // Close ocean dropdown if open
+
                 if (oceanDropdownMenu) {
+
                     oceanDropdownMenu.classList.remove('show');
+
                     const icon = oceanDropdownToggle.querySelector('i');
+
                     if (icon) icon.classList.remove('rotate-180');
+
                 }
+
+
 
                 // Smooth scroll to the correct position
+
                 const offset = calculateScrollOffset();
+
                 window.scrollTo({
+
                     top: specificationsSection.offsetTop - offset,
+
                     behavior: 'smooth'
+
                 });
+
             }
+
+
 
             // Tab button click handlers
+
             tabButtons.forEach(button => {
+
                 button.addEventListener('click', (e) => {
+
                     e.preventDefault();
+
                     switchTab(button);
+
                 });
+
             });
+
+
 
             // Dropdown item click handlers
+
             document.querySelectorAll('.dropdown-item.tab-control').forEach(item => {
+
                 item.addEventListener('click', function (e) {
+
                     e.preventDefault();
+
                     const tabId = this.getAttribute('data-tab');
+
                     const targetContent = document.getElementById(tabId);
+
                     if (targetContent) {
+
                         // Close dropdown
+
                         oceanDropdownMenu.classList.remove('show');
+
                         const icon = oceanDropdownToggle.querySelector('i');
+
                         if (icon) icon.classList.remove('rotate-180');
 
+
+
                         // Switch to the selected tab
+
                         tabButtons.forEach(btn => btn.classList.remove('active'));
+
                         tabContents.forEach(content => content.classList.remove('active'));
+
                         targetContent.classList.add('active');
 
+
+
                         // Update the dropdown button text
+
                         oceanDropdownToggle.innerHTML = this.textContent + ' <i class="fas fa-chevron-down text-xs"></i>';
+
                         oceanDropdownToggle.classList.add('active');
 
+
+
                         // Smooth scroll to the correct position
+
                         const offset = calculateScrollOffset();
+
                         window.scrollTo({
+
                             top: specificationsSection.offsetTop - offset,
+
                             behavior: 'smooth'
+
                         });
+
                     }
+
                 });
+
             });
+
+
 
             // Hero banner link click handlers
+
             document.querySelectorAll('.hero-bg a[href^="#"]').forEach(anchor => {
+
                 anchor.addEventListener('click', function (e) {
+
                     e.preventDefault();
+
                     let targetId = this.getAttribute('href').substring(1);
+
                     if (targetId === 'ocean-containers') { targetId = 'ocean-standard'; }
 
+
+
                     const targetButton = document.querySelector(`.tab-button[data-tab="${targetId}"]`);
+
                     if (targetButton) {
+
                         targetButton.click();
+
                     } else {
+
                         const targetElement = document.getElementById(targetId);
+
                         if (targetElement) {
+
                             const offset = calculateScrollOffset();
+
                             window.scrollTo({
+
                                 top: targetElement.offsetTop - offset,
+
                                 behavior: 'smooth'
+
                             });
+
                         }
+
                     }
+
                 });
+
             });
 
+
+
             // Handle direct URL hashes
+
             function handleInitialHash() {
+
                 if (window.location.hash) {
+
                     const hash = window.location.hash.substring(1);
+
                     const targetButton = document.querySelector(`.tab-button[data-tab="${hash}"]`);
+
                     if (targetButton) {
+
                         // Small timeout to ensure DOM is fully loaded
+
                         setTimeout(() => {
+
                             const offset = calculateScrollOffset();
+
                             window.scrollTo({
+
                                 top: specificationsSection.offsetTop - offset,
+
                                 behavior: 'auto'
+
                             });
+
                         }, 100);
+
                     }
+
                 }
+
             }
+
             handleInitialHash();
+
         });
+
         document.addEventListener('DOMContentLoaded', () => {
+
             const btn = document.getElementById('mobile-menu-button');
+
             const menu = document.getElementById('mobile-menu');
+
             const panel = document.getElementById('mobile-panel');
+
             const overlay = document.getElementById('mobile-overlay');
+
             const closeBtn = document.getElementById('close-mobile-menu');
+
+
 
             if (!btn || !menu || !panel || !overlay || !closeBtn) return;
 
+
+
             let lastFocused = null;
+
             const ANIM_MS = 300;
+
             const focusableSel = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+
+
 
             const getFocusable = () => panel.querySelectorAll(focusableSel);
 
+
+
             function openMenu() {
+
                 lastFocused = document.activeElement;
+
                 menu.classList.remove('hidden');
+
                 requestAnimationFrame(() => {
+
                     overlay.classList.remove('opacity-0'); overlay.classList.add('opacity-100');
+
                     panel.classList.remove('translate-x-full');      // slide in from right
+
                 });
+
                 document.body.classList.add('overflow-hidden');
+
                 btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
+
                 const f = getFocusable(); if (f.length) f[0].focus();
+
             }
+
+
 
             function closeMenu() {
+
                 overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0');
+
                 panel.classList.add('translate-x-full');
+
                 document.body.classList.remove('overflow-hidden');
+
                 btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true');
+
                 panel.style.transform = '';
+
                 setTimeout(() => { menu.classList.add('hidden'); if (lastFocused) lastFocused.focus(); }, ANIM_MS);
+
             }
 
+
+
             btn.addEventListener('click', openMenu);
+
             closeBtn.addEventListener('click', closeMenu);
+
             overlay.addEventListener('click', closeMenu);
 
+
+
             // close on any link click inside
+
             panel.addEventListener('click', (e) => {
+
                 if (e.target.closest('a')) closeMenu();
+
             });
+
+
 
             // ESC + focus trap
+
             document.addEventListener('keydown', (e) => {
+
                 if (menu.classList.contains('hidden')) return;
+
                 if (e.key === 'Escape') { e.preventDefault(); closeMenu(); return; }
+
                 if (e.key === 'Tab') {
+
                     const f = Array.from(getFocusable()); if (!f.length) return;
+
                     const first = f[0], last = f[f.length - 1];
+
                     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+
                     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+
                 }
+
             });
 
+
+
             // swipe-to-close (rightward swipe in RTL)
+
             let startX = 0, currentX = 0, dragging = false;
+
             panel.addEventListener('touchstart', (e) => {
+
                 if (menu.classList.contains('hidden')) return;
+
                 dragging = true; startX = e.touches[0].clientX; currentX = startX;
+
             }, { passive: true });
+
             panel.addEventListener('touchmove', (e) => {
+
                 if (!dragging) return;
+
                 currentX = e.touches[0].clientX; const dx = currentX - startX; if (dx > 0) panel.style.transform = `translateX(${dx}px)`;
+
             }, { passive: true });
+
             panel.addEventListener('touchend', () => {
+
                 if (!dragging) return;
+
                 const dx = currentX - startX; if (dx > 100) closeMenu(); else panel.style.transform = ''; dragging = false;
+
             }, { passive: true });
+
         });
+
     </script>
+
 </body>
+
+
 
 </html>

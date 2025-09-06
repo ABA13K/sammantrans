@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية - السمان للنقل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003869',
+                        secondary: '#F59E0B',
+                        accent: '#3B82F6',
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+
+        function switchLanguage() {
+            window.location.href = 'privacy.html';
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.8;
+            background: #f8fafc;
+        }
+
+        .header-gradient {
+            background: linear-gradient(135deg, #003869 0%, #0056a3 100%);
+        }
+
+        .section-title {
+            position: relative;
+            padding-right: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #F59E0B;
+            border-radius: 50%;
+        }
+
+        .content-container {
+            max-width: 900px;
+        }
+
+        .privacy-list {
+            list-style-type: none;
+            counter-reset: privacy-counter;
+        }
+
+        .privacy-list li {
+            counter-increment: privacy-counter;
+            margin-bottom: 2rem;
+            padding-right: 2.5rem;
+            position: relative;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+        }
+
+        .privacy-list li::before {
+            content: counter(privacy-counter);
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: #003869;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .sub-list {
+            list-style-type: none;
+            padding-right: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sub-list li {
+            margin-bottom: 0.5rem;
+            padding-right: 1.5rem;
+            position: relative;
+            border-bottom: none;
+            padding-bottom: 0.5rem;
+        }
+
+        .sub-list li::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #F59E0B;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .clause-title {
+            font-weight: bold;
+            color: #003869;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+            border-right: 4px solid #003869;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .contact-box {
+            background: #fffbeb;
+            border: 1px solid #F59E0B;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-list li {
+                padding-right: 2rem;
+            }
+
+            .privacy-list li::before {
+                width: 1.75rem;
+                height: 1.75rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        .jump-menu {
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .jump-menu a {
+            display: block;
+            padding: 0.5rem;
+            color: #4b5563;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-right: 3px solid transparent;
+        }
+
+        .jump-menu a:hover {
+            color: #003869;
+            border-right: 3px solid #F59E0B;
+            background-color: #f3f4f6;
+        }
+
+        .last-updated {
+            background: #f1f5f9;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- الشعار -->
+                <div class="flex-shrink-0">
+                    <a href="index-ar.html" class="flex items-center">
+                        <img src="./12.png" alt="شعار سمن ترانس" class="h-16 w-auto">
+                    </a>
+                </div>
+
+                <!-- عنوان الصفحة -->
+                <h1 class="text-xl md:text-2xl font-bold text-primary">سياسة الخصوصية</h1>
+
+                <!-- محوّل اللغة وزر العودة -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button onclick="goBack()"
+                        class="text-primary hover:text-secondary transition duration-300 flex items-center">
+                        <i class="fas fa-arrow-right ml-2"></i> العودة
+                    </button>
+                    <div class="flex items-center">
+                        <a href="javascript:void(0)" onclick="switchLanguage()"
+                            class="text-sm text-gray-600 hover:text-primary transition duration-300">EN</a>
+                        <span class="mx-2 text-gray-400">|</span>
+                        <a href="privacy-ar.html" class="text-sm font-bold text-primary">العربية</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- محتوى السياسة -->
+    <main class="flex-grow py-10 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+            <!-- قائمة التنقل السريع -->
+            <div class="w-full md:w-1/4">
+                <div class="jump-menu hidden md:block">
+                    <h3 class="font-bold text-primary mb-4">أقسام السياسة</h3>
+                    <a href="#intro">مقدمة</a>
+                    <a href="#data-collection">جمع المعلومات</a>
+                    <a href="#data-usage">استخدام المعلومات</a>
+                    <a href="#data-protection">حماية المعلومات</a>
+                    <a href="#cookies">ملفات تعريف الارتباط</a>
+                    <a href="#rights">حقوقك</a>
+                    <a href="#changes">التغييرات على السياسة</a>
+                    <a href="#contact">اتصل بنا</a>
+                </div>
+            </div>
+
+            <!-- المحتوى الرئيسي -->
+            <div class="w-full md:w-3/4 bg-white rounded-lg shadow-md overflow-hidden">
+                <!-- رأس الصفحة -->
+                <div class="header-gradient text-white p-8 text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2">سياسة الخصوصية</h2>
+                    <p class="opacity-90">حماية معلوماتك الشخصية هي أولويتنا الأولى</p>
+                    <div class="last-updated mt-4 text-primary bg-white bg-opacity-20">
+                        آخر تحديث: ديسمبر 2023
+                    </div>
+                </div>
+
+                <!-- محتوى السياسة -->
+                <div class="p-6 md:p-8 content-container mx-auto">
+                    <!-- مقدمة -->
+                    <h2 id="intro" class="text-2xl font-bold text-primary mt-8 mb-4 section-title">مقدمة</h2>
+                    <p class="text-gray-700 mb-6">
+                        ترحب شركة السمان للنقل ("الشركة"، "نحن"، "لنا") بكم. نحن ندرك أهمية الخصوصية ونلتزم بحماية
+                        معلوماتكم الشخصية. توضح سياسة الخصوصية هذه كيفية جمعنا واستخدامنا ومشاركة معلوماتكم الشخصية عند
+                        استخدامكم لخدماتنا.
+                    </p>
+
+                    <div class="info-card">
+                        <h3 class="font-bold text-primary mb-2">
+                            <i class="fas fa-info-circle ml-2"></i>
+                            نطاق السياسة
+                        </h3>
+                        <p class="text-gray-700">
+                            تنطبق سياسة الخصوصية هذه على جميع الخدمات التي تقدمها شركة السمان للنقل، بما في ذلك خدمات
+                            النقل البري والبحري والجوي، والخدمات اللوجستية، وخدمات التخزين والتخليص الجمركي.
+                        </p>
+                    </div>
+
+                    <!-- جمع المعلومات -->
+                    <h2 id="data-collection" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">جمع
+                        المعلومات</h2>
+                    <p class="text-gray-700 mb-4">نجمع أنواعًا مختلفة من المعلومات لتقديم خدماتنا وتحسينها:</p>
+
+                    <ol class="privacy-list">
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">المعلومات التي تقدمها لنا</h3>
+                            <ul class="sub-list">
+                                <li>معلومات الهوية: الاسم الكامل، العنوان، رقم الهوية، جواز السفر</li>
+                                <li>معلومات الاتصال: رقم الهاتف، البريد الإلكتروني، العنوان</li>
+                                <li>معلومات الدفع: تفاصيل البطاقة المصرفية، معلومات الحساب البنكي</li>
+                                <li>معلومات الشحن: تفاصيل البضائع، عنوان الاستلام والتسليم</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">المعلومات التي نجمعها تلقائيًا</h3>
+                            <ul class="sub-list">
+                                <li>معلومات الجهاز: نوع الجهاز، نظام التشغيل، المتصفح</li>
+                                <li>معلومات التسجيل: عنوان IP، نوع المتصفح، صفحات الزيارات</li>
+                                <li>بيانات الموقع: عند استخدام خدمات التتبع الخاصة بنا</li>
+                                <li>ملفات تعريف الارتباط والبيانات المشابهة</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">المعلومات من مصادر أخرى</h3>
+                            <ul class="sub-list">
+                                <li>معلومات من شركائنا التجاريين</li>
+                                <li>معلومات من مزودي خدمات الطرف الثالث</li>
+                                <li>معلومات من الجهات الحكومية عند الضرورة للامتثال القانوني</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <!-- استخدام المعلومات -->
+                    <h2 id="data-usage" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">استخدام
+                        المعلومات</h2>
+                    <p class="text-gray-700 mb-4">نستخدم المعلومات التي نجمعها للأغراض التالية:</p>
+
+                    <ol class="privacy-list">
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">توفير الخدمات والحفاظ عليها</h3>
+                            <ul class="sub-list">
+                                <li>معالجة طلبات النقل والشحن</li>
+                                <li>توفير خدمات التتبع والتحديثات</li>
+                                <li>إصدار الفواتير وإدارة المدفوعات</li>
+                                <li>التواصل بشأن الخدمات والطلبات</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">تحسين الخدمات والتطوير</h3>
+                            <ul class="sub-list">
+                                <li>تحليل استخدام الخدمات وتحسينها</li>
+                                <li>تطوير خدمات ومنتجات جديدة</li>
+                                <li>إجراء أبحاث السوق والتحليلات</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">الأغراض القانونية والامتثال</h3>
+                            <ul class="sub-list">
+                                <li>الامتثال للقوانين واللوائح المعمول بها</li>
+                                <li>حماية حقوقنا ومصالحنا القانونية</li>
+                                <li>منع واكتشاف الأنشطة الاحتيالية</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <!-- حماية المعلومات -->
+                    <h2 id="data-protection" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">حماية
+                        المعلومات</h2>
+                    <p class="text-gray-700 mb-4">نحن نحمي معلوماتك الشخصية من خلال:</p>
+
+                    <div class="info-card">
+                        <h3 class="font-bold text-primary mb-3">
+                            <i class="fas fa-shield-alt ml-2"></i>
+                            إجراءات الأمان التقنية والتنظيمية
+                        </h3>
+                        <ul class="sub-list">
+                            <li>تشفير البيانات أثناء النقل والتخزين</li>
+                            <li>التحكم في الوصول بناءً على الحاجة إلى المعرفة</li>
+                            <li>مراجعة منتظمة لممارسات جمع البيانات وتخزينها ومعالجتها</li>
+                            <li>تدريب الموظفين على ممارسات الخصوصية والأمان</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-gray-700 mb-4">
+                        بينما نقوم بتنفيذ إجراءات أمان لحماية معلوماتك، يرجى العلم أنه لا يوجد نظام نقل عبر الإنترنت أو
+                        تخزين إلكتروني آمن بنسبة 100٪. لا يمكننا ضمان الأمان المطلق للمعلومات التي تنقلها إلينا.
+                    </p>
+
+                    <!-- ملفات تعريف الارتباط -->
+                    <h2 id="cookies" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">ملفات تعريف
+                        الارتباط</h2>
+                    <p class="text-gray-700 mb-4">
+                        نستخدم ملفات تعريف الارتباط وتقنيات مماثلة لتتبع النشاط على خدمتنا وتخزين معلومات معينة. ملفات
+                        تعريف الارتباط هي ملفات تحتوي على كمية صغيرة من البيانات التي قد تتضمن معرف فريد مجهول الهوية.
+                    </p>
+
+                    <ol class="privacy-list">
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">أنواع ملفات تعريف الارتباط التي نستخدمها
+                            </h3>
+                            <ul class="sub-list">
+                                <li>ملفات تعريف الارتباط الضرورية: ضرورية لتشغيل الخدمة</li>
+                                <li>ملفات تعريف الارتباط الوظيفية: تتيح تذكر خياراتك</li>
+                                <li>ملفات تعريف الارتباط التحليلية: تساعدنا في فهم كيفية استخدام الخدمة</li>
+                                <li>ملفات تعريف الارتباط التسويقية: تستخدم لتقديم إعلانات ذات صلة</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">كيفية إدارة ملفات تعريف الارتباط</h3>
+                            <p class="text-gray-700">
+                                يمكنك تعيين متصفحك لرفض جميع ملفات تعريف الارتباط أو للإشارة عند إرسال ملف تعريف ارتباط.
+                                ومع ذلك، إذا لم تقبل ملفات تعريف الارتباط، فقد لا تتمكن من استخدام بعض أجزاء خدمتنا.
+                            </p>
+                        </li>
+                    </ol>
+
+                    <!-- حقوقك -->
+                    <h2 id="rights" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">حقوقك</h2>
+                    <p class="text-gray-700 mb-4">لديك حقوق معينة فيما يتعلق بمعلوماتك الشخصية:</p>
+
+                    <div class="info-card">
+                        <h3 class="font-bold text-primary mb-3">
+                            <i class="fas fa-user-shield ml-2"></i>
+                            حقوق الخصوصية الخاصة بك
+                        </h3>
+                        <ul class="sub-list">
+                            <li>الحق في الوصول إلى معلوماتك الشخصية</li>
+                            <li>الحق في تصحيح المعلومات غير الدقيقة</li>
+                            <li>الحق في حذف معلوماتك الشخصية في ظروف معينة</li>
+                            <li>الحق في تقييد معالجة معلوماتك الشخصية</li>
+                            <li>الحق في الاعتراض على معالجة معلوماتك الشخصية</li>
+                            <li>الحق في نقل البيانات</li>
+                            <li>الحق في سحب الموافقة في أي وقت</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-gray-700 mb-4">
+                        لممارسة أي من هذه الحقوق، يرجى الاتصال بنا باستخدام معلومات الاتصال الواردة في قسم "اتصل بنا"
+                        أدناه. سنستجيب لطلبك في غضون المهلة الزمنية التي يحددها القانون المنطبق.
+                    </p>
+
+                    <!-- التغييرات على السياسة -->
+                    <h2 id="changes" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">التغييرات على
+                        السياسة</h2>
+                    <p class="text-gray-700 mb-4">
+                        قد نقوم بتحديث سياسة الخصوصية الخاصة بنا من وقت لآخر. سنخطرك بأي تغييرات عن طريق نشر سياسة
+                        الخصوصية الجديدة على هذه الصفحة وتحديث تاريخ "آخر تحديث" في الأعلى.
+                    </p>
+
+                    <p class="text-gray-700 mb-4">
+                        ننصحك بمراجعة سياسة الخصوصية هذه periodically لأي تغييرات. تصبح التغييرات على سياسة الخصوصية
+                        فعالة عندما يتم نشرها على هذه الصفحة.
+                    </p>
+
+                    <!-- اتصل بنا -->
+                    <h2 id="contact" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">اتصل بنا</h2>
+                    <div class="contact-box">
+                        <h3 class="font-bold text-primary mb-3">
+                            <i class="fas fa-headset ml-2"></i>
+                            لديك أسئلة حول سياسة الخصوصية الخاصة بنا؟
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            إذا كان لديك أي أسئلة أو استفسارات بشأن سياسة الخصوصية هذه، أو إذا كنت ترغب في ممارسة أي من
+                            حقوق الخصوصية الخاصة بك، فيرجى الاتصال بنا عبر:</p>
+
+                        <ul class="sub-list">
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope text-secondary ml-3"></i>
+                                البريد الإلكتروني: privacy@sammantrans.com
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt text-secondary ml-3"></i>
+                                الهاتف: 117042 (963+)
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-secondary ml-3"></i>
+                                العنوان: دمشق-ركن الدين-ساحة شمدين
+                            </li>
+                        </ul>
+
+                        <p class="text-gray-700 mt-4">
+                            لدينا مسؤول حماية البيانات الذي يمكنك الاتصال به مباشرة على dpo@sammantrans.com لأية
+                            استفسارات تتعلق بمعالجة البيانات.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white pt-12 pb-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Logo Column -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="./ST.png" alt="شعار سمن للنقل" class="h-28 w-auto">
+                    </div>
+                    <p class="mb-6 opacity-80">تقديم التميز عبر الحدود مع خدمات النقل والشحن الشاملة لدينا.</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/19Z2qXjRjF/"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/samman-trans-company/"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/samman.trans?igsh=bHY1eGJyYzJ1bGg0"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a>
+                        </li>
+                        <li><a href="aboutus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">عن
+                                الشركة</a>
+                        </li>
+                        <li><a href="privacy-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">سياسة الخصوصية</a>
+                        </li>
+                        <li><a href="terms-ar.html" class="opacity-80 hover:text-secondary transition duration-300">شروط
+                                الخدمة</a>
+                        </li>
+                        <li><a href="contactus-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">اتصل بنا</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">الخدمات</h4>
+                    <ul class="space-y-3">
+                        <li><a href="ocean-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الشحن البحري</a>
+                        </li>
+                        <li><a href="airfreight-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a>
+                        </li>
+                        <li><a href="transport-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">النقل البري</a>
+                        </li>
+                        <li><a href="ware-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">التخزين</a>
+                        </li>
+                        <li><a href="custom-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">التخليص
+                                الجمركي</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Us -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">اتصل بنا</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-secondary mt-1 ml-3"></i>
+                            <span class="opacity-80">دمشق-ركن الدين-ساحة شمدين</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-secondary ml-3"></i>
+                            <span class="opacity-80" dir="ltr">+963 11 7042</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-secondary ml-3"></i>
+                            <span class="opacity-80">info@sammantrans.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 السمان للنقل والشحن الدولي. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-3">
+                    <a href="privacy-ar.html"
+                        class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة الخصوصية</a>
+                    <a href="terms-ar.html" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط
+                        الخدمة</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // وظيفة تبديل اللغة
+        function switchLanguage() {
+            window.location.href = 'privacy.html';
+        }
+
+        // وظيفة العودة للصفحة السابقة
+        function goBack() {
+            window.history.back();
+        }
+
+        // جعل قائمة التنقل لزجة عند التمرير
+        window.addEventListener('scroll', function () {
+            const jumpMenu = document.querySelector('.jump-menu');
+            if (window.pageYOffset > 200) {
+                jumpMenu.classList.add('fixed', 'top-4');
+            } else {
+                jumpMenu.classList.remove('fixed', 'top-4');
+            }
+        });
+    </script>
+</body>
+
+</html>
