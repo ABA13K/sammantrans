@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Samman Transport</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003869',
+                        secondary: '#F59E0B',
+                        accent: '#3B82F6',
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+
+        function switchLanguage() {
+            window.location.href = 'terms-ar.html';
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.8;
+        }
+
+        .section-title {
+            position: relative;
+            padding-left: 1.5rem;
+            border-bottom: 2px solid #F59E0B;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-container {
+            max-width: 900px;
+        }
+
+        .terms-list {
+            list-style-type: none;
+            counter-reset: terms-counter;
+        }
+
+        .terms-list li {
+            counter-increment: terms-counter;
+            margin-bottom: 2rem;
+            padding-left: 2.5rem;
+            position: relative;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+        }
+
+        .terms-list li::before {
+            margin-right: 4rem;
+            content: counter(terms-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: #003869;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .sub-list {
+            list-style-type: none;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-right: 7px;
+        }
+
+        .sub-list li {
+            margin-bottom: 0.5rem;
+            padding-right: 1.5rem;
+            position: relative;
+            border-bottom: none;
+            padding-bottom: 0.5rem;
+        }
+
+        .sub-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #F59E0B;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .clause-title {
+            margin-right: 3rem;
+            font-weight: bold;
+            color: #003869;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .terms-list li {
+                padding-right: 4rem;
+                padding-left: 4rem;
+            }
+
+            .terms-list li::before {
+                width: 1.75rem;
+                height: 1.75rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        .jump-menu {
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .jump-menu a {
+            display: block;
+            padding: 0.5rem;
+            color: #4b5563;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .jump-menu a:hover {
+            color: #003869;
+            border-left: 3px solid #F59E0B;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center">
+                        <img src="./12.png" alt="Samman Trans Logo" class="h-16 w-auto">
+                    </a>
+                </div>
+
+                <!-- Page Title -->
+                <h1 class="text-xl md:text-2xl font-bold text-primary">Terms of Service</h1>
+
+                <!-- Language Switcher and Back Button -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="goBack()"
+                        class="text-primary hover:text-secondary transition duration-300 flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Back
+                    </button>
+                    <div class="flex items-center">
+                        <a href="terms.html" class="text-sm font-bold text-primary">EN</a>
+                        <span class="mx-2 text-gray-400">|</span>
+                        <a href="javascript:void(0)" onclick="switchLanguage()"
+                            class="text-sm text-gray-600 hover:text-primary transition duration-300">العربية</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Terms Content -->
+    <main class="flex-grow py-10 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+            <!-- Quick Navigation Menu -->
+            <div class="w-full md:w-1/4">
+                <div class="jump-menu hidden md:block">
+                    <h3 class="font-bold text-primary mb-4">Terms Sections</h3>
+                    <a href="#part1">General Provisions</a>
+                    <a href="#part2">Fees - Amount Due</a>
+                    <a href="#part3">Delivery of Goods</a>
+                    <a href="#part4">Deadlines and Obstacles</a>
+                    <a href="#part5">Cargo Insurance</a>
+                    <a href="#part6">Temporary Storage</a>
+                    <a href="#part7">Liens</a>
+                    <a href="#part8">Shipping Company Liability</a>
+                    <a href="#part9">Limitations</a>
+                    <a href="#part10">Place of Performance and Jurisdiction</a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="w-full md:w-3/4 bg-white rounded-lg shadow-md overflow-hidden">
+                <!-- Page Header -->
+                <div class="bg-primary text-white p-6 text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2">Terms of Service</h2>
+                    <p class="opacity-90">Last Updated: December 2023</p>
+                </div>
+
+                <!-- Terms Content -->
+                <div class="p-6 md:p-8 content-container mx-auto">
+                    <p class="text-gray-700 mb-8 text-lg">
+                        Samman Transport Company ("Company") welcomes you. Please read these Terms of Service carefully
+                        before using our services.
+                        By using our services, you agree to comply with these terms and conditions.
+                    </p>
+
+                    <ol class="terms-list">
+                        <!-- Part 1: General Provisions -->
+                        <h2 id="part1" class="text-2xl font-bold text-primary mt-8 mb-4 section-title">Part 1: General
+                            Provisions</h2>
+
+                        <!-- Article 1 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 1: Scope of Application</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The current general terms apply to transactions between merchants
+                                    regarding all operations of the shipping company related to the transport process.
+                                </p>
+                                <p>b) The general terms prevail over any different local commercial customs and
+                                    practices, as well as different legislative provisions and provisions of
+                                    international agreements, unless the latter are binding rules.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 2 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 2: Goods Transport Contract</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The contract for goods transport services is the contract whereby the
+                                    shipping agent, in return for payment, undertakes to the sender or consignee of the
+                                    goods to transport them to the place of delivery, not by performing the transport
+                                    itself, but by finding the carrier who carries the goods and with whom the shipping
+                                    agent concludes a transport contract in its name but at the expense of the sender or
+                                    consignee.</p>
+                                <p>b) The shipping agent may act as a carrier in the performance of the transport.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 3 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 3: Performance of Related Operations
+                                by the Shipping Agent</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The shipping agent, by special agreement, except for performing the
+                                    transport, undertakes all incidental operations such as reloading goods, storage,
+                                    customs clearance, insurance, and any other related operations whatsoever.</p>
+                                <p>b) The general terms apply to the shipping agent's works related to performing the
+                                    transport only, unless there is a different written agreement with the client.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 4 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 4: Client Obligations</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The conclusion of a goods transport contract by the shipping company
+                                    is binding on the client.</p>
+                                <p class="mb-2">b) The client bears all expenses and fees resulting from the performance
+                                    of the said contract.</p>
+                                <p>c) The client is obliged to take all necessary steps to perform the contract. The
+                                    shipping company is not responsible for any problems that may arise from the
+                                    client's failure or delay in performing its obligations.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 5 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 5: Client Instructions</h3>
+                            <div class="text-gray-700">
+                                <p>The shipping agent is obliged to follow the client's instructions arising from the
+                                    said contract and included therein. In the absence of instructions from the client
+                                    to the shipping agent, the latter decides at its discretion. The client is
+                                    responsible for any consequences that may arise from incorrect or incomplete
+                                    instructions.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 6 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 6: Contents of the Order to the
+                                Shipping Agent</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The order to the shipping agent must contain the exact address of the
+                                    sender and consignee, place of loading and delivery, nature of the goods, quantity,
+                                    contents of packages, their dimensions and gross weight, and any other necessary
+                                    details required for the performance of the transport. The client is responsible for
+                                    damages resulting from incomplete or incorrect details. If the shipping agent is not
+                                    given a written order in this regard, it is not obliged to check or fill in the said
+                                    details or other client data.</p>
+                                <p class="mb-2">b) The shipping agent is obliged to commence weighing the goods provided
+                                    there is a written order to do so.</p>
+                                <p>c) The shipping agent must mention in the receipt issued by it the content, value,
+                                    quantity, and weight of the goods packaging during transport as provided by the
+                                    client.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 7 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 7: Goods During Transport</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The shipping agent is not obliged to transport goods that may cause
+                                    damage to persons, animals, or other goods, or that are susceptible to damage or
+                                    corrosion unless there is a prior written agreement. If such goods are delivered to
+                                    the shipping agent without any prior agreement, the shipping agent is entitled, if
+                                    required under the circumstances, to proceed with their sale or even in case of
+                                    imminent danger, to proceed with their destruction. The client is responsible for
+                                    any damage that occurs and bears all related expenses.</p>
+                                <p>b) If the shipping agent, due to incorrect or incomplete instructions, undertakes to
+                                    transport goods that are not acceptable by their nature, or can only be accepted
+                                    under special conditions, e.g., explosives, flammable or corrosive materials,
+                                    radioactive materials, or materials emitting fumes, the order must be considered
+                                    null and void. But if the transport is performed, the shipping agent will not bear
+                                    responsibility for all damages and expenses that may occur. On the other hand, it is
+                                    entitled to take any necessary measures to protect the rest of the goods during
+                                    transport, persons, and the environment, and the client bears the expenses.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 8 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 8: Burden of Proof</h3>
+                            <div class="text-gray-700">
+                                <p>The shipping agent is not responsible for damages that occurred due to signals,
+                                    notifications, or instructions provided by the client orally, unless confirmed by it
+                                    in writing.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 9 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 9: Client Address</h3>
+                            <div class="text-gray-700">
+                                <p>The client is obliged to inform the shipping agent of its address or any change in
+                                    its address without delay. If it does not do so, the most recent address provided to
+                                    the shipping agent applies. The shipping agent will not be responsible for damages
+                                    that occurred due to an incorrect address provided by the client or due to
+                                    incomplete or insufficient information related to the client's address change.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 10 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 10: Sending Documents</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The shipping agent is not obliged to send registered letters or
+                                    insure the transport of documents, unless there are written instructions.</p>
+                                <p>b) The shipping agent is not obliged to check the validity of signatures placed on
+                                    data related to the transported goods or on other written texts or verify the
+                                    authorization to sign them, unless otherwise agreed in writing.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 11 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 11: Order Cancellation</h3>
+                            <div class="text-gray-700">
+                                <p>The consumer is entitled to cancel the order at any time, unless the shipping agent
+                                    has concluded a transport contract with a third party. In this case, the consumer
+                                    bears all expenses and fees in addition to any positive damage or lost profits that
+                                    may arise from the order cancellation.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 12 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 12: Consolidated Goods Transport
+                            </h3>
+                            <div class="text-gray-700">
+                                <p>The shipping company is entitled to undertake consolidated goods transport, i.e.,
+                                    with other goods belonging to other clients, provided that it is not otherwise
+                                    agreed in writing.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 13 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 13: Assignment of Claims</h3>
+                            <div class="text-gray-700">
+                                <p>The client may not assign claims it has against the shipping company to third parties
+                                    and sue the shipping company in the name or on behalf of a third party except in the
+                                    case of proving any such claims against the shipping company in the context of the
+                                    current general terms and not in another context that may arise from special
+                                    agreements in the contract.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 14 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 14: Regulations for Transport To and
+                                From the Port</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) When it comes to transport to and from the port, loading and
+                                    unloading are performed according to the regulations and operating rules in force in
+                                    each port and the terms and conditions included in the bill of lading or charter
+                                    parties issued by shipping companies or shipowners.</p>
+                                <p class="mb-2">b) The agreed prices do not include additional expenses arising from
+                                    loading, reloading, or unloading goods during the night, on weekends, or during
+                                    official holidays, etc.</p>
+                                <p>c) When the shipping agent undertakes the transport of goods in the loading port, it
+                                    will not be responsible for the possible delay of the ship or for cargo defects or
+                                    delay on the part of the ship or detention of the ship or storage or unloading costs
+                                    or any other damage that may be caused by shipping companies or their agents. The
+                                    client bears all the said special expenses.</p>
+                            </div>
+                        </li>
+
+                        <!-- Part 2: Fees - Amount Due -->
+                        <h2 id="part2" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Part 2: Fees -
+                            Amount Due</h2>
+
+                        <!-- Article 15 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 15: Shipping Company Payments and
+                                Expenses</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The amount to be paid to the shipping company for performing the
+                                    transport is determined after agreement between the contracting parties.</p>
+                                <p class="mb-2">b) Unless there is an explicit agreement to the contrary, the payment
+                                    with expenses is paid in advance upon receipt of the goods when the client is the
+                                    sender and before delivery of the goods when the client is the consignee.</p>
+                                <p>c) The shipping company's invoices are paid in cash. The client is considered in
+                                    default within at most 15 days from the invoice date, without any prior
+                                    extrajudicial notice or any other condition, unless this default occurs earlier
+                                    according to the law. In case of client default, the shipping company is entitled to
+                                    claim according to the law.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 16 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 16: Agreement on Price and
+                                Performance</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The shipping agent's offers and agreements regarding prices and
+                                    performance must always include the explicit performance mentioned by the shipping
+                                    agent or/and third parties, and unless otherwise agreed, must only include goods of
+                                    regular size, weight, and quality. These offers assume normal and unimpeded
+                                    conditions throughout the goods transport. Subsequent fees and expenses must be
+                                    specifically indicated. The client bears the payment of fees, taxes, rights, and
+                                    expenses of third parties in addition to providing any special services.</p>
+                                <p>b) Possible increases in shipping amounts due to carriers or in customs duties,
+                                    changes in foreign currency exchange rates, taxes, fees, etc., which are unlikely to
+                                    be predicted in advance, justify proportional adjustments to the payment and special
+                                    expenses of the shipping agent.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 17 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 17: Non-Acceptance of Goods</h3>
+                            <div class="text-gray-700">
+                                <p>If the consignee refuses to receive the transported goods, the shipping company is
+                                    entitled to return them to the client at its expense, and the client bears the risks
+                                    of returning the goods, and the client bears any expenses resulting from the
+                                    non-acceptance of the goods by the consignee.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 18 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 18: Set-Off</h3>
+                            <div class="text-gray-700">
+                                <p>Set-off between claims for payment and expenses of the shipping company arising from
+                                    the performance of the transport operation is not permitted.</p>
+                            </div>
+                        </li>
+
+                        <!-- Part 3: Delivery of Goods -->
+                        <h2 id="part3" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Part 3: Delivery
+                            of Goods</h2>
+
+                        <!-- Article 19 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 19: Delivery of Goods</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The goods are delivered by signing the bill of lading or by
+                                    delivering them to the consignee mentioned in the above documents or to the
+                                    authorized person mentioned above.</p>
+                                <p>b) If the consignee refuses to receive the goods or if the goods are not delivered
+                                    for any reason for which the shipping agent is not responsible, the goods are placed
+                                    in an area chosen by the shipping agent, and the client bears the risks and expenses
+                                    and the shipping agent is not obliged to insure them. In addition, the shipping
+                                    agent is not responsible for sale and confiscation procedures, etc., that may be
+                                    imposed on the goods according to the laws in force in the country where the goods
+                                    were not delivered.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 20 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 20: Delivery of Goods Against Cash
+                                on Delivery</h3>
+                            <div class="text-gray-700">
+                                <p>Delivery of goods against cash on delivery is assumed by a special and explicit
+                                    request from the sender client. The mere use of the phrase "C.O.D" (Cash on
+                                    Delivery) on the invoice is not sufficient to prove the shipping company's
+                                    obligation to deliver the goods.</p>
+                            </div>
+                        </li>
+
+                        <!-- Part 4: Deadlines and Obstacles -->
+                        <h2 id="part4" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Part 4:
+                            Deadlines and Obstacles</h2>
+
+                        <!-- Article 21 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 21: No Liability Arising from
+                                Non-Compliance with Deadline</h3>
+                            <div class="text-gray-700">
+                                <p>In the absence of a prior written agreement, the shipping agent does not guarantee a
+                                    specific delivery date or a specific list of orders for transport priorities. The
+                                    mere notification of the client of the delivery date does not create an obligation
+                                    on the shipping agent. The shipping agent is not responsible for consequences that
+                                    may arise due to incorrect information provided by carriers or their agents
+                                    regarding dates or terms of transport, unloading, or delivery of goods.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 22 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 22: Impossibility of Performance,
+                                Inadequate Performance</h3>
+                            <div class="text-gray-700">
+                                <p>The shipping agent is exempt from all or part of its liability if due to events for
+                                    which it is not responsible it is totally or partially unable to fulfill its
+                                    obligations, as long as these events continue. In this case, the shipping agent is
+                                    entitled to withdraw from the contract, even in case of partial performance of the
+                                    order. In this case, the shipping agent is entitled to claim the expenses it
+                                    incurred.</p>
+                            </div>
+                        </li>
+
+                        <!-- Part 5: Cargo Insurance -->
+                        <h2 id="part5" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Part 5: Cargo
+                            Insurance</h2>
+
+                        <!-- Article 23 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 23: Cargo Insurance</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The shipping agent is not obliged to insure the goods on behalf of
+                                    the client unless it receives an explicit written order stating the insured amount
+                                    as well as the covered risks.</p>
+                                <p class="mb-2">b) The shipping agent's insurance of the client's goods itself under
+                                    previous transport contracts does not entail the shipping agent's obligation to
+                                    insure any subsequent goods of the same client. The mere indication of the value of
+                                    the goods cannot be considered an order to insure.</p>
+                                <p class="mb-2">c) The shipping agent is not obliged to the obligations of the insured
+                                    upon receipt of the insurance document. However, it must take all necessary measures
+                                    to preserve the claim arising from the insurance contract.</p>
+                                <p class="mb-2">d) If the client does not specify the covered risks in writing, the
+                                    goods are insured for all risks and usual exceptions as determined by the insurance
+                                    company.</p>
+                                <p>e) The shipping company may never be considered a joint insurance company.</p>
+                            </div>
+                        </li>
+
+                        <!-- Part 6: Temporary Storage -->
+                        <h2 id="part6" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Part 6:
+                            Temporary Storage</h2>
+
+                        <!-- Article 24 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 24: Temporary Storage in Private
+                                Warehouses or Third-Party Warehouses</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) Goods are stored temporarily, according to the shipping agent's
+                                    discretion, in its own warehouses or warehouses owned by third parties (either
+                                    private or governmental).</p>
+                                <p class="mb-2">b) If the shipping agent stores the goods temporarily in a warehouse
+                                    owned by a third party, the same terms that apply to its relationship with this
+                                    third party apply to its relationship with the client. The shipping agent is obliged
+                                    to send the storage terms to the client upon request.</p>
+                                <p>c) The shipping agent is obliged to ensure the safety or protection of storage places
+                                    only if they are owned or leased by it and only if this obligation is dictated by
+                                    good faith and commercial custom or based on the client's request.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 25 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 25: Access to the Warehouse</h3>
+                            <div class="text-gray-700">
+                                <p>Any inspection or sampling of goods that must be kept during temporary storage of
+                                    goods must be agreed upon in advance, and must be done in the presence of the
+                                    shipping agent or in the presence of one of its employees who has been assigned to
+                                    do so.</p>
+                            </div>
+                        </li>
+
+                        <!-- Part 7: Liens -->
+                        <h2 id="part7" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Part 7: Liens
+                        </h2>
+
+                        <!-- Article 26 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 26: Right to Sell Temporarily Stored
+                                Goods</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) In case the right holder refuses to receive the temporarily stored
+                                    goods, the shipping company is entitled to sell them after six months, provided that
+                                    it sends a registered letter to that effect before the expiration of six months.</p>
+                                <p>b) The sale price of the items is given to the right holder, after deducting the
+                                    amount corresponding to the shipping company's fees and expenses.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 27 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 27: Guarantee of Claims</h3>
+                            <div class="text-gray-700">
+                                <p>The shipping agent has a lien on the goods for any overdue claim arising from the
+                                    performance of the transport in addition to the right to retain the goods. The
+                                    mentioned liens guarantee not only any claims whatsoever related to the goods in the
+                                    shipping agent's possession, but also those related to goods that have already been
+                                    delivered. In case of loss or damage to the goods, the shipping agent's claims are
+                                    satisfied from any insurance compensation that may have been paid.</p>
+                            </div>
+                        </li>
+
+                        <!-- Part 8: Shipping Company Liability -->
+                        <h2 id="part8" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Part 8: Shipping
+                            Company Liability</h2>
+
+                        <!-- Article 28 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 28: Scope of Liability</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The shipping agent's liability is limited or exempted from this
+                                    liability according to the previous or subsequent provisions. The shipping agent is
+                                    liable if the damage occurred with intent to cause damage or with recklessness with
+                                    knowledge that damage is likely to arise from an act on its part or on the part of
+                                    its employees.</p>
+                                <p>b) The provisions of international transport agreements that regulate the
+                                    determination of liability or exemption of the carrier from liability apply directly
+                                    to the shipping agent's liability.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 29 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 29: Determination of Shipping Agent
+                                Liability</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) If the client's instructions specified in the shipping contract limit
+                                    the shipping agent's freedom to act, there must be a limitation of its liability. If
+                                    damage occurs to the goods, which is directly related to the client's instructions,
+                                    the shipping agent is exempt from its liability.</p>
+                                <p>b) The shipping agent's or carrier's liability towards the client cannot exceed the
+                                    liability of their agents or foreign representatives regarding the laws, provisions,
+                                    rules, and customs in force in the country of the said agents and foreign
+                                    representatives.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 30 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 30: Maximum Liability Limits</h3>
+                            <div class="text-gray-700">
+                                <p>If it is proven that the shipping company is responsible for damage to or loss of
+                                    goods or delay in their arrival during transport, whether due to the fault of the
+                                    shipping company itself or the fault of other carriers who were commissioned to
+                                    perform the transport, the compensation to be paid is limited to the limits
+                                    stipulated in international agreements under the law that regulate the relevant
+                                    transport contract.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 31 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 31: High-Value Goods</h3>
+                            <div class="text-gray-700">
+                                <p>As for goods whose value exceeds the maximum limits of carrier liability stipulated
+                                    in international agreements under the law, as well as for money, documents, bills of
+                                    exchange, technical pieces, and jewelry, the shipping agent is only responsible if
+                                    the carrier gives it written notice of the value of the transported goods in a
+                                    timely manner so that the shipping agent can accept or not accept the order in
+                                    writing.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 32 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 32: Exemption of Shipping Agent from
+                                Liability</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">1) The shipping agent is not responsible for:</p>
+                                <ul class="sub-list ">
+                                    <li class="mr-2">Damage resulting either from theft or burglary.</li>
+                                    <li>Damage resulting from the existence of legal or administrative restrictions and
+                                        difficulties when performing the transport contract (absence or delay in
+                                        receiving documents, customs clearance certificates, import or export documents,
+                                        etc.). The shipping agent is not responsible for transport costs, clearance
+                                        costs, fees, taxes, and other expenses imposed by the competent authorities by
+                                        mistake.</li>
+                                    <li>Loss or damage to goods due to carrier error during loading or due to a defect
+                                        in the goods or inadequate or defective packaging. In such cases, the shipping
+                                        company may accept reservations from carriers, warehouse keepers, and consignees
+                                        regarding the packaging of goods.</li>
+                                    <li>Damage that could not be avoided even if the shipping company showed all due
+                                        care and attention and took all necessary steps to avoid the damage or if it was
+                                        impossible to take such steps.</li>
+                                    <li>Damage resulting from keeping goods in an open area, if agreed upon, or if
+                                        another method of keeping goods is impossible due to the nature of the goods or
+                                        considering the circumstances.</li>
+                                    <li>Damage resulting from force majeure or bad weather conditions or damage to
+                                        machinery or wiring system or other goods or damage resulting from animals or
+                                        damage to goods due to corrosion and damage. In such cases, the shipping company
+                                        is only responsible if it is assumed that it intentionally caused the damage.
+                                    </li>
+                                    <li>Damage resulting from ordinary negligence of the shipping company or its
+                                        servants.</li>
+                                    <li>Damage that occurred while the goods were in port warehouses or in a customs
+                                        warehouse or in another public warehouse.</li>
+                                </ul>
+                                <p class="mt-2">2) If it is likely under the circumstances that the damage occurred due
+                                    to the mentioned risks, it is assumed that the risk occurred due to the mentioned
+                                    risks.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 33 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 33: Discharge of Shipping Agent</h3>
+                            <div class="text-gray-700">
+                                <p>The shipping agent's liability ends upon the consignee's actual and unreserved
+                                    receipt of the goods, as defined in Article 19 of this contract.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 34 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 34: Immediate Written Notice of
+                                Damage Occurrence</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The shipping agent must be notified in writing of any damage, even if
+                                    it cannot be ascertained by external inspection, immediately upon delivery of the
+                                    goods. If the goods are delivered by the shipping agent, it must be notified of the
+                                    damage that occurred within no more than 6 days from the incident.</p>
+                                <p class="mb-2">b) In case of non-compliance with the above obligation, it is assumed
+                                    that the damage occurred after delivery of the goods.</p>
+                                <p>c) If the shipping agent is notified of the damage at a time when it cannot take
+                                    steps against third parties, it will not bear any responsibility for the
+                                    consequences.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 35 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 35: Loss Calculation</h3>
+                            <div class="text-gray-700">
+                                <p>If the compensation that the shipping agent must pay reaches the value of the goods,
+                                    it is only obliged to pay it if the ownership of the goods is transferred to it and
+                                    the transfer of the client's or consignee's claims against third parties to it
+                                    including the insurance amount regarding the goods.</p>
+                            </div>
+                        </li>
+
+                        <!-- Article 36 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 36: Shipping Agent Liability in
+                                Combined Transport</h3>
+                            <div class="text-gray-700">
+                                <p>If the transport is based on a unified contract (combined transport), the shipping
+                                    agent is responsible for damage or loss that affects the goods during transport
+                                    according to the law governing the shipping agent's liability during the last unit
+                                    of transport.</p>
+                            </div>
+                        </li>
+
+                        <!-- Part 9: Limitations -->
+                        <h2 id="part9" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Part 9:
+                            Limitations</h2>
+
+                        <!-- Article 37 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 37: Statute of Limitations</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) Lawsuits filed against the shipping agent are time-barred according
+                                    to the statute of limitations periods stipulated in the law or international
+                                    agreements.</p>
+                                <p>b) In case of total loss, the statute of limitations period starts from the day on
+                                    which the goods were supposed to be delivered and in any other case it starts from
+                                    the day on which the goods were delivered or presented to the consignee.</p>
+                            </div>
+                        </li>
+
+                        <!-- Part 10: Place of Performance and Jurisdiction -->
+                        <h2 id="part10" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Part 10: Place
+                            of Performance and Jurisdiction</h2>
+
+                        <!-- Article 38 -->
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Article 38: Place of Performance,
+                                Jurisdiction and Governing Law</h3>
+                            <div class="text-gray-700">
+                                <p class="mb-2">a) The place of performance of the shipping contract for all concerned
+                                    parties is the registered office or branch office of the shipping company to which
+                                    the goods transport order is directed.</p>
+                                <p class="mb-2">b) In the absence of an explicit exclusive jurisdiction clause in the
+                                    bill of lading, the competent court to resolve all claims arising from the contract
+                                    or closely related to it by any party is the court of the shipping company's main
+                                    registered office.</p>
+                                <p>c) Syrian law applies to the legal relations between the shipping company and the
+                                    client or its successors.</p>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <div class="bg-blue-50 p-6 rounded-lg mt-12 border border-blue-100">
+                        <h3 class="text-lg font-bold text-primary mb-3">Contact Us</h3>
+                        <p class="text-gray-700 mb-4">If you have any questions about these Terms of Service, please
+                            contact us:</p>
+                        <ul class="mt-2 text-gray-700 space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt text-secondary mr-3"></i>
+                                <span>+963 11 7042</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope text-secondary mr-3"></i>
+                                <span>info@sammantrans.com</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-secondary mr-3"></i>
+                                <span>Damascus-Rukn al-Din-Shamdin Square</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white pt-12 pb-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Logo Column -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="./ST.png" alt="Samman Transport Logo" class="h-28 w-auto">
+                    </div>
+                    <p class="mb-6 opacity-80">Delivering excellence across borders with our comprehensive transport and
+                        shipping services.</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/19Z2qXjRjF/"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/samman-trans-company/"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/samman.trans?igsh=bHY1eGJyYzJ1bGg0"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Home</a>
+                        </li>
+                        <li><a href="aboutus.html" class="opacity-80 hover:text-secondary transition duration-300">About
+                                Us</a>
+                        </li>
+                        <li><a href="terms.html" class="opacity-80 hover:text-secondary transition duration-300">Terms
+                                of Service</a>
+                        </li>
+                        <li><a href="joinus.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Careers</a></li>
+                        <li><a href="contactus.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="ocean.html" class="opacity-80 hover:text-secondary transition duration-300">Ocean
+                                Freight</a>
+                        </li>
+                        <li><a href="airfreight.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Air Freight</a>
+                        </li>
+                        <li><a href="transport.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Land Transport</a>
+                        </li>
+                        <li><a href="ware.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Storage</a>
+                        </li>
+                        <li><a href="custom.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Customs Clearance</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Us -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-secondary mt-1 mr-3"></i>
+                            <span class="opacity-80">Damascus-Rukn al-Din-Shamdin Square</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-secondary mr-3"></i>
+                            <span class="opacity-80">+963 11 7042</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-secondary mr-3"></i>
+                            <span class="opacity-80">info@sammantrans.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 Samman International Transport & Shipping. All rights
+                    reserved.</p>
+                <div class="flex gap-3">
+                    <a href="privacy.html"
+                        class="text-sm opacity-80 hover:text-secondary transition duration-300">Privacy Policy</a>
+                    <a href="terms.html" class="text-sm opacity-80 hover:text-secondary transition duration-300">Terms
+                        of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language switching function
+        function switchLanguage() {
+            window.location.href = 'terms-ar.html';
+        }
+
+        // Back button function
+        function goBack() {
+            window.history.back();
+        }
+
+        // Make jump menu sticky on scroll
+        window.addEventListener('scroll', function () {
+            const jumpMenu = document.querySelector('.jump-menu');
+            if (window.pageYOffset > 200) {
+                jumpMenu.classList.add('fixed', 'top-4');
+            } else {
+                jumpMenu.classList.remove('fixed', 'top-4');
+            }
+        });
+    </script>
+</body>
+
+</html>

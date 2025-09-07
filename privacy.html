@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Samman Transport</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003869',
+                        secondary: '#F59E0B',
+                        accent: '#3B82F6',
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+
+        function switchLanguage() {
+            window.location.href = 'privacy-ar.html';
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.8;
+            background: #f8fafc;
+        }
+
+        .header-gradient {
+            background: linear-gradient(135deg, #003869 0%, #0056a3 100%);
+        }
+
+        .section-title {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #F59E0B;
+            border-radius: 50%;
+        }
+
+        .content-container {
+            max-width: 900px;
+        }
+
+        .privacy-list {
+            list-style-type: none;
+            counter-reset: privacy-counter;
+        }
+
+        .privacy-list li {
+            counter-increment: privacy-counter;
+            margin-bottom: 2rem;
+            padding-left: 2.5rem;
+            position: relative;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+        }
+
+        .privacy-list li::before {
+            content: counter(privacy-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: #003869;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .sub-list {
+            list-style-type: none;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sub-list li {
+            margin-bottom: 0.5rem;
+            padding-right: 1.5rem;
+            position: relative;
+            border-bottom: none;
+            padding-bottom: 0.5rem;
+        }
+
+        .sub-list li::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #F59E0B;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .clause-title {
+            font-weight: bold;
+            color: #003869;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+            border-left: 4px solid #003869;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .contact-box {
+            background: #fffbeb;
+            border: 1px solid #F59E0B;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-list li {
+                padding-left: 2rem;
+            }
+
+            .privacy-list li::before {
+                width: 1.75rem;
+                height: 1.75rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        .jump-menu {
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .jump-menu a {
+            display: block;
+            padding: 0.5rem;
+            color: #4b5563;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .jump-menu a:hover {
+            color: #003869;
+            border-left: 3px solid #F59E0B;
+            background-color: #f3f4f6;
+        }
+
+        .last-updated {
+            background: #f1f5f9;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100 h-auto p-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center">
+                        <img src="./12.png" alt="Samman Trans Logo" class="h-16 w-auto">
+                    </a>
+                </div>
+
+                <!-- Page Title -->
+                <h1 class="text-xl md:text-2xl font-bold text-primary">Privacy Policy</h1>
+
+                <!-- Language Switcher and Back Button -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="goBack()"
+                        class="text-primary hover:text-secondary transition duration-300 flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Back
+                    </button>
+                    <div class="flex items-center">
+                        <a href="privacy.html" class="text-sm font-bold text-primary">EN</a>
+                        <span class="mx-2 text-gray-400">|</span>
+                        <a href="javascript:void(0)" onclick="switchLanguage()"
+                            class="text-sm text-gray-600 hover:text-primary transition duration-300">العربية</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Policy Content -->
+    <main class="flex-grow py-10 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+            <!-- Quick Navigation Menu -->
+            <div class="w-full md:w-1/4">
+                <div class="jump-menu hidden md:block">
+                    <h3 class="font-bold text-primary mb-4">Policy Sections</h3>
+                    <a href="#intro">Introduction</a>
+                    <a href="#data-collection">Data Collection</a>
+                    <a href="#data-usage">Data Usage</a>
+                    <a href="#data-protection">Data Protection</a>
+                    <a href="#cookies">Cookies</a>
+                    <a href="#rights">Your Rights</a>
+                    <a href="#changes">Policy Changes</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="w-full md:w-3/4 bg-white rounded-lg shadow-md overflow-hidden">
+                <!-- Page Header -->
+                <div class="header-gradient text-white p-8 text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2">Privacy Policy</h2>
+                    <p class="opacity-90">Protecting your personal information is our top priority</p>
+                    <div class="last-updated mt-4 text-primary bg-white bg-opacity-20">
+                        Last Updated: December 2023
+                    </div>
+                </div>
+
+                <!-- Policy Content -->
+                <div class="p-6 md:p-8 content-container mx-auto">
+                    <!-- Introduction -->
+                    <h2 id="intro" class="text-2xl font-bold text-primary mt-8 mb-4 section-title">Introduction</h2>
+                    <p class="text-gray-700 mb-6">
+                        Samman Transport Company ("Company", "we", "us") welcomes you. We recognize the importance of
+                        privacy and are committed to protecting your personal information. This privacy policy explains
+                        how we collect, use, and share your personal information when you use our services.
+                    </p>
+
+                    <div class="info-card">
+                        <h3 class="font-bold text-primary mb-2">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            Policy Scope
+                        </h3>
+                        <p class="text-gray-700">
+                            This privacy policy applies to all services provided by Samman Transport Company, including
+                            land, sea, and air transport services, logistics services, storage, and customs clearance
+                            services.
+                        </p>
+                    </div>
+
+                    <!-- Data Collection -->
+                    <h2 id="data-collection" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Data
+                        Collection</h2>
+                    <p class="text-gray-700 mb-4">We collect different types of information to provide and improve our
+                        services:</p>
+
+                    <ol class="privacy-list">
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Information You Provide to Us</h3>
+                            <ul class="sub-list">
+                                <li>Identification information: Full name, address, ID number, passport</li>
+                                <li>Contact information: Phone number, email, address</li>
+                                <li>Payment information: Bank card details, bank account information</li>
+                                <li>Shipping information: Goods details, pickup and delivery addresses</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Information We Collect Automatically</h3>
+                            <ul class="sub-list">
+                                <li>Device information: Device type, operating system, browser</li>
+                                <li>Log information: IP address, browser type, visited pages</li>
+                                <li>Location data: When using our tracking services</li>
+                                <li>Cookies and similar data</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Information from Other Sources</h3>
+                            <ul class="sub-list">
+                                <li>Information from our business partners</li>
+                                <li>Information from third-party service providers</li>
+                                <li>Information from government authorities when necessary for legal compliance</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <!-- Data Usage -->
+                    <h2 id="data-usage" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Data Usage</h2>
+                    <p class="text-gray-700 mb-4">We use the information we collect for the following purposes:</p>
+
+                    <ol class="privacy-list">
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Providing and Maintaining Services</h3>
+                            <ul class="sub-list">
+                                <li>Processing transport and shipping requests</li>
+                                <li>Providing tracking services and updates</li>
+                                <li>Issuing invoices and managing payments</li>
+                                <li>Communicating about services and orders</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Service Improvement and Development</h3>
+                            <ul class="sub-list">
+                                <li>Analyzing service usage and making improvements</li>
+                                <li>Developing new services and products</li>
+                                <li>Conducting market research and analysis</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Legal Purposes and Compliance</h3>
+                            <ul class="sub-list">
+                                <li>Complying with applicable laws and regulations</li>
+                                <li>Protecting our legal rights and interests</li>
+                                <li>Preventing and detecting fraudulent activities</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <!-- Data Protection -->
+                    <h2 id="data-protection" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Data
+                        Protection</h2>
+                    <p class="text-gray-700 mb-4">We protect your personal information through:</p>
+
+                    <div class="info-card">
+                        <h3 class="font-bold text-primary mb-3">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            Technical and Organizational Security Measures
+                        </h3>
+                        <ul class="sub-list">
+                            <li>Data encryption during transmission and storage</li>
+                            <li>Access control based on need-to-know</li>
+                            <li>Regular review of data collection, storage, and processing practices</li>
+                            <li>Employee training on privacy and security practices</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-gray-700 mb-4">
+                        While we implement security measures to protect your information, please note that no method of
+                        transmission over the internet or electronic storage is 100% secure. We cannot guarantee
+                        absolute security of information transmitted to us.
+                    </p>
+
+                    <!-- Cookies -->
+                    <h2 id="cookies" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Cookies</h2>
+                    <p class="text-gray-700 mb-4">
+                        We use cookies and similar technologies to track activity on our service and store certain
+                        information. Cookies are files with a small amount of data that may include an anonymous unique
+                        identifier.
+                    </p>
+
+                    <ol class="privacy-list">
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">Types of Cookies We Use</h3>
+                            <ul class="sub-list">
+                                <li>Essential cookies: Necessary for service operation</li>
+                                <li>Functional cookies: Allow remembering your preferences</li>
+                                <li>Analytical cookies: Help us understand how the service is used</li>
+                                <li>Marketing cookies: Used to deliver relevant advertisements</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-bold text-primary mb-2">How to Manage Cookies</h3>
+                            <p class="text-gray-700">
+                                You can set your browser to refuse all cookies or to indicate when a cookie is being
+                                sent. However, if you do not accept cookies, you may not be able to use some portions of
+                                our service.
+                            </p>
+                        </li>
+                    </ol>
+
+                    <!-- Your Rights -->
+                    <h2 id="rights" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Your Rights</h2>
+                    <p class="text-gray-700 mb-4">You have certain rights regarding your personal information:</p>
+
+                    <div class="info-card">
+                        <h3 class="font-bold text-primary mb-3">
+                            <i class="fas fa-user-shield mr-2"></i>
+                            Your Privacy Rights
+                        </h3>
+                        <ul class="sub-list">
+                            <li>Right to access your personal information</li>
+                            <li>Right to correct inaccurate information</li>
+                            <li>Right to delete your personal information under certain circumstances</li>
+                            <li>Right to restrict processing of your personal information</li>
+                            <li>Right to object to processing of your personal information</li>
+                            <li>Right to data portability</li>
+                            <li>Right to withdraw consent at any time</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-gray-700 mb-4">
+                        To exercise any of these rights, please contact us using the contact information in the "Contact
+                        Us" section below. We will respond to your request within the timeframe specified by applicable
+                        law.
+                    </p>
+
+                    <!-- Policy Changes -->
+                    <h2 id="changes" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Policy Changes
+                    </h2>
+                    <p class="text-gray-700 mb-4">
+                        We may update our privacy policy from time to time. We will notify you of any changes by posting
+                        the new privacy policy on this page and updating the "Last Updated" date at the top.
+                    </p>
+
+                    <p class="text-gray-700 mb-4">
+                        We advise you to review this privacy policy periodically for any changes. Changes to this
+                        privacy policy are effective when they are posted on this page.
+                    </p>
+
+                    <!-- Contact Us -->
+                    <h2 id="contact" class="text-2xl font-bold text-primary mt-12 mb-4 section-title">Contact Us</h2>
+                    <div class="contact-box">
+                        <h3 class="font-bold text-primary mb-3">
+                            <i class="fas fa-headset mr-2"></i>
+                            Have questions about our privacy policy?
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            If you have any questions or concerns about this privacy policy, or if you wish to exercise
+                            any of your privacy rights, please contact us via:</p>
+
+                        <ul class="sub-list">
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope text-secondary mr-3"></i>
+                                Email: privacy@sammantrans.com
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt text-secondary mr-3"></i>
+                                Phone: +963 11 7042
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-secondary mr-3"></i>
+                                Address: Damascus-Rukn al-Din-Shamdin Square
+                            </li>
+                        </ul>
+
+                        <p class="text-gray-700 mt-4">
+                            We have a Data Protection Officer whom you can contact directly at dpo@sammantrans.com for
+                            any inquiries related to data processing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white pt-12 pb-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Logo Column -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="./ST.png" alt="Samman Transport Logo" class="h-28 w-auto">
+                    </div>
+                    <p class="mb-6 opacity-80">Delivering excellence across borders with our comprehensive transport and
+                        shipping services.</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/19Z2qXjRjF/"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/samman-trans-company/"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/samman.trans?igsh=bHY1eGJyYzJ1bGg0"
+                            class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Home</a>
+                        </li>
+                        <li><a href="aboutus.html" class="opacity-80 hover:text-secondary transition duration-300">About
+                                Us</a>
+                        </li>
+                        <li><a href="privacy.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Privacy Policy</a>
+                        </li>
+                        <li><a href="terms.html" class="opacity-80 hover:text-secondary transition duration-300">Terms
+                                of Service</a>
+                        </li>
+                        <li><a href="contactus.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="ocean.html" class="opacity-80 hover:text-secondary transition duration-300">Ocean
+                                Freight</a>
+                        </li>
+                        <li><a href="airfreight.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Air Freight</a>
+                        </li>
+                        <li><a href="transport.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Land Transport</a>
+                        </li>
+                        <li><a href="ware.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Storage</a>
+                        </li>
+                        <li><a href="custom.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">Customs Clearance</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Us -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-secondary mt-1 mr-3"></i>
+                            <span class="opacity-80">Damascus-Rukn al-Din-Shamdin Square</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-secondary mr-3"></i>
+                            <span class="opacity-80">+963 11 7042</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-secondary mr-3"></i>
+                            <span class="opacity-80">info@sammantrans.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 Samman International Transport & Shipping. All rights
+                    reserved.</p>
+                <div class="flex gap-3">
+                    <a href="privacy.html"
+                        class="text-sm opacity-80 hover:text-secondary transition duration-300">Privacy Policy</a>
+                    <a href="terms.html" class="text-sm opacity-80 hover:text-secondary transition duration-300">Terms
+                        of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language switching function
+        function switchLanguage() {
+            window.location.href = 'privacy-ar.html';
+        }
+
+        // Back button function
+        function goBack() {
+            window.history.back();
+        }
+
+        // Make jump menu sticky on scroll
+        window.addEventListener('scroll', function () {
+            const jumpMenu = document.querySelector('.jump-menu');
+            if (window.pageYOffset > 200) {
+                jumpMenu.classList.add('fixed', 'top-4');
+            } else {
+                jumpMenu.classList.remove('fixed', 'top-4');
+            }
+        });
+    </script>
+</body>
+
+</html>
