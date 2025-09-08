@@ -820,7 +820,8 @@
                         <i class="fas fa-warehouse"></i>
                     </div>
                     <h3 class="text-lg font-bold text-primary mb-2">التخزين</h3>
-                    <p class="text-gray-700">مستودعات جمركية وغير جمركية مع خدمات مضافة.</p>
+                    <p class="text-gray-700">مستودعات تخزين امنة ومجهزة بأفضل وسائل الأمان و المراقبة في السوق
+                        المحلية والمناطق الحرة مع خدمات مضافة</p>
                 </div>
                 <div class="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition">
                     <div
@@ -1004,7 +1005,7 @@
             <div
                 class="bg-gradient-to-r from-primary to-[#002850] rounded-2xl p-8 md:p-12 shadow-xl grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                    <h2 class="text-2xl md:text-4xl font-bold mb-3">جاهزون لتحسين سلسلة الإمداد لديك؟</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold mb-3">جاهزون لتحسين سلاسل الإمداد لديك؟</h2>
                     <p class="text-lg opacity-90 mb-6">يقدّم خبراؤنا حلولاً مخصّصة لاحتياجات النقل لديك.</p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
@@ -1242,7 +1243,7 @@
                ========================= */
             (function initWorldMap() {
                 const mapEl = document.getElementById('worldMap');
-                if (!mapEl || !window.L) return; // تحقّق من وجود العنصر والمكتبة
+                if (!mapEl || !window.L) return;
 
                 const map = L.map(mapEl, { zoomControl: true }).setView([25, 20], 2);
 
@@ -1257,25 +1258,49 @@
                 // ألوان وخصائص الدوائر
                 const originColor = "#003869";     // primary
                 const destinationColor = "#F59E0B"; // secondary
-                const originRadius = 500000;        // متر — عدّل حسب الحاجة
-                const destinationRadius = 300000;   // متر — عدّل حسب الحاجة
+                const originRadius = 700000;        // زيادة نصف القطر لتغطية الدول الكبيرة
+                const destinationRadius = 400000;   // زيادة نصف القطر لتغطية الدول الكبيرة
 
-                // دول الانطلاق
+                // دول الانطلاق (المصادر الرئيسية)
                 const origins = [
                     { name: "الهند", coords: [20.5937, 78.9629], flag: "https://flagcdn.com/w40/in.png" },
                     { name: "الصين", coords: [35.8617, 104.1954], flag: "https://flagcdn.com/w40/cn.png" },
                     { name: "إيطاليا", coords: [41.8719, 12.5674], flag: "https://flagcdn.com/w40/it.png" },
                     { name: "ألمانيا", coords: [51.1657, 10.4515], flag: "https://flagcdn.com/w40/de.png" },
-                    { name: "إسبانيا", coords: [40.4637, -3.7492], flag: "https://flagcdn.com/w40/es.png" }
+                    { name: "إسبانيا", coords: [40.4637, -3.7492], flag: "https://flagcdn.com/w40/es.png" },
+                    { name: "فرنسا", coords: [46.6034, 1.8883], flag: "https://flagcdn.com/w40/fr.png" },
+                    { name: "المملكة المتحدة", coords: [55.3781, -3.4360], flag: "https://flagcdn.com/w40/gb.png" },
+                    { name: "السويد", coords: [60.1282, 18.6435], flag: "https://flagcdn.com/w40/se.png" },
+                    { name: "الولايات المتحدة", coords: [37.0902, -95.7129], flag: "https://flagcdn.com/w40/us.png" },
+                    { name: "كندا", coords: [56.1304, -106.3468], flag: "https://flagcdn.com/w40/ca.png" },
+                    { name: "البرازيل", coords: [-14.2350, -51.9253], flag: "https://flagcdn.com/w40/br.png" },
+                    { name: "الأرجنتين", coords: [-38.4161, -63.6167], flag: "https://flagcdn.com/w40/ar.png" },
+                    { name: "المكسيك", coords: [23.6345, -102.5528], flag: "https://flagcdn.com/w40/mx.png" },
+                    { name: "ماليزيا", coords: [4.2105, 101.9758], flag: "https://flagcdn.com/w40/my.png" },
+                    { name: "باكستان", coords: [30.3753, 69.3451], flag: "https://flagcdn.com/w40/pk.png" },
+                    { name: "الإمارات العربية المتحدة", coords: [23.4241, 53.8478], flag: "https://flagcdn.com/w40/ae.png" },
+                    { name: "جمهورية التشيك", coords: [49.8175, 15.4730], flag: "https://flagcdn.com/w40/cz.png" },
+                    { name: "رومانيا", coords: [45.9432, 24.9668], flag: "https://flagcdn.com/w40/ro.png" },
+                    { name: "بلغاريا", coords: [42.7339, 25.4858], flag: "https://flagcdn.com/w40/bg.png" },
+                    { name: "المجر", coords: [47.1625, 19.5033], flag: "https://flagcdn.com/w40/hu.png" },
+                    { name: "بولندا", coords: [51.9194, 19.1451], flag: "https://flagcdn.com/w40/pl.png" },
+                    { name: "سويسرا", coords: [46.8182, 8.2275], flag: "https://flagcdn.com/w40/ch.png" },
+                    { name: "النمسا", coords: [47.5162, 14.5501], flag: "https://flagcdn.com/w40/at.png" },
+                    { name: "هولندا", coords: [52.1326, 5.2913], flag: "https://flagcdn.com/w40/nl.png" },
+                    { name: "بلجيكا", coords: [50.5039, 4.4699], flag: "https://flagcdn.com/w40/be.png" }
                 ];
 
-                // الوجهات
+                // الوجهات (الأسواق المستهدفة)
                 const destinations = [
                     { name: "طرطوس، سوريا", coords: [34.8881, 35.8866], flag: "https://flagcdn.com/w40/sy.png" },
                     { name: "إسطنبول، تركيا", coords: [41.0082, 28.9784], flag: "https://flagcdn.com/w40/tr.png" },
                     { name: "بيروت، لبنان", coords: [33.8938, 35.5018], flag: "https://flagcdn.com/w40/lb.png" },
                     { name: "الإسكندرية، مصر", coords: [31.2001, 29.9187], flag: "https://flagcdn.com/w40/eg.png" },
-                    { name: "العقبة، الأردن", coords: [29.5321, 35.0063], flag: "https://flagcdn.com/w40/jo.png" }
+                    { name: "العقبة، الأردن", coords: [29.5321, 35.0063], flag: "https://flagcdn.com/w40/jo.png" },
+                    { name: "الرياض، السعودية", coords: [24.7136, 46.6753], flag: "https://flagcdn.com/w40/sa.png" },
+                    { name: "دبي، الإمارات", coords: [25.2048, 55.2708], flag: "https://flagcdn.com/w40/ae.png" },
+                    { name: "بغداد، العراق", coords: [33.3152, 44.3661], flag: "https://flagcdn.com/w40/iq.png" },
+                    { name: "جوهانسبرغ، جنوب أفريقيا", coords: [-26.2041, 28.0473], flag: "https://flagcdn.com/w40/za.png" }
                 ];
 
                 // طبقات
@@ -1338,11 +1363,11 @@
                 legend.onAdd = () => {
                     const div = L.DomUtil.create('div', 'map-legend');
                     div.innerHTML = `
-            <div style="font-weight:700; color:#003869; margin-bottom:.35rem">دليل الخريطة</div>
-            <div style="margin-bottom:.25rem"><span class="legend-dot" style="background:#003869"></span> دول الانطلاق</div>
-            <div style="margin-bottom:.25rem"><span class="legend-dot" style="background:#F59E0B"></span> الوجهات</div>
-            <div style="margin-top:.35rem; font-size:.8rem; color:#6b7280">اضغط على أي علم لعرض التفاصيل</div>
-          `;
+                <div style="font-weight:700; color:#003869; margin-bottom:.35rem">دليل الخريطة</div>
+                <div style="margin-bottom:.25rem"><span class="legend-dot" style="background:#003869"></span> دول الانطلاق</div>
+                <div style="margin-bottom:.25rem"><span class="legend-dot" style="background:#F59E0B"></span> الوجهات</div>
+                <div style="margin-top:.35rem; font-size:.8rem; color:#6b7280">اضغط على أي علم لعرض التفاصيل</div>
+            `;
                     return div;
                 };
                 legend.addTo(map);
