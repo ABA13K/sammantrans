@@ -1518,20 +1518,44 @@
 
                 // Primary origins
                 const origins = [
-                    { name: 'India', coords: [20.5937, 78.9629], flag: 'https://flagcdn.com/w40/in.png' },
-                    { name: 'China', coords: [35.8617, 104.1954], flag: 'https://flagcdn.com/w40/cn.png' },
-                    { name: 'Italy', coords: [41.8719, 12.5674], flag: 'https://flagcdn.com/w40/it.png' },
-                    { name: 'Germany', coords: [51.1657, 10.4515], flag: 'https://flagcdn.com/w40/de.png' },
-                    { name: 'Spain', coords: [40.4637, -3.7492], flag: 'https://flagcdn.com/w40/es.png' }
+                    { name: "India ", coords: [20.5937, 78.9629], flag: "https://flagcdn.com/w40/in.png" },
+                    { name: "China", coords: [35.8617, 104.1954], flag: "https://flagcdn.com/w40/cn.png" },
+                    { name: "Italy", coords: [41.8719, 12.5674], flag: "https://flagcdn.com/w40/it.png" },
+                    { name: "Germany", coords: [51.1657, 10.4515], flag: "https://flagcdn.com/w40/de.png" },
+                    { name: "Spain", coords: [40.4637, -3.7492], flag: "https://flagcdn.com/w40/es.png" },
+                    { name: "France", coords: [46.6034, 1.8883], flag: "https://flagcdn.com/w40/fr.png" },
+                    { name: "UK", coords: [55.3781, -3.4360], flag: "https://flagcdn.com/w40/gb.png" },
+                    { name: "Sweden", coords: [60.1282, 18.6435], flag: "https://flagcdn.com/w40/se.png" },
+                    { name: "USA", coords: [37.0902, -95.7129], flag: "https://flagcdn.com/w40/us.png" },
+                    { name: "Canada", coords: [56.1304, -106.3468], flag: "https://flagcdn.com/w40/ca.png" },
+                    { name: "Brazil", coords: [-14.2350, -51.9253], flag: "https://flagcdn.com/w40/br.png" },
+                    { name: "Argentina", coords: [-38.4161, -63.6167], flag: "https://flagcdn.com/w40/ar.png" },
+                    { name: "Mexico", coords: [23.6345, -102.5528], flag: "https://flagcdn.com/w40/mx.png" },
+                    { name: "Malysia", coords: [4.2105, 101.9758], flag: "https://flagcdn.com/w40/my.png" },
+                    { name: "Pakistan", coords: [30.3753, 69.3451], flag: "https://flagcdn.com/w40/pk.png" },
+                    { name: "UAE", coords: [23.4241, 53.8478], flag: "https://flagcdn.com/w40/ae.png" },
+                    { name: "Czech republic", coords: [49.8175, 15.4730], flag: "https://flagcdn.com/w40/cz.png" },
+                    { name: "Romania", coords: [45.9432, 24.9668], flag: "https://flagcdn.com/w40/ro.png" },
+                    { name: "Bulgaria", coords: [42.7339, 25.4858], flag: "https://flagcdn.com/w40/bg.png" },
+                    { name: "Hungary", coords: [47.1625, 19.5033], flag: "https://flagcdn.com/w40/hu.png" },
+                    { name: "Poland", coords: [51.9194, 19.1451], flag: "https://flagcdn.com/w40/pl.png" },
+                    { name: "Switzerland", coords: [46.8182, 8.2275], flag: "https://flagcdn.com/w40/ch.png" },
+                    { name: "Austria", coords: [47.5162, 14.5501], flag: "https://flagcdn.com/w40/at.png" },
+                    { name: "Holand", coords: [52.1326, 5.2913], flag: "https://flagcdn.com/w40/nl.png" },
+                    { name: "Belgium", coords: [50.5039, 4.4699], flag: "https://flagcdn.com/w40/be.png" }
                 ];
 
-                // Key destinations (MENA + region)
+                // الوجهات (الأسواق المستهدفة)
                 const destinations = [
-                    { name: 'Tartus, Syria', coords: [34.8881, 35.8866], flag: 'https://flagcdn.com/w40/sy.png' },
-                    { name: 'Istanbul, Turkey', coords: [41.0082, 28.9784], flag: 'https://flagcdn.com/w40/tr.png' },
-                    { name: 'Beirut, Lebanon', coords: [33.8938, 35.5018], flag: 'https://flagcdn.com/w40/lb.png' },
-                    { name: 'Alexandria, Egypt', coords: [31.2001, 29.9187], flag: 'https://flagcdn.com/w40/eg.png' },
-                    { name: 'Aqaba, Jordan', coords: [29.5321, 35.0063], flag: 'https://flagcdn.com/w40/jo.png' }
+                    { name: "Tartous, Syria", coords: [34.8881, 35.8866], flag: "https://flagcdn.com/w40/sy.png" },
+                    { name: "Istanbul, Turkey", coords: [41.0082, 28.9784], flag: "https://flagcdn.com/w40/tr.png" },
+                    { name: "Beriut Lebanon", coords: [33.8938, 35.5018], flag: "https://flagcdn.com/w40/lb.png" },
+                    { name: "Alexandaria, Egypt", coords: [31.2001, 29.9187], flag: "https://flagcdn.com/w40/eg.png" },
+                    { name: "Aqaba , Jordan", coords: [29.5321, 35.0063], flag: "https://flagcdn.com/w40/jo.png" },
+                    { name: "Riyadh, Saudi Arabia", coords: [24.7136, 46.6753], flag: "https://flagcdn.com/w40/sa.png" },
+                    { name: "Dubai, UAE", coords: [25.2048, 55.2708], flag: "https://flagcdn.com/w40/ae.png" },
+                    { name: "Baghdad, Iraq", coords: [33.3152, 44.3661], flag: "https://flagcdn.com/w40/iq.png" },
+                    { name: "Johansberg, South Africa", coords: [-26.2041, 28.0473], flag: "https://flagcdn.com/w40/za.png" }
                 ];
 
                 const originsLayer = L.layerGroup().addTo(map);
