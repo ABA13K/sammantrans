@@ -590,27 +590,27 @@
                     </div>
 
                     <!-- Multi-step Form -->
-                    <form id="quote-form" class="space-y-6">
+                    <form id="quote-form" class="space-y-6" dir="rtl">
                         <!-- Step 1: Service Selection -->
                         <div class="form-step active" data-step="1">
                             <h3 class="text-xl font-semibold text-primary mb-6 text-right">اختر نوع الخدمة</h3>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 rtl-grid">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 rtl-grid " dir="rtl">
                                 <div class="service-option p-6 border-2 border-gray-200 rounded-lg cursor-pointer text-right"
                                     data-service="ocean">
-                                    <div class="flex items-center flex-row-reverse mb-4">
+                                    <div class="flex items-center  mb-4">
                                         <div
                                             class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center ml-4">
                                             <i class="fas fa-ship text-blue-600 text-xl"></i>
                                         </div>
-                                        <h4 class="font-medium text-gray-900">الشحن البحري</h4>
+                                        <h4 class="font-medium text-gray-900 ml-2">الشحن البحري</h4>
                                     </div>
                                     <p class="text-sm text-gray-600">خدمات لوجستية بحرية عالمية مع شحن الحاويات</p>
                                 </div>
 
                                 <div class="service-option p-6 border-2 border-gray-200 rounded-lg cursor-pointer text-right"
                                     data-service="air">
-                                    <div class="flex items-center flex-row-reverse mb-4">
+                                    <div class="flex items-center  mb-4">
                                         <div
                                             class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center ml-4">
                                             <i class="fas fa-plane text-blue-600 text-xl"></i>
@@ -622,7 +622,7 @@
 
                                 <div class="service-option p-6 border-2 border-gray-200 rounded-lg cursor-pointer text-right"
                                     data-service="land">
-                                    <div class="flex items-center flex-row-reverse mb-4">
+                                    <div class="flex items-center  mb-4">
                                         <div
                                             class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center ml-4">
                                             <i class="fas fa-truck text-blue-600 text-xl"></i>
@@ -634,7 +634,7 @@
 
                                 <div class="service-option p-6 border-2 border-gray-200 rounded-lg cursor-pointer text-right"
                                     data-service="warehousing">
-                                    <div class="flex items-center flex-row-reverse mb-4">
+                                    <div class="flex items-center  mb-4">
                                         <div
                                             class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center ml-4">
                                             <i class="fas fa-warehouse text-blue-600 text-xl"></i>
@@ -646,7 +646,7 @@
 
                                 <div class="service-option p-6 border-2 border-gray-200 rounded-lg cursor-pointer text-right"
                                     data-service="customs">
-                                    <div class="flex items-center flex-row-reverse mb-4">
+                                    <div class="flex items-center  mb-4">
                                         <div
                                             class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center ml-4">
                                             <i class="fas fa-passport text-blue-600 text-xl"></i>
@@ -658,7 +658,7 @@
 
                                 <div class="service-option p-6 border-2 border-gray-200 rounded-lg cursor-pointer text-right"
                                     data-service="other">
-                                    <div class="flex items-center flex-row-reverse mb-4">
+                                    <div class="flex items-center  mb-4">
                                         <div
                                             class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center ml-4">
                                             <i class="fas fa-box text-blue-600 text-xl"></i>
@@ -994,16 +994,15 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white pt-12 pb-8">
+    <footer class="bg-primary text-white pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-right">
-                <!-- Logo Column -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 <div>
-                    <div class="flex items-center justify-end mb-6">
-                        <img src="./ST.png" alt="Samman Transport Logo" class="h-28 w-auto">
+                    <div class="flex items-center mb-6">
+                        <img src="./ST.png" alt="شعار سمن للنقل" class="h-36 w-auto">
                     </div>
-                    <p class="mb-6 opacity-80">تقديم التميز عبر الحدود مع خدمات النقل والشحن الشاملة.</p>
-                    <div class="flex gap-4 justify-end">
+                    <p class="mb-6 opacity-80">تقديم التميز عبر الحدود مع خدمات النقل والشحن الشاملة لدينا.</p>
+                    <div class="flex gap-4">
                         <a href="https://www.facebook.com/share/19Z2qXjRjF/"
                             class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center hover:bg-secondary transition duration-300">
                             <i class="fab fa-facebook-f"></i>
@@ -1027,21 +1026,17 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
                     <ul class="space-y-3">
-                        <li><a href="index-ar.html"
+                        <li><a href="./index-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">الرئيسية</a>
                         </li>
-                        <li><a href="aboutus-ar.html" class="opacity-80 hover:text-secondary transition duration-300">عن
+                        <li><a href="./aboutus-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">عن
                                 الشركة</a>
                         </li>
-                        <li><a href="privacy-ar.html"
-                                class="opacity-80 hover:text-secondary transition duration-300">سياسة الخصوصية</a>
-                        </li>
-                        <li><a href="terms-ar.html" class="opacity-80 hover:text-secondary transition duration-300">شروط
-                                الخدمة</a>
-                        </li>
-                        <li><a href="joinus-ar.html"
+
+                        <li><a href="./joinus-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">الوظائف</a></li>
-                        <li><a href="contactus-ar.html"
+                        <li><a href="./contactus-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">اتصل بنا</a>
                         </li>
                     </ul>
@@ -1051,22 +1046,23 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6">الخدمات</h4>
                     <ul class="space-y-3">
-                        <li><a href="ocean-ar.html"
+                        <li><a href="./ocean-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">الشحن
                                 البحري</a>
                         </li>
-                        <li><a href="airfreight-ar.html"
+                        <li><a href="./airfreight-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">الشحن الجوي</a>
                         </li>
-                        <li><a href="transport-ar.html"
+                        <li><a href="./transport-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">النقل البري</a>
                         </li>
-                        <li><a href="ware-ar.html"
+                        <li><a href="./ware-ar.html"
                                 class="opacity-80 hover:text-secondary transition duration-300">التخزين</a>
                         </li>
-                        <li><a href="custom-ar.html"
-                                class="opacity-80 hover:text-secondary transition duration-300">التخليص الجمركي</a>
-                        </li>
+
+                        <li><a href="./custom-ar.html"
+                                class="opacity-80 hover:text-secondary transition duration-300">التخليص
+                                الجمركي</a></li>
                     </ul>
                 </div>
 
@@ -1074,36 +1070,35 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6">اتصل بنا</h4>
                     <ul class="space-y-4">
-                        <li class="flex items-start flex-row-reverse">
-                            <i class="fas fa-map-marker-alt text-secondary mt-1 ml-3"></i>
-                            <span class="opacity-80">دمشق - ركن الدين - ساحة شمدين</span>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-secondary mt-1 mr-3"></i>
+                            <span class="opacity-80  ml-2 mr-2">دمشق-ركن الدين-ساحة شمدين</span>
                         </li>
-                        <li class="flex items-center flex-row-reverse">
-                            <i class="fas fa-phone-alt text-secondary ml-3"></i>
-                            <span class="opacity-80">+963 11 7042</span>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-secondary mr-3"></i>
+                            <span class="opacity-80 ml-2 mr-2" dir="ltr">+963 11 7042</span>
                         </li>
-                        <li class="flex items-center flex-row-reverse">
-                            <i class="fas fa-envelope text-secondary ml-3"></i>
-                            <span class="opacity-80">info@sammantrans.com</span>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-secondary mr-3"></i>
+                            <span class="opacity-80  ml-2 mr-2">info@sammantrans.com</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div
-                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row-reverse justify-between items-center">
-                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 Samman International Transport & Shipping. جميع الحقوق
-                    محفوظة.</p>
+                class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 السمان للنقل والشحن الدولي. جميع الحقوق محفوظة.</p>
                 <div class="flex gap-3">
                     <a href="privacy-ar.html"
-                        class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة الخصوصية</a>
+                        class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة
+                        الخصوصية</a>
                     <a href="terms-ar.html" class="text-sm opacity-80 hover:text-secondary transition duration-300">شروط
                         الخدمة</a>
                 </div>
             </div>
         </div>
     </footer>
-
     <!-- WhatsApp Floating Button -->
     <div class="fixed bottom-6 left-6 z-50">
         <a href="https://wa.me/963117042" target="_blank" class="flex flex-col items-center group">
