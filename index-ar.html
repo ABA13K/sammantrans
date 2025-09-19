@@ -550,6 +550,81 @@
                 margin-left: 2rem;
             }
         }
+
+        .partners-slider {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .partners-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .partner-slide {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .partner-logo {
+            max-width: 100%;
+            height: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            filter: grayscale(100%);
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .slider-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: #003869;
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .partner-slide {
+                width: 50%;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .partner-slide {
+                width: 33.333%;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .partner-slide {
+                width: 20%;
+            }
+        }
     </style>
 </head>
 
@@ -1493,7 +1568,21 @@
                 <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
 
-            <div id="partners-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center hidden">
+            <!-- Partners Slider Container -->
+            <div id="partners-slider" class="partners-slider hidden">
+                <div class="partners-track" id="partners-track">
+                    <!-- Partner slides will be inserted here by JavaScript -->
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prev-partner">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="slider-btn" id="next-partner">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -1667,7 +1756,7 @@
 
             <div
                 class="border-t border-primary-light mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 السمان للنقل والشحن الدولي. جميع الحقوق محفوظة.</p>
+                <p class="text-sm opacity-80 mb-4 md:mb-0">© 2023 السمان للشحن الدولي. جميع الحقوق محفوظة.</p>
                 <div class="flex gap-3">
                     <a href="privacy-ar.html"
                         class="text-sm opacity-80 hover:text-secondary transition duration-300">سياسة الخصوصية</a>
@@ -1999,13 +2088,59 @@
 
         // Partners API functionality
         document.addEventListener('DOMContentLoaded', () => {
+            // Partners API functionality with slider
             const spinner = document.getElementById('partners-spinner');
-            const grid = document.getElementById('partners-grid');
+            const slider = document.getElementById('partners-slider');
+            const track = document.getElementById('partners-track');
+            const prevBtn = document.getElementById('prev-partner');
+            const nextBtn = document.getElementById('next-partner');
 
-            // Show spinner, hide grid
-            spinner.classList.remove('hidden');
-            grid.classList.add('hidden');
+            let currentPosition = 0;
+            let slidesToShow = 5; // Default for large screens
+            let partnerSlides = [];
 
+            // Determine how many slides to show based on screen size
+            function updateSlidesToShow() {
+                if (window.innerWidth < 641) {
+                    slidesToShow = 2;
+                } else if (window.innerWidth < 1025) {
+                    slidesToShow = 3;
+                } else {
+                    slidesToShow = 5;
+                }
+                updateSliderPosition();
+            }
+
+            // Update slider position
+            function updateSliderPosition() {
+                const slideWidth = 100 / slidesToShow;
+                track.style.transform = `translateX(${currentPosition * slideWidth}%)`;
+            }
+
+            // Navigate to next slide
+            function nextSlide() {
+                if (currentPosition > -(partnerSlides.length - slidesToShow)) {
+                    currentPosition--;
+                    updateSliderPosition();
+                }
+            }
+
+            // Navigate to previous slide
+            function prevSlide() {
+                if (currentPosition < 0) {
+                    currentPosition++;
+                    updateSliderPosition();
+                }
+            }
+
+            // Event listeners for navigation buttons
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Update on window resize
+            window.addEventListener('resize', updateSlidesToShow);
+
+            // Initial fetch
             fetch('https://aa-dev.site/sammantrans/api/show-companies', {
                 headers: { 'Accept': 'application/json' }
             })
@@ -2018,34 +2153,43 @@
                     return res.json();
                 })
                 .then(json => {
-                    const companies = json.data;  // array of { id, name, image, website_url, … }
+                    const companies = json.data;
 
-                    // Build logo links
-                    grid.innerHTML = companies.map(c => `
-                        <a href="${c.website_url}" target="_blank"
-                           class="flex justify-center">
-                            <img src="${c.image}"
-                                 alt="${c.name}"
-                                 class="h-full opacity-70 hover:opacity-100 transition duration-300 w-full"/>
-                        </a>
-                    `).join('');
+                    // Create partner slides
+                    partnerSlides = companies.map(c => {
+                        const slide = document.createElement('div');
+                        slide.className = 'partner-slide';
+                        slide.innerHTML = `
+                            <a href="${c.website_url}" target="_blank" class="flex justify-center items-center h-24">
+                                <img src="${c.image}" alt="${c.name}" class="partner-logo max-h-16 object-contain" />
+                            </a>
+                        `;
+                        return slide;
+                    });
 
-                    // Hide spinner, show grid
+                    // Add slides to track
+                    partnerSlides.forEach(slide => {
+                        track.appendChild(slide);
+                    });
+
+                    // Initialize slider
+                    updateSlidesToShow();
+
+                    // Hide spinner, show slider
                     spinner.classList.add('hidden');
-                    grid.classList.remove('hidden');
+                    slider.classList.remove('hidden');
                 })
                 .catch(err => {
                     console.error(err);
                     spinner.classList.add('hidden');
-                    grid.classList.remove('hidden');
-                    grid.innerHTML = `
-                        <p class="col-span-full text-center text-red-600">
+                    slider.classList.remove('hidden');
+                    slider.innerHTML = `
+                        <p class="text-center text-red-600 py-8">
                             فشل في تحميل الشركاء.
                         </p>
                     `;
                 });
-        });
-    </script>
+        });</script>
 </body>
 
 </html>
